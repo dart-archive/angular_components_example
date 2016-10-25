@@ -1,0 +1,20 @@
+name: angular2_components_example
+description: An example app using the angular_components package.
+version: 1.0.0
+environment:
+  sdk: '>=1.20.0 <2.0.0'
+dependencies:
+  angular2: ^2.0.0-beta.22
+  angular2_components:
+    path: ../acx
+  browser: ^0.10.0
+  dart_to_js_script_rewriter: ^1.0.1
+dev_dependencies:
+  webdriver: ^1.2.1
+transformers:
+- angular2:
+    platform_directives:
+    - 'package:angular2/common.dart#CORE_DIRECTIVES'
+    - 'package:angular2/common.dart#FORM_DIRECTIVES'
+    entry_points: web/main.dart
+- dart_to_js_script_rewriter
