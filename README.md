@@ -1,5 +1,3 @@
-# AngularDart Components Example
-
 This is a basic gallery of the various AngularDart Components.
 
 * **[See the gallery](https://dart-lang.github.io/angular2_components_example/)**
