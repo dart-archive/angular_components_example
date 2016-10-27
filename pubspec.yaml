@@ -16,4 +16,6 @@ transformers:
     - 'package:angular2/common.dart#CORE_DIRECTIVES'
     - 'package:angular2/common.dart#FORM_DIRECTIVES'
     entry_points: web/main.dart
+- $dart2js:
+    commandLineOptions: [--show-package-warnings, --dump-info]
 - dart_to_js_script_rewriter
