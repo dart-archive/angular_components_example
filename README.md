@@ -5,6 +5,9 @@ This is a basic gallery of the various AngularDart Components.
 * [Use the package](https://pub.dartlang.org/packages/angular2_components)
 * [Browse the API](https://www.dartdocs.org/documentation/angular2_components/latest)
 
+For a walkthrough of how to *use* these components, see
+[Code Lab: AngularDart Components](https://webdev.dartlang.org/codelabs/angular2_components).
+
 ## Development
 
 Run `dart bin/sanity_check.dart` to execute a simple Selenium test of the
