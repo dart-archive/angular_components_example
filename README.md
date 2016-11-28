@@ -10,5 +10,5 @@ For a walkthrough of how to *use* these components, see
 
 ## Development
 
-Run `dart bin/sanity_check.dart` to execute a simple Selenium test of the
+Run `dart tool/sanity_check.dart` to execute a simple Selenium test of the
 gallery.

@@ -58,6 +58,7 @@ Future main(List<String> args) async {
     await testButton(ensureBodyContains, increaseButton);
     await testTabs(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testMaxCharInput(driver);
+    await testDialog(ensureBodyContains, ensureBodyDoesNotContain, driver);
     print("SUCCESS");
     await driver.quit();
   } on ProcessException catch (e) {
@@ -148,6 +149,34 @@ Future testTabs(
 
   await ensureBodyDoesNotContain("These are the contents of Tab 1.");
   await ensureBodyContains("Tab 2 contents, on the other hand, look thusly.");
+}
+
+Future testDialog(
+    Future<Null> ensureBodyContains(String text),
+    Future<Null> ensureBodyDoesNotContain(String text),
+    WebDriver driver) async {
+  print("Testing dialog.");
+
+  var dialogText = "Lorem ipsum dolor sit amet";
+
+  var buttons = await driver.findElements(const By.tagName("material-button"));
+
+  await ensureBodyDoesNotContain(dialogText);
+  for (var button in await buttons.toList()) {
+    if ((await button.text) == "OPEN BASIC") {
+      await button.click();
+      break;
+    }
+  }
+  await ensureBodyContains(dialogText);
+  buttons = await driver.findElements(const By.tagName("material-button"));
+  for (var button in await buttons.toList()) {
+    if ((await button.text) == "CLOSE") {
+      await button.click();
+      break;
+    }
+  }
+  await ensureBodyDoesNotContain(dialogText);
 }
 
 Future<WebElement> waitForLoad(WebDriver driver) async {

@@ -1,11 +1,11 @@
 name: angular2_components_example
 description: An example app using the angular_components package.
-version: 1.0.0
+version: 1.1.0
 environment:
   sdk: '>=1.20.0 <2.0.0'
 dependencies:
-  angular2: ^2.0.0
-  angular2_components: ^0.1.0
+  angular2: ^2.1.0
+  angular2_components: ^0.2.0
   browser: ^0.10.0
   dart_to_js_script_rewriter: ^1.0.1
 dev_dependencies:

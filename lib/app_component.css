@@ -3,16 +3,56 @@
  * for details. All rights reserved. Use of this source code is governed by a
  * BSD-style license that can be found in the LICENSE file.
  */
-.red {
-  background-color: #f44336;
-  color: white;
-}
-
 .blue {
   background-color: #2196F3;
   color: white;
 }
 
+.red {
+  background-color: #f44336;
+  color: white;
+}
+
+.white {
+  background-color: white;
+  color: #4285f4;
+}
+
 .limited-width {
   width: 50%;
 }
+
+.basic-dialog,
+.basic-scrolling-dialog,
+.max-height-dialog,
+.headered-dialog,
+.custom-colors-dialog,
+.no-header-footer-dialog {
+  width: 480px;
+}
+
+.basic-scrolling-dialog {
+  height: 320px;
+}
+
+.basic-scrolling-dialog > div {
+  padding: 8px;
+}
+
+.max-height-dialog {
+  max-height: 40vh;
+}
+
+.dialog-with-error,
+.info-dialog {
+  width: 320px;
+}
+
+.custom-colors-dialog {
+  background-color: #b7e1cd;
+}
+
+.no-header-footer-dialog {
+  height: 6em;
+}
+
