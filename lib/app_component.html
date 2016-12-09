@@ -303,7 +303,8 @@
   {{basicPopupVisible ? 'Close' : 'Open'}} Popup
 </material-button>
 <material-popup [source]="source" [(visible)]="basicPopupVisible">
-  <div style="height: 200px;">
+  <div style="height: 200px;
+              padding: 5px;">
     Hello, I am a pop up!
   </div>
 </material-popup>
@@ -323,17 +324,20 @@
                 enforceSpaceConstraints
                 [source]="headerExampleSource"
                 [(visible)]="headerFooterPopupVisible">
-  <div header style="background: darkred;
-                     color: white;">
+  <div header style="background: #43A047;
+                     color: white;
+                     padding: 5px;">
     This is a Header demo
   </div>
-  <div style="background: lightblue;
+  <div style="background: #E8F5E9;
               height: 1000px;
+              padding: 5px;
               width: 200px;">
     Hello, Hello, Hello. This is a tall bit of content that needs a scroll bar because the content is so long.
   </div>
-  <div footer style="background: darkred;
-                     color: white;">
+  <div footer style="background: #1B5E20;
+                     color: white;
+                     padding: 5px;">
     This is a Footer demo
   </div>
 </material-popup>
@@ -354,8 +358,9 @@
                 enforceSpaceConstraints
                 [source]="mixinExampleSource"
                 [(visible)]="sizePopupVisible">
-  <div style="background: yellow;
+  <div style="background: #EEEEEE;
               height: 1000px;
+              padding: 5px;
               width: 1000px;">
     Hello, Hello, Hello.
     This is a long content that needs a scroll bar because the content
