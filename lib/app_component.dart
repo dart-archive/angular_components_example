@@ -9,12 +9,14 @@ import 'package:angular2_components/angular2_components.dart';
     selector: 'my-app',
     templateUrl: 'app_component.html',
     styleUrls: const ['app_component.css'],
-    directives: const [materialDirectives],
+    directives: const [materialDirectives, defaultPopupSizeProvider],
     providers: const [materialProviders])
 class AppComponent {
   int count = 0;
 
   bool allowed = true;
+
+  // Material Dialog
   bool showBasicDialog = false;
   bool showBasicScrollingDialog = false;
   bool showMaxHeightDialog = false;
@@ -24,6 +26,11 @@ class AppComponent {
   bool showAutoDismissDialog = false;
   bool showCustomColorsDialog = false;
   bool showNoHeaderFooterDialog = false;
+
+  // Material Popup
+  bool basicPopupVisible = false;
+  bool headerFooterPopupVisible = false;
+  bool sizePopupVisible = false;
 
   String dialogWithErrorErrorMessage;
 
@@ -60,3 +67,13 @@ class AppComponent {
     count = 0;
   }
 }
+
+@Injectable()
+PopupSizeProvider createPopupSizeProvider() {
+  return const PercentagePopupSizeProvider();
+}
+
+@Directive(selector: '[defaultPopupSizeProvider]', providers: const [
+  const Provider(PopupSizeProvider, useFactory: createPopupSizeProvider)
+])
+class defaultPopupSizeProvider {}

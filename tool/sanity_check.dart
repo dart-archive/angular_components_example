@@ -59,6 +59,7 @@ Future main(List<String> args) async {
     await testTabs(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testMaxCharInput(driver);
     await testDialog(ensureBodyContains, ensureBodyDoesNotContain, driver);
+    await testPopup(ensureBodyContains, ensureBodyDoesNotContain, driver);
     print("SUCCESS");
     await driver.quit();
   } on ProcessException catch (e) {
@@ -177,6 +178,39 @@ Future testDialog(
     }
   }
   await ensureBodyDoesNotContain(dialogText);
+}
+
+Future testPopup(
+    Future<Null> ensureBodyContains(String text),
+    Future<Null> ensureBodyDoesNotContain(String text),
+    WebDriver driver) async {
+  print("Testing popup.");
+
+  var popupText = "Hello, I am a pop up!";
+
+  var buttons = await driver.findElements(const By.tagName("material-button"));
+
+  await ensureBodyDoesNotContain(popupText);
+  for (var button in await buttons.toList()) {
+    if ((await button.text) == "OPEN POPUP") {
+      await button.click();
+      break;
+    }
+  }
+
+  // TODO(google) Remove sleep once PageObject testing classes are available
+  // Wait for the popup animation to complete
+  sleep(new Duration(milliseconds: 250));
+
+  await ensureBodyContains(popupText);
+  // Close the popup with a keypress
+  await driver.keyboard.sendKeys(" ");
+
+  // TODO(google) Remove sleep once PageObject testing classes are available
+  // Wait for the popup animation to complete
+  sleep(new Duration(milliseconds: 250));
+
+  await ensureBodyDoesNotContain(popupText);
 }
 
 Future<WebElement> waitForLoad(WebDriver driver) async {
