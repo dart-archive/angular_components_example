@@ -22,6 +22,7 @@
     <li><a href="#Scorecards">Scorecards</a></li>
     <li><a href="#Popups">Popups</a></li>
     <li><a href="#Dialogs">Modal Dialogs</a></li>
+    <li><a href="#Tooltips">Tooltips</a></li>
   </ul>
 </nav>
 
@@ -73,11 +74,11 @@
   <section class="margin">
     <h3>Without min-width and margin</h3>
     <p>Regular</p>
-    <material-button class="red">button</material-button>
-    <material-button class="red">A</material-button>
+    <material-button raised class="red">button</material-button>
+    <material-button raised class="red">A</material-button>
     <p>Without min-width and margin</p>
-    <material-button clear-size class="red">button</material-button>
-    <material-button clear-size class="red">A</material-button>
+    <material-button raised clear-size class="red">button</material-button>
+    <material-button raised clear-size class="red">A</material-button>
   </section>
 
   <section class="margin">
@@ -669,5 +670,113 @@
     </material-button>
   </material-dialog>
 </modal>
+
+<hr>
+
+<h2><a name="Tooltips">Tooltips</a></h2>
+<h3>Ink tooltip</h3>
+<p>Tooltips on Icons.</p>
+<glyph icon="print"
+       class="demo-glyph"
+       materialTooltip="Print">
+</glyph>
+<glyph icon="save"
+       class="demo-glyph"
+       materialTooltip="Save">
+</glyph>
+<glyph icon="lock"
+       class="demo-glyph"
+       [materialTooltip]="tooltipMsg">
+</glyph>
+
+<p>Tooltip on a button.</p>
+<material-button
+    materialTooltip="Saves the document"
+    raised>
+  Save
+</material-button>
+<p>Long tooltip text on a link.</p>
+<a href="#" [materialTooltip]="longString" twoLineTooltip>webdev.dart.org</a>
+
+<p>Custom tooltip on some text.</p>
+<p>
+  <em>
+    Use this configuration sparingly, as the tooltip text is intended for simple strings.
+  </em>
+</p>
+<span tooltipTarget #ref="tooltipTarget">
+  Explicitly declare a tooltip component<br/>
+</span>
+
+<material-tooltip-text [for]="ref">
+  Allows for &nbsp; <strong>formatted</strong> &nbsp; <em>text</em>.
+</material-tooltip-text>
+
+<h3>Card Tooltip</h3>
+<p>
+  A simple sentence about something.
+  <glyph icon="help_outline"
+         tooltipTarget
+         keyboardOnlyFocusIndicator
+         size="medium"
+         #ref2="tooltipTarget">
+  </glyph>
+</p>
+<material-tooltip-card [for]="ref2">
+  <header>Simple sentences about things.</header>
+  <p><b>How it works:</b> Text explains things further.</p>
+</material-tooltip-card>
+
+<p>
+  Clickable tooltip. Target will open immediately on clicks and keyboard events.
+  <glyph icon="help_outline"
+         clickableTooltipTarget
+         keyboardOnlyFocusIndicator
+         tabindex="0"
+         size="medium"
+         #clickableRef="tooltipTarget">
+  </glyph>
+</p>
+<material-tooltip-card [for]="clickableRef">
+  <header>Simple sentences about things.</header>
+  <p><b>How it works:</b> Text explains things further.</p>
+  <footer>
+  </footer>
+</material-tooltip-card>
+
+<h3>Icon Tooltip</h3>
+<p>
+  A simple sentence about something, followed by an info tooltip
+  icon.
+  <material-icon-tooltip type="info">
+    A simple sentence about things.
+  </material-icon-tooltip>
+</p>
+<p class="dark-background">
+  A simple dark-themed sentence about something, followed by a help
+  tooltip icon.
+  <material-icon-tooltip darkTheme>
+    Another simple sentence about things.
+  </material-icon-tooltip>
+</p>
+
+<h3>Tooltip Source</h3>
+<p>
+  Use a tooltipSource to control a popup.
+  <glyph icon="help_outline"
+         tooltipSource
+         size="medium"
+         #ref3="tooltipSource">
+  </glyph>
+</p>
+<material-popup [source]="ref3"
+                enforceSpaceConstraints
+                [autoDismiss]="false">
+  <div class="source-popup">
+    Content in a popup.
+  </div>
+</material-popup>
+
+<hr>
 
 <p>... and more, like &lt;focus-trap&gt;.</p>

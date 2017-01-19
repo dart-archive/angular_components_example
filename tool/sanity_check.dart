@@ -60,6 +60,7 @@ Future main(List<String> args) async {
     await testMaxCharInput(driver);
     await testDialog(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testPopup(ensureBodyContains, ensureBodyDoesNotContain, driver);
+    await testTooltip(ensureBodyContains, ensureBodyDoesNotContain, driver);
     print("SUCCESS");
     await driver.quit();
   } on ProcessException catch (e) {
@@ -211,6 +212,39 @@ Future testPopup(
   sleep(new Duration(milliseconds: 250));
 
   await ensureBodyDoesNotContain(popupText);
+}
+
+Future testTooltip(
+    Future<Null> ensureBodyContains(String text),
+    Future<Null> ensureBodyDoesNotContain(String text),
+    WebDriver driver) async {
+  print("Testing tooltip.");
+
+  var tooltipText = "Saves the document";
+
+  var buttons = await driver.findElements(const By.tagName("material-button"));
+
+  await ensureBodyDoesNotContain(tooltipText);
+  for (var button in await buttons.toList()) {
+    if ((await button.text) == "SAVE") {
+      await driver.mouse.moveTo(element: button);
+      break;
+    }
+  }
+
+  // TODO(google) Remove sleep once PageObject testing classes are available
+  // Wait for the tooltip animation to complete
+  sleep(new Duration(milliseconds: 1500));
+
+  await ensureBodyContains(tooltipText);
+  // Close the tooltip by moving the mouse away
+  await driver.mouse.moveTo(xOffset: 200, yOffset: 200);
+
+  // TODO(google) Remove sleep once PageObject testing classes are available
+  // Wait for the tooltip animation to complete
+  sleep(new Duration(milliseconds: 250));
+
+  await ensureBodyDoesNotContain(tooltipText);
 }
 
 Future<WebElement> waitForLoad(WebDriver driver) async {
