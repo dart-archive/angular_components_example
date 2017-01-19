@@ -8,7 +8,11 @@
   color: white;
 }
 
-.red {
+.red:not(.is-raised){
+  color: #f44336;
+}
+
+.red.is-raised{
   background-color: #f44336;
   color: white;
 }
@@ -20,6 +24,11 @@
 
 .limited-width {
   width: 50%;
+}
+
+.dark-background {
+  background: #424242;
+  color: white;
 }
 
 .basic-dialog,

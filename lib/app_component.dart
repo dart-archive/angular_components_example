@@ -32,6 +32,10 @@ class AppComponent {
   bool headerFooterPopupVisible = false;
   bool sizePopupVisible = false;
 
+  String get tooltipMsg => 'All the best messages appear in tooltips.';
+  String get longString => 'Learn more about web development with AngularDart '
+      'here. You will find tutorials to get you started.';
+
   String dialogWithErrorErrorMessage;
 
   final maxHeightDialogLines = <String>[];
