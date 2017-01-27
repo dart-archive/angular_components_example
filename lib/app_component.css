@@ -65,3 +65,11 @@
   height: 6em;
 }
 
+.bordered-list {
+  border: 1px solid #000;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 8px;
+  overflow: hidden;
+}
+
