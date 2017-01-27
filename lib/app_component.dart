@@ -70,6 +70,22 @@ class AppComponent {
   void reset() {
     count = 0;
   }
+
+  List<String> get sizes => const <String>[
+    MaterialListSize.auto,
+    MaterialListSize.xSmall,
+    MaterialListSize.medium,
+    MaterialListSize.xLarge
+  ];
+
+  SelectionModel<String> colorSelection = new SelectionModel.withList();
+  String get selectedColor => colorSelection.selectedValues.isEmpty
+      ? 'red'
+      : colorSelection.selectedValues.first;
+
+  void selectColor(String color) {
+    colorSelection.select(color);
+  }
 }
 
 @Injectable()

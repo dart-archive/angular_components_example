@@ -53,6 +53,15 @@ Future main(List<String> args) async {
       }
     }
 
+    Future<Null> ensureElementColor(
+        WebElement element, String expectedColor) async {
+      var actualColor = await element.cssProperties['color'];
+      if (actualColor != expectedColor) {
+        throw "Element should have color: '$expectedColor' "
+            "but found the color: $actualColor.";
+      }
+    }
+
     // Start actual tests.
     await takeScreenshot(driver);
     await testButton(ensureBodyContains, increaseButton);
@@ -61,6 +70,7 @@ Future main(List<String> args) async {
     await testDialog(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testPopup(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testTooltip(ensureBodyContains, ensureBodyDoesNotContain, driver);
+    await testList(ensureElementColor, driver);
     print("SUCCESS");
     await driver.quit();
   } on ProcessException catch (e) {
@@ -245,6 +255,29 @@ Future testTooltip(
   sleep(new Duration(milliseconds: 250));
 
   await ensureBodyDoesNotContain(tooltipText);
+}
+
+Future testList(
+    Future<Null> ensureElementColor(WebElement element, String color),
+    WebDriver driver) async {
+  print("Testing list.");
+
+  var colorInitial = "rgba(255, 0, 0, 1)";
+  var colorAfterClick = "rgba(0, 128, 0, 1)";
+
+  var colorText =
+      await driver.findElements(const By.className("colorchanger")).first;
+  await ensureElementColor(colorText, colorInitial);
+
+  var listItems =
+      await driver.findElements(const By.tagName("material-list-item"));
+  for (var listItem in await listItems.toList()) {
+    if ((await listItem.text).contains("Green")) {
+      await listItem.click();
+      break;
+    }
+  }
+  await ensureElementColor(colorText, colorAfterClick);
 }
 
 Future<WebElement> waitForLoad(WebDriver driver) async {
