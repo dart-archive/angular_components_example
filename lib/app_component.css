@@ -8,11 +8,11 @@
   color: white;
 }
 
-.red:not(.is-raised){
+.red:not([raised]) {
   color: #f44336;
 }
 
-.red.is-raised{
+.red[raised] {
   background-color: #f44336;
   color: white;
 }
