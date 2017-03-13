@@ -6,19 +6,19 @@ packages:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.29.6"
+    version: "0.29.8"
   angular2:
     description:
       name: angular2
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0-alpha"
+    version: "3.0.0-alpha+1"
   angular2_components:
     description:
       name: angular2_components
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.1-alpha"
+    version: "0.4.0-alpha"
   archive:
     description:
       name: archive
@@ -54,7 +54,7 @@ packages:
       name: build
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.3"
+    version: "0.7.2"
   charcode:
     description:
       name: charcode
@@ -109,6 +109,12 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.5"
+  func:
+    description:
+      name: func
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   glob:
     description:
       name: glob
