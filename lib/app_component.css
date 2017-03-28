@@ -73,3 +73,26 @@
   overflow: hidden;
 }
 
+.example-with-options {
+  display: flex;
+}
+
+.example-pane {
+  flex: 1;
+}
+
+.options-pane {
+  flex: 1;
+  padding: 16px;
+  background: #eee;
+}
+
+.options-pane > material-checkbox {
+  margin-left: 0;
+}
+
+.option-label {
+  display: inline-flex;
+  padding: 10px 0px;
+  width: 50%;
+}

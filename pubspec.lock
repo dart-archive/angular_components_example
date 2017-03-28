@@ -6,7 +6,7 @@ packages:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.29.8"
+    version: "0.29.9"
   angular2:
     description:
       name: angular2
@@ -15,10 +15,6 @@ packages:
     version: "3.0.0-alpha+1"
   angular2_components:
     description:
-      name: angular2_components
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.0-alpha"
   archive:
     description:
       name: archive
@@ -42,7 +38,7 @@ packages:
       name: barback
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.15.2+9"
+    version: "0.15.2+10"
   browser:
     description:
       name: browser
@@ -72,7 +68,7 @@ packages:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.13.0"
+    version: "1.14.0"
   convert:
     description:
       name: convert
@@ -204,7 +200,7 @@ packages:
       name: protobuf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.3"
+    version: "0.5.3+1"
   quiver:
     description:
       name: quiver

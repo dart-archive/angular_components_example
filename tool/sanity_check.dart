@@ -71,6 +71,7 @@ Future main(List<String> args) async {
     await testPopup(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testTooltip(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testList(ensureElementColor, driver);
+    await testSelect(ensureBodyContains, ensureBodyDoesNotContain, driver);
     print("SUCCESS");
     await driver.quit();
   } on ProcessException catch (e) {
@@ -147,7 +148,6 @@ Future testTabs(
     Future<Null> ensureBodyDoesNotContain(String text),
     WebDriver driver) async {
   print("Testing tab.");
-
   await ensureBodyContains("These are the contents of Tab 1.");
   await ensureBodyDoesNotContain(
       "Tab 2 contents, on the other hand, look thusly.");
@@ -278,6 +278,26 @@ Future testList(
     }
   }
   await ensureElementColor(colorText, colorAfterClick);
+}
+
+Future testSelect(
+    Future<Null> ensureBodyContains(String text),
+    Future<Null> ensureBodyDoesNotContain(String text),
+    WebDriver driver) async {
+  print("Testing select.");
+
+  var expectedSelection = "Selected Protocol: HTTPS";
+  await ensureBodyDoesNotContain(expectedSelection);
+
+  var selectOptions =
+  await driver.findElements(const By.tagName("material-select-item"));
+  for (var selectOption in await selectOptions.toList()) {
+    if ((await selectOption.text).contains("HTTPS")) {
+      await selectOption.click();
+      break;
+    }
+  }
+  await ensureBodyContains(expectedSelection);
 }
 
 Future<WebElement> waitForLoad(WebDriver driver) async {
