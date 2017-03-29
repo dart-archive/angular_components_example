@@ -60,7 +60,7 @@
     <h3>Flat</h3>
     <material-button>button</material-button>
     <material-button class="red">Colored</material-button>
-    <material-button disabled>Disabled</material-button>
+    <material-button [disabled]="true">Disabled</material-button>
     <material-button dense>Condensed</material-button>
   </section>
 
@@ -68,7 +68,7 @@
     <h3>Raised</h3>
     <material-button raised>Raised</material-button>
     <material-button raised class="red">Colored</material-button>
-    <material-button raised disabled>Disabled</material-button>
+    <material-button raised [disabled]="true">Disabled</material-button>
     <material-button raised dense>Condensed</material-button>
   </section>
 
@@ -793,7 +793,7 @@
       Green
     </material-list-item>
   </div>
-  <material-list-item (trigger)="selectColor('coral')" disabled>
+  <material-list-item (trigger)="selectColor('coral')" [disabled]="true">
     Coral
   </material-list-item>
   <material-list-item (trigger)="selectColor('mediumOrchid')">
