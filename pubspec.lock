@@ -18,7 +18,7 @@ packages:
       name: angular2_components
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.1-alpha"
+    version: "0.4.1-beta"
   archive:
     description:
       name: archive
@@ -132,7 +132,7 @@ packages:
       name: intl
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.0"
+    version: "0.15.0"
   isolate:
     description:
       name: isolate
@@ -204,13 +204,13 @@ packages:
       name: protobuf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.3+2"
+    version: "0.5.4"
   quiver:
     description:
       name: quiver
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.24.0"
+    version: "0.25.0"
   source_span:
     description:
       name: source_span

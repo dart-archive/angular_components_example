@@ -1,6 +1,5 @@
-name: angular2_components_example
+name: angular_components_example
 description: An example app using the angular_components package.
-version: 1.2.0
 environment:
   sdk: '>=1.20.0 <2.0.0'
 dependencies:

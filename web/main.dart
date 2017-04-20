@@ -4,7 +4,7 @@
 
 import 'package:angular2/platform/browser.dart';
 
-import 'package:angular2_components_example/app_component.dart';
+import 'package:angular_components_example/app_component.dart';
 
 main() {
   bootstrap(AppComponent);
