@@ -18,7 +18,13 @@ packages:
       name: angular2_components
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.1-beta"
+    version: "0.5.0-beta"
+  angular_components:
+    description:
+      name: angular_components
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.0-beta+1"
   archive:
     description:
       name: archive
