@@ -12,7 +12,7 @@ packages:
       name: angular2
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0-beta+1"
+    version: "3.0.0-beta+2"
   angular2_components:
     description:
       name: angular2_components
@@ -54,7 +54,7 @@ packages:
       name: build
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.3"
+    version: "0.8.0"
   charcode:
     description:
       name: charcode
@@ -114,7 +114,7 @@ packages:
       name: func
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.1"
+    version: "1.0.0"
   glob:
     description:
       name: glob
