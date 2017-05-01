@@ -290,7 +290,7 @@ Future testSelect(
   await ensureBodyDoesNotContain(expectedSelection);
 
   var selectOptions =
-  await driver.findElements(const By.tagName("material-select-item"));
+      await driver.findElements(const By.tagName("material-select-item"));
   for (var selectOption in await selectOptions.toList()) {
     if ((await selectOption.text).contains("HTTPS")) {
       await selectOption.click();

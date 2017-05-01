@@ -71,8 +71,7 @@ class AppComponent {
     count = 0;
   }
 
-  List<String> get sizes =>
-      const <String>[
+  List<String> get sizes => const <String>[
         MaterialListSize.auto,
         MaterialListSize.xSmall,
         MaterialListSize.medium,
@@ -81,15 +80,13 @@ class AppComponent {
 
   SelectionModel<String> colorSelection = new SelectionModel.withList();
 
-  String get selectedColor =>
-      colorSelection.selectedValues.isEmpty
-          ? 'red'
-          : colorSelection.selectedValues.first;
+  String get selectedColor => colorSelection.selectedValues.isEmpty
+      ? 'red'
+      : colorSelection.selectedValues.first;
 
   void selectColor(String color) {
     colorSelection.select(color);
   }
-
 
   // Material Select
   String protocol;
@@ -102,10 +99,10 @@ class AppComponent {
 
   List<Language> get languages => languagesList;
 
-  final SelectionOptions<Language> languageOptions = new SelectionOptions
-      .fromList(languagesList);
-  final SelectionModel<Language> targetLanguageSelection = new SelectionModel
-      .withList(allowMulti: true);
+  final SelectionOptions<Language> languageOptions =
+      new SelectionOptions.fromList(languagesList);
+  final SelectionModel<Language> targetLanguageSelection =
+      new SelectionModel.withList(allowMulti: true);
 
   static const List<Language> _languagesListLong = const <Language>[
     const Language('en-US', 'US English'),
@@ -176,7 +173,7 @@ class AppComponent {
   // Specifying an itemRenderer avoids the selected item from knowing how to
   // display itself.
   static ItemRenderer<Language> _itemRenderer =
-  new CachingItemRenderer<Language>(
+      new CachingItemRenderer<Language>(
           (language) => "${language.label} (${language.code})");
 
   bool useComponentRenderer = false;
@@ -188,17 +185,17 @@ class AppComponent {
 
   // Languages to choose from.
   ExampleSelectionOptions<Language> languageListOptions =
-  new ExampleSelectionOptions<Language>(_languagesListLong);
+      new ExampleSelectionOptions<Language>(_languagesListLong);
 
   ExampleSelectionOptions<Language> languageGroupedOptions =
-  new ExampleSelectionOptions<Language>.withOptionGroups(_languagesGroups);
+      new ExampleSelectionOptions<Language>.withOptionGroups(_languagesGroups);
 
   StringSelectionOptions<Language> get languageOptionsLong =>
       useOptionGroup ? languageGroupedOptions : languageListOptions;
 
   // Single Selection Model.
   final SelectionModel<Language> singleSelectModel =
-  new SelectionModel.withList(selectedValues: [_languagesListLong[1]]);
+      new SelectionModel.withList(selectedValues: [_languagesListLong[1]]);
 
   // Label for the button for single selection.
   String get singleSelectLanguageLabel =>
@@ -208,21 +205,20 @@ class AppComponent {
 
   // Multi Selection Model.
   final SelectionModel<Language> multiSelectModel =
-  new SelectionModel<Language>.withList(allowMulti: true);
+      new SelectionModel<Language>.withList(allowMulti: true);
 
   final SelectionModel<int> widthSelection = new SelectionModel<int>.withList();
   final SelectionOptions<int> widthOptions =
-  new SelectionOptions<int>.fromList([0, 1, 2, 3, 4, 5]);
+      new SelectionOptions<int>.fromList([0, 1, 2, 3, 4, 5]);
 
-  String get widthButtonText =>
-      widthSelection.selectedValues.isNotEmpty
-          ? widthSelection.selectedValues.first.toString()
-          : '0';
+  String get widthButtonText => widthSelection.selectedValues.isNotEmpty
+      ? widthSelection.selectedValues.first.toString()
+      : '0';
 
   final SelectionModel<String> popupPositionSelection =
-  new SelectionModel<String>.withList();
+      new SelectionModel<String>.withList();
   final StringSelectionOptions popupPositionOptions =
-  new StringSelectionOptions<String>(['Auto', 'Above', 'Below']);
+      new StringSelectionOptions<String>(['Auto', 'Above', 'Below']);
 
   String get popupPositionButtonText =>
       popupPositionSelection.selectedValues.isNotEmpty
@@ -230,19 +226,17 @@ class AppComponent {
           : 'Auto';
 
   final SelectionModel<String> slideSelection =
-  new SelectionModel<String>.withList();
+      new SelectionModel<String>.withList();
   final StringSelectionOptions slideOptions =
-  new StringSelectionOptions<String>(['Default', 'x', 'y']);
+      new StringSelectionOptions<String>(['Default', 'x', 'y']);
 
-  String get slideButtonText =>
-      slideSelection.selectedValues.isNotEmpty
-          ? slideSelection.selectedValues.first
-          : 'Default';
+  String get slideButtonText => slideSelection.selectedValues.isNotEmpty
+      ? slideSelection.selectedValues.first
+      : 'Default';
 
-  int get width =>
-      widthSelection.selectedValues.isNotEmpty
-          ? widthSelection.selectedValues.first
-          : null;
+  int get width => widthSelection.selectedValues.isNotEmpty
+      ? widthSelection.selectedValues.first
+      : null;
 
   List<RelativePosition> get preferredPositions {
     switch (popupPositionButtonText) {
@@ -254,11 +248,10 @@ class AppComponent {
     return RelativePosition.overlapAlignments;
   }
 
-  String get slide =>
-      slideSelection.selectedValues.isNotEmpty &&
+  String get slide => slideSelection.selectedValues.isNotEmpty &&
           slideSelection.selectedValues.first != 'Default'
-          ? slideSelection.selectedValues.first
-          : null;
+      ? slideSelection.selectedValues.first
+      : null;
 
   String get singleSelectedLanguage =>
       singleSelectModel.selectedValues.isNotEmpty
@@ -335,7 +328,7 @@ class ExampleSelectionOptions<T> extends StringSelectionOptions<T>
 
   ExampleSelectionOptions.withOptionGroups(List<OptionGroup> optionGroups)
       : super.withOptionGroups(optionGroups,
-      toFilterableString: (T option) => option.toString());
+            toFilterableString: (T option) => option.toString());
 
   @override
   SelectableOption getSelectable(item) =>
