@@ -12,13 +12,13 @@ packages:
       name: angular2
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0-beta+2"
+    version: "3.0.0"
   angular_components:
     description:
       name: angular_components
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.0-beta+1"
+    version: "0.5.0"
   archive:
     description:
       name: archive
@@ -96,7 +96,7 @@ packages:
       name: dart_style
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.3"
+    version: "1.0.4"
   dart_to_js_script_rewriter:
     description:
       name: dart_to_js_script_rewriter
@@ -284,4 +284,4 @@ packages:
     source: hosted
     version: "2.1.12"
 sdks:
-  dart: ">=1.23.0-dev.7.0 <2.0.0"
+  dart: ">=1.23.0 <2.0.0"
