@@ -941,7 +941,8 @@
 <material-select [selection]="targetLanguageSelection" class="bordered-list">
   <material-select-item *ngFor="let language of languages"
                         [value]="language"
-                        displayNameRenderer>
+                        displayNameRenderer
+                        useCheckMarks="true">
   </material-select-item>
 </material-select>
 
