@@ -11,9 +11,6 @@ dev_dependencies:
   webdriver: ^1.2.1
 transformers:
 - angular2:
-    platform_directives:
-    - 'package:angular2/common.dart#CORE_DIRECTIVES'
-    - 'package:angular2/common.dart#FORM_DIRECTIVES'
     entry_points: web/main.dart
 - $dart2js:
     commandLineOptions: [--trust-type-annotations, --trust-primitives, --show-package-warnings, --dump-info]
