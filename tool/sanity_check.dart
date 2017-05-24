@@ -158,6 +158,8 @@ Future testTabs(
       .take(1)
       .single;
   await tab2.click();
+  // Wait for the tab animation to complete
+  sleep(new Duration(milliseconds: 250));
 
   await ensureBodyDoesNotContain("These are the contents of Tab 1.");
   await ensureBodyContains("Tab 2 contents, on the other hand, look thusly.");
