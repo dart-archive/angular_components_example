@@ -1,0 +1,155 @@
+<!--
+  Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
+  for details. All rights reserved. Use of this source code is governed by a
+  BSD-style license that can be found in the LICENSE file.
+-->
+<h3>Basic Usage</h3>
+
+<material-select width="2" class="bordered-list">
+  <material-select-item *ngFor="let p of ['FTP', 'HTTP', 'HTTPS']"
+                        (trigger)="protocol = p"
+                        [selected]="protocol == p">
+    {{ p }}
+  </material-select-item>
+</material-select>
+
+<p>Selected Protocol: {{ protocol }}</p>
+
+<h3>SelectionModel</h3>
+
+<p>
+  The selection model class handles the details of maintaining a selection.
+  Use it and unlock the
+  full power of <code>material-select</code>.
+</p>
+
+<material-select [selection]="targetLanguageSelection" class="bordered-list">
+  <material-select-item *ngFor="let language of languages"
+                        [value]="language"
+                        displayNameRenderer
+                        useCheckMarks="true">
+  </material-select-item>
+</material-select>
+
+<h3>SelectionModel and SelectionOptions</h3>
+
+<p>
+  Really take it to the next level with a <code>SelectionOptions</code>
+  instance. It manages the
+  list of options and can be updated on the fly using streams.
+</p>
+
+<material-select [selection]="targetLanguageSelection"
+                 [options]="languageOptions"
+                 displayNameRenderer
+                 width="2"
+                 class="bordered-list">
+</material-select>
+
+<h3>Dropdown Selects</h3>
+
+<div class="example example-with-options">
+  <div class="example-pane">
+    <h4>Single Select</h4>
+    <material-dropdown-select
+        [buttonText]="singleSelectLanguageLabel"
+        [selection]="singleSelectModel"
+        [options]="languageOptionsLong"
+        [itemRenderer]="itemRenderer"
+        [componentRenderer]="componentRenderer"
+        [width]="width"
+        [popupMatchInputWidth]="popupMatchInputWidth"
+        [preferredPositions]="preferredPositions"
+        [slide]="slide"
+        [visible]="visible">
+      <div header>
+        <div *ngIf="withHeaderAndFooter">---Custom Header Section---
+        </div>
+      </div>
+      <div footer>
+        <div *ngIf="withHeaderAndFooter">---Custom Footer Section---
+        </div>
+      </div>
+    </material-dropdown-select>
+
+    <p>Selected Value: {{ singleSelectedLanguage }}</p>
+    <br><br><br>
+
+    <h4>Multi Select</h4>
+    <material-dropdown-select
+        [buttonText]="multiSelectLanguageLabel"
+        [selection]="multiSelectModel"
+        [options]="languageOptionsLong"
+        [itemRenderer]="itemRenderer"
+        [componentRenderer]="componentRenderer"
+        [width]="width"
+        [preferredPositions]="preferredPositions"
+        [slide]="slide"
+        [visible]="visible">
+      <div header>
+        <div *ngIf="withHeaderAndFooter">---Custom Header Section---
+        </div>
+      </div>
+      <div footer>
+        <div *ngIf="withHeaderAndFooter">---Custom Footer Section---
+        </div>
+      </div>
+    </material-dropdown-select>
+
+    <p>Selected Values: {{ multiSelectedLanguages }}</p>
+  </div>
+
+  <div class="options-pane">
+    <h4>Options</h4>
+
+    <material-checkbox [(checked)]="useItemRenderer">
+      Use item renderer
+    </material-checkbox>
+    <br>
+    <material-checkbox [(checked)]="useComponentRenderer">
+      Use component renderer
+    </material-checkbox>
+    <br>
+    <material-checkbox [(checked)]="useOptionGroup">
+      Use option group
+    </material-checkbox>
+    <br>
+    <material-checkbox [(checked)]="withHeaderAndFooter">
+      With custom header & footer
+    </material-checkbox>
+    <br>
+    <material-checkbox [(checked)]="popupMatchInputWidth">
+      Popup match inputs width
+    </material-checkbox>
+    <br>
+    <material-checkbox [(checked)]="visible">
+      Popup visibility
+    </material-checkbox>
+    <br>
+    <label class="option-label">Width: </label>
+    <material-dropdown-select
+        [buttonText]="widthButtonText"
+        [selection]="widthSelection"
+        [options]="widthOptions">
+    </material-dropdown-select>
+    <br/>
+
+    <label class="option-label">Popup position: </label>
+    <material-dropdown-select
+        [buttonText]="popupPositionButtonText"
+        [selection]="popupPositionSelection"
+        [options]="popupPositionOptions">
+    </material-dropdown-select>
+    <br/>
+
+    <label class="option-label">Slide direction: </label>
+    <material-dropdown-select
+        [buttonText]="slideButtonText"
+        [selection]="slideSelection"
+        [options]="slideOptions">
+    </material-dropdown-select>
+  </div>
+</div>
+
+<!-- space for dropdowns -->
+<div style="height:200px"></div>

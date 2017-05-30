@@ -1,24 +1,24 @@
 <!--
-  Copyright (c) 2016, the Dart project authors.  Please see the AUTHORS file
+  Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
   for details. All rights reserved. Use of this source code is governed by a
   BSD-style license that can be found in the LICENSE file.
 -->
-
+<p>Examples:</p>
 <nav>
   <ul>
     <li><a href="#Glyphs">Glyphs</a></li>
     <li><a href="#Buttons">Buttons</a></li>
-    <li><a href="#Input">Input</a></li>
+    <li><a href="#Input">Input Boxes</a></li>
     <li><a href="#Checkboxes">Checkboxes</a></li>
-    <li><a href="#Spinner">Spinner</a></li>
+    <li><a href="#Spinners">Spinners</a></li>
     <li><a href="#YesNo">Yes/No Buttons</a></li>
     <li><a href="#Chips">Chips</a></li>
-    <li><a href="#Expansion">Expansion Panel</a></li>
+    <li><a href="#Expansion">Expansion Panels</a></li>
     <li><a href="#Progress">Progress Bars</a></li>
-    <li><a href="#Radio">Radio</a></li>
+    <li><a href="#Radio">Radio Buttons</a></li>
     <li><a href="#Tabs">Tabs</a></li>
     <li><a href="#Toggles">Toggles</a></li>
-    <li><a href="#ReorderList">Reorder List</a></li>
+    <li><a href="#ReorderList">Reorder Lists</a></li>
     <li><a href="#Scorecards">Scorecards</a></li>
     <li><a href="#Popups">Popups</a></li>
     <li><a href="#Dialogs">Modal Dialogs</a></li>
@@ -27,1039 +27,340 @@
     <li><a href="#Selects">Selects</a></li>
   </ul>
 </nav>
+<hr>
 
 <h2>Demo App</h2>
-<p>
-  <material-checkbox
-      [(checked)]="allowed"
-      label="Allow clicking the two buttons below">
-  </material-checkbox>
-</p>
-
-<p>
-  Count: {{count}} &nbsp;&nbsp;&nbsp;
-  <material-button [disabled]="!allowed" (trigger)="increment()" raised class="blue">Increase count</material-button>
-  <material-button [disabled]="!allowed" (trigger)="reset()">Reset</material-button>
-</p>
-
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/demo_app"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<demo-app></demo-app>
 <hr>
 
-<h2><a name="Glyphs">Glyphs</a></h2>
-<glyph icon="favorite"></glyph>
-<glyph icon="business"></glyph>
-<glyph icon="thumb_up"></glyph>
-<glyph icon="bluetooth_connected"></glyph>
-<glyph icon="insert_photo"></glyph>
-<glyph icon="more_horiz"></glyph>
-
+<a name="Glyphs"></a>
+<h2>Glyphs</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/glyph"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/glyph_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<glyph-demo></glyph-demo>
 <hr>
 
-<h2><a name="Buttons">Buttons</a></h2>
-
-<div>
-  <section class="margin">
-    <h3>Flat</h3>
-    <material-button>button</material-button>
-    <material-button class="red">Colored</material-button>
-    <material-button disabled>Disabled</material-button>
-    <material-button dense>Condensed</material-button>
-  </section>
-
-  <section class="margin">
-    <h3>Raised</h3>
-    <material-button raised>Raised</material-button>
-    <material-button raised class="red">Colored</material-button>
-    <material-button raised disabled>Disabled</material-button>
-    <material-button raised dense>Condensed</material-button>
-  </section>
-
-  <section class="margin">
-    <h3>Without min-width and margin</h3>
-    <p>Regular</p>
-    <material-button raised class="red">button</material-button>
-    <material-button raised class="red">A</material-button>
-    <p>Without min-width and margin</p>
-    <material-button raised clear-size class="red">button</material-button>
-    <material-button raised clear-size class="red">A</material-button>
-  </section>
-
-  <section class="margin">
-    <h3>With Icon</h3>
-    <material-button icon><glyph icon="check"></glyph></material-button>
-  </section>
-
-  <section class="margin">
-    <h3>
-      <strong>F</strong>loating
-      <strong>A</strong>ction
-      <strong>B</strong>utton
-    </h3>
-    <material-fab raised>
-      <glyph icon="add"></glyph>
-    </material-fab>
-    <material-fab mini raised>
-      <glyph icon="check"></glyph>
-    </material-fab>
-  </section>
-
-</div>
-
+<a name="Buttons"></a>
+<h2>Buttons</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_button"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_button_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-button-demo></material-button-demo>
 <hr>
 
-<h2><a name="Input">Input</a></h2>
-
-<material-input label="Write something"></material-input>
-<material-input floatingLabel label="Floating label"></material-input>
-<material-input required label="Required"></material-input>
-<material-input [disabled]="true" label="Disabled"></material-input>
-<material-input [maxCount]="5" label="Max 5 chars"></material-input>
-<material-input [rightAlign]="true" label="Aligned to the right"></material-input>
-<material-input leadingText="$" label="With leading text"></material-input>
-<material-input trailingText="USD" [rightAlign]="true" label="With trailing text"></material-input>
-<material-input leadingGlyph="business" label="With leading glyph"></material-input>
-<material-input trailingGlyph="favorite" [rightAlign]="true" label="With trailing glyph"></material-input>
-
-<div>
-  Aligned with
-  <material-input type="text" label="surrounding"></material-input>
-  text.
-</div>
-
-<material-input multiline rows="3" label="Write many lines"></material-input>
-
+<a name="Input"></a>
+<h2>Input Boxes</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_input"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_input_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-input-demo></material-input-demo>
 <hr>
 
-<h2><a name="Checkboxes">Checkboxes</a></h2>
-
-<div>
-  <h3>No label</h3>
-  <material-checkbox></material-checkbox>
-  <h3>Unchecked</h3>
-  <material-checkbox label="plain unchecked"></material-checkbox>
-  <h3>Checked</h3>
-  <material-checkbox [checked]="true" label="plain checked"></material-checkbox>
-  <h3>Indeterminate</h3>
-  <material-checkbox [indeterminate]="true" label="work in progress"></material-checkbox>
-  <h3>Disabled</h3>
-  <material-checkbox [disabled]="true" label="mission impossible"></material-checkbox>
-  <h3>Checked and disabled</h3>
-  <material-checkbox [checked]="true" [disabled]="true" label="done and done">
-  </material-checkbox>
-  <h3>Indeterminate and disabled</h3>
-  <material-checkbox [indeterminate]="true" [disabled]="true" label="done and done">
-  </material-checkbox>
-  <h3>Checked and indeterminate = indeterminate</h3>
-  <material-checkbox [indeterminate]="true" [checked]="true" label="indeterminate?">
-  </material-checkbox>
-  <h3>Label wrapped if width limit is enforced</h3>
-  <material-checkbox
-      class="limited-width"
-      label="long label is bad label, but internationalisation has its own opinions">
-  </material-checkbox>
-</div>
-
+<a name="Checkboxes"></a>
+<h2>Checkboxes</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_checkbox"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_checkbox_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-checkbox-demo></material-checkbox-demo>
 <hr>
 
-<h2><a name="Spinner">Spinner</a></h2>
-
-<material-spinner></material-spinner> &nbsp; waiting for Godot
-
+<a name="Spinners"></a>
+<h2>Spinners</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_spinner"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_spinner_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-spinner-demo></material-spinner-demo>
 <hr>
 
-<h2><a name="YesNo">Yes/No Buttons</a></h2>
-
-<material-yes-no-buttons yesHighlighted></material-yes-no-buttons>
-
+<a name="YesNo"></a>
+<h2>Yes/No Buttons</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_yes_no_buttons"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_yes_no_buttons_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-yes-no-buttons-demo></material-yes-no-buttons-demo>
 <hr>
 
-<h2><a name="Chips">Chips</a></h2>
-
-<material-chips>
-  <material-chip>My Chip</material-chip>
-  <material-chip>Another Chip</material-chip>
-</material-chips>
-
-<p>Note: These are not backed by any model on this page, so clicking them won't do anything.</p>
-
+<a name="Chips"></a>
+<h2>Chips</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_chips"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_chips_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-chips-demo></material-chips-demo>
 <hr>
 
-<h2><a name="Expansion">Expansion Panel</a></h2>
-
-<material-expansionpanel-set>
-  <material-expansionpanel name="Expansion panel">
-    <div>
-      Oh hi. I was just trying not to take too much space here.
-    </div>
-  </material-expansionpanel>
-  <material-expansionpanel name="Expansion panel #2">
-    <div>
-      Me too! Don't mind me.
-    </div>
-  </material-expansionpanel>
-</material-expansionpanel-set>
-
-
+<a name="Expansion"></a>
+<h2>Expansion Panels</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_expansionpanel"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_expansionpanel_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-expansionpanel-demo></material-expansionpanel-demo>
 <hr>
 
-<h2><a name="Progress">Material Progress</a></h2>
-
-<material-progress [activeProgress]="10" [secondaryProgress]="30"></material-progress>
-
-<material-progress [indeterminate]="true"></material-progress>
-
+<a name="Progress"></a>
+<h2>Progress Bars</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_progress"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_progress_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-progress-demo></material-progress-demo>
 <hr>
 
-<h2><a name="Radio">Material Radio</a></h2>
-
-<material-radio-group>
-  <material-radio [checked]="true">default choice
-  </material-radio>
-  <material-radio>alternative choice
-  </material-radio>
-</material-radio-group>
-
+<a name="Radio"></a>
+<h2>Radio Buttons</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_radio"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_radio_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-radio-demo></material-radio-demo>
 <hr>
 
-<h2><a name="Tabs">Tabs</a></h2>
-
-<material-tab-panel>
-  <material-tab label="tab 1">
-    <div>
-      These are the contents of Tab 1.
-    </div>
-  </material-tab>
-  <material-tab label="tab 2">
-    <div>
-      Tab 2 contents, on the other hand, look thusly.
-    </div>
-  </material-tab>
-  <material-tab label="tab 3">
-    <div>
-      <h3>Tab 3 is serious about its contents</h3>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore magni necessitatibus quam qui quis rerum sit, sunt voluptatum. Commodi, corporis minus nemo officiis quisquam rem. Magni odit quo temporibus veritatis!
-      </p>
-    </div>
-  </material-tab>
-</material-tab-panel>
-
+<a name="Tabs"></a>
+<h2>Tabs</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_tab"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_tab_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-tab-demo></material-tab-demo>
 <hr>
 
-<h2><a name="Toggles">Toggles</a></h2>
-
-<material-toggle label="Unchecked"></material-toggle> <br/>
-<material-toggle [checked]="true" label="Checked"></material-toggle> <br/>
-<material-toggle [disabled]="true" label="Disabled off"></material-toggle> <br/>
-<material-toggle [disabled]="true" [checked]="true" label="Disabled on"></material-toggle>
-
+<a name="Toggles"></a>
+<h2>Toggles</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_toggle"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_toggle_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-toggle-demo></material-toggle-demo>
 <hr>
 
-<h2><a name="ReorderList">Reorder list</a></h2>
-
-<ol>
-  <reorder-list (reorder)="onReorder($event)">
-    <li *ngFor="let item of reorderItems" reorderItem>
-      {{item}}
-    </li>
-  </reorder-list>
-</ol>
-
+<a name="ReorderList"></a>
+<h2>Reorder Lists</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/reorder_list"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/reorder_list_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<reorder-list-demo></reorder-list-demo>
 <hr>
 
-<h2><a name="Scorecards">Scorecards</a></h2>
-
-<acx-scorecard
-    selectable
-    label="Estimated earnings"
-    value="$158.22"
-    description="+$24.20 (15%)"
-    suggestionAfter="of last quarter"
-    changeType="POSITIVE">
-</acx-scorecard>
-
-<acx-scorecard
-    selectable
-    label="Lines of code"
-    value="123 KLOC"
-    description="+3535 (2%)"
-    suggestionAfter="of last quarter"
-    changeType="NEGATIVE">
-</acx-scorecard>
-
-<acx-scorecard
-    selectable
-    [selected]="true"
-    label="Selected scorecard"
-    value="9,000"
-    description="Try clicking this">
-</acx-scorecard>
-
+<a name="Scorecards"></a>
+<h2>Scorecards</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/scorecard"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/scorecard_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<scorecard-demo></scorecard-demo>
 <hr>
 
-<h2><a name="Popups">Popups</a></h2>
-<h3>Basic Popup</h3>
-<material-button class="blue"
-                 raised
-                 popupSource
-                 #source="popupSource"
-                 (trigger)="basicPopupVisible = !basicPopupVisible">
-  {{basicPopupVisible ? 'Close' : 'Open'}} Popup
-</material-button>
-<material-popup [source]="source" [(visible)]="basicPopupVisible">
-  <div style="height: 200px;
-              padding: 5px;">
-    Hello, I am a pop up!
-  </div>
-</material-popup>
-
-<h3>Headers and Footers</h3>
-<p>
-  A popup with a header and a footer.
-</p>
-<material-button class="blue"
-                 raised
-                 popupSource
-                 #headerExampleSource="popupSource"
-                 (trigger)="headerFooterPopupVisible = !headerFooterPopupVisible">
-  {{headerFooterPopupVisible ? 'Close' : 'Open'}} Custom Popup
-</material-button>
-<material-popup defaultPopupSizeProvider
-                enforceSpaceConstraints
-                [source]="headerExampleSource"
-                [(visible)]="headerFooterPopupVisible">
-  <div header style="background: #43A047;
-                     color: white;
-                     padding: 5px;">
-    This is a Header demo
-  </div>
-  <div style="background: #E8F5E9;
-              height: 1000px;
-              padding: 5px;
-              width: 200px;">
-    Hello, Hello, Hello. This is a tall bit of content that needs a scroll bar because the content is so long.
-  </div>
-  <div footer style="background: #1B5E20;
-                     color: white;
-                     padding: 5px;">
-    This is a Footer demo
-  </div>
-</material-popup>
-
-<h3>Limited Size</h3>
-<p>
-  Using the default <em>PercentagePopupSizeProvider</em> to limit max width to be 70% of the viewport width and max
-  height to be 50% of the viewport height.
-</p>
-<material-button class="blue"
-                 raised
-                 popupSource
-                 #mixinExampleSource="popupSource"
-                 (trigger)="sizePopupVisible = !sizePopupVisible">
-  {{sizePopupVisible ? 'Close' : 'Open'}} Provider Popup
-</material-button>
-<material-popup defaultPopupSizeProvider
-                enforceSpaceConstraints
-                [source]="mixinExampleSource"
-                [(visible)]="sizePopupVisible">
-  <div style="background: #EEEEEE;
-              height: 1000px;
-              padding: 5px;
-              width: 1000px;">
-    Hello, Hello, Hello.
-    This is a long content that needs a scroll bar because the content
-    is so long. We cap it at 50% of the viewport height as a reasonable
-    default.
-  </div>
-</material-popup>
-
+<a name="Popups"></a>
+<h2>Popups</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_popup"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_popup_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-popup-demo></material-popup-demo>
 <hr>
 
-<h2><a name="Dialogs">Modal Dialogs</a></h2>
-<h3>Basic no-frills dialogs</h3>
-
-<!-- Basic Dialog -->
-<material-button (trigger)="showBasicDialog = true"
-                 [disabled]="showBasicDialog"
-                 raised
-                 class="blue">
-  Open Basic
-</material-button>
-
-<modal [visible]="showBasicDialog">
-  <material-dialog class="basic-dialog">
-
-    <h3 header>Dialog title</h3>
-
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum lacus est, eu
-      sagittis ligula fermentum vel. Maecenas facilisis leo dolor, quis rhoncus sem imperdiet vel.
-      Vestibulum vitae tristique orci. Ut lobortis varius convallis. Ut nec egestas diam. Nunc in
-      tincidunt erat. Vivamus porttitor molestie ligula, vitae dictum elit ornare quis. Donec
-      imperdiet venenatis justo ac viverra.
-    </p>
-
-    <div footer>
-      <material-button autoFocus
-                       clear-size
-                       (trigger)="showBasicDialog = false"
-                       class="white">
-        Close
-      </material-button>
-    </div>
-
-  </material-dialog>
-</modal>
-
-<!-- Basic Scrolling Dialog -->
-<material-button (trigger)="showBasicScrollingDialog = true"
-                 [disabled]="showBasicScrollingDialog"
-                 raised
-                 class="blue">
-  Open Basic Scrolling
-</material-button>
-
-<modal [visible]="showBasicScrollingDialog">
-  <material-dialog class="basic-scrolling-dialog">
-
-    <h3 header>Dialog title</h3>
-
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum lacus est, eu
-      sagittis ligula fermentum vel. Maecenas facilisis leo dolor, quis rhoncus sem imperdiet vel.
-      Vestibulum vitae tristique orci. Ut lobortis varius convallis. Ut nec egestas diam. Nunc in
-      tincidunt erat. Vivamus porttitor molestie ligula, vitae dictum elit ornare quis. Donec
-      imperdiet venenatis justo ac viverra am. Nunc in tincidunt erat. Vivamus porttitor molestie
-      ligula, vitae dictum elit ornare quis. Donec imperdiet venenatis justo ac viverr am. Nunc in
-      tincidunt erat. Vivamus porttitor molestie ligula, vitae dictum elit ornare quis. Donec
-      imperdiet venenatis justo ac viverr am. Nunc in tincidunt erat. Vivamus porttitor molestie
-      ligula, vitae dictum elit ornare quis. Donec imperdiet venenatis justo ac viverr am. Nunc in
-      tincidunt erat. Vivamus porttitor molestie ligula, vitae dictum elit ornare quis. Donec
-      imperdiet venenatis justo ac viverr.
-    </p>
-
-    <p>
-      Aenean scelerisque posuere augue, vitae ornare felis ultricies nec. Integer tincidunt libero
-      quis diam congue, ac congue augue posuere. Quisque vel dui a libero finibus imperdiet. Donec
-      ac sapien eget ante volutpat hendrerit. Nunc vel aliquam sapien. Sed dolor libero, posuere a
-      ex eget, fermentum aliquet augue. Phasellus lobortis vitae lorem at egestas. Morbi et ante
-      ultrices ligula dignissim tincidunt non a sem. Morbi tempor posuere sapien sit amet sodales.
-      Praesent ac felis hendrerit, luctus augue et, tristique neque. Nulla scelerisque, urna non
-      iaculis auctor, nisi orci vehicula tellus, sed rhoncus purus eros rhoncus erat. Mauris in
-      mollis nisl. Mauris pretium erat id feugiat mollis. Nam at molestie nisi. Mauris pretium
-      pulvinar neque, sit amet sagittis felis hendrerit suscipit.
-    </p>
-
-    <div footer>
-      <material-button autoFocus
-                       clear-size
-                       (trigger)="showBasicScrollingDialog = false"
-                       class="white">
-        Close
-      </material-button>
-    </div>
-
-  </material-dialog>
-</modal>
-
-<!-- Max Height Dialog -->
-<material-button (trigger)="showMaxHeightDialog = true"
-                 [disabled]="showMaxHeightDialog"
-                 raised
-                 class="blue">
-  Open Max Height
-</material-button>
-
-<modal [visible]="showMaxHeightDialog">
-  <material-dialog class="max-height-dialog">
-
-    <h3 header>Dialog title</h3>
-
-    <p *ngFor="let maxHeightDialogLine of maxHeightDialogLines">
-      {{maxHeightDialogLine}}
-    </p>
-
-    <div footer>
-      <material-button (trigger)="removeMaxHeightDialogLine()"
-                       [disabled]="maxHeightDialogLines.isEmpty"
-                       class="white">
-        Remove Some Text
-      </material-button>
-      <material-button (trigger)="addMaxHeightDialogLine()" class="white">
-        Add Some Text
-      </material-button>
-      <material-button autoFocus (trigger)="showMaxHeightDialog = false" class="white">
-        Close
-      </material-button>
-    </div>
-
-  </material-dialog>
-</modal>
-
-<h3>Headered dialogs</h3>
-<!-- Headered Dialog -->
-<material-button (trigger)="showHeaderedDialog = true"
-                 [disabled]="showHeaderedDialog"
-                 raised
-                 class="blue">
-  Open Headered
-</material-button>
-
-<modal [(visible)]="showHeaderedDialog">
-  <material-dialog headered class="headered-dialog">
-
-    <div header>
-      <h3>Dialog Title</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum lacus est.</p>
-    </div>
-
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum lacus est, eu
-      sagittis ligula fermentum vel. Maecenas facilisis leo dolor, quis rhoncus sem imperdiet vel.
-      Vestibulum vitae tristique orci. Ut lobortis varius convallis. Ut nec egestas diam. Nunc in
-      tincidunt erat. Vivamus porttitor molestie ligula, vitae dictum elit ornare quis. Donec
-      imperdiet venenatis justo ac viverra am. Nunc in tincidunt erat. Vivamus porttitor molestie
-      ligula, vitae dictum elit ornare quis. Donec imperdiet venenatis justo ac viverr am. Nunc in
-      tincidunt erat. Vivamus porttitor molestie ligula, vitae dictum elit ornare quis. Donec
-      imperdiet venenatis justo ac viverr am. Nunc in tincidunt erat. Vivamus porttitor molestie
-      ligula, vitae dictum elit ornare quis. Donec imperdiet venenatis justo ac viverr am. Nunc in
-      tincidunt erat. Vivamus porttitor molestie ligula, vitae dictum elit ornare quis. Donec
-      imperdiet venenatis justo ac viverr.
-    </p>
-
-    <div footer>
-      <material-button autoFocus
-                       clear-size
-                       (trigger)="showHeaderedDialog = false"
-                       class="white">
-        Close
-      </material-button>
-    </div>
-
-  </material-dialog>
-</modal>
-
-<!-- Dialog with Error -->
-<material-button (trigger)="showDialogWithError = true"
-                 [disabled]="showDialogWithError"
-                 raised
-                 class="blue">
-  Open dialog with an error
-</material-button>
-
-<modal [(visible)]="showDialogWithError">
-  <material-dialog headered
-                   class="dialog-with-error"
-                   [error]="dialogWithErrorErrorMessage">
-
-    <div header>
-      <h3>Dialog Title</h3>
-    </div>
-
-    <material-button raised (trigger)="toggleErrorMessage()" class="blue">
-      {{dialogWithErrorErrorMessage == null ? 'Show' : 'Hide'}} Error Message
-    </material-button>
-
-    <div footer>
-      <material-button autoFocus class="close-button white" (trigger)="showDialogWithError = false">
-        Close
-      </material-button>
-    </div>
-
-  </material-dialog>
-</modal>
-
-<h3>Info dialogs</h3>
-<!-- Info Dialog -->
-<material-button (trigger)="showInfoDialog = true"
-                 [disabled]="showInfoDialog"
-                 raised
-                 class="blue">
-  Open Info
-</material-button>
-
-<modal [visible]="showInfoDialog">
-  <material-dialog info class="info-dialog">
-
-    <div header>
-      <material-button icon autoFocus (trigger)="showInfoDialog = false">
-        <glyph icon="close"></glyph>
-      </material-button>
-
-      <h3>Information</h3>
-    </div>
-
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum lacus est, eu
-      sagittis ligula fermentum vel. Maecenas facilisis leo dolor, quis rhoncus sem imperdiet.
-    </p>
-
-  </material-dialog>
-</modal>
-
-<!-- Dialog with auto dismiss -->
-<material-button (trigger)="showAutoDismissDialog = true"
-                 [disabled]="showAutoDismissDialog"
-                 raised
-                 class="blue">
-  Open with auto dismiss
-</material-button>
-
-<modal [(visible)]="showAutoDismissDialog">
-  <material-dialog
-      info
-      class="info-dialog"
-      [autoDismissable]="showAutoDismissDialog"
-      (dismiss)="showAutoDismissDialog = false">
-
-    <div header>
-      <material-button icon autoFocus (trigger)="showAutoDismissDialog = false">
-        <glyph icon="close"></glyph>
-      </material-button>
-
-      <h3>Auto Dismiss</h3>
-    </div>
-
-    <p>Click outside the dialog to dismiss.</p>
-
-  </material-dialog>
-</modal>
-
-<h3>Custom dialogs</h3>
-<!-- Dialog with custom background colors -->
-<material-button (trigger)="showCustomColorsDialog = true"
-                 [disabled]="showCustomColorsDialog"
-                 raised
-                 class="blue">
-  Open custom background colors
-</material-button>
-
-<modal [(visible)]="showCustomColorsDialog">
-  <material-dialog headered info class="custom-colors-dialog">
-
-    <div header>
-      <material-button icon autoFocus (trigger)="showCustomColorsDialog = false">
-        <glyph icon="close"></glyph>
-      </material-button>
-
-      <h3>Information</h3>
-    </div>
-
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum lacus est, eu
-      sagittis ligula fermentum vel. Maecenas facilisis leo dolor, quis rhoncus sem imperdiet.
-    </p>
-
-  </material-dialog>
-</modal>
-
-<!-- Dialog with no header and footer -->
-<material-button (trigger)="showNoHeaderFooterDialog = true"
-                 [disabled]="showNoHeaderFooterDialog"
-                 raised
-                 class="blue">
-  Open no header or footer
-</material-button>
-
-<modal [(visible)]="showNoHeaderFooterDialog">
-  <material-dialog class="no-header-footer-dialog" hideHeader="true" hideFooter="true">
-    <p>This custom dialog is good for inserting resuable widgets.</p>
-
-    <material-button (trigger)="showNoHeaderFooterDialog = false"
-                     autoFocus
-                     raised
-                     class="blue">
-      Close
-    </material-button>
-  </material-dialog>
-</modal>
-
+<a name="Dialogs"></a>
+<h2>Modal Dialogs</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_dialog"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_dialog_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-dialog-demo></material-dialog-demo>
 <hr>
 
-<h2><a name="Tooltips">Tooltips</a></h2>
-<h3>Ink tooltip</h3>
-<p>Tooltips on Icons.</p>
-<glyph icon="print"
-       class="demo-glyph"
-       materialTooltip="Print">
-</glyph>
-<glyph icon="save"
-       class="demo-glyph"
-       materialTooltip="Save">
-</glyph>
-<glyph icon="lock"
-       class="demo-glyph"
-       [materialTooltip]="tooltipMsg">
-</glyph>
-
-<p>Tooltip on a button.</p>
-<material-button
-    materialTooltip="Saves the document"
-    raised>
-  Save
-</material-button>
-<p>Long tooltip text on a link.</p>
-<a href="#" [materialTooltip]="longString" twoLineTooltip>webdev.dartlang.org</a>
-
-<p>Custom tooltip on some text.</p>
-<p>
-  <em>
-    Use this configuration sparingly, as the tooltip text is intended for simple strings.
-  </em>
-</p>
-<span tooltipTarget #ref="tooltipTarget">
-  Explicitly declare a tooltip component<br/>
-</span>
-
-<material-tooltip-text [for]="ref">
-  Allows for &nbsp; <strong>formatted</strong> &nbsp; <em>text</em>.
-</material-tooltip-text>
-
-<h3>Card Tooltip</h3>
-<p>
-  A simple sentence about something.
-  <glyph icon="help_outline"
-         tooltipTarget
-         keyboardOnlyFocusIndicator
-         size="medium"
-         #ref2="tooltipTarget">
-  </glyph>
-</p>
-<material-tooltip-card [for]="ref2">
-  <header>Simple sentences about things.</header>
-  <p><b>How it works:</b> Text explains things further.</p>
-</material-tooltip-card>
-
-<p>
-  Clickable tooltip. Target will open immediately on clicks and keyboard events.
-  <glyph icon="help_outline"
-         clickableTooltipTarget
-         keyboardOnlyFocusIndicator
-         tabindex="0"
-         size="medium"
-         #clickableRef="tooltipTarget">
-  </glyph>
-</p>
-<material-tooltip-card [for]="clickableRef">
-  <header>Simple sentences about things.</header>
-  <p><b>How it works:</b> Text explains things further.</p>
-  <footer>
-  </footer>
-</material-tooltip-card>
-
-<h3>Icon Tooltip</h3>
-<p>
-  A simple sentence about something, followed by an info tooltip
-  icon.
-  <material-icon-tooltip type="info">
-    A simple sentence about things.
-  </material-icon-tooltip>
-</p>
-<p class="dark-background">
-  A simple dark-themed sentence about something, followed by a help
-  tooltip icon.
-  <material-icon-tooltip darkTheme>
-    Another simple sentence about things.
-  </material-icon-tooltip>
-</p>
-
-<h3>Tooltip Source</h3>
-<p>
-  Use a tooltipSource to control a popup.
-  <glyph icon="help_outline"
-         tooltipSource
-         size="medium"
-         #ref3="tooltipSource">
-  </glyph>
-</p>
-<material-popup [source]="ref3"
-                enforceSpaceConstraints
-                [autoDismiss]="false">
-  <div class="source-popup">
-    Content in a popup.
-  </div>
-</material-popup>
-
+<a name="Tooltips"></a>
+<h2>Tooltips</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_tooltip"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_tooltip_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-tooltip-demo></material-tooltip-demo>
 <hr>
 
-<h2><a name="Lists">Lists</a></h2>
-<span class="colorchanger" [style.color]="selectedColor">Use the lists to select a color.</span>
-
-<h3>Basic List</h3>
-<material-list>
-  <div group>
-    <material-list-item (trigger)="selectColor('red')">
-      Red
-    </material-list-item>
-    <material-list-item (trigger)="selectColor('green')">
-      Green
-    </material-list-item>
-  </div>
-  <material-list-item (trigger)="selectColor('coral')" disabled>
-    Coral
-  </material-list-item>
-  <material-list-item (trigger)="selectColor('mediumOrchid')">
-    MediumOrchid
-  </material-list-item>
-</material-list>
-
-
-<h3>Different List Sizes</h3>
-<p><em>With borders to demonstrate container size</em></p>
-<p>Available Sizes: auto, x-small, small, medium, large, x-large</p>
-<div *ngFor="let size of sizes">
-  <material-list class="bordered-list"
-                 [attr.size]="size">
-    <div label>List Width: {{size}}</div>
-    <material-list-item (trigger)="selectColor('red')">
-      Red
-    </material-list-item>
-    <material-list-item (trigger)="selectColor('green')">
-      Green
-    </material-list-item>
-    <material-list-item (trigger)="selectColor('coral')">
-      Coral
-    </material-list-item>
-    <material-list-item (trigger)="selectColor('mediumOrchid')">
-      MediumOrchid
-    </material-list-item>
-  </material-list>
-</div>
-
-<h3>Minimum Width</h3>
-<p><em>With borders to demonstrate container width</em></p>
-<material-list class="bordered-list"
-               min-size="x-small">
-  <div label>Min Width: x-small</div>
-  <material-list-item (trigger)="selectColor('red')">
-    Red
-  </material-list-item>
-  <material-list-item (trigger)="selectColor('green')">
-    Green
-  </material-list-item>
-  <material-list-item (trigger)="selectColor('coral')">
-    Coral
-  </material-list-item>
-  <material-list-item (trigger)="selectColor('mediumOrchid')">
-    MediumOrchid
-  </material-list-item>
-</material-list>
-
-<h3>Navigate Focus via Keyboard</h3>
-<p><em>
-  Use &lt;tab&gt; to focus an item in the list, then use up/down and left/right keys to navigate.
-</em></p>
-<material-list focusList tabindex="0" class="bordered-list">
-  <div group>
-    <material-list-item (trigger)="selectColor('red')" focusItem>
-      Red
-    </material-list-item>
-    <material-list-item (trigger)="selectColor('green')" focusItem>
-      Green
-    </material-list-item>
-  </div>
-  <material-list-item (trigger)="selectColor('coral')" focusItem>
-    Coral
-  </material-list-item>
-  <material-list-item (trigger)="selectColor('mediumOrchid')" focusItem>
-    MediumOrchid
-  </material-list-item>
-</material-list>
-
-<h3>Primary and Secondary Item Content</h3>
-<material-list class="bordered-list" width="3">
-  <material-list-item>
-    Item with secondary
-    <span class="material-list-item-secondary">
-      ctrl+x
-    </span>
-  </material-list-item>
-  <material-list-item>
-    <glyph icon="today" class="material-list-item-primary" aria-hidden="true"></glyph>
-    Item with primary icon
-  </material-list-item>
-  <material-list-item>
-    Item
-  </material-list-item>
-  <material-list-item>
-    Item
-  </material-list-item>
-</material-list>
-
-<h3>Grouping and Dividers</h3>
-<material-list class="bordered-list" width="3">
-  <div group>
-    <material-list-item>
-      Item
-    </material-list-item>
-    <material-list-item>
-      Item
-    </material-list-item>
-    <material-list-item>
-      Item with secondary
-      <span class="material-list-item-secondary">
-        ctrl+x
-      </span>
-    </material-list-item>
-  </div>
-  <div group>
-    <material-list-item>
-      Small Group Item
-    </material-list-item>
-  </div>
-  <material-list-item>
-    <glyph icon="today" class="material-list-item-primary" aria-hidden="true"></glyph>
-    Item with primary icon
-  </material-list-item>
-  <material-list-item>
-    Item
-  </material-list-item>
-  <material-list-item>Item</material-list-item>
-</material-list>
-
+<a name="Lists"></a>
+<h2>Lists</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_list"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_list_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-list-demo></material-list-demo>
 <hr>
 
-<h2><a name="Selects">Selects</a></h2>
-<h3>Basic Usage</h3>
-
-<material-select width="2" class="bordered-list">
-  <material-select-item *ngFor="let p of ['FTP', 'HTTP', 'HTTPS']"
-                        (trigger)="protocol = p"
-                        [selected]="protocol == p">
-    {{ p }}
-  </material-select-item>
-</material-select>
-
-<p>Selected Protocol: {{ protocol }}</p>
-
-<h3>SelectionModel</h3>
-
-<p>
-  The selection model class handles the details of maintaining a selection. Use it and unlock the
-  full power of <code>material-select</code>.
-</p>
-
-<material-select [selection]="targetLanguageSelection" class="bordered-list">
-  <material-select-item *ngFor="let language of languages"
-                        [value]="language"
-                        displayNameRenderer
-                        useCheckMarks="true">
-  </material-select-item>
-</material-select>
-
-<h3>SelectionModel and SelectionOptions</h3>
-
-<p>
-  Really take it to the next level with a <code>SelectionOptions</code> instance. It manages the
-  list of options and can be updated on the fly using streams.
-</p>
-
-<material-select [selection]="targetLanguageSelection"
-                 [options]="languageOptions"
-                 displayNameRenderer
-                 width="2"
-                 class="bordered-list">
-</material-select>
-
-<h3>Dropdown Selects</h3>
-
-<div class="example example-with-options">
-  <div class="example-pane">
-    <h4>Single Select</h4>
-    <material-dropdown-select
-        [buttonText]="singleSelectLanguageLabel"
-        [selection]="singleSelectModel"
-        [options]="languageOptionsLong"
-        [itemRenderer]="itemRenderer"
-        [componentRenderer]="componentRenderer"
-        [width]="width"
-        [popupMatchInputWidth]="popupMatchInputWidth"
-        [preferredPositions]="preferredPositions"
-        [slide]="slide"
-        [visible]="visible">
-      <div header>
-        <div *ngIf="withHeaderAndFooter">---Custom Header Section---</div>
-      </div>
-      <div footer>
-        <div *ngIf="withHeaderAndFooter">---Custom Footer Section---</div>
-      </div>
-    </material-dropdown-select>
-
-    <p>Selected Value: {{ singleSelectedLanguage }}</p>
-    <br><br><br>
-
-    <h4>Multi Select</h4>
-    <material-dropdown-select
-        [buttonText]="multiSelectLanguageLabel"
-        [selection]="multiSelectModel"
-        [options]="languageOptionsLong"
-        [itemRenderer]="itemRenderer"
-        [componentRenderer]="componentRenderer"
-        [width]="width"
-        [preferredPositions]="preferredPositions"
-        [slide]="slide"
-        [visible]="visible">
-      <div header>
-        <div *ngIf="withHeaderAndFooter">---Custom Header Section---</div>
-      </div>
-      <div footer>
-        <div *ngIf="withHeaderAndFooter">---Custom Footer Section---</div>
-      </div>
-    </material-dropdown-select>
-
-    <p>Selected Values: {{ multiSelectedLanguages }}</p>
-  </div>
-
-  <div class="options-pane">
-    <h4>Options</h4>
-
-    <material-checkbox [(checked)]="useItemRenderer">
-      Use item renderer
-    </material-checkbox>
-    <br>
-    <material-checkbox [(checked)]="useComponentRenderer">
-      Use component renderer
-    </material-checkbox>
-    <br>
-    <material-checkbox [(checked)]="useOptionGroup">
-      Use option group
-    </material-checkbox>
-    <br>
-    <material-checkbox [(checked)]="withHeaderAndFooter">
-      With custom header & footer
-    </material-checkbox>
-    <br>
-    <material-checkbox [(checked)]="popupMatchInputWidth">
-      Popup match inputs width
-    </material-checkbox>
-    <br>
-    <material-checkbox [(checked)]="visible">
-      Popup visibility
-    </material-checkbox>
-    <br>
-    <label class="option-label">Width: </label>
-    <material-dropdown-select
-        [buttonText]="widthButtonText"
-        [selection]="widthSelection"
-        [options]="widthOptions">
-    </material-dropdown-select>
-    <br/>
-
-    <label class="option-label">Popup position: </label>
-    <material-dropdown-select
-        [buttonText]="popupPositionButtonText"
-        [selection]="popupPositionSelection"
-        [options]="popupPositionOptions">
-    </material-dropdown-select>
-    <br/>
-
-    <label class="option-label">Slide direction: </label>
-    <material-dropdown-select
-        [buttonText]="slideButtonText"
-        [selection]="slideSelection"
-        [options]="slideOptions">
-    </material-dropdown-select>
-  </div>
-</div>
+<a name="Selects"></a>
+<h2>Selects</h2>
+<section class="source-links">
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components/tree/master/lib/src/components/material_select"
+     target="_blank">
+    Component Source
+  </a>
+  <a class="source-link"
+     href="https://github.com/dart-lang/angular_components_examples/tree/master/lib/src/material_select_demo"
+     target="_blank">
+    Example Source
+  </a>
+</section>
+<material-select-demo></material-select-demo>
 
 <!-- space for dropdowns -->
 <div style="height:200px"></div>

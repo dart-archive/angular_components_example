@@ -4,12 +4,10 @@
  * BSD-style license that can be found in the LICENSE file.
  */
 
-.source-link:link, .source-link:visited, .source-link:active {
-  display: block;
-  padding-bottom: 10px;
-}
-
-.source-link:hover {
-  display: block;
-  padding-bottom: 10px;
+.bordered-list {
+  border: 1px solid #000;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 8px;
+  overflow: hidden;
 }

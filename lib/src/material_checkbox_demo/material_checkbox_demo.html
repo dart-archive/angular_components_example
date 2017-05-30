@@ -1,0 +1,57 @@
+<!--
+  Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
+  for details. All rights reserved. Use of this source code is governed by a
+  BSD-style license that can be found in the LICENSE file.
+-->
+<h3>No label</h3>
+<material-checkbox></material-checkbox>
+
+<h3>Unchecked</h3>
+<material-checkbox
+    label="plain unchecked">
+</material-checkbox>
+
+<h3>Checked</h3>
+<material-checkbox
+    [checked]="true"
+    label="plain checked">
+</material-checkbox>
+
+<h3>Indeterminate</h3>
+<material-checkbox
+    [indeterminate]="true"
+    label="work in progress">
+</material-checkbox>
+
+<h3>Disabled</h3>
+<material-checkbox
+    [disabled]="true"
+    label="mission impossible">
+</material-checkbox>
+
+<h3>Checked and disabled</h3>
+<material-checkbox
+    [checked]="true"
+    [disabled]="true"
+    label="done and done">
+</material-checkbox>
+
+<h3>Indeterminate and disabled</h3>
+<material-checkbox
+    [indeterminate]="true"
+    [disabled]="true"
+    label="done and done">
+</material-checkbox>
+
+<h3>Checked and indeterminate = indeterminate</h3>
+<material-checkbox
+    [indeterminate]="true"
+    [checked]="true"
+    label="indeterminate?">
+</material-checkbox>
+
+<h3>Label wrapped if width limit is enforced</h3>
+<material-checkbox
+    class="limited-width"
+    label="long label is bad label, but internationalisation has its own opinions">
+</material-checkbox>
