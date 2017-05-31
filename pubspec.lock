@@ -24,7 +24,7 @@ packages:
       name: archive
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.28"
+    version: "1.0.29"
   args:
     description:
       name: args
@@ -72,7 +72,7 @@ packages:
       name: cli_util
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.0"
+    version: "0.1.1"
   code_builder:
     description:
       name: code_builder
@@ -186,7 +186,7 @@ packages:
       name: matcher
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.1"
+    version: "0.12.1+1"
   meta:
     description:
       name: meta

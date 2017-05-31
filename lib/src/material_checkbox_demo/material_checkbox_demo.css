@@ -4,12 +4,6 @@
  * BSD-style license that can be found in the LICENSE file.
  */
 
-.source-link:link, .source-link:visited, .source-link:active {
-  display: block;
-  padding-bottom: 10px;
-}
-
-.source-link:hover {
-  display: block;
-  padding-bottom: 10px;
+.limited-width {
+  width: 50%;
 }

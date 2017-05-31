@@ -1,0 +1,109 @@
+<!--
+  Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
+  for details. All rights reserved. Use of this source code is governed by a
+  BSD-style license that can be found in the LICENSE file.
+-->
+<h3>Ink tooltip</h3>
+<p>Tooltips on Icons.</p>
+<glyph icon="print"
+       class="demo-glyph"
+       materialTooltip="Print">
+</glyph>
+<glyph icon="save"
+       class="demo-glyph"
+       materialTooltip="Save">
+</glyph>
+<glyph icon="lock"
+       class="demo-glyph"
+       [materialTooltip]="tooltipMsg">
+</glyph>
+
+<p>Tooltip on a button.</p>
+<material-button materialTooltip="Saves the document" raised>
+  Save
+</material-button>
+<p>Long tooltip text on a link.</p>
+<a href="https://webdev.dartlang.org"
+   target="_blank"
+   [materialTooltip]="longString"
+   twoLineTooltip>
+  webdev.dartlang.org</a>
+
+<p>Custom tooltip on some text.</p>
+<p>
+  <em>
+    Use this configuration sparingly, as the tooltip text is intended for simple
+    strings.
+  </em>
+</p>
+<span tooltipTarget #ref="tooltipTarget">
+  Explicitly declare a tooltip component<br/>
+</span>
+
+<material-tooltip-text [for]="ref">
+  Allows for &nbsp; <strong>formatted</strong> &nbsp; <em>text</em>.
+</material-tooltip-text>
+
+<h3>Card Tooltip</h3>
+<p>
+  A simple sentence about something.
+  <glyph icon="help_outline"
+         tooltipTarget
+         keyboardOnlyFocusIndicator
+         size="medium"
+         #ref2="tooltipTarget">
+  </glyph>
+</p>
+<material-tooltip-card [for]="ref2">
+  <header>Simple sentences about things.</header>
+  <p><b>How it works:</b> Text explains things further.</p>
+</material-tooltip-card>
+
+<p>
+  Clickable tooltip. Target will open immediately on clicks and keyboard events.
+  <glyph icon="help_outline"
+         clickableTooltipTarget
+         keyboardOnlyFocusIndicator
+         tabindex="0"
+         size="medium"
+         #clickableRef="tooltipTarget">
+  </glyph>
+</p>
+<material-tooltip-card [for]="clickableRef">
+  <header>Simple sentences about things.</header>
+  <p><b>How it works:</b> Text explains things further.</p>
+  <footer>
+  </footer>
+</material-tooltip-card>
+
+<h3>Icon Tooltip</h3>
+<p>
+  A simple sentence about something, followed by an info tooltip icon.
+  <material-icon-tooltip type="info">
+    A simple sentence about things.
+  </material-icon-tooltip>
+</p>
+<p class="dark-background">
+  A simple dark-themed sentence about something, followed by a help tooltip
+  icon.
+  <material-icon-tooltip darkTheme>
+    Another simple sentence about things.
+  </material-icon-tooltip>
+</p>
+
+<h3>Tooltip Source</h3>
+<p>
+  Use a tooltipSource to control a popup.
+  <glyph icon="help_outline"
+         tooltipSource
+         size="medium"
+         #ref3="tooltipSource">
+  </glyph>
+</p>
+<material-popup [source]="ref3"
+                enforceSpaceConstraints
+                [autoDismiss]="false">
+  <div class="source-popup">
+    Content in a popup.
+  </div>
+</material-popup>

@@ -1,0 +1,324 @@
+<!--
+  Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
+  for details. All rights reserved. Use of this source code is governed by a
+  BSD-style license that can be found in the LICENSE file.
+-->
+<h3>Basic no-frills dialogs</h3>
+
+<!-- Basic Dialog -->
+<material-button (trigger)="showBasicDialog = true"
+                 [disabled]="showBasicDialog"
+                 raised
+                 class="blue">
+  Open Basic
+</material-button>
+
+<modal [visible]="showBasicDialog">
+  <material-dialog class="basic-dialog">
+
+    <h3 header>Dialog title</h3>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
+      lacus est, eusagittis ligula fermentum vel. Maecenas facilisis leo dolor,
+      quis rhoncus sem imperdiet vel. Vestibulum vitae tristique orci. Ut
+      lobortis varius convallis. Ut nec egestas diam. Nunc in tincidunt erat.
+      Vivamus porttitor molestie ligula, vitae dictum elit ornare quis. Donec
+      imperdiet venenatis justo ac viverra.
+    </p>
+
+    <div footer>
+      <material-button autoFocus
+                       clear-size
+                       (trigger)="showBasicDialog = false"
+                       class="white">
+        Close
+      </material-button>
+    </div>
+
+  </material-dialog>
+</modal>
+
+<!-- Basic Scrolling Dialog -->
+<material-button (trigger)="showBasicScrollingDialog = true"
+                 [disabled]="showBasicScrollingDialog"
+                 raised
+                 class="blue">
+  Open Basic Scrolling
+</material-button>
+
+<modal [visible]="showBasicScrollingDialog">
+  <material-dialog class="basic-scrolling-dialog">
+
+    <h3 header>Dialog title</h3>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
+      lacus est, eu sagittis ligula fermentum vel. Maecenas facilisis leo dolor,
+      quis rhoncus sem imperdiet vel. Vestibulum vitae tristique orci. Ut
+      lobortis varius convallis. Ut nec egestas diam. Nunc in tincidunt erat.
+      Vivamus porttitor molestie ligula, vitae dictum elit ornare quis. Donec
+      imperdiet venenatis justo ac viverra am. Nunc in tincidunt erat. Vivamus
+      porttitor molestie ligula, vitae dictum elit ornare quis. Donec imperdiet
+      venenatis justo ac viverr am. Nunc in tincidunt erat. Vivamus porttitor
+      molestie ligula, vitae dictum elit ornare quis. Donec imperdiet venenatis
+      justo ac viverr am. Nunc in tincidunt erat. Vivamus porttitor molestie
+      ligula, vitae dictum elit ornare quis. Donec imperdiet venenatis justo ac
+      viverr am. Nunc in tincidunt erat. Vivamus porttitor molestie ligula,
+      vitae dictum elit ornare quis. Donec imperdiet venenatis justo ac viverr.
+    </p>
+
+    <p>
+      Aenean scelerisque posuere augue, vitae ornare felis ultricies nec.
+      Integer tincidunt libero quis diam congue, ac congue augue posuere.
+      Quisque vel dui a libero finibus imperdiet. Donec ac sapien eget ante
+      volutpat hendrerit. Nunc vel aliquam sapien. Sed dolor libero, posuere a
+      ex eget, fermentum aliquet augue. Phasellus lobortis vitae lorem at
+      egestas. Morbi et ante ultrices ligula dignissim tincidunt non a sem.
+      Morbi tempor posuere sapien sit amet sodales. Praesent ac felis hendrerit,
+      luctus augue et, tristique neque. Nulla scelerisque, urna non iaculis
+      auctor, nisi orci vehicula tellus, sed rhoncus purus eros rhoncus erat.
+      Mauris in mollis nisl. Mauris pretium erat id feugiat mollis. Nam at
+      molestie nisi. Mauris pretium pulvinar neque, sit amet sagittis felis
+      hendrerit suscipit.
+    </p>
+
+    <div footer>
+      <material-button autoFocus
+                       clear-size
+                       (trigger)="showBasicScrollingDialog = false"
+                       class="white">
+        Close
+      </material-button>
+    </div>
+
+  </material-dialog>
+</modal>
+
+<!-- Max Height Dialog -->
+<material-button (trigger)="showMaxHeightDialog = true"
+                 [disabled]="showMaxHeightDialog"
+                 raised
+                 class="blue">
+  Open Max Height
+</material-button>
+
+<modal [visible]="showMaxHeightDialog">
+  <material-dialog class="max-height-dialog">
+
+    <h3 header>Dialog title</h3>
+
+    <p *ngFor="let maxHeightDialogLine of maxHeightDialogLines">
+      {{maxHeightDialogLine}}
+    </p>
+
+    <div footer>
+      <material-button (trigger)="removeMaxHeightDialogLine()"
+                       [disabled]="maxHeightDialogLines.isEmpty"
+                       class="white">
+        Remove Some Text
+      </material-button>
+      <material-button (trigger)="addMaxHeightDialogLine()" class="white">
+        Add Some Text
+      </material-button>
+      <material-button autoFocus
+                       (trigger)="showMaxHeightDialog = false"
+                       class="white">
+        Close
+      </material-button>
+    </div>
+
+  </material-dialog>
+</modal>
+
+<h3>Headered dialogs</h3>
+<!-- Headered Dialog -->
+<material-button (trigger)="showHeaderedDialog = true"
+                 [disabled]="showHeaderedDialog"
+                 raised
+                 class="blue">
+  Open Headered
+</material-button>
+
+<modal [(visible)]="showHeaderedDialog">
+  <material-dialog headered class="headered-dialog">
+
+    <div header>
+      <h3>Dialog Title</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+        fermentum lacus est.
+      </p>
+    </div>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
+      lacus est, eu sagittis ligula fermentum vel. Maecenas facilisis leo dolor,
+      quis rhoncus sem imperdiet vel. Vestibulum vitae tristique orci. Ut
+      lobortis varius convallis. Ut nec egestas diam. Nunc in tincidunt erat.
+      Vivamus porttitor molestie ligula, vitae dictum elit ornare quis. Donec
+      imperdiet venenatis justo ac viverra am. Nunc in tincidunt erat. Vivamus
+      porttitor molestie ligula, vitae dictum elit ornare quis. Donec imperdiet
+      venenatis justo ac viverr am. Nunc in tincidunt erat. Vivamus porttitor
+      molestie ligula, vitae dictum elit ornare quis. Donec imperdiet venenatis
+      justo ac viverr am. Nunc in tincidunt erat. Vivamus porttitor molestie
+      ligula, vitae dictum elit ornare quis. Donec imperdiet venenatis justo ac
+      viverr am. Nunc in tincidunt erat. Vivamus porttitor molestie ligula,
+      vitae dictum elit ornare quis. Donec imperdiet venenatis justo ac viverr.
+    </p>
+
+    <div footer>
+      <material-button autoFocus
+                       clear-size
+                       (trigger)="showHeaderedDialog = false"
+                       class="white">
+        Close
+      </material-button>
+    </div>
+
+  </material-dialog>
+</modal>
+
+<!-- Dialog with Error -->
+<material-button (trigger)="showDialogWithError = true"
+                 [disabled]="showDialogWithError"
+                 raised
+                 class="blue">
+  Open dialog with an error
+</material-button>
+
+<modal [(visible)]="showDialogWithError">
+  <material-dialog headered
+                   class="dialog-with-error"
+                   [error]="dialogWithErrorErrorMessage">
+
+    <div header>
+      <h3>Dialog Title</h3>
+    </div>
+
+    <material-button raised
+                     (trigger)="toggleErrorMessage()"
+                     class="blue error-button">
+      {{dialogWithErrorErrorMessage == null ? 'Show' : 'Hide'}} Error Message
+    </material-button>
+
+    <div footer>
+      <material-button autoFocus
+                       class="white"
+                       (trigger)="showDialogWithError = false">
+        Close
+      </material-button>
+    </div>
+
+  </material-dialog>
+</modal>
+
+<h3>Info dialogs</h3>
+<!-- Info Dialog -->
+<material-button (trigger)="showInfoDialog = true"
+                 [disabled]="showInfoDialog"
+                 raised
+                 class="blue">
+  Open Info
+</material-button>
+
+<modal [visible]="showInfoDialog">
+  <material-dialog info class="info-dialog">
+
+    <div header>
+      <material-button icon autoFocus (trigger)="showInfoDialog = false">
+        <glyph icon="close"></glyph>
+      </material-button>
+
+      <h3>Information</h3>
+    </div>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
+      lacus est, eu sagittis ligula fermentum vel. Maecenas facilisis leo dolor,
+      quis rhoncus sem imperdiet.
+    </p>
+
+  </material-dialog>
+</modal>
+
+<!-- Dialog with auto dismiss -->
+<material-button (trigger)="showAutoDismissDialog = true"
+                 [disabled]="showAutoDismissDialog"
+                 raised
+                 class="blue">
+  Open with auto dismiss
+</material-button>
+
+<modal [(visible)]="showAutoDismissDialog">
+  <material-dialog
+      info
+      class="info-dialog"
+      [autoDismissable]="showAutoDismissDialog"
+      (dismiss)="showAutoDismissDialog = false">
+
+    <div header>
+      <material-button icon autoFocus (trigger)="showAutoDismissDialog = false">
+        <glyph icon="close"></glyph>
+      </material-button>
+
+      <h3>Auto Dismiss</h3>
+    </div>
+
+    <p>Click outside the dialog to dismiss.</p>
+
+  </material-dialog>
+</modal>
+
+<h3>Custom dialogs</h3>
+<!-- Dialog with custom background colors -->
+<material-button (trigger)="showCustomColorsDialog = true"
+                 [disabled]="showCustomColorsDialog"
+                 raised
+                 class="blue">
+  Open custom background colors
+</material-button>
+
+<modal [(visible)]="showCustomColorsDialog">
+  <material-dialog headered info class="custom-colors-dialog">
+
+    <div header>
+      <material-button icon
+                       autoFocus
+                       (trigger)="showCustomColorsDialog = false">
+        <glyph icon="close"></glyph>
+      </material-button>
+
+      <h3>Information</h3>
+    </div>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
+      lacus est, eu sagittis ligula fermentum vel. Maecenas facilisis leo dolor,
+      quis rhoncus sem imperdiet.
+    </p>
+
+  </material-dialog>
+</modal>
+
+<!-- Dialog with no header and footer -->
+<material-button (trigger)="showNoHeaderFooterDialog = true"
+                 [disabled]="showNoHeaderFooterDialog"
+                 raised
+                 class="blue">
+  Open no header or footer
+</material-button>
+
+<modal [(visible)]="showNoHeaderFooterDialog">
+  <material-dialog class="no-header-footer-dialog"
+                   hideHeader="true"
+                   hideFooter="true">
+    <p>This custom dialog is good for inserting resuable widgets.</p>
+
+    <material-button (trigger)="showNoHeaderFooterDialog = false"
+                     autoFocus
+                     raised
+                     class="blue">
+      Close
+    </material-button>
+  </material-dialog>
+</modal>
