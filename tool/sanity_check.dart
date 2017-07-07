@@ -118,10 +118,8 @@ Future testButton(Future<Null> ensureBodyContains(String text),
 Future testMaxCharInput(WebDriver driver) async {
   print("Testing input.");
 
-  Stream<WebElement> inputs =
-      await driver.findElements(const By.tagName("input"));
   WebElement maxCharInput;
-  await for (var input in inputs) {
+  await for (var input in driver.findElements(const By.tagName("input"))) {
     if (await input.attributes["aria-label"] == "Max 5 chars") {
       maxCharInput = input;
       break;
@@ -174,18 +172,20 @@ Future testDialog(
 
   var dialogText = "Lorem ipsum dolor sit amet";
 
-  var buttons = await driver.findElements(const By.tagName("material-button"));
+  var buttons =
+      await driver.findElements(const By.tagName("material-button")).toList();
 
   await ensureBodyDoesNotContain(dialogText);
-  for (var button in await buttons.toList()) {
+  for (var button in buttons) {
     if ((await button.text) == "OPEN BASIC") {
       await button.click();
       break;
     }
   }
   await ensureBodyContains(dialogText);
-  buttons = await driver.findElements(const By.tagName("material-button"));
-  for (var button in await buttons.toList()) {
+  buttons =
+      await driver.findElements(const By.tagName("material-button")).toList();
+  for (var button in buttons) {
     if ((await button.text) == "CLOSE") {
       await button.click();
       break;
@@ -202,10 +202,11 @@ Future testPopup(
 
   var popupText = "Hello, I am a pop up!";
 
-  var buttons = await driver.findElements(const By.tagName("material-button"));
+  var buttons =
+      await driver.findElements(const By.tagName("material-button")).toList();
 
   await ensureBodyDoesNotContain(popupText);
-  for (var button in await buttons.toList()) {
+  for (var button in buttons) {
     if ((await button.text) == "OPEN POPUP") {
       await button.click();
       break;
@@ -235,10 +236,11 @@ Future testTooltip(
 
   var tooltipText = "Saves the document";
 
-  var buttons = await driver.findElements(const By.tagName("material-button"));
+  var buttons =
+      await driver.findElements(const By.tagName("material-button")).toList();
 
   await ensureBodyDoesNotContain(tooltipText);
-  for (var button in await buttons.toList()) {
+  for (var button in buttons) {
     if ((await button.text) == "SAVE") {
       await driver.mouse.moveTo(element: button);
       break;
@@ -272,9 +274,10 @@ Future testList(
       await driver.findElements(const By.className("colorchanger")).first;
   await ensureElementColor(colorText, colorInitial);
 
-  var listItems =
-      await driver.findElements(const By.tagName("material-list-item"));
-  for (var listItem in await listItems.toList()) {
+  var listItems = await driver
+      .findElements(const By.tagName("material-list-item"))
+      .toList();
+  for (var listItem in listItems) {
     if ((await listItem.text).contains("Green")) {
       await listItem.click();
       break;
@@ -292,14 +295,18 @@ Future testSelect(
   var expectedSelection = "Selected Protocol: HTTPS";
   await ensureBodyDoesNotContain(expectedSelection);
 
-  var selectOptions =
-      await driver.findElements(const By.tagName("material-select-item"));
-  for (var selectOption in await selectOptions.toList()) {
+  var selectOptions = await driver
+      .findElements(const By.tagName("material-select-item"))
+      .toList();
+  for (var selectOption in selectOptions) {
     if ((await selectOption.text).contains("HTTPS")) {
       await selectOption.click();
       break;
     }
   }
+
+  await new Future.delayed(const Duration(milliseconds: 500));
+
   await ensureBodyContains(expectedSelection);
 }
 
@@ -312,18 +319,20 @@ Future testTree(
   var expectedSelection = "Selected Value: Lady and the Tramp";
   await ensureBodyDoesNotContain(expectedSelection);
 
-  var treeItems =
-      await driver.findElements(const By.className("material-tree-item"));
-  for (var treeItem in await treeItems.toList()) {
+  var treeItems = await driver
+      .findElements(const By.className("material-tree-item"))
+      .toList();
+  for (var treeItem in treeItems) {
     if ((await treeItem.text).contains("Animated Feature Films")) {
       await treeItem.click();
       break;
     }
   }
 
-  treeItems =
-      await driver.findElements(const By.className("material-tree-item"));
-  for (var treeItem in await treeItems.toList()) {
+  treeItems = await driver
+      .findElements(const By.className("material-tree-item"))
+      .toList();
+  for (var treeItem in treeItems) {
     if ((await treeItem.text).contains("Lady and the Tramp")) {
       await treeItem.click();
       break;

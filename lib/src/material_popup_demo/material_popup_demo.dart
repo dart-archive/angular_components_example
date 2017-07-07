@@ -13,11 +13,11 @@ import 'package:angular_components/angular_components.dart';
     MaterialButtonComponent,
     MaterialPopupComponent,
     PopupSourceDirective,
-    defaultPopupSizeProvider,
+    DefaultPopupSizeProvider,
   ],
   providers: const [
     popupBindings,
-    defaultPopupSizeProvider,
+    DefaultPopupSizeProvider,
   ],
 )
 class MaterialPopupDemoComponent {
@@ -39,4 +39,4 @@ PopupSizeProvider createPopupSizeProvider() {
 @Directive(selector: '[defaultPopupSizeProvider]', providers: const [
   const Provider(PopupSizeProvider, useFactory: createPopupSizeProvider)
 ])
-class defaultPopupSizeProvider {}
+class DefaultPopupSizeProvider {}
