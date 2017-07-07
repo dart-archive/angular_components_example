@@ -72,6 +72,7 @@ Future main(List<String> args) async {
     await testTooltip(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testList(ensureElementColor, driver);
     await testSelect(ensureBodyContains, ensureBodyDoesNotContain, driver);
+    await testTree(ensureBodyContains, ensureBodyDoesNotContain, driver);
     print("SUCCESS");
     await driver.quit();
   } on ProcessException catch (e) {
@@ -299,6 +300,36 @@ Future testSelect(
       break;
     }
   }
+  await ensureBodyContains(expectedSelection);
+}
+
+Future testTree(
+    Future<Null> ensureBodyContains(String text),
+    Future<Null> ensureBodyDoesNotContain(String text),
+    WebDriver driver) async {
+  print("Testing tree.");
+
+  var expectedSelection = "Selected Value: Lady and the Tramp";
+  await ensureBodyDoesNotContain(expectedSelection);
+
+  var treeItems =
+      await driver.findElements(const By.className("material-tree-item"));
+  for (var treeItem in await treeItems.toList()) {
+    if ((await treeItem.text).contains("Animated Feature Films")) {
+      await treeItem.click();
+      break;
+    }
+  }
+
+  treeItems =
+      await driver.findElements(const By.className("material-tree-item"));
+  for (var treeItem in await treeItems.toList()) {
+    if ((await treeItem.text).contains("Lady and the Tramp")) {
+      await treeItem.click();
+      break;
+    }
+  }
+
   await ensureBodyContains(expectedSelection);
 }
 

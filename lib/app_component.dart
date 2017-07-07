@@ -21,6 +21,7 @@ import 'src/material_spinner_demo/material_spinner_demo.dart';
 import 'src/material_tab_demo/material_tab_demo.dart';
 import 'src/material_toggle_demo/material_toggle_demo.dart';
 import 'src/material_tooltip_demo/material_tooltip_demo.dart';
+import 'src/material_tree_demo/material_tree_demo.dart';
 import 'src/material_yes_no_buttons_demo/material_yes_no_buttons_demo.dart';
 import 'src/reorder_list_demo/reorder_list_demo.dart';
 import 'src/scorecard_demo/scorecard_demo.dart';
@@ -47,6 +48,7 @@ import 'src/scorecard_demo/scorecard_demo.dart';
     MaterialTabDemoComponent,
     MaterialToggleDemoComponent,
     MaterialTooltipDemoComponent,
+    MaterialTreeDemoComponent,
     MaterialYesNoButtonsDemoComponent,
     ReorderListDemoComponent,
     ScorecardDemoComponent,

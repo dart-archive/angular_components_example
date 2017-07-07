@@ -4,7 +4,7 @@ environment:
   sdk: '>=1.23.0 <2.0.0'
 dependencies:
   angular2: ^3.0.0
-  angular_components: ^0.5.1
+  angular_components: ^0.5.3
   browser: ^0.10.0
   dart_to_js_script_rewriter: ^1.0.1
 dev_dependencies:

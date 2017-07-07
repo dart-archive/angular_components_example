@@ -1,0 +1,14 @@
+<h3>Single Selection Nested Tree</h3>
+<p>
+  Selected Value: {{selection}}
+</p>
+<div class="shadow">
+  <material-tree
+      [options]="nestedOptions"
+      [expandAll]="expandAll"
+      [selection]="singleSelection">
+  </material-tree>
+</div>
+
+<!-- space for expanding tree -->
+<div style="height:300px"></div>
