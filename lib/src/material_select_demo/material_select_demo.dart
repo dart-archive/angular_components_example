@@ -70,7 +70,8 @@ class MaterialSelectDemoComponent {
     const Language('de', 'German')
   ];
 
-  static List<OptionGroup<Language>> _languagesGroups = <OptionGroup<Language>>[
+  static final List<OptionGroup<Language>> _languagesGroups =
+      <OptionGroup<Language>>[
     new OptionGroup<Language>.withLabel(const <Language>[
       const Language('en-US', 'US English'),
       const Language('fr-CA', 'Canadian English'),
@@ -89,21 +90,21 @@ class MaterialSelectDemoComponent {
     new OptionGroup<Language>.withLabel(const <Language>[], 'Pangaea')
   ];
 
-  static List<RelativePosition> _popupPositionsAboveInput = const [
+  static final List<RelativePosition> _popupPositionsAboveInput = const [
     RelativePosition.AdjacentTopLeft,
     RelativePosition.AdjacentTopRight
   ];
-  static List<RelativePosition> _popupPositionsBelowInput = const [
+  static final List<RelativePosition> _popupPositionsBelowInput = const [
     RelativePosition.AdjacentBottomLeft,
     RelativePosition.AdjacentBottomRight
   ];
 
-  static ItemRenderer<Language> _displayNameRenderer =
+  static final ItemRenderer<Language> _displayNameRenderer =
       (HasUIDisplayName item) => item.uiDisplayName;
 
 // Specifying an itemRenderer avoids the selected item from knowing how to
 // display itself.
-  static ItemRenderer<Language> _itemRenderer =
+  static final ItemRenderer<Language> _itemRenderer =
       new CachingItemRenderer<Language>(
           (language) => "${language.label} (${language.code})");
 
