@@ -29,7 +29,7 @@
 <p>Available Sizes: auto, x-small, small, medium, large, x-large</p>
 <div *ngFor="let size of sizes">
   <material-list class="bordered-list"
-                 [attr.size]="size">
+                 [size]="size">
     <div label>List Width: {{size}}</div>
     <material-list-item (trigger)="selectColor('red')">
       Red

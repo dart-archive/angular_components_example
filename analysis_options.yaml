@@ -1,10 +1,12 @@
 analyzer:
  strong-mode: true
  errors:
-   unused_element: error
-   unused_import: error
-   unused_local_variable: error
-   dead_code: error
+  # TODO(nshahan) Make these errors when there is a fix for
+  # https://github.com/dart-lang/sdk/issues/29713
+  unused_element: warning
+  unused_import: warning
+  unused_local_variable: warning
+  dead_code: warning
 linter:
   rules:
     #- always_declare_return_types

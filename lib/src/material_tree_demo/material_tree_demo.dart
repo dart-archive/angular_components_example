@@ -1,5 +1,5 @@
 import 'package:angular_components/angular_components.dart';
-import 'package:angular2/angular2.dart';
+import 'package:angular/angular.dart';
 
 /// An example that renders a [MaterialTreeComponent] with nested options.
 ///

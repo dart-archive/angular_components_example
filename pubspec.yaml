@@ -1,16 +1,16 @@
 name: angular_components_example
 description: An example app using the angular_components package.
 environment:
-  sdk: '>=1.23.0 <2.0.0'
+  sdk: '>=1.24.0 <2.0.0-dev.infinity'
 dependencies:
-  angular2: ^3.0.0
-  angular_components: ^0.5.3
+  angular: '4.0.0-alpha'
+  angular_components: '0.6.0-alpha'
   browser: ^0.10.0
   dart_to_js_script_rewriter: ^1.0.1
 dev_dependencies:
   webdriver: ^1.2.1
 transformers:
-- angular2:
+- angular:
     entry_points: web/main.dart
 - $dart2js:
     commandLineOptions: [--trust-type-annotations, --trust-primitives, --show-package-warnings, --dump-info]
