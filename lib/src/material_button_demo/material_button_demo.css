@@ -4,11 +4,11 @@
  * BSD-style license that can be found in the LICENSE file.
  */
 
-.red:not([raised]) {
+.red:not([raised]):not([disabled]) {
   color: #f44336;
 }
 
-.red[raised] {
+.red[raised]:not([disabled]) {
   background-color: #f44336;
   color: white;
 }

@@ -5,18 +5,18 @@
 -->
 <h3>Ink tooltip</h3>
 <p>Tooltips on Icons.</p>
-<glyph icon="print"
+<material-icon icon="print"
        class="demo-glyph"
        materialTooltip="Print">
-</glyph>
-<glyph icon="save"
+</material-icon>
+<material-icon icon="save"
        class="demo-glyph"
        materialTooltip="Save">
-</glyph>
-<glyph icon="lock"
+</material-icon>
+<material-icon icon="lock"
        class="demo-glyph"
        [materialTooltip]="tooltipMsg">
-</glyph>
+</material-icon>
 
 <p>Tooltip on a button.</p>
 <material-button materialTooltip="Saves the document" raised>
@@ -47,12 +47,12 @@
 <h3>Card Tooltip</h3>
 <p>
   A simple sentence about something.
-  <glyph icon="help_outline"
+  <material-icon icon="help_outline"
          tooltipTarget
          keyboardOnlyFocusIndicator
          size="medium"
          #ref2="tooltipTarget">
-  </glyph>
+  </material-icon>
 </p>
 <material-tooltip-card [for]="ref2">
   <header>Simple sentences about things.</header>
@@ -61,13 +61,13 @@
 
 <p>
   Clickable tooltip. Target will open immediately on clicks and keyboard events.
-  <glyph icon="help_outline"
+  <material-icon icon="help_outline"
          clickableTooltipTarget
          keyboardOnlyFocusIndicator
          tabindex="0"
          size="medium"
          #clickableRef="tooltipTarget">
-  </glyph>
+  </material-icon>
 </p>
 <material-tooltip-card [for]="clickableRef">
   <header>Simple sentences about things.</header>
@@ -94,11 +94,11 @@
 <h3>Tooltip Source</h3>
 <p>
   Use a tooltipSource to control a popup.
-  <glyph icon="help_outline"
+  <material-icon icon="help_outline"
          tooltipSource
          size="medium"
          #ref3="tooltipSource">
-  </glyph>
+  </material-icon>
 </p>
 <material-popup [source]="ref3"
                 enforceSpaceConstraints

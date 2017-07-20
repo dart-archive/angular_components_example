@@ -11,7 +11,7 @@ import 'package:angular_components/angular_components.dart';
   templateUrl: 'material_list_demo.html',
   directives: const [
     CORE_DIRECTIVES,
-    GlyphComponent,
+    MaterialIconComponent,
     MaterialListComponent,
     MaterialListItemComponent,
   ],

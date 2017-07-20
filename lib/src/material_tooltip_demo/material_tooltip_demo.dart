@@ -12,7 +12,7 @@ import 'package:angular_components/angular_components.dart';
   directives: const [
     ClickableTooltipTargetDirective,
     DarkThemeDirective,
-    GlyphComponent,
+    MaterialIconComponent,
     MaterialButtonComponent,
     MaterialIconTooltipComponent,
     MaterialInkTooltipComponent,

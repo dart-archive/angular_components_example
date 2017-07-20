@@ -229,9 +229,13 @@ class Language implements HasUIDisplayName {
 
 @Component(
     selector: 'example-renderer',
-    template: '<glyph icon="language"></glyph>{{disPlayName}}',
-    styles: const ['glyph { vertical-align: middle; margin-right: 8px; }'],
-    directives: const [GlyphComponent])
+    template: '<material-icon icon="language"></material-icon>{{disPlayName}}',
+    styles: const [
+      'material-icon { vertical-align: middle; margin-right: 8px; }'
+    ],
+    directives: const [
+      MaterialIconComponent
+    ])
 class ExampleRendererComponent implements RendersValue {
   String disPlayName = '';
 
