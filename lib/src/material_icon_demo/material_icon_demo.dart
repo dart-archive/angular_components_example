@@ -6,15 +6,21 @@ import 'package:angular/angular.dart';
 import 'package:angular_components/angular_components.dart';
 
 @Component(
-  selector: 'material-button-demo',
-  styleUrls: const ['material_button_demo.css'],
-  templateUrl: 'material_button_demo.html',
+  selector: 'material_icon-demo',
+  templateUrl: 'material_icon_demo.html',
   directives: const [
     MaterialButtonComponent,
-    MaterialFabComponent,
     MaterialIconComponent,
+    MaterialInputComponent,
   ],
+  exports: const [done, doneAll, doneOutline],
 )
-class MaterialButtonDemoComponent {
-  // Nothing here.
+class MaterialIconDemoComponent {
+  var iconModel = done;
+  var iconColor = 'blue';
+  var iconName = 'alarm';
 }
+
+const done = const Icon('done');
+const doneAll = const Icon('done_all');
+const doneOutline = const Icon('done_outline');

@@ -13,9 +13,9 @@ import 'package:angular_components/angular_components.dart';
       CORE_DIRECTIVES,
       AutoDismissDirective,
       AutoFocusDirective,
-      GlyphComponent,
       MaterialButtonComponent,
       MaterialDialogComponent,
+      MaterialIconComponent,
       ModalComponent,
     ])
 class MaterialDialogDemoComponent {
