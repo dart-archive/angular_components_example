@@ -7,11 +7,6 @@ dependencies:
   angular_components: 0.6.0-alpha+1
   browser: ^0.10.0
   dart_to_js_script_rewriter: ^1.0.1
-dependency_overrides:
-  angular_components:
-    git:
-      url: git@github.com:dart-lang/angular_components.git
-      ref: update
 dev_dependencies:
   webdriver: ^1.2.1
 transformers:

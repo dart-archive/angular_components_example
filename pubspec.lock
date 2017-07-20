@@ -21,9 +21,9 @@ packages:
     version: "0.1.1"
   angular_components:
     description:
-      path: "../angular2_components"
-      relative: true
-    source: path
+      name: angular_components
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.6.0-alpha+1"
   archive:
     description:
@@ -96,7 +96,7 @@ packages:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.14.2"
+    version: "1.14.3"
   convert:
     description:
       name: convert
@@ -228,7 +228,7 @@ packages:
       name: plugin
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.0"
+    version: "0.2.0+1"
   pool:
     description:
       name: pool
