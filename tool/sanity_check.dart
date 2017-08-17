@@ -62,12 +62,35 @@ Future main(List<String> args) async {
       }
     }
 
+    Future<Null> ensureDialogNotVisible() async {
+      var overlayElement =
+          await body.findElement(const By.id("default-acx-overlay-container"));
+      var firstPopup =
+          await overlayElement.findElement(const By.tagName("div"));
+
+      if (await firstPopup.displayed) {
+        throw "Popup should not be visible at this point.";
+      }
+    }
+
+    Future<Null> ensureDialogVisible() async {
+      var overlayElement =
+          await body.findElement(const By.id("default-acx-overlay-container"));
+      var firstPopup =
+          await overlayElement.findElement(const By.tagName("div"));
+
+      if (!(await firstPopup.displayed)) {
+        throw "Popup should be visible at this point.";
+      }
+    }
+
     // Start actual tests.
     await takeScreenshot(driver);
+    await testLayout(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testButton(ensureBodyContains, increaseButton);
     await testTabs(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testMaxCharInput(driver);
-    await testDialog(ensureBodyContains, ensureBodyDoesNotContain, driver);
+    await testDialog(ensureDialogVisible, ensureDialogNotVisible, driver);
     await testPopup(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testTooltip(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testList(ensureElementColor, driver);
@@ -105,6 +128,38 @@ Future takeScreenshot(WebDriver driver) async {
   var screenshot = new File(screenshotFilename);
   screenshot.writeAsBytesSync(await driver.captureScreenshotAsList());
   print("Screenshot taken: ${screenshot.path}");
+}
+
+Future testLayout(
+    Future<Null> ensureBodyContains(String text),
+    Future<Null> ensureBodyDoesNotContain(String text),
+    WebDriver driver) async {
+  print("Testing app layout.");
+
+  var simpleDrawerContent = "Inbox";
+  var mobileDrawerContent = "Here is some drawer content.";
+
+  await ensureBodyContains(simpleDrawerContent);
+
+  var buttonItems = await driver
+      .findElements(const By.className("material-drawer-button"))
+      .toList();
+  await buttonItems.first.click();
+
+  // TODO(google) Remove sleep once PageObject testing classes are available
+  // Wait for the drawer animation to complete
+  sleep(new Duration(milliseconds: 750));
+
+  await ensureBodyDoesNotContain(simpleDrawerContent);
+  await ensureBodyDoesNotContain(mobileDrawerContent);
+
+  await buttonItems.last.click();
+
+  // TODO(google) Remove sleep once PageObject testing classes are available
+  // Wait for the drawer animation to complete
+  sleep(new Duration(milliseconds: 750));
+
+  await ensureBodyContains(mobileDrawerContent);
 }
 
 Future testButton(Future<Null> ensureBodyContains(String text),
@@ -164,25 +219,21 @@ Future testTabs(
   await ensureBodyContains("Tab 2 contents, on the other hand, look thusly.");
 }
 
-Future testDialog(
-    Future<Null> ensureBodyContains(String text),
-    Future<Null> ensureBodyDoesNotContain(String text),
-    WebDriver driver) async {
+Future testDialog(Future<Null> ensureDialogVisible(),
+    Future<Null> ensureDialogNotVisible(), WebDriver driver) async {
   print("Testing dialog.");
-
-  var dialogText = "Lorem ipsum dolor sit amet";
 
   var buttons =
       await driver.findElements(const By.tagName("material-button")).toList();
 
-  await ensureBodyDoesNotContain(dialogText);
+  await ensureDialogNotVisible();
   for (var button in buttons) {
     if ((await button.text) == "OPEN BASIC") {
       await button.click();
       break;
     }
   }
-  await ensureBodyContains(dialogText);
+  await ensureDialogVisible();
   buttons =
       await driver.findElements(const By.tagName("material-button")).toList();
   for (var button in buttons) {
@@ -191,7 +242,7 @@ Future testDialog(
       break;
     }
   }
-  await ensureBodyDoesNotContain(dialogText);
+  await ensureDialogNotVisible();
 }
 
 Future testPopup(

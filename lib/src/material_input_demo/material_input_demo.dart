@@ -7,6 +7,7 @@ import 'package:angular_components/angular_components.dart';
 
 @Component(
   selector: 'material-input-demo',
+  styleUrls: const ['material_input_demo.css'],
   templateUrl: 'material_input_demo.html',
   directives: const [MaterialInputComponent, MaterialMultilineInputComponent],
 )

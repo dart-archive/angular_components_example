@@ -4,6 +4,8 @@
 import 'package:angular/angular.dart';
 import 'package:angular_components/angular_components.dart';
 
+import 'src/app_layout_demo/app_layout_demo.dart';
+import 'src/app_layout_demo/mobile_app_layout_demo.dart';
 import 'src/demo_app/demo_app.dart';
 import 'src/material_button_demo/material_button_demo.dart';
 import 'src/material_checkbox_demo/material_checkbox_demo.dart';
@@ -31,6 +33,7 @@ import 'src/scorecard_demo/scorecard_demo.dart';
   templateUrl: 'app_component.html',
   styleUrls: const ['app_component.css'],
   directives: const [
+    AppLayoutDemoComponent,
     DemoAppComponent,
     MaterialButtonDemoComponent,
     MaterialCheckboxDemoComponent,
@@ -50,6 +53,7 @@ import 'src/scorecard_demo/scorecard_demo.dart';
     MaterialTooltipDemoComponent,
     MaterialTreeDemoComponent,
     MaterialYesNoButtonsDemoComponent,
+    MobileAppLayoutDemoComponent,
     ReorderListDemoComponent,
     ScorecardDemoComponent,
   ],
