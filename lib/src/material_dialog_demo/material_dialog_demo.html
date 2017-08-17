@@ -309,9 +309,7 @@
 </material-button>
 
 <modal [(visible)]="showNoHeaderFooterDialog">
-  <material-dialog class="no-header-footer-dialog"
-                   hideHeader="true"
-                   hideFooter="true">
+  <material-dialog class="no-header-footer-dialog" hideHeader hideFooter>
     <p>This custom dialog is good for inserting resuable widgets.</p>
 
     <material-button (trigger)="showNoHeaderFooterDialog = false"

@@ -73,7 +73,7 @@
     </material-dropdown-select>
 
     <p>Selected Value: {{ singleSelectedLanguage }}</p>
-    <br><br><br>
+    <br>
 
     <h4>Multi Select</h4>
     <material-dropdown-select
@@ -97,6 +97,22 @@
     </material-dropdown-select>
 
     <p>Selected Values: {{ multiSelectedLanguages }}</p>
+    <br>
+
+    <h4>Multi Select with searchbox</h4>
+    <material-dropdown-select
+        [buttonText]="multiSelectLanguageLabel"
+        [options]="languageOptionsLong"
+        [selection]="multiSelectModel"
+        [itemRenderer]="itemRenderer"
+        (visibleChange)="onDropdownVisibleChange($event)">
+      <div header>
+        <material-select-searchbox
+            label="Search..."
+            [filterable]="languageOptionsLong">
+        </material-select-searchbox>
+      </div>
+    </material-dropdown-select>
   </div>
 
   <div class="options-pane">
