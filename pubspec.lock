@@ -21,10 +21,9 @@ packages:
     version: "0.2.1"
   angular_components:
     description:
-      ref: add-app_layout
-      resolved-ref: "6dbe2c3978adeeee770d70336004290322edb832"
-      url: "git@github.com:dart-lang/angular_components.git"
-    source: git
+      name: angular_components
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.6.0-alpha+3"
   angular_forms:
     description:
