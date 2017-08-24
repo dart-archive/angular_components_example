@@ -3,10 +3,15 @@ description: An example app using the angular_components package.
 environment:
   sdk: '>=1.24.0 <2.0.0-dev.infinity'
 dependencies:
-  angular: 4.0.0-alpha+3
-  angular_components: 0.6.0-alpha+3
+  angular: 4.0.0-beta
+  angular_components: 0.6.0-beta
   browser: ^0.10.0
   dart_to_js_script_rewriter: ^1.0.1
+dependency_overrides:
+  angular_components:
+    git:
+      url: git@github.com:dart-lang/angular_components.git
+      ref: update-components
 dev_dependencies:
   webdriver: ^1.2.1
 transformers:
