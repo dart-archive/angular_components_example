@@ -21,11 +21,9 @@ packages:
     version: "0.3.0"
   angular_components:
     description:
-      path: "."
-      ref: update-components
-      resolved-ref: d1bc19a87870509329e1c5125abff1210c5b8d40
-      url: "git@github.com:dart-lang/angular_components.git"
-    source: git
+      name: angular_components
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.6.0-beta"
   angular_forms:
     description:
