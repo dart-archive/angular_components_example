@@ -12,7 +12,7 @@ packages:
       name: angular
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.0-beta"
+    version: "4.0.0"
   angular_compiler:
     description:
       name: angular_compiler
@@ -24,13 +24,13 @@ packages:
       name: angular_components
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.0-beta"
+    version: "0.6.0"
   angular_forms:
     description:
       name: angular_forms
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.0"
+    version: "1.0.0"
   archive:
     description:
       name: archive
@@ -198,7 +198,7 @@ packages:
       name: matcher
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.1+1"
+    version: "0.12.1+2"
   meta:
     description:
       name: meta
