@@ -3,8 +3,8 @@ description: An example app using the angular_components package.
 environment:
   sdk: '>=1.24.0 <2.0.0-dev.infinity'
 dependencies:
-  angular: 4.0.0-beta
-  angular_components: 0.6.0-beta
+  angular: ^4.0.0
+  angular_components: ^0.6.0
   browser: ^0.10.0
   dart_to_js_script_rewriter: ^1.0.1
 dev_dependencies:

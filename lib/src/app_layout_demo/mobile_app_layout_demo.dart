@@ -11,7 +11,6 @@ import 'package:angular_components/angular_components.dart';
       DeferredContentDirective,
       MaterialButtonComponent,
       MaterialIconComponent,
-      MaterialPersistentDrawerDirective,
       MaterialTemporaryDrawerComponent,
       MaterialToggleComponent,
     ],
