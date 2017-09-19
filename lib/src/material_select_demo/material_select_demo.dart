@@ -13,7 +13,7 @@ import 'package:angular_components/angular_components.dart';
   templateUrl: 'material_select_demo.html',
   directives: const [
     CORE_DIRECTIVES,
-    DisplayNameRendererDirective,
+    displayNameRendererDirective,
     ExampleRendererComponent,
     MaterialCheckboxComponent,
     MaterialDropdownSelectComponent,
