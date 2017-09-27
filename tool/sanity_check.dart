@@ -90,6 +90,7 @@ Future main(List<String> args) async {
     await testButton(ensureBodyContains, increaseButton);
     await testTabs(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testMaxCharInput(driver);
+    await testAutoSuggest(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testDialog(ensureDialogVisible, ensureDialogNotVisible, driver);
     await testPopup(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testTooltip(ensureBodyContains, ensureBodyDoesNotContain, driver);
@@ -195,6 +196,32 @@ Future testMaxCharInput(WebDriver driver) async {
   await driver.keyboard.sendKeys("123456");
 
   await assertMaxCharInputValidity(false);
+}
+
+Future testAutoSuggest(
+    Future<Null> ensureBodyContains(String text),
+    Future<Null> ensureBodyDoesNotContain(String text),
+    WebDriver driver) async {
+  print("Testing auto-suggest.");
+
+  var selectedItem = "[17]";
+  await ensureBodyDoesNotContain(selectedItem);
+
+  var autoSuggest = (await driver
+      .findElements(const By.tagName("material-auto-suggest-input"))
+      .toList())[0];
+
+  await autoSuggest.click();
+  await driver.keyboard.sendKeys("seven");
+
+  await for (var value
+      in driver.findElements(const By.tagName("highlight-value"))) {
+    if ((await value.text).contains("seventeen")) {
+      await value.click();
+    }
+  }
+
+  await ensureBodyContains(selectedItem);
 }
 
 Future testTabs(

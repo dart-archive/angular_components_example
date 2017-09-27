@@ -7,6 +7,7 @@ import 'package:angular_components/angular_components.dart';
 import 'src/app_layout_demo/app_layout_demo.dart';
 import 'src/app_layout_demo/mobile_app_layout_demo.dart';
 import 'src/demo_app/demo_app.dart';
+import 'src/material_auto_suggest_input_demo/material_auto_suggest_input_demo.dart';
 import 'src/material_button_demo/material_button_demo.dart';
 import 'src/material_checkbox_demo/material_checkbox_demo.dart';
 import 'src/material_chips_demo/material_chips_demo.dart';
@@ -35,6 +36,7 @@ import 'src/scorecard_demo/scorecard_demo.dart';
   directives: const [
     AppLayoutDemoComponent,
     DemoAppComponent,
+    MaterialAutoSuggestInputDemoComponent,
     MaterialButtonDemoComponent,
     MaterialCheckboxDemoComponent,
     MaterialChipsDemoComponent,

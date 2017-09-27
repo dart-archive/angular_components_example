@@ -25,3 +25,15 @@
 </div>
 
 <material-input multiline rows="3" label="Write many lines"></material-input>
+
+<div>
+  <h3>Select all text in input box</h3>
+  <material-input #manualSelectInput label="Enter some text" type="text"></material-input>
+  <material-button raised (trigger)="selectAllManualInput()">Select all text</material-button>
+  <br>
+  <material-input multiline
+                  #autoSelectInput
+                  ngModel="Click to auto select text"
+                  (focus)="selectAllAutoInput()">
+  </material-input>
+</div>
