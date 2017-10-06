@@ -7,9 +7,11 @@ import 'package:angular_components/angular_components.dart';
 
 @Component(
   selector: 'material-yes-no-buttons-demo',
+  styleUrls: const ['material_yes_no_buttons_demo.css'],
   templateUrl: 'material_yes_no_buttons_demo.html',
   directives: const [
     MaterialYesNoButtonsComponent,
+    MaterialSaveCancelButtonsDirective,
   ],
 )
 class MaterialYesNoButtonsDemoComponent {

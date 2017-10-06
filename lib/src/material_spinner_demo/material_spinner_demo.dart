@@ -7,6 +7,7 @@ import 'package:angular_components/angular_components.dart';
 
 @Component(
   selector: 'material-spinner-demo',
+  styleUrls: const ['material_spinner_demo.css'],
   templateUrl: 'material_spinner_demo.html',
   directives: const [
     MaterialSpinnerComponent,

@@ -312,15 +312,15 @@ Future testTooltip(
     WebDriver driver) async {
   print("Testing tooltip.");
 
-  var tooltipText = "Saves the document";
+  var tooltipText = "Learn more about web development";
 
-  var buttons =
-      await driver.findElements(const By.tagName("material-button")).toList();
+  var links =
+      await driver.findElements(const By.tagName("a")).toList();
 
   await ensureBodyDoesNotContain(tooltipText);
-  for (var button in buttons) {
-    if ((await button.text) == "SAVE") {
-      await driver.mouse.moveTo(element: button);
+  for (var link in links) {
+    if ((await link.text) == "webdev.dartlang.org") {
+      await driver.mouse.moveTo(element: link);
       break;
     }
   }

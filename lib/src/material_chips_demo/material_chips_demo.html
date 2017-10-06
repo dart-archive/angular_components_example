@@ -4,8 +4,19 @@
   BSD-style license that can be found in the LICENSE file.
 -->
 <material-chips>
-  <material-chip>My Chip</material-chip>
-  <material-chip>Another Chip</material-chip>
+  <material-chip [removable]="false">Hello, World</material-chip>
+  <material-chip>{{chipText}}</material-chip>
+  <material-chip emphasis>With emphasis</material-chip>
+  <material-chip [attr.emphasis]="true">With attr emphasis</material-chip>
+  <material-chip class="my-theme">With custom theme</material-chip>
+  <material-chip [hasLeftIcon]="true">
+    <material-icon left-icon icon="link" size="large"></material-icon>
+    With left icon
+  </material-chip>
+  <material-chip class="left-icon-bg" [hasLeftIcon]="true">
+    <material-icon left-icon icon="link" size="large"></material-icon>
+    Left icon with bgcolor
+  </material-chip>
 </material-chips>
 
 <p>

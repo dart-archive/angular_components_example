@@ -7,6 +7,7 @@ import 'package:angular_components/angular_components.dart';
 
 @Component(
   selector: 'reorder-list-demo',
+  styleUrls: const ['reorder_list_demo.css'],
   templateUrl: 'reorder_list_demo.html',
   directives: const [
     CORE_DIRECTIVES,

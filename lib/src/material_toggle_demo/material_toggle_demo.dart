@@ -7,11 +7,18 @@ import 'package:angular_components/angular_components.dart';
 
 @Component(
   selector: 'material-toggle-demo',
+  styleUrls: const ['material_toggle_demo.css'],
   templateUrl: 'material_toggle_demo.html',
   directives: const [
     MaterialToggleComponent,
   ],
 )
 class MaterialToggleDemoComponent {
-  // Nothing here.
+  bool btEnabled = false;
+  bool deviceVisible = false;
+
+  bool basicState = null;
+
+  String get btnToggleLabel =>
+      'Tap to turn Bluetooth ${btEnabled ? 'OFF' : 'ON'}.';
 }

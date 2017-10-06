@@ -1,0 +1,32 @@
+// Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+@import 'package:angular_components/src/css/material/material';
+
+.example-with-options {
+  display: flex;
+}
+
+.example-pane {
+  flex: 1;
+
+  material-auto-suggest-input {
+    width: $mat-grid * 25;
+  }
+}
+
+.options-pane {
+  flex: 1;
+  padding: $mat-grid * 2;
+  background: $mat-gray-200;
+
+  material-checkbox {
+    margin-left: 0;
+  }
+
+  material-input {
+    width: 17 * $mat-grid;
+    margin-right: 2 * $mat-grid;
+  }
+}

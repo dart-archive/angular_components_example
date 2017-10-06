@@ -3,11 +3,69 @@
   for details. All rights reserved. Use of this source code is governed by a
   BSD-style license that can be found in the LICENSE file.
 -->
-<material-radio-group>
-  <material-radio [checked]="true">
-    default choice
-  </material-radio>
-  <material-radio>
-    alternative choice
+
+<h3>Without a group</h3>
+<material-radio [(ngModel)]="unselected">selectable</material-radio>
+<material-radio [(ngModel)]="preselected">pre-selected</material-radio>
+<material-radio [disabled]="true" [(checked)]="impossible">not selectable
+</material-radio>
+<material-radio [disabled]="true" [(checked)]="always">not unselectable
+</material-radio>
+
+<h3>Group without preselection</h3>
+<p><em>vertical list via</em><code> display: flex</code></p>
+<p>selected: {{ex1SelectedValue}}</p>
+<material-radio-group [selectionModel]="ex1SelectionModel">
+  <material-radio *ngFor="let option of ex1Options"
+                  class="radio-per-line"
+                  [(checked)]="option.selected"
+                  [value]="option.label">{{option.label}}
   </material-radio>
 </material-radio-group>
+
+<h3>Group with preselection</h3>
+<p><em>using ng-model at group level</em></p>
+<p>selected: {{ex2SelectedValue}}</p>
+<material-radio-group [(ngModel)]="selected">
+  <material-radio *ngFor="let option of ex2Options"
+                  [disabled]="option.disabled"
+                  [value]="option">{{option.label}}
+  </material-radio>
+</material-radio-group>
+
+<h3>Positioning</h3>
+
+<material-radio-group class="positioned-radio-group">
+  <material-radio class="top">
+    This is a radio button that is positioned at the top relative to the
+    content.
+  </material-radio>
+  <material-radio class="middle">
+    This is a radio button that is positioned at the middle relative to the
+    content.
+  </material-radio>
+  <material-radio class="bottom">
+    This is a radio button that is positioned at the bottom relative to the
+    content.
+  </material-radio>
+  <material-radio>
+    [DEFAULT] <span class="custom-size"></span> This is a radio button that is
+    positioned at the baseline. The radio aligns with the first line of text
+    despite the large grey box.
+  </material-radio>
+</material-radio-group>
+
+<p><em>Radio button with no left margin.</em></p>
+<material-radio class="radio-no-left-margin">without left margin
+</material-radio>
+
+<h3>Themed</h3>
+<span class="cyan">
+  <material-radio> Cyan</material-radio>
+</span>
+<span class="pink">
+  <material-radio class="pink">Pink</material-radio>
+</span>
+<span class="yellow">
+  <material-radio class="yellow">Yellow</material-radio>
+</span>

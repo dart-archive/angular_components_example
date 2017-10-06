@@ -7,9 +7,10 @@ import 'package:angular_components/angular_components.dart';
 
 @Component(
   selector: 'material-chips-demo',
+  styleUrls: const ['material_chips_demo.css'],
   templateUrl: 'material_chips_demo.html',
-  directives: const [MaterialChipComponent, MaterialChipsComponent],
+  directives: const [MaterialChipComponent, MaterialChipsComponent, MaterialIconComponent],
 )
 class MaterialChipsDemoComponent {
-  // Nothing here.
+  final chipText = "My Text";
 }

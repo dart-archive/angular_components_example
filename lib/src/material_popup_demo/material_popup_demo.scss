@@ -1,0 +1,42 @@
+// Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+@import 'package:angular_components/src/css/material/material';
+@import 'package:angular_components/src/components/material_button/mixins';
+
+:host {
+  @include button-background-color('material-button.blue', $mat-blue-500);
+  @include button-color('material-button.blue', $mat-white);
+}
+
+.basic {
+  height: $mat-grid * 25;
+  padding: $mat-grid;
+}
+
+.custom-header {
+  background: $mat-green;
+  color: $mat-white;
+  padding: $mat-grid;
+}
+
+.custom-body {
+  background: $mat-green-50;
+  height: 1000px;
+  padding: $mat-grid;
+  width: 200px;
+}
+
+.custom-footer {
+  background: $mat-green-800;
+  color: $mat-white;
+  padding: $mat-grid;
+}
+
+.limited-size {
+  background: $mat-gray-200;
+  height: 1000px;
+  padding: $mat-grid;
+  width: 1000px;
+}

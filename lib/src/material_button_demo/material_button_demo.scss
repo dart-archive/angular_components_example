@@ -1,0 +1,16 @@
+// Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+@import 'package:angular_components/src/css/material/material';
+@import 'package:angular_components/src/components/material_button/mixins';
+
+$raised: 'material-button[raised]';
+$not-raised: 'material-button:not([raised])';
+
+:host {
+  @include button-background-color($raised + '.red', $mat-red);
+  @include button-color($raised + '.red', $mat-white);
+
+  @include button-color($not-raised + '.red', $mat-red);
+}

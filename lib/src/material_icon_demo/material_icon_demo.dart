@@ -7,6 +7,7 @@ import 'package:angular_components/angular_components.dart';
 
 @Component(
   selector: 'material_icon-demo',
+  styleUrls: const ['material_icon_demo.css'],
   templateUrl: 'material_icon_demo.html',
   directives: const [
     MaterialButtonComponent,

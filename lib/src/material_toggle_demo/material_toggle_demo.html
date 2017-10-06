@@ -3,6 +3,7 @@
   for details. All rights reserved. Use of this source code is governed by a
   BSD-style license that can be found in the LICENSE file.
 -->
+<h3>Basic Toggles</h3>
 <material-toggle label="Unchecked"></material-toggle>
 <br/>
 <material-toggle [checked]="true" label="Checked"></material-toggle>
@@ -13,3 +14,35 @@
                  [checked]="true"
                  label="Disabled on">
 </material-toggle>
+
+<h3>Toggle buttons that interact with each other</h3>
+<material-toggle
+    [disabled]="false"
+    [(checked)]="btEnabled"
+    label="Tap to turn Bluetooth {{btEnabled ? 'OFF' : 'ON'}}.">
+</material-toggle>
+<br/>
+<material-toggle
+    [disabled]="!btEnabled"
+    [(checked)]="deviceVisible"
+    label="Tap to set device {{deviceVisible ? 'invisible' : 'visible'}}.">
+</material-toggle>
+
+<h3>Themed</h3>
+<div class="cyan">
+  <material-toggle checked label="Cyan"></material-toggle>
+</div>
+<div class="pink">
+  <material-toggle checked label="Pink"></material-toggle>
+</div>
+
+<div class="yellow">
+  <material-toggle checked label="Yellow"></material-toggle>
+</div>
+
+<p>Custom on/off colors.</p>
+<p><em>primary-color: $mat-light-green-500, off-btn-color: $mat-lime-500</em></p>
+<div class="custom-theme">
+  <material-toggle [checked]="false" label="Different 'ON' and 'OFF' colors!">
+  </material-toggle>
+</div>

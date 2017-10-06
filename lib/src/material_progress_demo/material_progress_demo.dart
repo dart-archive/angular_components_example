@@ -7,6 +7,7 @@ import 'package:angular_components/angular_components.dart';
 
 @Component(
   selector: 'material-progress-demo',
+  styleUrls: const ['material_progress_demo.css'],
   templateUrl: 'material_progress_demo.html',
   directives: const [
     MaterialProgressComponent,
