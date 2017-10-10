@@ -2,8 +2,12 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:angular_components/angular_components.dart';
 import 'package:angular/angular.dart';
+import 'package:angular_components/material_tree/material_tree.dart';
+import 'package:angular_components/model/selection/select.dart';
+import 'package:angular_components/model/selection/selection_model.dart';
+import 'package:angular_components/model/selection/selection_options.dart';
+import 'package:angular_components/utils/async/async.dart';
 
 /// An example that renders a [MaterialTreeComponent] with nested options.
 ///

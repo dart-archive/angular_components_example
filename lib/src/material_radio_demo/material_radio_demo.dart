@@ -3,7 +3,10 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular/angular.dart';
-import 'package:angular_components/angular_components.dart';
+import 'package:angular_components/material_radio/material_radio.dart';
+import 'package:angular_components/material_radio/material_radio_group.dart';
+import 'package:angular_components/model/selection/selection_model.dart';
+import 'package:angular_forms/angular_forms.dart';
 
 @Component(
   selector: 'material-radio-demo',
@@ -23,7 +26,6 @@ class MaterialRadioDemoComponent {
   bool impossible = false;
   bool always = true;
 
-
   /// Example 1 using group
   List<Option> ex1Options = [
     new Option("fast", false, false),
@@ -32,11 +34,9 @@ class MaterialRadioDemoComponent {
   ];
   final SelectionModel ex1SelectionModel = new SelectionModel.withList();
 
-  String get ex1SelectedValue =>
-      ex1SelectionModel.selectedValues.isEmpty
-          ? 'unknown'
-          : ex1SelectionModel.selectedValues.first;
-
+  String get ex1SelectedValue => ex1SelectionModel.selectedValues.isEmpty
+      ? 'unknown'
+      : ex1SelectionModel.selectedValues.first;
 
   /// Example 2 using group
   List<Option> ex2Options = [
@@ -60,4 +60,3 @@ class Option {
 
   Option(this.label, this.selected, this.disabled);
 }
-

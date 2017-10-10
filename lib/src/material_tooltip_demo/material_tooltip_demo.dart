@@ -3,7 +3,12 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular/angular.dart';
-import 'package:angular_components/angular_components.dart';
+import 'package:angular_components/laminate/popup/module.dart';
+import 'package:angular_components/material_button/material_button.dart';
+import 'package:angular_components/material_icon/material_icon.dart';
+import 'package:angular_components/material_popup/material_popup.dart';
+import 'package:angular_components/material_tooltip/material_tooltip.dart';
+import 'package:angular_components/theme/dark_theme.dart';
 
 @Component(
   selector: 'material-tooltip-demo',

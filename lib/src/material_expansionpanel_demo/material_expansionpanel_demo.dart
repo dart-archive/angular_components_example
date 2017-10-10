@@ -3,7 +3,8 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular/angular.dart';
-import 'package:angular_components/angular_components.dart';
+import 'package:angular_components/material_expansionpanel/material_expansionpanel.dart';
+import 'package:angular_components/material_expansionpanel/material_expansionpanel_set.dart';
 
 @Component(
     selector: 'material-expansionpanel-demo',

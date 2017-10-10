@@ -3,7 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular/angular.dart';
-import 'package:angular_components/angular_components.dart';
+import 'package:angular_components/material_spinner/material_spinner.dart';
 
 @Component(
   selector: 'material-spinner-demo',

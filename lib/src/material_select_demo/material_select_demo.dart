@@ -5,14 +5,26 @@
 import 'dart:async';
 
 import 'package:angular/angular.dart';
-import 'package:angular_components/angular_components.dart';
+import 'package:angular_components/laminate/enums/alignment.dart';
+import 'package:angular_components/material_checkbox/material_checkbox.dart';
+import 'package:angular_components/material_icon/material_icon.dart';
+import 'package:angular_components/material_select/display_name.dart';
+import 'package:angular_components/material_select/material_dropdown_select.dart';
+import 'package:angular_components/material_select/material_select.dart';
+import 'package:angular_components/material_select/material_select_item.dart';
+import 'package:angular_components/material_select/material_select_searchbox.dart';
+import 'package:angular_components/model/selection/select.dart';
+import 'package:angular_components/model/selection/selection_model.dart';
+import 'package:angular_components/model/selection/selection_options.dart';
+import 'package:angular_components/model/selection/string_selection_options.dart';
+import 'package:angular_components/model/ui/display_name.dart';
+import 'package:angular_components/model/ui/has_renderer.dart';
 
 @Component(
   selector: 'material-select-demo',
   styleUrls: const ['material_select_demo.css'],
   templateUrl: 'material_select_demo.html',
   directives: const [
-    CORE_DIRECTIVES,
     displayNameRendererDirective,
     ExampleRendererComponent,
     MaterialCheckboxComponent,
@@ -20,6 +32,8 @@ import 'package:angular_components/angular_components.dart';
     MaterialSelectComponent,
     MaterialSelectItemComponent,
     MaterialSelectSearchboxComponent,
+    NgIf,
+    NgFor,
   ],
 )
 class MaterialSelectDemoComponent {

@@ -11,9 +11,8 @@ dependencies:
   sass_builder: ^1.0.0
 dependency_overrides:
   angular_components:
-    git:
-      url: git@github.com:dart-lang/angular_components.git
-      ref: use-sass-builder
+    # git: git@github.com:dart-lang/angular_components.git
+    path: ../angular2_components
 dev_dependencies:
   webdriver: ^1.2.1
 transformers:

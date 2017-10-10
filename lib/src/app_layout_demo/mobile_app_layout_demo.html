@@ -6,9 +6,29 @@
 <material-drawer temporary #drawer="drawer"
                  [attr.end]="end ? '' : null"
                  [attr.overlay]="overlay ? '' : null">
-  <div *deferredContent>
-    Here is some drawer content.
-  </div>
+  <material-list *deferredContent>
+    <div group class="mat-drawer-spacer"></div>
+    <div group>
+      <material-list-item>
+        <material-icon icon="home"></material-icon>Home
+      </material-list-item>
+      <material-list-item>
+        <material-icon icon="done"></material-icon>Done
+      </material-list-item>
+      <material-list-item>
+        <material-icon icon="delete"></material-icon>Delete
+      </material-list-item>
+      <material-list-item>
+        <material-icon icon="lock"></material-icon>Lock
+      </material-list-item>
+    </div>
+    <div group>
+      <div label>Tags</div>
+      <material-list-item>
+        <material-icon icon="help"></material-icon>Help
+      </material-list-item>
+    </div>
+  </material-list>
 </material-drawer>
 <material-content>
   <header class="material-header shadow">

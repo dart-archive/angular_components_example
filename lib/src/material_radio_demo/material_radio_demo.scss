@@ -2,8 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-@import 'package:angular_components/src/css/material/material';
-@import 'package:angular_components/src/components/material_radio/mixins';
+@import 'package:angular_components/css/material/material';
+@import 'package:angular_components/material_radio/mixins';
 
 @include material-radio-theme($mat-cyan, '.cyan');
 @include material-radio-theme($mat-pink, '.pink');

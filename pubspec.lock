@@ -21,10 +21,9 @@ packages:
     version: "0.3.0"
   angular_components:
     description:
-      ref: use-sass-builder
-      resolved-ref: "4706f5eee5bcec66c4f4e6876721bd40633d3c2a"
-      url: "git@github.com:dart-lang/angular_components.git"
-    source: git
+      path: "../angular2_components"
+      relative: true
+    source: path
     version: "0.8.0-dev"
   angular_forms:
     description:
@@ -319,7 +318,7 @@ packages:
       name: source_gen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.1"
+    version: "0.7.2"
   source_maps:
     description:
       name: source_maps

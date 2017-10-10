@@ -3,7 +3,8 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular/angular.dart';
-import 'package:angular_components/angular_components.dart';
+import 'package:angular_components/scorecard/scoreboard.dart';
+import 'package:angular_components/scorecard/scorecard.dart';
 
 @Component(
   selector: 'scorecard-demo',

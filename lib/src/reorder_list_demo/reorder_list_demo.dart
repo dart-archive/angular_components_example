@@ -3,16 +3,16 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular/angular.dart';
-import 'package:angular_components/angular_components.dart';
+import 'package:angular_components/reorder_list/reorder_list.dart';
 
 @Component(
   selector: 'reorder-list-demo',
   styleUrls: const ['reorder_list_demo.css'],
   templateUrl: 'reorder_list_demo.html',
   directives: const [
-    CORE_DIRECTIVES,
     ReorderListComponent,
     ReorderItemDirective,
+    NgFor,
   ],
 )
 class ReorderListDemoComponent {

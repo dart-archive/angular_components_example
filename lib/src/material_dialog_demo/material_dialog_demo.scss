@@ -2,9 +2,9 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-@import 'package:angular_components/src/css/material/material';
-@import 'package:angular_components/src/components/material_button/mixins';
-@import 'package:angular_components/src/components/material_dialog/mixins';
+@import 'package:angular_components/css/material/material';
+@import 'package:angular_components/material_button/mixins';
+@import 'package:angular_components/material_dialog/mixins';
 
 :host {
   @include button-background-color('material-button.blue', $mat-blue-500);

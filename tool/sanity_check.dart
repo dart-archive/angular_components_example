@@ -138,7 +138,7 @@ Future testLayout(
   print("Testing app layout.");
 
   var simpleDrawerContent = "Inbox";
-  var mobileDrawerContent = "Here is some drawer content.";
+  var mobileDrawerContent = "Home";
 
   await ensureBodyContains(simpleDrawerContent);
 
@@ -314,8 +314,7 @@ Future testTooltip(
 
   var tooltipText = "Learn more about web development";
 
-  var links =
-      await driver.findElements(const By.tagName("a")).toList();
+  var links = await driver.findElements(const By.tagName("a")).toList();
 
   await ensureBodyDoesNotContain(tooltipText);
   for (var link in links) {

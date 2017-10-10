@@ -3,7 +3,9 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular/angular.dart';
-import 'package:angular_components/angular_components.dart';
+import 'package:angular_components/content/deferred_content.dart';
+import 'package:angular_components/material_tab/material_tab.dart';
+import 'package:angular_components/material_tab/material_tab_panel.dart';
 
 @Component(
   selector: 'material-tab-demo',
@@ -19,7 +21,6 @@ import 'package:angular_components/angular_components.dart';
 class MaterialTabDemoComponent {
   // Nothing here.
 }
-
 
 /// Simple pass-thru content container which announces its construction and
 /// displays a label (in a <p> tag) above the content.

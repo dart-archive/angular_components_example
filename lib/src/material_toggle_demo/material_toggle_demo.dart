@@ -3,7 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular/angular.dart';
-import 'package:angular_components/angular_components.dart';
+import 'package:angular_components/material_toggle/material_toggle.dart';
 
 @Component(
   selector: 'material-toggle-demo',
@@ -16,8 +16,7 @@ import 'package:angular_components/angular_components.dart';
 class MaterialToggleDemoComponent {
   bool btEnabled = false;
   bool deviceVisible = false;
-
-  bool basicState = null;
+  bool basicState;
 
   String get btnToggleLabel =>
       'Tap to turn Bluetooth ${btEnabled ? 'OFF' : 'ON'}.';
