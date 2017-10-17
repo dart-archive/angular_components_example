@@ -3,8 +3,11 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular/angular.dart';
+import 'package:angular_components/focus/focus.dart';
+import 'package:angular_components/material_button/material_button.dart';
+import 'package:angular_components/material_icon/material_icon.dart';
+import 'package:angular_components/material_input/material_input.dart';
 import 'package:angular_forms/angular_forms.dart';
-import 'package:angular_components/angular_components.dart';
 
 @Component(
   selector: 'material-input-demo',

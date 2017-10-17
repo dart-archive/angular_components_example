@@ -3,17 +3,20 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular/angular.dart';
-import 'package:angular_components/angular_components.dart';
+import 'package:angular_components/material_icon/material_icon.dart';
+import 'package:angular_components/material_list/material_list.dart';
+import 'package:angular_components/material_list/material_list_item.dart';
+import 'package:angular_components/model/selection/selection_model.dart';
 
 @Component(
   selector: 'material-list-demo',
   styleUrls: const ['material_list_demo.css'],
   templateUrl: 'material_list_demo.html',
   directives: const [
-    CORE_DIRECTIVES,
     MaterialIconComponent,
     MaterialListComponent,
     MaterialListItemComponent,
+    NgFor,
   ],
 )
 class MaterialListDemoComponent {

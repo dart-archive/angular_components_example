@@ -3,10 +3,11 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular/angular.dart';
-import 'package:angular_components/angular_components.dart';
+import 'package:angular_components/material_progress/material_progress.dart';
 
 @Component(
   selector: 'material-progress-demo',
+  styleUrls: const ['material_progress_demo.css'],
   templateUrl: 'material_progress_demo.html',
   directives: const [
     MaterialProgressComponent,

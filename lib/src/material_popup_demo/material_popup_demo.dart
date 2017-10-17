@@ -3,7 +3,10 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular/angular.dart';
-import 'package:angular_components/angular_components.dart';
+import 'package:angular_components/laminate/popup/module.dart';
+import 'package:angular_components/laminate/popup/popup.dart';
+import 'package:angular_components/material_button/material_button.dart';
+import 'package:angular_components/material_popup/material_popup.dart';
 
 @Component(
   selector: 'material-popup-demo',

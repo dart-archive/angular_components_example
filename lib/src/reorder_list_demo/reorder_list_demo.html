@@ -3,10 +3,12 @@
   for details. All rights reserved. Use of this source code is governed by a
   BSD-style license that can be found in the LICENSE file.
 -->
-<ol>
-  <reorder-list (reorder)="onReorder($event)">
-    <li *ngFor="let item of reorderItems" reorderItem>
-      {{item}}
-    </li>
-  </reorder-list>
-</ol>
+<section class="example">
+  <ol>
+    <reorder-list (reorder)="onReorder($event)">
+      <li *ngFor="let item of reorderItems" reorderItem>
+        {{item}}
+      </li>
+    </reorder-list>
+  </ol>
+</section>

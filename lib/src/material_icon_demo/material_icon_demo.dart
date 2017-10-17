@@ -3,10 +3,14 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular/angular.dart';
-import 'package:angular_components/angular_components.dart';
+import 'package:angular_components/material_button/material_button.dart';
+import 'package:angular_components/material_icon/material_icon.dart';
+import 'package:angular_components/material_input/material_input.dart';
+import 'package:angular_components/model/ui/icon.dart';
 
 @Component(
   selector: 'material_icon-demo',
+  styleUrls: const ['material_icon_demo.css'],
   templateUrl: 'material_icon_demo.html',
   directives: const [
     MaterialButtonComponent,
