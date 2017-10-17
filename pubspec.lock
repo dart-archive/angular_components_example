@@ -21,10 +21,10 @@ packages:
     version: "0.3.0"
   angular_components:
     description:
-      path: "../angular2_components"
-      relative: true
-    source: path
-    version: "0.8.0-dev"
+      name: angular_components
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.8.0"
   angular_forms:
     description:
       name: angular_forms
@@ -36,7 +36,7 @@ packages:
       name: archive
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.31"
+    version: "1.0.32"
   args:
     description:
       name: args
@@ -78,7 +78,7 @@ packages:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.0+3"
+    version: "0.5.0"
   charcode:
     description:
       name: charcode
@@ -174,7 +174,7 @@ packages:
       name: http
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.11.3+15"
+    version: "0.11.3+16"
   http_parser:
     description:
       name: http_parser
@@ -294,7 +294,7 @@ packages:
       name: sass_builder
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   scratch_space:
     description:
       name: scratch_space
@@ -306,13 +306,7 @@ packages:
       name: shelf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.8"
-  shelf_static:
-    description:
-      name: shelf_static
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.5"
+    version: "0.7.0"
   source_gen:
     description:
       name: source_gen
