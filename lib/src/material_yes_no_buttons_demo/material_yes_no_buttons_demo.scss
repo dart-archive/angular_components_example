@@ -5,10 +5,18 @@
 @import 'package:angular_components/css/material/material';
 @import 'package:angular_components/material_yes_no_buttons/mixins';
 
-@include material-yes-button-color('.red-yes', $mat-red-500);
-@include material-no-button-color('.red-no', $mat-red-500);
-@include material-no-button-text-color('.red-no', $mat-white);
-@include material-yes-button-text-color('.red-text-yes', $mat-red-500);
+.red-yes {
+  @include material-yes-button-color($mat-red-500);
+}
+
+.red-no {
+  @include material-no-button-color($mat-red-500);
+  @include material-no-button-text-color($mat-white);
+}
+
+.red-text-yes {
+  @include material-yes-button-text-color($mat-red-500);
+}
 
 .examples {
   display: inline-flex;

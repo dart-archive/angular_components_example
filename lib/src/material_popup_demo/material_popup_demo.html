@@ -9,7 +9,7 @@
                  popupSource
                  #source="popupSource"
                  (trigger)="basicPopupVisible = !basicPopupVisible">
-  {{basicPopupVisible ? 'Close' : 'Open'}} Popup
+  {{basicPopupVisible ? 'Close' : 'Open'}}&nbsp;Popup
 </material-button>
 <material-popup [source]="source" [(visible)]="basicPopupVisible">
   <div class="basic">
@@ -26,7 +26,7 @@
                  popupSource
                  #headerExampleSource="popupSource"
                  (trigger)="headerFooterPopupVisible = !headerFooterPopupVisible">
-  {{headerFooterPopupVisible ? 'Close' : 'Open'}} Custom Popup
+  {{headerFooterPopupVisible ? 'Close' : 'Open'}}&nbsp;Custom Popup
 </material-button>
 <material-popup defaultPopupSizeProvider
                 enforceSpaceConstraints
@@ -55,7 +55,7 @@
                  popupSource
                  #mixinExampleSource="popupSource"
                  (trigger)="sizePopupVisible = !sizePopupVisible">
-  {{sizePopupVisible ? 'Close' : 'Open'}} Provider Popup
+  {{sizePopupVisible ? 'Close' : 'Open'}}&nbsp;Provider Popup
 </material-button>
 <material-popup defaultPopupSizeProvider
                 enforceSpaceConstraints
