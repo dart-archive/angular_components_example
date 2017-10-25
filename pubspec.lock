@@ -12,25 +12,25 @@ packages:
       name: angular
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.0"
+    version: "5.0.0-alpha"
   angular_compiler:
     description:
       name: angular_compiler
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.0"
+    version: "0.4.0-alpha"
   angular_components:
     description:
       name: angular_components
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.0"
+    version: "0.9.0-alpha"
   angular_forms:
     description:
       name: angular_forms
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1-alpha"
   archive:
     description:
       name: archive
@@ -91,12 +91,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2+1"
-  code_builder:
-    description:
-      name: code_builder
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.4"
   code_transformers:
     description:
       name: code_transformers
