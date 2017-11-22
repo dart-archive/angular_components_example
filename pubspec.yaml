@@ -10,11 +10,11 @@ dependencies:
   dart_to_js_script_rewriter: ^1.0.1
   sass_builder: ^1.0.0
 dependency_overrides:
+  analyzer: ^0.31.0-alpha.1
   angular_components:
     git:
       url: git@github.com:dart-lang/angular_components.git
       ref: github-sync
-  analyzer: ^0.31.0-alpha.1
 dev_dependencies:
   webdriver: ^1.2.1
 transformers:

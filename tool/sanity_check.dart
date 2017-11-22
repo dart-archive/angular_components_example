@@ -92,6 +92,7 @@ Future main(List<String> args) async {
     await testMaxCharInput(driver);
     await testAutoSuggest(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testDialog(ensureDialogVisible, ensureDialogNotVisible, driver);
+    await testMenu(ensureElementColor, ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testPopup(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testTooltip(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testList(ensureElementColor, driver);
@@ -304,6 +305,69 @@ Future testPopup(
   sleep(new Duration(milliseconds: 250));
 
   await ensureBodyDoesNotContain(popupText);
+}
+
+Future testMenu(
+    Future<Null> ensureElementColor(WebElement element, String color),
+    Future<Null> ensureBodyContains(String text),
+    Future<Null> ensureBodyDoesNotContain(String text),
+    WebDriver driver) async {
+  print("Testing menu.");
+
+  final colorOption = "lightsalmon";
+  final subMenu = "Lights";
+  final colorInitial = "rgba(255, 0, 0, 1)";
+  final colorAfterClick = "rgba(255, 160, 122, 1)";
+
+  final colorText =
+      await driver.findElements(const By.className("menu-colorchanger")).first;
+  await ensureElementColor(colorText, colorInitial);
+
+  final menus =
+      await driver.findElements(const By.tagName("dropdown-menu")).toList();
+
+  await ensureBodyDoesNotContain(colorOption);
+  await ensureBodyDoesNotContain(subMenu);
+  menus.first.click();
+
+  // TODO(google) Remove sleep once PageObject testing classes are available
+  // Wait for the popup animation to complete
+  sleep(new Duration(milliseconds: 500));
+
+  await ensureBodyContains(subMenu);
+
+  var listItems = await driver
+      .findElements(const By.tagName("material-select-item"))
+      .toList();
+  for (var listItem in listItems) {
+    if ((await listItem.text).contains(subMenu)) {
+      await listItem.click();
+      break;
+    }
+  }
+
+  // TODO(google) Remove sleep once PageObject testing classes are available
+  // Wait for the popup animation to complete
+  sleep(new Duration(milliseconds: 250));
+
+  await ensureBodyContains(colorOption);
+
+  listItems = await driver
+      .findElements(const By.tagName("material-select-item"))
+      .toList();
+  for (var listItem in listItems) {
+    if ((await listItem.text).contains(colorOption)) {
+      await listItem.click();
+      break;
+    }
+  }
+  // TODO(google) Remove sleep once PageObject testing classes are available
+  // Wait for the popup animation to complete
+  sleep(new Duration(milliseconds: 250));
+
+  await ensureBodyDoesNotContain(colorOption);
+  await ensureBodyDoesNotContain(subMenu);
+  await ensureElementColor(colorText, colorAfterClick);
 }
 
 Future testTooltip(

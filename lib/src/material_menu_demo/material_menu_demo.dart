@@ -9,7 +9,6 @@ import 'package:angular_components/material_menu/material_fab_menu.dart';
 import 'package:angular_components/material_menu/material_menu.dart';
 import 'package:angular_components/model/menu/menu.dart';
 import 'package:angular_components/model/menu/selectable_menu.dart';
-import 'package:angular_components/model/observable/observable.dart';
 import 'package:angular_components/model/selection/select.dart';
 import 'package:angular_components/model/selection/selection_model.dart';
 import 'package:angular_components/model/ui/icon.dart';
@@ -140,10 +139,12 @@ class MaterialMenuDemoComponent implements OnDestroy {
           ], selectionModel: typeSelection, label: 'Function'),
           new MenuItemGroup<MenuItem>([
             new MenuItem('Help',
-                secondaryIconVisibility:
-                    new ObservableReference(IconVisibility.hover),
-                secondaryIcon: new Icon('help_outline'),
-                action: () => window.alert('halp!'))
+                itemSuffixes: new ObservableList.from([
+                  new IconAffix(
+                      icon: new Icon('help_outline'),
+                      visibility: IconVisibility.hover)
+                ]),
+                action: () => window.alert('halp!')),
           ]),
         ]));
 
