@@ -30,7 +30,7 @@ packages:
       path: "."
       ref: github-sync
       resolved-ref: "2adaf692cd72cc0a75ec78f535dc5abeb633730c"
-      url: "git@github.com:dart-lang/angular_components.git"
+      url: "https://github.com/dart-lang/angular_components.git"
     source: git
     version: "0.9.0-alpha+1"
   angular_forms:
