@@ -1,0 +1,43 @@
+<section>
+  <h3>Material Menu Component</h3>
+  <span class="colorchanger"
+        [style.color]="selectedColor">Use the menu to change color</span>
+  <material-menu [menu]="menuModel" buttonText="OPEN">
+  </material-menu>
+  <material-menu [menu]="menuModelWithIcon">
+  </material-menu>
+</section>
+
+<section>
+  <h3>Nested Material Menu</h3>
+  <material-menu [menu]="nestedMenuModel" buttonText="OPEN">
+  </material-menu>
+  <h4>With dropdown style</h4>
+  <dropdown-menu
+      [menu]="nestedMenuModel"
+      buttonText="Open">
+  </dropdown-menu>
+
+  <h4>With dropdown style (nounderline)</h4>
+  <dropdown-menu
+      [menu]="nestedMenuModel"
+      buttonText="Open"
+      class="nounderline">
+  </dropdown-menu>
+
+  <h4>With single- and multi-select menu groups</h4>
+  <dropdown-menu
+      [menu]="selectableMenuModel"
+      buttonText="Open">
+  </dropdown-menu>
+
+  <h4>With menu item affixes</h4>
+  <dropdown-menu
+      [menu]="menuModelWithAffixes"
+      buttonText="Open">
+  </dropdown-menu>
+
+  <h3>Material FAB Menu</h3>
+  <material-fab-menu [menuItem]="menuItem">
+  </material-fab-menu>
+</section>

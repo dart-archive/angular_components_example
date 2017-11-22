@@ -16,6 +16,7 @@ import 'src/material_expansionpanel_demo/material_expansionpanel_demo.dart';
 import 'src/material_icon_demo/material_icon_demo.dart';
 import 'src/material_input_demo/material_input_demo.dart';
 import 'src/material_list_demo/material_list_demo.dart';
+import 'src/material_menu_demo/material_menu_demo.dart';
 import 'src/material_popup_demo/material_popup_demo.dart';
 import 'src/material_progress_demo/material_progress_demo.dart';
 import 'src/material_radio_demo/material_radio_demo.dart';
@@ -45,6 +46,7 @@ import 'src/scorecard_demo/scorecard_demo.dart';
     MaterialIconDemoComponent,
     MaterialInputDemoComponent,
     MaterialListDemoComponent,
+    MaterialMenuDemoComponent,
     MaterialPopupDemoComponent,
     MaterialProgressDemoComponent,
     MaterialRadioDemoComponent,
