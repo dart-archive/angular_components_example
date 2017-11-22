@@ -92,7 +92,8 @@ Future main(List<String> args) async {
     await testMaxCharInput(driver);
     await testAutoSuggest(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testDialog(ensureDialogVisible, ensureDialogNotVisible, driver);
-    await testMenu(ensureElementColor, ensureBodyContains, ensureBodyDoesNotContain, driver);
+    await testMenu(ensureElementColor, ensureBodyContains,
+        ensureBodyDoesNotContain, driver);
     await testPopup(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testTooltip(ensureBodyContains, ensureBodyDoesNotContain, driver);
     await testList(ensureElementColor, driver);
