@@ -88,7 +88,7 @@ class MaterialAutoSuggestInputDemoComponent {
   final ExampleSelectionOptions suggestionOptions =
       new ExampleSelectionOptions.withOptionGroups(_optionGroups);
   final ExampleSelectionOptions suggestionOptionsWithItemRenderer =
-      new ExampleSelectionOptions.withOptionGroups(_optionGroups,
+      new ExampleSelectionOptions<List<int>>.withOptionGroups(_optionGroups,
           toFilterableString: _numberNameRenderer);
 
   final emptySuggestionOptions =
@@ -126,7 +126,7 @@ class MaterialAutoSuggestInputDemoComponent {
 
   SelectionOptions get options => suggestionOptionsWithItemRenderer;
 
-  ItemRenderer get itemRenderer => _numberNameRenderer;
+  ItemRenderer<List<int>> get itemRenderer => _numberNameRenderer;
 
   ComponentRenderer get componentRenderer =>
       useComponentRenderer ? (_) => ExampleRendererComponent : null;
