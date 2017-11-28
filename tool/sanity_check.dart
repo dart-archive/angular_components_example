@@ -329,11 +329,11 @@ Future testMenu(
 
   await ensureBodyDoesNotContain(colorOption);
   await ensureBodyDoesNotContain(subMenu);
-  menus.first.click();
+  await menus.first.click();
 
   // TODO(google) Remove sleep once PageObject testing classes are available
-  // Wait for the popup animation to complete
-  sleep(new Duration(milliseconds: 500));
+  // Wait for the menu animation to complete
+  sleep(new Duration(milliseconds: 250));
 
   await ensureBodyContains(subMenu);
 
@@ -348,7 +348,7 @@ Future testMenu(
   }
 
   // TODO(google) Remove sleep once PageObject testing classes are available
-  // Wait for the popup animation to complete
+  // Wait for the menu animation to complete
   sleep(new Duration(milliseconds: 250));
 
   await ensureBodyContains(colorOption);
@@ -363,7 +363,7 @@ Future testMenu(
     }
   }
   // TODO(google) Remove sleep once PageObject testing classes are available
-  // Wait for the popup animation to complete
+  // Wait for the menu animation to complete
   sleep(new Duration(milliseconds: 250));
 
   await ensureBodyDoesNotContain(colorOption);
