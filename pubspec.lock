@@ -6,7 +6,7 @@ packages:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.31.0-alpha.1"
+    version: "0.31.0-alpha.2"
   angular:
     description:
       name: angular
@@ -168,7 +168,7 @@ packages:
       name: front_end
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.0-alpha.6"
+    version: "0.1.0-alpha.7"
   glob:
     description:
       name: glob
@@ -216,7 +216,7 @@ packages:
       name: kernel
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.0-alpha.3"
+    version: "0.3.0-alpha.4"
   logging:
     description:
       name: logging
@@ -410,4 +410,4 @@ packages:
     source: hosted
     version: "2.1.13"
 sdks:
-  dart: "2.0.0-dev.3.0"
+  dart: ">=2.0.0-dev.3.0 <=2.0.0-dev.8.0"
