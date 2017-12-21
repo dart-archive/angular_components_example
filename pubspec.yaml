@@ -3,12 +3,12 @@ description: An example app using the angular_components package.
 environment:
   sdk: '>=2.0.0-dev.3.0 <2.0.0'
 dependencies:
-  angular: 5.0.0-alpha+1
-  angular_components: 0.9.0-alpha+1
-  angular_forms: 1.0.1-alpha+1
+  angular: 5.0.0-alpha+2
+  angular_components: 0.9.0-alpha+2
+  angular_forms: 1.0.1-alpha+2
   browser: ^0.10.0
   dart_to_js_script_rewriter: ^1.0.1
-  sass_builder: ^1.0.0
+  sass_builder: ^1.1.0
 dependency_overrides:
   # Necessary with angular: 5.0.0-alpha+1 dependency.
   analyzer: ^0.31.0-alpha.1

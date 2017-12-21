@@ -7,6 +7,7 @@ analyzer:
   unused_import: warning
   unused_local_variable: warning
   dead_code: warning
+  uri_has_not_been_generated: ignore
 linter:
   rules:
     #- always_declare_return_types

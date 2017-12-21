@@ -4,7 +4,8 @@
 
 import 'package:angular/angular.dart';
 import 'package:angular_components_example/app_component.dart';
+import 'main.template.dart' as ng;
 
 main() {
-  bootstrap(AppComponent);
+  bootstrapStatic(AppComponent, [/*providers*/], ng.initReflector);
 }
