@@ -12,8 +12,15 @@ dependencies:
 dependency_overrides:
   # Necessary with angular: 5.0.0-alpha+1 dependency.
   analyzer: ^0.31.0-alpha.1
+  angular_components:
+    path: ../angular_components
+#  build_runner: ^0.7.0
+  build_barback: ">=0.4.0+2 < 0.6.0"
+  sass_builder:
+    path: ../sass_builder
 dev_dependencies:
   webdriver: ^1.2.1
+  build_runner: ^0.7.0
 transformers:
 - sass_builder
 - angular:
