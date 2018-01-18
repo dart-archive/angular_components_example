@@ -34,7 +34,7 @@ packages:
     description:
       path: "."
       ref: github-sync
-      resolved-ref: "966efd233d9b625adba3d392010f552b82d705c6"
+      resolved-ref: c54000008736210638c2a8a8a4d4b830a7b994bd
       url: "https://github.com/dart-lang/angular_components.git"
     source: git
     version: "0.9.0-alpha+3"
@@ -121,7 +121,7 @@ packages:
       name: build_web_compilers
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.1"
+    version: "0.2.0"
   built_collection:
     dependency: transitive
     description:
@@ -412,11 +412,9 @@ packages:
   sass_builder:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "8cd926d3a3a5299e6473f138179b00a3a67a74c5"
-      url: "https://github.com/dart-league/sass_builder.git"
-    source: git
+      name: sass_builder
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "1.1.1"
   scratch_space:
     dependency: transitive

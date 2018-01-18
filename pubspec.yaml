@@ -8,7 +8,11 @@ dependencies:
   angular_forms: 1.0.1-alpha+3
   browser: ^0.10.0
   dart_to_js_script_rewriter: ^1.0.1
-  sass_builder: ^1.1.0
+  sass_builder: ^1.1.1
+dev_dependencies:
+  webdriver: ^1.2.1
+  build_runner: ^0.7.0
+  build_web_compilers: ^0.2.0
 dependency_overrides:
   # Necessary with angular: 5.0.0-alpha+1 dependency.
   analyzer: ^0.31.0-alpha.1
@@ -16,12 +20,6 @@ dependency_overrides:
     git:
       url: https://github.com/dart-lang/angular_components.git
       ref: github-sync
-  sass_builder:
-    git: https://github.com/dart-league/sass_builder.git
-dev_dependencies:
-  webdriver: ^1.2.1
-  build_runner: ^0.7.0
-  build_web_compilers: ^0.1.1
 transformers:
 - sass_builder
 - angular:

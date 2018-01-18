@@ -56,7 +56,7 @@
         [selection]="singleSelectModel"
         [options]="languageOptionsLong"
         [itemRenderer]="itemRenderer"
-        [componentRenderer]="componentRenderer"
+        [factoryRenderer]="factoryRenderer"
         [width]="width"
         [popupMatchInputWidth]="popupMatchInputWidth"
         [preferredPositions]="preferredPositions"
@@ -81,7 +81,7 @@
         [selection]="multiSelectModel"
         [options]="languageOptionsLong"
         [itemRenderer]="itemRenderer"
-        [componentRenderer]="componentRenderer"
+        [factoryRenderer]="factoryRenderer"
         [width]="width"
         [preferredPositions]="preferredPositions"
         [slide]="slide"
@@ -122,8 +122,8 @@
       Use item renderer
     </material-checkbox>
     <br>
-    <material-checkbox [(checked)]="useComponentRenderer">
-      Use component renderer
+    <material-checkbox [(checked)]="useFactoryRenderer">
+      Use factory renderer
     </material-checkbox>
     <br>
     <material-checkbox [(checked)]="useOptionGroup">

@@ -14,13 +14,13 @@
         [showClearIcon]="showClearIcon"
         [shouldClearOnSelection]="shouldClearOnSelection"
         [label]="label"
-        [labelRenderer]="labelRenderer"
+        [labelFactory]="labelFactory"
         [leadingGlyph]="leadingGlyph"
         [emptyPlaceholder]="emptyPlaceholder"
         [selection]="singleModel"
         [selectionOptions]="options"
         [itemRenderer]="itemRenderer"
-        [componentRenderer]="componentRenderer"
+        [factoryRenderer]="factoryRenderer"
         [popupPositions]="popupPositions"
         [limit]="limit"
         [disabled]="disabled">
@@ -39,13 +39,13 @@
         [hideCheckbox]="hideCheckbox"
         [shouldClearOnSelection]="shouldClearOnSelection"
         [label]="label"
-        [labelRenderer]="labelRenderer"
+        [labelFactory]="labelFactory"
         [leadingGlyph]="leadingGlyph"
         [emptyPlaceholder]="emptyPlaceholder"
         [selection]="multiModel"
         [selectionOptions]="options"
         [itemRenderer]="itemRenderer"
-        [componentRenderer]="componentRenderer"
+        [factoryRenderer]="factoryRenderer"
         [popupPositions]="popupPositions"
         [limit]="limit"
         [disabled]="disabled">
@@ -56,12 +56,12 @@
   </div>
   <div class="options-pane">
     <h3>Options</h3>
-    <material-checkbox [(checked)]="useLabelRenderer">
-      Use label renderer
+    <material-checkbox [(checked)]="useLabelFactory">
+      Use label factory
     </material-checkbox>
     <br>
-    <material-checkbox [(checked)]="useComponentRenderer">
-      Use component renderer
+    <material-checkbox [(checked)]="useFactoryRenderer">
+      Use factory renderer
     </material-checkbox>
     <br>
     <material-checkbox [(checked)]="filterSuggestions">
