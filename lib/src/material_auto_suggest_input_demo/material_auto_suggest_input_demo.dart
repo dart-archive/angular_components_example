@@ -13,8 +13,10 @@ import 'package:angular_components/model/selection/select.dart';
 import 'package:angular_components/model/selection/selection_model.dart';
 import 'package:angular_components/model/selection/selection_options.dart';
 import 'package:angular_components/model/selection/string_selection_options.dart';
-import 'package:angular_components/model/ui/has_renderer.dart';
+import 'package:angular_components/model/ui/has_factory.dart';
 import 'package:angular_forms/angular_forms.dart';
+
+import 'material_auto_suggest_input_demo.template.dart' as demo;
 
 List<String> _numberNames = <String>[
   'one',
@@ -107,8 +109,8 @@ class MaterialAutoSuggestInputDemoComponent {
   bool showClearIcon = false;
   bool hideCheckbox = false;
   bool shouldClearOnSelection = false;
-  bool useLabelRenderer = false;
-  bool useComponentRenderer = false;
+  bool useLabelFactory = false;
+  bool useFactoryRenderer = false;
   bool disabled = false;
   String label = 'Search...';
   String emptyPlaceholder = 'No matches';
@@ -128,11 +130,12 @@ class MaterialAutoSuggestInputDemoComponent {
 
   ItemRenderer<List<int>> get itemRenderer => _numberNameRenderer;
 
-  ComponentRenderer get componentRenderer =>
-      useComponentRenderer ? (_) => ExampleRendererComponent : null;
+  FactoryRenderer get factoryRenderer =>
+      useFactoryRenderer ? (_) => demo.ExampleRendererComponentNgFactory : null;
 
-  ComponentRenderer get labelRenderer =>
-      useLabelRenderer ? (_) => ExampleLabelRendererComponent : null;
+  FactoryRenderer get labelFactory => useLabelFactory
+      ? (_) => demo.ExampleLabelRendererComponentNgFactory
+      : null;
 
   String get popupPositionSelectButtonText =>
       popupPositionSelection.selectedValues.isNotEmpty

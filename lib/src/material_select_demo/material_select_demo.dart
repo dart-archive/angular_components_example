@@ -18,7 +18,9 @@ import 'package:angular_components/model/selection/selection_model.dart';
 import 'package:angular_components/model/selection/selection_options.dart';
 import 'package:angular_components/model/selection/string_selection_options.dart';
 import 'package:angular_components/model/ui/display_name.dart';
-import 'package:angular_components/model/ui/has_renderer.dart';
+import 'package:angular_components/model/ui/has_factory.dart';
+
+import 'material_select_demo.template.dart' as demo;
 
 @Component(
   selector: 'material-select-demo',
@@ -125,7 +127,7 @@ class MaterialSelectDemoComponent {
       new CachingItemRenderer<Language>(
           (language) => "${language.label} (${language.code})");
 
-  bool useComponentRenderer = false;
+  bool useFactoryRenderer = false;
   bool useItemRenderer = false;
   bool useOptionGroup = false;
   bool withHeaderAndFooter = false;
@@ -214,8 +216,8 @@ class MaterialSelectDemoComponent {
   ItemRenderer<Language> get itemRenderer =>
       useItemRenderer ? _itemRenderer : _displayNameRenderer;
 
-  ComponentRenderer get componentRenderer =>
-      useComponentRenderer ? (_) => ExampleRendererComponent : null;
+  FactoryRenderer get factoryRenderer =>
+      useFactoryRenderer ? (_) => demo.ExampleRendererComponentNgFactory : null;
 
 // Label for the button for multi selection.
   String get multiSelectLanguageLabel {
