@@ -22,7 +22,8 @@ Future main(List<String> args) async {
 
   try {
     // Start pub server.
-    server = await Process.start("pub", ["serve", "--port", "$pubPort"]);
+    server = await Process.start("pub",
+        ["run", "build_runner", "serve", "--assume-tty", "web:$pubPort"]);
     server.stderr.listen((data) => stderr.add(data));
 
     // Start chromedriver.
