@@ -3,25 +3,11 @@ description: An example app using the angular_components package.
 environment:
   sdk: '>=2.0.0-dev.3.0 <2.0.0'
 dependencies:
-  angular: 5.0.0-alpha+4
-  angular_components: 0.9.0-alpha+3
-  angular_forms: 1.0.1-alpha+4
-  browser: ^0.10.0
-  dart_to_js_script_rewriter: ^1.0.1
-  sass_builder: ^1.1.2
+  angular: 5.0.0-alpha+5
+  angular_components: 0.9.0-alpha+4
+  angular_forms: 1.0.1-alpha+5
 dev_dependencies:
+  build_runner: ^0.7.8
+  build_web_compilers: ^0.2.1
+  sass_builder: ^1.1.2
   webdriver: ^1.2.1
-  build_runner: ^0.7.0
-  build_web_compilers: ^0.2.0
-dependency_overrides:
-  # Necessary with angular: 5.0.0-alpha+1 dependency.
-  analyzer: ^0.31.0-alpha.1
-transformers:
-# build_runner users will not need these transformers and can skip the
-# compilation when running pub get by using the --no-precompile flag.
-- sass_builder
-- angular:
-    entry_points: web/main.dart
-- $dart2js:
-    commandLineOptions: [--trust-type-annotations, --trust-primitives, --show-package-warnings, --dump-info]
-- dart_to_js_script_rewriter
