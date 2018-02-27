@@ -124,7 +124,7 @@ class MaterialSelectDemoComponent {
 // Specifying an itemRenderer avoids the selected item from knowing how to
 // display itself.
   static final ItemRenderer<Language> _itemRenderer =
-      new CachingItemRenderer<Language>(
+      newCachingItemRenderer<Language>(
           (language) => "${language.label} (${language.code})");
 
   bool useFactoryRenderer = false;
