@@ -10,3 +10,7 @@ targets:
           # List any dart2js specific args here, or omit it.
           dart2js_args:
           - --checked
+          - --fast-startup
+          - --minify
+          - --trust-type-annotations
+          - --trust-primitives
