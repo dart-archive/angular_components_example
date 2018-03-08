@@ -1,0 +1,33 @@
+import 'dart:html';
+
+import 'package:angular/angular.dart';
+import 'package:angular_router/angular_router.dart';
+import 'package:logging/logging.dart';
+import 'package:angular_components/laminate/popup/module.dart';
+import 'package:angular_components/laminate/overlay/module.dart';
+//import 'package:angular_components/material_datepicker/module.dart';
+import '{{{ galleryImportUri }}}';
+
+import 'main.template.dart' as ng;
+
+Logger _logger = new Logger("ads.acx2.demo");
+
+void main() {
+  Logger.root.onRecord.listen((x) => print("${x.level}: ${x.message}"));
+
+  // Start angular.
+  final module = <dynamic>[
+    popupBindings,
+    //datepickerBindings,
+    routerProviders,
+    const Provider(APP_BASE_HREF, useValue: '/'),
+    provide(LocationStrategy, useClass: HashLocationStrategy),
+    const Provider(overlayContainerParent, useFactory: materialContentElement),
+  ];
+  bootstrapStatic(GalleryComponent, module, ng.initReflector);
+}
+
+@Injectable()
+HtmlElement materialContentElement(Document document) {
+  return document.querySelector('material-content');
+}

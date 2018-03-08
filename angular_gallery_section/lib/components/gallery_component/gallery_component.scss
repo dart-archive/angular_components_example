@@ -1,0 +1,74 @@
+// Copyright (c) 2016, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+@import 'package:angular_components/css/material/material';
+
+$horizontal-padding: $mat-grid * 6;
+
+:host {
+  display: block;
+  position: relative;
+  padding: 0 $horizontal-padding ($mat-grid * 10);
+}
+
+.metadata {
+  display: flex;
+  justify-content: space-between;
+  background: $mat-grey-100;
+  margin: 0 (-$horizontal-padding) ($mat-grid * 5);
+  line-height: $mat-grid * 6;
+  max-height: $mat-grid * 6;
+  padding: 0 $horizontal-padding;
+
+  .owners {
+    margin-left: $mat-grid * 3;
+  }
+}
+
+.toc {
+  border-left: $mat-grid-type solid $mat-blue;
+  padding-left: $mat-grid-type * 5;
+  list-style: none;
+  margin: 0 0 $mat-grid * 4;
+
+  li {
+    font-size: 14px;
+    color: $mat-lighter-transparent-black;
+    line-height: $mat-grid * 4;
+
+    a {
+      font-size: 18px;
+    }
+  }
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: normal;
+  border-top: 1px solid $mat-border-light;
+  margin: ($mat-grid * 6) 0 ($mat-grid * 4);
+  padding-top: $mat-grid * 4;
+  color: $mat-blue;
+
+  a {
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 0 ($mat-grid-type * 3);
+  }
+}
+
+section:only-of-type h2 {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+a {
+  color: $mat-blue;
+  text-decoration: none;
+  cursor: pointer;
+}

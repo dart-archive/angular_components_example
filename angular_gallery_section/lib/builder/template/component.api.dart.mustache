@@ -1,0 +1,51 @@
+import 'package:angular/angular.dart';
+import 'package:angular_gallery_section/components/gallery_component/gallery_component.dart';
+import 'package:angular_gallery_section/components/gallery_component/gallery_info.dart';
+
+// Import each demonstration script.
+{{#demoImports}}
+import '{{{dartImport}}}';
+{{/demoImports}}
+
+@Component(
+    selector: '{{selector}}-api',
+    template: '<gallery-component [model]="model"></gallery-component>',
+    directives: const [GalleryComponent])
+class {{component}}Api {
+
+  GalleryInfo model = new GalleryInfo(
+      docs: [
+        {{#docs}}
+          new Doc('{{name}}', '{{selector}}', '{{path}}', r"""{{comment}}"""),
+        {{/docs}}
+      ],
+      demos: [
+        {{#demos}}
+          new Demo({{className}}, '{{className}}', '{{examplePath}}'),
+        {{/demos}}
+      ],
+      benchmarks: [
+        {{#benchmarks}}
+          new Benchmark(
+              '{{suite}}',
+              '{{test}}',
+              '{{benchmarkKey}}',
+              [{{#metricValueKeys}} '{{.}}', {{/metricValueKeys}}]),
+        {{/benchmarks}}
+      ],
+      owners: [
+        {{#owners}}
+          '{{.}}',
+        {{/owners}}
+      ],
+      uxOwners: [
+        {{#uxOwners}}
+          '{{.}}',
+        {{/uxOwners}}
+      ],
+      relatedUrls: {
+        {{#relatedUrls}}
+          '{{key}}': '{{value}}',
+        {{/relatedUrls}}
+      });
+}
