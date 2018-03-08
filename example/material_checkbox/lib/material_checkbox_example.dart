@@ -36,6 +36,7 @@ class MaterialCheckboxGalleryConfig {}
   styleUrls: const ['material_checkbox_example.scss.css'],
   // TODO(google): Change to `Visibility.local` to reduce code size.
   visibility: Visibility.all,
+  preserveWhitespace: true,
 )
 class MaterialCheckboxExample {
   /// Todo list example

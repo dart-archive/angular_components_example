@@ -56,6 +56,7 @@ class MaterialTooltipExamples {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   // TODO(google): Change to `Visibility.local` to reduce code size.
   visibility: Visibility.all,
+  preserveWhitespace: true,
 )
 class MaterialTooltipExampleComponent {
   /// The following messages would come from `Intl.message`.

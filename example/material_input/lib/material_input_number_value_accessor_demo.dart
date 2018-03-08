@@ -19,6 +19,7 @@ import 'package:angular_components/material_input/material_number_accessor.dart'
   templateUrl: 'material_input_number_value_accessor_demo.html',
   // TODO(google): Change to `Visibility.local` to reduce code size.
   visibility: Visibility.all,
+  preserveWhitespace: true,
 )
 class MaterialInputNumberValueAccessorDemoComponent {
   num value = 123;

@@ -12,5 +12,6 @@ import 'package:angular_components/material_input/material_input.dart';
   directives: const [materialInputDirectives],
   // TODO(google): Change to `Visibility.local` to reduce code size.
   visibility: Visibility.all,
+  preserveWhitespace: true,
 )
 class MaterialInputMixinDemoComponent {}

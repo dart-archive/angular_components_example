@@ -50,6 +50,7 @@ import 'material_dropdown_select_demo.template.dart' as demo;
   styleUrls: const ['material_dropdown_select_demo.scss.css'],
   // TODO(google): Change to `Visibility.local` to reduce code size.
   visibility: Visibility.all,
+  preserveWhitespace: true,
 )
 class MaterialDropdownSelectDemoComponent {
   static const List<Language> _languagesList = const <Language>[

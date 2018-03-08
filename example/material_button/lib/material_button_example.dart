@@ -33,6 +33,7 @@ class MaterialButtonGalleryConfig {}
   styleUrls: const ['material_button_example.scss.css'],
   // TODO(google): Change to `Visibility.local` to reduce code size.
   visibility: Visibility.all,
+  preserveWhitespace: true,
 )
 class MaterialButtonExample {
   String content = 'click me';

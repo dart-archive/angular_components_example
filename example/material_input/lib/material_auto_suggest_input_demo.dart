@@ -77,6 +77,7 @@ List<OptionGroup<List<int>>> _optionGroups = <OptionGroup<List<int>>>[
   styleUrls: const ['material_auto_suggest_input_demo.scss.css'],
   // TODO(google): Change to `Visibility.local` to reduce code size.
   visibility: Visibility.all,
+  preserveWhitespace: true,
 )
 class MaterialAutoSuggestInputDemoComponent {
   static const _popupPositionsAboveInput = const [

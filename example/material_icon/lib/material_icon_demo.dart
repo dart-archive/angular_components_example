@@ -32,6 +32,7 @@ class GlyphGalleryConfig {}
   styleUrls: const ['material_icon_demo.scss.css'],
   // TODO(google): Change to `Visibility.local` to reduce code size.
   visibility: Visibility.all,
+  preserveWhitespace: true,
 )
 class MaterialIconDemoComponent {
   Icon iconModel = done;
