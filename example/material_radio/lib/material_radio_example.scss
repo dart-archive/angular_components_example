@@ -1,0 +1,46 @@
+// Copyright (c) 2016, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+@import 'package:angular_components/css/material/material';
+
+:host {
+  font-family: Roboto,"Helvetica Neue",Arial,Helvetica,sans-serif;
+}
+
+.debug-info {
+  background: $mat-grey-200;
+}
+
+.radio-per-line {
+  display: flex;
+}
+
+.positioned-radio-group {
+  .divider {
+    border: 0;
+    border-top: 1px solid $mat-grey-400;
+    margin: 1em 0;
+  }
+
+  material-radio {
+    &.top {
+      align-items: flex-start;
+    }
+
+    &.middle {
+      align-items: center;
+    }
+
+    &.bottom {
+      align-items: flex-end;
+    }
+  }
+}
+
+.custom-size {
+  background-color: $mat-grey-500;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+}

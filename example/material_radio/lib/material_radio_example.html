@@ -1,0 +1,120 @@
+<!--
+ Copyright (c) 2016, the Dart project authors.  Please see the AUTHORS file
+ for details. All rights reserved. Use of this source code is governed by a
+ BSD-style license that can be found in the LICENSE file.
+-->
+<section>
+    <h1>Without a group</h1>
+    <material-radio [(checked)]="custom">
+        <div class="custom">
+            Other <a href="http://google.com" target="_blank">more info</a>
+            <material-icon icon="help" class="helpIcon"></material-icon><br/>
+            <textarea cols="40" rows="2"></textarea>
+        </div>
+    </material-radio><br>
+    <material-radio [(ngModel)]="unselected">selectable</material-radio><br>
+    <material-radio [(ngModel)]="preselected">pre-selected</material-radio><br>
+    <material-radio [disabled]="true" [(checked)]="impossible">not selectable
+    </material-radio><br>
+    <material-radio [disabled]="true" [(checked)]="always">not unselectable
+    </material-radio><br>
+    <material-radio class="radio-no-left-margin">without left margin</material-radio>
+    <div class="debug-info">
+        unlabeled = {{custom}}<br/>
+        selectable = {{unselected}}<br/>
+        pre-selected = {{preselected}}<br/>
+        impossible = {{impossible}}<br/>
+        always = {{always}}<br/>
+    </div>
+</section>
+<section>
+    <h1>Group without preselection</h1>
+    <p><em>with custom style: no ripple on click, vertical list via `display: flex`</em></p>
+    <material-radio-group [selectionModel]="ex1SelectionModel">
+        <material-radio *ngFor="let option of ex1Options"
+                        class="radio-per-line"
+                        [(checked)]="option.selected"
+                        [value]="option.label" no-ink>{{option.label}}
+        </material-radio><br>
+    </material-radio-group><br>
+    <div class="debug-info">
+        selected: {{ex1SelectedValue}}<br>
+    </div>
+</section>
+<section>
+    <h1>Group with preselection</h1>
+    <p><em>using ng-model at group level</em></p>
+    <material-radio-group [(ngModel)]="selected">
+        <material-radio *ngFor="let option of ex2Options"
+                        [disabled]="option.disabled"
+                        [value]="option">{{option.label}}
+        </material-radio>
+    </material-radio-group><br>
+    <div class="debug-info">
+        selected: {{ex2SelectedValue}}<br>
+    </div>
+</section>
+<section>
+    <h1>Radio button positioning</h1>
+    <material-radio-group class="positioned-radio-group">
+        <material-radio class="top">
+            This is a radio button<br>
+            that is positioned at the top<br>
+            relative to the content.<br>
+            <br>
+            <br>
+            <br>
+            <br>
+            Empty lines...
+        </material-radio>
+        <hr class="divider">
+        <material-radio class="middle">
+            This is a radio button<br>
+            that is positioned at the middle<br>
+            relative to the content.<br>
+            <br>
+            <br>
+            <br>
+            <br>
+            Empty lines...
+        </material-radio>
+        <hr class="divider">
+        <material-radio class="bottom">
+            This is a radio button<br>
+            that is positioned at the bottom<br>
+            relative to the content.<br>
+            <br>
+            <br>
+            <br>
+            <br>
+            Empty lines...
+        </material-radio><br>
+        <hr class="divider">
+        <material-radio>
+            [DEFAULT] This is <span class="custom-size"></span> a radio button<br>
+            that is positioned at the baseline.<br>
+            The radio aligns with the first line of text despite the large grey box.<br>
+            <br>
+            <br>
+            <br>
+            <br>
+            Empty lines...
+        </material-radio>
+    </material-radio-group>
+</section>
+
+<section>
+    <h1>Removes left margin</h1>
+    <p><em>using CSS class</em></p>
+    <material-radio-group class="no-left-margin">
+      <material-radio>
+            option A
+        </material-radio>
+        <material-radio>
+            option B
+        </material-radio>
+    </material-radio-group><br>
+    <div class="debug-info">
+        selected: {{ex2SelectedValue}}<br>
+    </div>
+</section>

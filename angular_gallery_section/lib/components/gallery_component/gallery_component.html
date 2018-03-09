@@ -1,0 +1,106 @@
+<!--
+ Copyright (c) 2016, the Dart project authors.  Please see the AUTHORS file
+ for details. All rights reserved. Use of this source code is governed by a
+ BSD-style license that can be found in the LICENSE file.
+-->
+<div class="metadata">
+  <span>
+    <template [ngIf]="model.relatedUrls.isNotEmpty">
+      References:&nbsp;
+    </template>
+    <span *ngFor="let name of model.relatedUrls.keys; let last = last">
+      <a class="related-url"
+          [href]="model.relatedUrls[name]"
+          target="_blank">
+        {{name}}
+      </a>
+      <template [ngIf]="!last">,&nbsp;</template>
+    </span>
+  </span>
+  <span>
+    <span class="owners" *ngIf="model.owners.isNotEmpty">
+      Owners:&nbsp;
+      <span *ngFor="let ldap of model.owners; let last = last">
+        <a class="owner"
+            [href]="getTeamsLink(ldap)"
+            target="_blank">
+        {{ldap}}@
+      </a>
+      <template [ngIf]="!last">,&nbsp;</template>
+      </span>
+    </span>
+    <span class="owners" *ngIf="model.uxOwners.isNotEmpty">
+      UX:&nbsp;
+     <span *ngFor="let ldap of model.uxOwners; let last = last">
+        <a class="ux-owner"
+            [href]="getTeamsLink(ldap)"
+            target="_blank">
+        {{ldap}}@
+      </a>
+      <template [ngIf]="!last">,&nbsp;</template>
+      </span>
+     </span>
+  </span>
+</div>
+
+<ul *ngIf="showToc" class="toc">
+  <template [ngIf]="model.docs.isNotEmpty">
+    <li>Dart Docs</li>
+    <li *ngFor="let doc of model.docs">
+      <a buttonDecorator (trigger)="scroll('#' + getDocId(doc))">
+        {{doc.name}}
+      </a>
+    </li>
+  </template>
+  <template [ngIf]="model.demos.isNotEmpty">
+    <li>Demos</li>
+    <li *ngFor="let demo of model.demos">
+      <a buttonDecorator (trigger)="scroll('#' + getDemoId(demo))">
+        {{demo.name}}
+      </a>
+    </li>
+  </template>
+  <template [ngIf]="model.benchmarks.isNotEmpty">
+    <li>Latency</li>
+    <li>
+      <a buttonDecorator (trigger)="scroll('#latency')">
+        Latency Charts
+      </a>
+    </li>
+  </template>
+</ul>
+
+<section *ngFor="let doc of model.docs" class="doc">
+  <h2 [id]="getDocId(doc)">
+    {{doc.name}}
+    <span>
+      <a [href]="getCodeSearchLink(doc.path)" target="_blank">Source Code</a>
+    </span>
+  </h2>
+  <div class="comment">
+    <p>
+      <strong>Selector:&nbsp;</strong>
+      <code>&lt;{{doc.selector}}&gt;</code>
+    </p>
+    <div [safeInnerHtml]="getSafeHtml(doc.comment)"></div>
+  </div>
+</section>
+
+<section *ngFor="let demo of model.demos" class="demo">
+  <h2 [id]="getDemoId(demo)">
+    {{demo.name}}
+    <a [href]="getCodeSearchLink(demo.path)" target="_blank">Source Code</a>
+  </h2>
+  <dynamic-component [componentType]="demo.type"></dynamic-component>
+</section>
+
+<section *ngIf="model.benchmarks.isNotEmpty" class="latency-chart">
+  <h2 id="latency">
+    Latency Charts
+  </h2>
+  <latency-chart
+      *ngFor="let benchmark of model.benchmarks"
+      benchmarkKey="{{benchmark.benchmarkKey}}"
+      [metricValueKeys]="benchmark.metricValueKeys">
+  </latency-chart>
+</section>

@@ -1,0 +1,61 @@
+name: angular_components_example
+version: 0.0.1-dev
+description:
+homepage:
+
+author: Dart Team <misc@dartlang.org>
+environment:
+  sdk: '>=2.0.0-dev.3.0 <2.0.0'
+
+dependencies:
+  angular: 5.0.0-alpha+7
+  angular_components: 0.9.0-alpha+7
+  angular_gallery:
+    path: ../../angular_gallery
+  app_layout_example:
+    path: ../app_layout
+  build_config: ^0.2.4
+  material_button_example:
+    path: ../material_button
+  material_checkbox_example:
+    path: ../material_checkbox
+  material_chips_example:
+    path: ../material_chips
+  material_dialog_example:
+    path: ../material_dialog
+  material_expansionpanel_example:
+    path: ../material_expansionpanel
+  material_icon_example:
+    path: ../material_icon
+  material_input_example:
+    path: ../material_input
+  material_list_example:
+    path: ../material_list
+  material_menu_example:
+    path: ../material_menu
+  material_popup_example:
+    path: ../material_popup
+  material_progress_example:
+    path: ../material_progress
+  material_radio_example:
+    path: ../material_radio
+  material_select_example:
+    path: ../material_select
+  material_spinner_example:
+    path: ../material_spinner
+  material_tab_example:
+    path: ../material_tab
+  material_toggle_example:
+    path: ../material_toggle
+  material_tooltip_example:
+    path: ../material_tooltip
+  material_tree_example:
+    path: ../material_tree
+  material_yes_no_buttons_example:
+    path: ../material_yes_no_buttons
+  scorecard_example:
+    path: ../scorecard
+
+dev_dependencies:
+  build_runner: ^0.7.13
+  build_web_compilers: ^0.3.3
