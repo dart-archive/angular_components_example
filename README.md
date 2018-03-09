@@ -44,19 +44,22 @@ Run a local development server with a file watcher and incremental rebuilds:
 pub run build_runner serve web
 ```
 
-__Known Issues:__ 
+__Known Issues:__
 
 When building and viewing the gallery these issues are expected at this time:
-   
+
  * Build Warnings:
-   
+
    `Generator does not support multiple @GallerySectionConfig annotations in a
    single lib directory.`
- 
+
  * Runtime Warning:
-   
-   `SEVERE: OverlayService must be a singleton: Check that there is no nested 
-   overlayBindings or popupBindings`  
+
+   `SEVERE: OverlayService must be a singleton: Check that there is no nested
+   overlayBindings or popupBindings`
+
+ * Loading of deferred libraries are not yet supported when compiling with
+   _dart2js_ and _build_runner_.
 
 [build_runner]: https://pub.dartlang.org/packages/build_runner
 [build]: https://pub.dartlang.org/packages/build
