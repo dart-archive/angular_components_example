@@ -58,8 +58,8 @@ When building and viewing the gallery these issues are expected at this time:
    `SEVERE: OverlayService must be a singleton: Check that there is no nested
    overlayBindings or popupBindings`
 
- * Loading of deferred libraries are not yet supported when compiling with
-   _dart2js_ and _build_runner_.
+ * Loading deferred libraries is not yet supported when _dart2js_ is configured
+   as the _build_web_compiler_.
 
 [build_runner]: https://pub.dartlang.org/packages/build_runner
 [build]: https://pub.dartlang.org/packages/build
