@@ -13,48 +13,48 @@ dependencies:
   angular_gallery:
     path: ../../angular_gallery
   app_layout_example:
-    path: ../app_layout
+    path: ../app_layout_example
   build_config: ^0.2.4
   material_button_example:
-    path: ../material_button
+    path: ../material_button_example
   material_checkbox_example:
-    path: ../material_checkbox
+    path: ../material_checkbox_example
   material_chips_example:
-    path: ../material_chips
+    path: ../material_chips_example
   material_dialog_example:
-    path: ../material_dialog
+    path: ../material_dialog_example
   material_expansionpanel_example:
-    path: ../material_expansionpanel
+    path: ../material_expansionpanel_example
   material_icon_example:
-    path: ../material_icon
+    path: ../material_icon_example
   material_input_example:
-    path: ../material_input
+    path: ../material_input_example
   material_list_example:
-    path: ../material_list
+    path: ../material_list_example
   material_menu_example:
-    path: ../material_menu
+    path: ../material_menu_example
   material_popup_example:
-    path: ../material_popup
+    path: ../material_popup_example
   material_progress_example:
-    path: ../material_progress
+    path: ../material_progress_example
   material_radio_example:
-    path: ../material_radio
+    path: ../material_radio_example
   material_select_example:
-    path: ../material_select
+    path: ../material_select_example
   material_spinner_example:
-    path: ../material_spinner
+    path: ../material_spinner_example
   material_tab_example:
-    path: ../material_tab
+    path: ../material_tab_example
   material_toggle_example:
-    path: ../material_toggle
+    path: ../material_toggle_example
   material_tooltip_example:
-    path: ../material_tooltip
+    path: ../material_tooltip_example
   material_tree_example:
-    path: ../material_tree
+    path: ../material_tree_example
   material_yes_no_buttons_example:
-    path: ../material_yes_no_buttons
+    path: ../material_yes_no_buttons_example
   scorecard_example:
-    path: ../scorecard
+    path: ../scorecard_example
 
 dev_dependencies:
   build_runner: ^0.7.13
