@@ -65,10 +65,18 @@ class GalleryComponent {
   /// Reformats a library path name to a link path that can be used by
   /// CodeSearch.
   String getCodeSearchLink(String componentPath) {
-    final repo = componentPath.contains('example')
-        ? 'https://github.com/dart-lang/angular_components_example/blob/master'
-        : 'https://github.com/dart-lang/angular_components/blob/master';
-    final path = componentPath.substring(componentPath.indexOf('/'));
+    String repo;
+    String path;
+
+    if (componentPath.contains('example')) {
+      repo = 'https://github.com/dart-lang/angular_components_example/blob/'
+          'master/example/';
+      path = componentPath;
+    } else {
+      repo =
+          'https://github.com/dart-lang/angular_components/blob/master';
+      path = componentPath.substring(componentPath.indexOf('/'));
+    }
     return '$repo$path';
   }
 }
