@@ -180,6 +180,19 @@
                            name="Dense theme with buttons">
     This panel uses the Dense theme mixin.
   </material-expansionpanel>
+
+<material-expansionpanel
+    [alwaysHideExpandIcon]="true"
+    [hideExpandedHeader]="true"
+    name="Ordinary panel">
+  <div action class="action">
+    <material-button>
+      Additional Action
+    </material-button>
+  </div>
+  This is an ordinary panel with additional header content. Additional header content
+  does not trigger collapse.
+</material-expansionpanel>
 </section>
 
 <modal [visible]="showConfirmation">

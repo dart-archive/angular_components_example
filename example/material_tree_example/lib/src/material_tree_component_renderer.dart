@@ -15,8 +15,6 @@ import 'package:angular_components/model/ui/has_renderer.dart';
     ''',
   styles: const [':host {display: inline-block;}'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class ComponentRendererExample implements RendersValue<String> {
   @override

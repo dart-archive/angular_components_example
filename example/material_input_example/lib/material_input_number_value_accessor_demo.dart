@@ -17,8 +17,6 @@ import 'package:angular_components/material_input/material_number_accessor.dart'
     materialNumberInputDirectives,
   ],
   templateUrl: 'material_input_number_value_accessor_demo.html',
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
   preserveWhitespace: true,
 )
 class MaterialInputNumberValueAccessorDemoComponent {
@@ -42,15 +40,14 @@ class MaterialInputNumberValueAccessorDemoComponent {
   }
 }
 
-NumberFormat createNumberFormat() =>
-    new NumberFormat.decimalPattern()..maximumFractionDigits = 4;
-
 @Directive(
   selector: '[fourDecimals]',
   providers: const [
-    const Provider(NumberFormat, useFactory: createNumberFormat)
+    const FactoryProvider<NumberFormat>(
+        NumberFormat, FourDecimalsNumberFormat.createNumberFormat)
   ],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
-class FourDecimalsNumberFormat {}
+class FourDecimalsNumberFormat {
+  static NumberFormat createNumberFormat() =>
+      new NumberFormat.decimalPattern()..maximumFractionDigits = 4;
+}

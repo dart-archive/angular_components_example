@@ -31,8 +31,6 @@ import 'package:angular_components/utils/disposer/disposer.dart';
   ],
   templateUrl: 'material_menu_demo.html',
   styleUrls: const ['material_menu_demo.scss.css'],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialMenuDemoComponent implements OnDestroy {
   /// Stores the selected color, in an observable manner.

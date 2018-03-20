@@ -45,8 +45,6 @@ import 'package:angular_components/model/selection/selection_options.dart';
   changeDetection: ChangeDetectionStrategy.OnPush,
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialTreeNestedSingleDemoComponent {
   final SelectionOptions nestedOptions = data.nestedOptions;

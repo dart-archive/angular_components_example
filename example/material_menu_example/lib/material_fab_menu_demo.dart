@@ -11,8 +11,6 @@ import 'package:angular_components/model/ui/icon.dart';
   selector: 'material-fab-menu-demo',
   directives: const [MaterialFabMenuComponent],
   templateUrl: 'material_fab_menu_demo.html',
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialFabMenuDemoComponent {
   final MenuItem menuItem = new MenuItem('your label',

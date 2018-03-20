@@ -10,7 +10,5 @@ import 'package:angular_components/material_icon/material_icon.dart';
   selector: 'buttons',
   templateUrl: 'buttons.html',
   directives: const [MaterialButtonComponent, MaterialIconComponent],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class ButtonsExampleComponent {}

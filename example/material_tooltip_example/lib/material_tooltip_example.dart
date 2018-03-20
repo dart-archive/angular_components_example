@@ -54,8 +54,6 @@ class MaterialTooltipExamples {}
   templateUrl: 'material_tooltip_example.html',
   styleUrls: const ['material_tooltip_example.scss.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
   preserveWhitespace: true,
 )
 class MaterialTooltipExampleComponent {

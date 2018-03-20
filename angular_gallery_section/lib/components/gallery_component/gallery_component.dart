@@ -73,8 +73,7 @@ class GalleryComponent {
           'master/example/';
       path = componentPath;
     } else {
-      repo =
-          'https://github.com/dart-lang/angular_components/blob/master';
+      repo = 'https://github.com/dart-lang/angular_components/blob/master';
       path = componentPath.substring(componentPath.indexOf('/'));
     }
     return '$repo$path';

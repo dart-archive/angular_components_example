@@ -18,7 +18,5 @@ class MaterialProgressExamples {}
   templateUrl: 'material_progress_demo.html',
   styleUrls: const ['material_progress_demo.scss.css'],
   directives: const [MaterialProgressComponent],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialProgressDemoComponent {}

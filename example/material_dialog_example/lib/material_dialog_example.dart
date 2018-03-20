@@ -36,8 +36,6 @@ class MaterialDialogGalleryConfig {}
   ],
   templateUrl: 'material_dialog_example.html',
   styleUrls: const ['material_dialog_example.scss.css'],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialDialogExample {
   bool showBasicDialog = false;

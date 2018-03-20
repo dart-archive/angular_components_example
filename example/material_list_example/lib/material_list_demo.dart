@@ -24,8 +24,6 @@ import 'package:angular_components/model/selection/selection_model.dart';
   ],
   templateUrl: 'material_list_demo.html',
   styleUrls: const ['material_list_demo.scss.css'],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialListDemoComponent {
   SelectionModel<String> colorSelection = new SelectionModel.withList();

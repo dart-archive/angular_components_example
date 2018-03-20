@@ -18,7 +18,5 @@ class MaterialSpinnerGalleryConfig {}
   directives: const [MaterialSpinnerComponent],
   templateUrl: 'material_spinner_example.html',
   styleUrls: const ['material_spinner_example.scss.css'],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialSpinnerExample {}

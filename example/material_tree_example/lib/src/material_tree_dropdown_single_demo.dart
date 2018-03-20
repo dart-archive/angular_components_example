@@ -26,8 +26,6 @@ import 'package:angular_components/model/selection/selection_options.dart';
     ''',
   styleUrls: const ['material_shadow.scss.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialTreeDropdownSingleDemoComponent {
   final SelectionOptions nestedOptions = data.nestedOptions;

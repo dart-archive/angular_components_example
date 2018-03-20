@@ -32,8 +32,6 @@ typedef String ValidityCheck(String inputText);
   providers: const [
     const Provider(NG_VALIDATORS, useExisting: TextValidator, multi: true)
   ],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class TextValidator {
   @Input('textValidator')
@@ -78,8 +76,6 @@ int countIgnoringAdCustomizers(String inputText) {
     NgIf,
     TextValidator,
   ],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
   preserveWhitespace: true,
 )
 class MaterialInputDemoComponent {

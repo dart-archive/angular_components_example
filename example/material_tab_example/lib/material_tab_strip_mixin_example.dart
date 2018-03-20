@@ -20,8 +20,6 @@ import 'package:angular_components/utils/browser/window/module.dart';
   ],
   templateUrl: 'material_tab_strip_mixin_example.html',
   styleUrls: const ['material_tab_strip_mixin_example.scss.css'],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialTabStripMixinExample {
   final tabLabels = const <String>[

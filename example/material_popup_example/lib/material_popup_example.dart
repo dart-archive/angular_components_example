@@ -48,8 +48,6 @@ class MaterialPopupDemoComponent {}
   templateUrl: 'material_popup_example.html',
   styleUrls: const ['material_popup_example.scss.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialPopupExample {
   // Keep track of each popup's visibility separately.
@@ -105,8 +103,6 @@ PopupSizeProvider createPopupSizeProvider() {
   providers: const [
     const Provider(PopupSizeProvider, useFactory: createPopupSizeProvider)
   ],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class DefaultPopupSizeProvider {}
 

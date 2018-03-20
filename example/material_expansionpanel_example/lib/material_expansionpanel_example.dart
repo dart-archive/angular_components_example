@@ -51,8 +51,6 @@ class MaterialExpansionPanelGalleryConfig {}
   ],
   styleUrls: const ['material_expansionpanel_example.scss.css'],
   templateUrl: 'material_expansionpanel_example.html',
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
   preserveWhitespace: true,
 )
 class MaterialExpansionDemo {
