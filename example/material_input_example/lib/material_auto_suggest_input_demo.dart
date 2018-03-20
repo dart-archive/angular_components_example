@@ -75,8 +75,6 @@ List<OptionGroup<List<int>>> _optionGroups = <OptionGroup<List<int>>>[
   ],
   templateUrl: 'material_auto_suggest_input_demo.html',
   styleUrls: const ['material_auto_suggest_input_demo.scss.css'],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
   preserveWhitespace: true,
 )
 class MaterialAutoSuggestInputDemoComponent {
@@ -168,8 +166,6 @@ class MaterialAutoSuggestInputDemoComponent {
     ''',
   styles: const ['material-icon { margin-right: 8px; }'],
   directives: const [MaterialIconComponent],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class ExampleRendererComponent implements RendersValue {
   String displayValue = '';
@@ -193,8 +189,6 @@ class ExampleRendererComponent implements RendersValue {
     'span { color: #9e9e9e; font-size: 12px;} material-icon {margin: 0 8px;}'
   ],
   directives: const [MaterialIconComponent],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class ExampleLabelRendererComponent implements RendersValue {
   String displayValue = '';

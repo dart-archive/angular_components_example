@@ -10,8 +10,6 @@ import 'package:angular_components/material_input/material_input.dart';
   templateUrl: 'material_input_mixins.html',
   styleUrls: const ['material_input_mixins.scss.css'],
   directives: const [materialInputDirectives],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
   preserveWhitespace: true,
 )
 class MaterialInputMixinDemoComponent {}

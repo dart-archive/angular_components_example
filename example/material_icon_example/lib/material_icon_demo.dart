@@ -30,8 +30,6 @@ class GlyphGalleryConfig {}
   exports: const [done, doneAll, doneOutline],
   templateUrl: 'material_icon_demo.html',
   styleUrls: const ['material_icon_demo.scss.css'],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
   preserveWhitespace: true,
 )
 class MaterialIconDemoComponent {

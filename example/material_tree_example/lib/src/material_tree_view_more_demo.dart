@@ -51,8 +51,6 @@ import 'package:angular_components/model/selection/selection_options.dart';
   styleUrls: const ['material_shadow.scss.css'],
   // Preserve the <pre> format.
   preserveWhitespace: true,
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialTreeViewMoreDemoComponent {
   final SelectionOptions nestedOptions = data.nestedOptionsVariation;
@@ -78,7 +76,5 @@ class ExpandFirstRootRenderingOptions extends MaterialTreeRenderingOptions {
     const Provider(MaterialTreeRenderingOptions,
         useClass: ExpandFirstRootRenderingOptions),
   ],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class ViewMoreDemoRenderingOptions {}

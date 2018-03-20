@@ -16,8 +16,6 @@ import 'package:angular_components/material_input/material_percent_directive.dar
     MaterialPercentInputDirective,
     NgFor
   ],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
   preserveWhitespace: true,
 )
 class MaterialPercentInputDemoComponent {

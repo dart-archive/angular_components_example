@@ -18,8 +18,6 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
   directives: const [MaterialToggleComponent, NgClass, NgFor],
   styleUrls: const ['material_toggle_example.scss.css'],
   templateUrl: 'material_toggle_example.html',
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialToggleExampleComponent {
   bool btEnabled = false;

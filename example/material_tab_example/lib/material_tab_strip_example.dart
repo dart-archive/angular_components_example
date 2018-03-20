@@ -23,8 +23,6 @@ import 'package:angular_components/utils/browser/window/module.dart';
     NgFor
   ],
   templateUrl: 'material_tab_strip_example.html',
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialTabStripExample {
   int tabIndex = 0;

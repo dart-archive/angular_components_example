@@ -29,8 +29,6 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
   ],
   templateUrl: 'material_radio_example.html',
   styleUrls: const ['material_radio_example.scss.css'],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialRadioExample {
   /// Example without a group

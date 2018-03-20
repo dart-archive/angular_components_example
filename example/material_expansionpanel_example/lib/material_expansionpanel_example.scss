@@ -20,6 +20,10 @@
   vertical-align: text-top;
 }
 
+.action {
+  padding: $mat-grid 0;
+}
+
 .flat-panels material-expansionpanel {
   width: $mat-grid * 40;
 }

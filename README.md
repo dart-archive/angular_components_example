@@ -44,6 +44,9 @@ Run a local development server with a file watcher and incremental rebuilds:
 pub run build_runner serve web
 ```
 
+Both of the __build__ and __serve__ commands will accept `--config release` to build 
+with dart2js instead of the the default dartdevc.
+
 __Known Issues:__
 
 When building and viewing the gallery these issues are expected at this time:
@@ -57,9 +60,6 @@ When building and viewing the gallery these issues are expected at this time:
 
    `SEVERE: OverlayService must be a singleton: Check that there is no nested
    overlayBindings or popupBindings`
-
- * Loading deferred libraries is not yet supported when _dart2js_ is configured
-   as the _build_web_compiler_.
 
 [build_runner]: https://pub.dartlang.org/packages/build_runner
 [build]: https://pub.dartlang.org/packages/build

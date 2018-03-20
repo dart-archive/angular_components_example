@@ -35,10 +35,9 @@ class MaterialChipsExamples {}
     MaterialButtonComponent,
     MaterialChipComponent,
     MaterialChipsComponent,
+    MaterialIconComponent,
     NgFor
   ],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialChipsDemoComponent {
   String chipText = 'My Text';

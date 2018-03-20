@@ -40,8 +40,6 @@ import 'package:angular_components/model/ui/has_renderer.dart';
     ''',
   styleUrls: const ['material_shadow.scss.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialTreeNestedComponentRenderingComponent {
   final SelectionOptions nestedOptions = data.nestedOptions;

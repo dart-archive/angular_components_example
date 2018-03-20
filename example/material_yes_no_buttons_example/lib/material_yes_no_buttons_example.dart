@@ -31,8 +31,6 @@ class MaterialYesNoButtonsGalleryConfig {}
   ],
   templateUrl: 'material_yes_no_buttons_example.html',
   styleUrls: const ['material_yes_no_buttons_example.scss.css'],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialYesNoButtonsExample {
   void alert(String msg) {

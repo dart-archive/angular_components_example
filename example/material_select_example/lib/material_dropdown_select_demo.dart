@@ -48,8 +48,6 @@ import 'material_dropdown_select_demo.template.dart' as demo;
   ],
   templateUrl: 'material_dropdown_select_demo.html',
   styleUrls: const ['material_dropdown_select_demo.scss.css'],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
   preserveWhitespace: true,
 )
 class MaterialDropdownSelectDemoComponent {
@@ -280,8 +278,6 @@ class Language implements HasUIDisplayName {
     ''',
   styles: const ['material-icon { margin-right: 8px; }'],
   directives: const [MaterialIconComponent],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class ExampleRendererComponent implements RendersValue<Language> {
   String displayName = '';
@@ -302,8 +298,6 @@ class ExampleRendererComponent implements RendersValue<Language> {
         'material-icon { margin-right: 8px}',
   ],
   directives: const [MaterialIconComponent],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class ExampleLabelRendererComponent implements RendersValue<OptionGroup> {
   String displayName = '';

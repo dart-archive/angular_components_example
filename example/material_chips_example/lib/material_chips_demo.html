@@ -10,7 +10,10 @@
     <material-chip>{{chipText}}</material-chip>
     <material-chip emphasis>With emphasis</material-chip>
     <material-chip [attr.emphasis]="true">With attr emphasis</material-chip>
-    <material-chip class="my-theme">With custom theme</material-chip>
+    <material-chip [hasLeftIcon]="true" class="my-theme">
+      <material-icon left-icon icon="add" size="large"></material-icon>
+      With custom theme
+    </material-chip>
     <material-chip [hasLeftIcon]="true">
       <material-icon left-icon icon="link" size="large"></material-icon>
       With left icon

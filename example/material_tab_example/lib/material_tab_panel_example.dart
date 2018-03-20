@@ -22,7 +22,5 @@ import 'package:angular_gallery_section/components/content/named_content.dart';
   ],
   templateUrl: 'material_tab_panel_example.html',
   styleUrls: const ['material_tab_panel_example.scss.css'],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialTabPanelExample {}

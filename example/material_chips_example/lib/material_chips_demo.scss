@@ -12,6 +12,8 @@ div.control-bar {
 @include material-chip-theme(
     $primary-bgcolor: $mat-red-500,
     $primary-bgcolor-hover: $mat-green-500,
+    $left-icon-color: $mat-white,
+    $left-icon-bgcolor: $mat-green-800,
     $chip-selector: '.my-theme'
 );
 

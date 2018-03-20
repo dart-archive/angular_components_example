@@ -5,7 +5,7 @@ import 'package:angular_router/angular_router.dart';
 import 'package:logging/logging.dart';
 import 'package:angular_components/laminate/popup/module.dart';
 import 'package:angular_components/laminate/overlay/module.dart';
-//import 'package:angular_components/material_datepicker/module.dart';
+import 'package:angular_components/material_datepicker/module.dart';
 import '{{{ galleryImportUri }}}';
 
 import 'main.template.dart' as ng;
@@ -18,9 +18,9 @@ void main() {
   // Start angular.
   final module = <dynamic>[
     popupBindings,
-    //datepickerBindings,
+    datepickerBindings,
     routerProviders,
-    const Provider(APP_BASE_HREF, useValue: '/'),
+    const Provider(appBaseHref, useValue: '/'),
     provide(LocationStrategy, useClass: HashLocationStrategy),
     const Provider(overlayContainerParent, useFactory: materialContentElement),
   ];

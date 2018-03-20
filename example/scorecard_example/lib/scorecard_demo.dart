@@ -35,8 +35,6 @@ class ScorecardGalleryConfig {}
   templateUrl: 'scorecard_demo.html',
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class ScorecardDemoComponent {
   final ScoreboardType selectable = ScoreboardType.selectable;

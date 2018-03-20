@@ -20,8 +20,6 @@ import 'package:angular_components/model/ui/display_name.dart';
   ],
   templateUrl: 'material_select_demo.html',
   styleUrls: const ['material_select_demo.scss.css'],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialSelectDemoComponent {
   final SelectionModel<String> defaultLanguageSelection =

@@ -25,8 +25,6 @@ import 'package:angular_components/material_toggle/material_toggle.dart';
     'app_layout_example.scss.css',
     'package:angular_components/app_layout/layout.scss.css',
   ],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class MaterialDrawerMobileExample {
   bool customWidth = false;
