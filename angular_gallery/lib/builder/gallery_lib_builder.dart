@@ -92,7 +92,7 @@ class GalleryLibBuilder extends Builder {
       if (!await buildStep.canRead(gallerySectionSummaryId)) continue;
 
       final summaries =
-          JSON.decode(await buildStep.readAsString(gallerySectionSummaryId));
+          jsonDecode(await buildStep.readAsString(gallerySectionSummaryId));
       examples.addAll(summaries.map((summary) => new Example(
           summary['displayName'],
           summary['dartImport'],
