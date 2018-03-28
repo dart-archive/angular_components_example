@@ -36,7 +36,7 @@ class GallerySectionSummaryBuilder extends Builder {
 
     final newAssetId =
         new AssetId(inputId.package, 'lib/gallery_section_summary.json');
-    buildStep.writeAsString(newAssetId, JSON.encode(summaries));
+    buildStep.writeAsString(newAssetId, jsonEncode(summaries));
   }
 
   @override
