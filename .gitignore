@@ -3,5 +3,7 @@
 .packages
 .pub/
 build/
+.idea
+pubspec.lock
 
 screenshot.png
