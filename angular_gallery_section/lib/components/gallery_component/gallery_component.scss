@@ -72,3 +72,21 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+
+// Styling for tables in the documetation. Applied to dartdoc comments and
+// suplimental markdown docs.
+.comment ::ng-deep table {
+  border-collapse: collapse;
+  margin: ($mat-grid * 2) 0;
+}
+
+.comment ::ng-deep th {
+  text-align: left;
+}
+
+.comment ::ng-deep th,
+.comment ::ng-deep td {
+  padding: ($mat-grid / 2) $mat-grid;
+  vertical-align: top;
+  border: 1px solid $mat-grey-400;
+}

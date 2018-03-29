@@ -114,6 +114,9 @@ class ConfigExtraction extends MetadataVisitor {
     }
   }
 
+  @override
+  Object visitSimpleStringLiteral(SimpleStringLiteral node) => node.value;
+
   /// Replace all characters that are not letters, numbers or spaces with an
   /// underscore.
   ///

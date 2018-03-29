@@ -10,6 +10,7 @@ import 'app_layout_example.dart';
 import 'mobile_app_layout_example.dart';
 
 @GallerySectionConfig(displayName: 'App Layout', docs: const [
+  'package:angular_components/app_layout/README.md',
   MaterialPersistentDrawerDirective,
   MaterialTemporaryDrawerComponent,
 ], demos: const [

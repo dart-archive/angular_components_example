@@ -78,7 +78,7 @@
     </span>
   </h2>
   <div class="comment">
-    <p>
+    <p *ngIf="doc.selector.isNotEmpty">
       <strong>Selector:&nbsp;</strong>
       <code>&lt;{{doc.selector}}&gt;</code>
     </p>

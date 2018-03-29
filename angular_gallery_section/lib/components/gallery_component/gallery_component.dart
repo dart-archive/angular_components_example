@@ -25,8 +25,6 @@ import 'package:angular_gallery_section/components/gallery_component/gallery_inf
   providers: const [popupBindings],
   templateUrl: 'gallery_component.html',
   styleUrls: const ['gallery_component.scss.css'],
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class GalleryComponent {
   /// The base model for the gallery that gathers all of the details needed by

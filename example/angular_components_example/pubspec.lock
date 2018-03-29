@@ -7,42 +7,44 @@ packages:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.31.2-alpha.0"
+    version: "0.31.2-alpha.1"
   angular:
     dependency: "direct main"
     description:
       name: angular
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.0-alpha+8"
+    version: "5.0.0-alpha+9"
   angular_ast:
     dependency: transitive
     description:
       name: angular_ast
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.4"
+    version: "0.5.0"
   angular_compiler:
     dependency: transitive
     description:
       name: angular_compiler
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.0-alpha+8"
+    version: "0.4.0-alpha+9"
   angular_components:
     dependency: "direct main"
     description:
-      name: angular_components
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.9.0-alpha+8"
+      path: "."
+      ref: github-sync
+      resolved-ref: dfbfb3c811f83a2a884e8bd64574390b274bf85b
+      url: "https://github.com/dart-lang/angular_components.git"
+    source: git
+    version: "0.9.0-alpha+9"
   angular_forms:
     dependency: transitive
     description:
       name: angular_forms
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0-alpha"
+    version: "2.0.0-alpha+1"
   angular_gallery:
     dependency: "direct main"
     description:
@@ -63,7 +65,7 @@ packages:
       name: angular_router
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0-alpha+8"
+    version: "2.0.0-alpha+9"
   app_layout_example:
     dependency: "direct main"
     description:
@@ -98,7 +100,7 @@ packages:
       name: barback
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.15.2+14"
+    version: "0.15.2+15"
   bazel_worker:
     dependency: transitive
     description:
@@ -147,7 +149,7 @@ packages:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.0"
+    version: "0.8.1"
   build_web_compilers:
     dependency: "direct dev"
     description:
@@ -161,14 +163,14 @@ packages:
       name: built_collection
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.5"
+    version: "3.1.1"
   built_value:
     dependency: transitive
     description:
       name: built_value
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.2.1"
+    version: "5.4.1"
   charcode:
     dependency: transitive
     description:
@@ -252,7 +254,7 @@ packages:
       name: front_end
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.0-alpha.10"
+    version: "0.1.0-alpha.11"
   glob:
     dependency: transitive
     description:
@@ -301,7 +303,7 @@ packages:
       name: intl
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.15.3"
+    version: "0.15.4"
   io:
     dependency: transitive
     description:
@@ -336,7 +338,7 @@ packages:
       name: kernel
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.0-alpha.10"
+    version: "0.3.0-alpha.11"
   logging:
     dependency: transitive
     description:
@@ -525,7 +527,7 @@ packages:
       name: observable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.22.0"
+    version: "0.22.1"
   package_config:
     dependency: transitive
     description:
@@ -581,7 +583,7 @@ packages:
       name: quiver
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.28.0"
+    version: "0.28.2"
   quiver_hashcode:
     dependency: transitive
     description:
@@ -595,7 +597,7 @@ packages:
       name: sass
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0-rc.1"
+    version: "1.1.1"
   sass_builder:
     dependency: transitive
     description:
@@ -630,7 +632,7 @@ packages:
       name: source_gen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.6"
+    version: "0.8.0"
   source_maps:
     dependency: transitive
     description:
@@ -665,7 +667,7 @@ packages:
       name: stream_transform
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.10"
+    version: "0.0.11"
   string_scanner:
     dependency: transitive
     description:

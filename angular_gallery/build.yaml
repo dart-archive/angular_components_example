@@ -16,4 +16,4 @@ builders:
       ".html": [".dart"],
       "$web$": ["index.html", "main.dart", "style.scss"]}
     auto_apply: dependents
-    runs_before: ["angular|angular", "angular_components|scss_builder"] 
+    runs_before: ["angular|angular", "angular_components|scss_builder"]
