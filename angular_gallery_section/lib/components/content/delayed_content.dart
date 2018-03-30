@@ -26,8 +26,6 @@ import 'package:angular_components/material_progress/material_progress.dart';
   directives: const [MaterialProgressComponent, NgIf],
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class DelayedContentComponent implements OnInit {
   bool resolved = true;

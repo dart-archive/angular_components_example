@@ -33,7 +33,9 @@ String g3docMarkdownToHtml(String markdown) {
     //                 j/c/g, jt/c/g links.
   ];
 
-  return markdownToHtml(markdown, inlineSyntaxes: inlineSyntaxes);
+  return markdownToHtml(markdown,
+      extensionSet: ExtensionSet.gitHubFlavored,
+      inlineSyntaxes: inlineSyntaxes);
 }
 
 // A substitution string for simple substitution.

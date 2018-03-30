@@ -11,10 +11,12 @@ class GallerySectionConfig {
   /// gallery's navigation menu.
   final String displayName;
 
-  /// A list of component classes to pull Dart doc comments from.
+  /// A list of resources to pull documentation from this can be dart documents
+  /// from classes or functions, or an asset id of markdown files.
   ///
-  /// Specify docs in the order that they should be displayed.
-  final List<dynamic /* Type | Function */ > docs;
+  /// Specify docs in the order that they should be displayed. Asset id must be
+  /// a String of the form 'package|path/to/asset.md'.
+  final List<dynamic /* Type | Function | String*/ > docs;
 
   /// A list of example component classes to include in the section.
   ///

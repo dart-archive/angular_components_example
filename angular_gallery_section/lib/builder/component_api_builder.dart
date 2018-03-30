@@ -6,6 +6,7 @@ import 'dart:async';
 
 import 'package:build/build.dart';
 import 'package:mustache/mustache.dart' show Template;
+import 'package:path/path.dart';
 import 'package:angular_gallery_section/config_extraction.dart';
 import 'package:angular_gallery_section/g3doc_markdown.dart';
 import 'package:angular_gallery_section/import_scanner.dart';
@@ -18,6 +19,7 @@ import 'package:angular_gallery_section/visitors/path_utils.dart' as paths;
 /// @GallerySectionConfig.
 class ComponentApiBuilder extends Builder {
   static const libPath = 'lib/';
+  final String _staticImageServer;
 
   static final List<String> _defaultMetrics = [
     'pureScriptTime',
@@ -27,6 +29,8 @@ class ComponentApiBuilder extends Builder {
   ];
   static final String _defaultPlatform = '_chrome-win7';
   static final String _defaultProject = 'acx_benchmarks_guitar';
+
+  ComponentApiBuilder(this._staticImageServer);
 
   @override
   Future build(BuildStep buildStep) async {
@@ -51,29 +55,54 @@ class ComponentApiBuilder extends Builder {
         '.dart': const ['.api.dart']
       };
 
-  // Search for classes that are to be documented, and add their docs to the
-  // mustache context.
+  // Search for assets and classes that are to be documented, and add their docs
+  // to the mustache context.
   //
   // To be used when [inputFile] contains an @GallerySectionConfig with a
   // 'docs:' parameter.
   Future<List<Map<String, dynamic>>> _findDocsMap(
-      BuildStep buildStep, List<String> docsClasses) async {
+      BuildStep buildStep, List<String> docs) async {
     final importScanner = new ImportScanner(buildStep);
-    final docs = [];
+    final results = [];
 
-    for (var klass in docsClasses) {
-      var info = await importScanner.scanForComponent(buildStep.inputId, klass);
-      if (info == null) continue;
+    for (var doc in docs) {
+      // First look for the assset directly
+      if (doc.startsWith('package:')) {
+        // This is an asset grab it directly.
+        final asset = new AssetId.resolve(doc);
+        if (extension(asset.path) != '.md') {
+          throw new UnsupportedError('Generator only supports .md files as '
+              'supplementary docs. Can not insert $asset into gallery.');
+        }
+        final content = await buildStep.readAsString(asset);
+        // Convert markdown to html and insert static server for images.
+        final htmlContent = g3docMarkdownToHtml(content).replaceAllMapped(
+            new RegExp(r'<img alt="(.*)" src="(\S*g3doc\S+)" \/>'),
+            (Match m) =>
+                '<img alt="${m[1]}" src="$_staticImageServer${m[2]}" />');
 
-      docs.add({
-        'name': info.component,
-        'selector': info.selector,
-        'path': info.path,
-        'comment': g3docMarkdownToHtml(info.comment)
-      });
+        results.add({
+          'name': basenameWithoutExtension(asset.path),
+          'selector': '',
+          'path': '${asset.package}/${asset.path}',
+          'comment': htmlContent
+        });
+      } else {
+        // Assume it is a class or function that needs to be found.
+        final info =
+            await importScanner.scanForComponent(buildStep.inputId, doc);
+        if (info == null) continue;
+
+        results.add({
+          'name': info.component,
+          'selector': info.selector,
+          'path': info.path,
+          'comment': g3docMarkdownToHtml(info.comment)
+        });
+      }
     }
 
-    return docs;
+    return results;
   }
 
   /// Returns a context with the useful values from the [configExtraction].

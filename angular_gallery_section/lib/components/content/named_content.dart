@@ -17,8 +17,6 @@ import 'package:angular/angular.dart';
         <ng-content></ng-content>''',
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
-  // TODO(google): Change to `Visibility.local` to reduce code size.
-  visibility: Visibility.all,
 )
 class NamedContentComponent {
   String get label => '$_componentName Content';

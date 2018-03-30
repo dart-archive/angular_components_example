@@ -3,3 +3,6 @@ targets:
     builders:
       angular_components|scss_builder:
         enabled: True
+      angular_gallery_section|angular_gallery_section:
+        options:
+          staticImageServer: "https://raw.githubusercontent.com"
