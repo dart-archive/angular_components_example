@@ -61,8 +61,8 @@ dependencies:
     path: ../scorecard_example
 
 dev_dependencies:
-  build_runner: ^0.8.1
-  build_web_compilers: ^0.3.4
+  build_runner: ^0.8.2
+  build_web_compilers: ^0.3.6
 
 dependency_overrides:
   angular_components:

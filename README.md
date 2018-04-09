@@ -44,7 +44,7 @@ Run a local development server with a file watcher and incremental rebuilds:
 pub run build_runner serve web
 ```
 
-Both of the __build__ and __serve__ commands will accept `--config release` to build 
+Both of the __build__ and __serve__ commands will accept `--release` to build 
 with dart2js instead of the the default dartdevc.
 
 __Known Issues:__
