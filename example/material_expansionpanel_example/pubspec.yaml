@@ -4,11 +4,11 @@ description:
 homepage:
 author: Dart Team <misc@dartlang.org>
 environment:
-  sdk: '>=2.0.0-dev.32.0 <2.0.0'
+  sdk: '>=2.0.0-dev.46.0 <2.0.0'
 dependencies:
-  angular: 5.0.0-alpha+9
-  angular_components: 0.9.0-alpha+9
-  angular_forms: 2.0.0-alpha+1
+  angular: 5.0.0-alpha+10
+  angular_components: 0.9.0-alpha+10
+  angular_forms: 2.0.0-alpha+2
   angular_gallery_section:
     path: ../../angular_gallery_section
   build_config: ^0.2.5

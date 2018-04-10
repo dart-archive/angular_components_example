@@ -1,4 +1,4 @@
-name: material_input_example
+name: material_slider_example
 version: 0.0.1-dev
 description:
 homepage:
@@ -8,8 +8,6 @@ environment:
 dependencies:
   angular: 5.0.0-alpha+10
   angular_components: 0.9.0-alpha+10
-  angular_forms: 2.0.0-alpha+2
   angular_gallery_section:
     path: ../../angular_gallery_section
-  intl: '>=0.14.0 <0.16.0'
   build_config: ^0.2.5
