@@ -2,6 +2,8 @@
 .dart_tool
 .packages
 .pub/
+pubspec.lock
+
 build/
 
 screenshot.png
