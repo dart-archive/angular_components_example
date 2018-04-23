@@ -82,6 +82,12 @@ class ImportScanner {
         // later.
         sourcePaths.add(importAssetId);
       }
+
+      if (!await assetReader.canRead(importAssetId)) {
+        log.warning('Could not read imported asset: $importAssetId');
+        continue;
+      }
+
       // Check [sourcePath] itself for [componentClass].
       var content = await assetReader.readAsString(importAssetId);
       var sourceInfo = extractInfo(content,

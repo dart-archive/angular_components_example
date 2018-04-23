@@ -14,35 +14,37 @@ packages:
       name: angular
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.0-alpha+10"
+    version: "5.0.0-alpha+11"
   angular_ast:
     dependency: transitive
     description:
       name: angular_ast
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.1"
+    version: "0.5.2"
   angular_compiler:
     dependency: transitive
     description:
       name: angular_compiler
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.0-alpha+10"
+    version: "0.4.0-alpha+11"
   angular_components:
     dependency: "direct main"
     description:
-      name: angular_components
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.9.0-alpha+10"
+      path: "."
+      ref: github-sync
+      resolved-ref: "78cec4ee6ca43f0480756509a2520bdeaf69e905"
+      url: "https://github.com/dart-lang/angular_components.git"
+    source: git
+    version: "0.9.0-alpha+11"
   angular_forms:
     dependency: transitive
     description:
       name: angular_forms
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0-alpha+2"
+    version: "2.0.0-alpha+3"
   angular_gallery:
     dependency: "direct main"
     description:
@@ -63,7 +65,7 @@ packages:
       name: angular_router
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0-alpha+10"
+    version: "2.0.0-alpha+11"
   app_layout_example:
     dependency: "direct main"
     description:
@@ -98,7 +100,7 @@ packages:
       name: barback
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.15.2+15"
+    version: "0.15.2+14"
   bazel_worker:
     dependency: transitive
     description:
@@ -225,6 +227,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.14.1"
+  dart2_constant:
+    dependency: transitive
+    description:
+      name: dart2_constant
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1+dart2"
   dart_internal:
     dependency: transitive
     description:
@@ -602,14 +611,14 @@ packages:
       name: sass
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.1"
+    version: "1.2.1"
   sass_builder:
     dependency: transitive
     description:
       name: sass_builder
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.5"
+    version: "1.2.0"
   scorecard_example:
     dependency: "direct main"
     description:
@@ -723,4 +732,4 @@ packages:
     source: hosted
     version: "2.1.13"
 sdks:
-  dart: ">=2.0.0-dev.46.0 <=2.0.0-dev.47.0"
+  dart: ">=2.0.0-dev.46.0 <=2.0.0-dev.49.0"

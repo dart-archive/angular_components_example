@@ -27,7 +27,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
         &lt;material-tree
           [options]="nestedOptions"
           [selection]="singleSelection"
-          [supportsParentSelection]="true"&gt;
+          [allowParentSingleSelection]="true"&gt;
         &lt;/material-tree&gt;
       </pre>
       <div class="shadow" style="width: 400px; margin: 24px;">
