@@ -5,6 +5,7 @@
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_components/laminate/enums/alignment.dart';
+import 'package:angular_components/material_button/material_button.dart';
 import 'package:angular_components/material_checkbox/material_checkbox.dart';
 import 'package:angular_components/material_icon/material_icon.dart';
 import 'package:angular_components/material_input/material_auto_suggest_input.dart';
@@ -41,8 +42,11 @@ List<String> _numberNames = <String>[
   'nineteen'
 ];
 
-ItemRenderer<List<int>> _numberNameRenderer =
-    (List<int> list) => list.map((n) => _numberNames[n - 1]).join(', ');
+// TODO(google) Change dynamic to List<int> once Angular can retain the type
+// information. https://github.com/dart-lang/angular/issues/68
+ItemRenderer<dynamic /* List<int>*/ > _numberNameRenderer =
+    (dynamic /* List<int>*/ list) =>
+        list.map((n) => _numberNames[n - 1]).join(', ');
 
 List<OptionGroup<List<int>>> _optionGroups = <OptionGroup<List<int>>>[
   new OptionGroup<List<int>>.withLabel(const <List<int>>[
@@ -68,10 +72,12 @@ List<OptionGroup<List<int>>> _optionGroups = <OptionGroup<List<int>>>[
   directives: const [
     formDirectives,
     MaterialAutoSuggestInputComponent,
+    MaterialButtonComponent,
     MaterialCheckboxComponent,
     MaterialDropdownSelectComponent,
     materialInputDirectives,
-    NgFor
+    NgFor,
+    NgIf,
   ],
   templateUrl: 'material_auto_suggest_input_demo.html',
   styleUrls: const ['material_auto_suggest_input_demo.scss.css'],
@@ -114,6 +120,7 @@ class MaterialAutoSuggestInputDemoComponent {
   bool useLabelFactory = false;
   bool useFactoryRenderer = false;
   bool disabled = false;
+  bool showHeaderAndFooter = false;
   String label = 'Search...';
   String emptyPlaceholder = 'No matches';
   String leadingGlyph = 'search';
@@ -131,7 +138,9 @@ class MaterialAutoSuggestInputDemoComponent {
 
   SelectionOptions get options => suggestionOptionsWithItemRenderer;
 
-  ItemRenderer<List<int>> get itemRenderer => _numberNameRenderer;
+  // TODO(google) Change dynamic to List<int> once Angular can retain the type
+  // information. https://github.com/dart-lang/angular/issues/68
+  ItemRenderer<dynamic /* List<int>*/ > get itemRenderer => _numberNameRenderer;
 
   FactoryRenderer get factoryRenderer =>
       useFactoryRenderer ? (_) => demo.ExampleRendererComponentNgFactory : null;

@@ -24,6 +24,8 @@
         [popupPositions]="popupPositions"
         [limit]="limit"
         [disabled]="disabled">
+      <div header *ngIf="showHeaderAndFooter">Pick one</div>
+      <div footer *ngIf="showHeaderAndFooter">This is the footer</div>
     </material-auto-suggest-input>
 
     <div>Model's selected value:</div>
@@ -50,6 +52,12 @@
         [popupPositions]="popupPositions"
         [limit]="limit"
         [disabled]="disabled">
+      <div header *ngIf="showHeaderAndFooter">Pick multiple</div>
+      <div footer *ngIf="showHeaderAndFooter" class="end-justified">
+        <material-button dense (trigger)="multiModel.clear()">
+          Clear Selection
+        </material-button>
+      </div>
     </material-auto-suggest-input>
 
     <div>Model's selected values:</div>
@@ -75,6 +83,10 @@
     <br>
     <material-checkbox [(checked)]="popupMatchInputWidth">
       Popup match input width
+    </material-checkbox>
+    <br>
+    <material-checkbox [(checked)]="showHeaderAndFooter">
+      Show header and footer
     </material-checkbox>
     <br>
     <material-checkbox [(checked)]="showClearIcon">
@@ -136,6 +148,8 @@
       loading
       [popupMatchInputWidth]="true"
       [selectionOptions]="emptySuggestionOptions">
+    <div header *ngIf="showHeaderAndFooter">Popup header</div>
+    <div footer *ngIf="showHeaderAndFooter">Popup footer</div>
   </material-auto-suggest-input>
 </div>
 
@@ -144,5 +158,7 @@
   <material-auto-suggest-input label="Using forms API"
       [ngFormControl]="formControl"
       [selectionOptions]="options">
+    <div header *ngIf="showHeaderAndFooter">Popup header</div>
+    <div footer *ngIf="showHeaderAndFooter">Popup footer</div>
   </material-auto-suggest-input>
 </div>

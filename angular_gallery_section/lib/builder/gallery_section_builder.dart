@@ -3,11 +3,13 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:build/build.dart';
 import 'package:glob/glob.dart';
 import 'package:mustache/mustache.dart' show Template;
-import 'package:angular_gallery_section/config_extraction.dart';
+
+import 'gallery_info_builder.dart' show ResolvedConfig;
 
 /// A builder for generating a "gallery section" (Dart source code) from a
 /// @GallerySectionConfig construction.
@@ -18,29 +20,31 @@ class GallerySectionBuilder extends Builder {
   @override
   Future build(BuildStep buildStep) async {
     final inputId = buildStep.inputId;
-    Map<String, dynamic> mustacheContext;
+    final infoAssets =
+        await buildStep.findAssets(new Glob('**/*.gallery_info.json')).toList();
+    if (infoAssets.isEmpty) return;
 
-    await for (var assetId in buildStep.findAssets(new Glob('**/*.dart'))) {
-      final configExtraction = await resolveGalleryConfig(buildStep, assetId);
-      if (configExtraction == null) continue;
+    final mergedImports = new Set<String>();
+    final mergedDemos = <String, String>{};
 
-      if (mustacheContext != null) {
-        log.warning('Generator does not support multiple @GallerySectionConfig'
-            ' annotations in a single lib directory.');
-        continue;
+    for (final assetId in infoAssets) {
+      final infoList =
+          (jsonDecode(await buildStep.readAsString(assetId)) as List)
+              .map((info) => new ResolvedConfig.fromJson(info));
+
+      for (final info in infoList) {
+        for (final demo in info.demos) {
+          mergedDemos[demo.name] = demo.selector;
+          mergedImports.add(demo.path);
+        }
       }
-
-      final imports = new Set.from(
-          configExtraction.demos.map((demo) => demo.path.split('lib/')[1]));
-
-      mustacheContext = {
-        'className': configExtraction.componentClass,
-        'componentSelector': configExtraction.componentSelector,
-        'imports': imports.map((i) => {'dartImport': i}),
-        'demos': configExtraction.demos.map(
-            (demo) => {'className': demo.component, 'selector': demo.selector})
-      };
     }
+
+    final mustacheContext = {
+      'imports': mergedImports.map((import) => {'dartImport': import}),
+      'demos': mergedDemos.entries
+          .map((entry) => {'className': entry.key, 'selector': entry.value}),
+    };
 
     final templateId = new AssetId('angular_gallery_section',
         'lib/builder/template/gallery_section.dart.mustache');

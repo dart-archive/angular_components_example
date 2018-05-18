@@ -32,4 +32,7 @@ class MaterialTreeDropdownMultiDemoComponent {
   final SelectionOptions nestedOptions = data.nestedOptions;
   final SelectionModel multiSelection =
       new SelectionModel.withList(allowMulti: true);
+
+  @ViewChild(MaterialTreeDropdownComponent)
+  MaterialTreeDropdownComponent materialTreeDropdownComponent;
 }

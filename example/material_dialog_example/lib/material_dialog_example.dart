@@ -48,6 +48,9 @@ class MaterialDialogExample {
   bool showCustomColorsDialog = false;
   bool showAutoDismissDialog = false;
   bool showNoHeaderFooterDialog = false;
+  bool showFullscreenDialog = false;
+
+  bool isInFullscreenMode = false;
 
   final maxHeightDialogLines = <String>[];
   String dialogWithErrorErrorMessage;

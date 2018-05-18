@@ -72,6 +72,22 @@
   </material-expansionpanel>
 </section>
 
+<section class="expand-on-left-panels">
+  <p>
+    ExpansionPanels with the expansion button on the left using the shouldExpandOnLeft attribute
+  </p>
+
+  <material-expansionpanel shouldExpandOnLeft name="Header" [showSaveCancel]="false">
+    The header remains visible when this panel is expanded.
+  </material-expansionpanel>
+
+  <material-expansionpanel shouldExpandOnLeft name="No header"
+                           [hideExpandedHeader]="true"
+                           [showSaveCancel]="false">
+    The header disappears when this panel is expanded.
+  </material-expansionpanel>
+</section>
+
 <section class="independent-panels">
   <p>
     Another set of ExpansionPanels configured different that don't belong to a PanelSet, and can be

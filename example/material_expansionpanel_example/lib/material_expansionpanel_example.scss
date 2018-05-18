@@ -28,6 +28,10 @@
   width: $mat-grid * 40;
 }
 
+.expand-on-left-panels material-expansionpanel {
+  width: $mat-grid * 60;
+}
+
 .independent-panels material-expansionpanel {
   width: $mat-grid * 75;
 }

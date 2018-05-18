@@ -7,7 +7,7 @@ import '{{{dartImport}}}';
 {{/imports}}
 
 @Component(
-    selector: '{{componentSelector}}',
+    selector: 'gallery-section',
     providers: const [popupBindings],
     template: """
 {{#demos}}
@@ -20,4 +20,4 @@ import '{{{dartImport}}}';
     {{/demos}}
     ],
     visibility: Visibility.local)
-class {{className}} {}
+class GallerySection {}

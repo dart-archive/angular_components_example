@@ -4,8 +4,15 @@
 
 import 'package:build/build.dart';
 import 'package:angular_gallery_section/builder/component_api_builder.dart';
+import 'package:angular_gallery_section/builder/gallery_info_builder.dart';
 import 'package:angular_gallery_section/builder/gallery_section_builder.dart';
 import 'package:angular_gallery_section/builder/gallery_section_summary_builder.dart';
+
+/// Builder used to generate the json summary files about classes annotated with
+/// @GallerySectionConfig to be read by the other builders that might not
+/// have access to a resolver.
+Builder galleryInfoBuilder(BuilderOptions options) =>
+    new GalleryInfoBuilder(options.config['staticImageServer']);
 
 /// Builder used to generate the API page for the gallery from a
 /// @GallerySectionConfig-annotated class.
