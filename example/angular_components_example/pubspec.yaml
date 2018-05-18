@@ -63,9 +63,3 @@ dependencies:
 dev_dependencies:
   build_runner: ^0.8.6
   build_web_compilers: ^0.4.0
-
-dependency_overrides:
-  angular_components:
-    git:
-      url: https://github.com/dart-lang/angular_components.git
-      ref: github-sync
