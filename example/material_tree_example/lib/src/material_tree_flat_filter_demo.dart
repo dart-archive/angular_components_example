@@ -31,4 +31,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
 class MaterialTreeDropdownFilterableDemoComponent {
   final SelectionOptions filterableFlatOptions = data.filterableFlatOptions;
   final SelectionModel singleSelection = new SelectionModel.withList();
+
+  @ViewChild(MaterialTreeDropdownComponent)
+  MaterialTreeDropdownComponent materialTreeDropdownComponent;
 }

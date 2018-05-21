@@ -40,7 +40,7 @@ Future<ConfigExtraction> resolveGalleryConfig(
 class ConfigExtraction extends MetadataVisitor {
   String sectionClass;
   String displayName;
-  List docs;
+  List<String> docs;
   List demoClasses;
   List benchmarks;
   String benchmarkPrefix;
@@ -74,7 +74,7 @@ class ConfigExtraction extends MetadataVisitor {
 
   _visitGallerySectionConfig(Annotation node, List args) {
     displayName = extractArgument(args, 'displayName');
-    docs = extractArgument(args, 'docs', visitor: this);
+    docs = extractArgument(args, 'docs', visitor: this)?.retype<String>();
     demoClasses = extractArgument(args, 'demos', visitor: this);
     benchmarks = extractArgument(args, 'benchmarks');
     benchmarkPrefix = extractArgument(args, 'benchmarkPrefix');

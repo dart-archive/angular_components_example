@@ -16,6 +16,6 @@ Builder galleryAppBuilder(BuilderOptions options) => new MultiplexingBuilder([
 /// Builder used to generate files in the gallery library target.
 Builder galleryLibBuilder(BuilderOptions options) => new GalleryLibBuilder(
       options.config['galleryTitle'] ?? 'Example Gallery',
-      options.config['styleUrls'],
-      options.config['examples'].split(','),
+      options.config['styleUrls'].cast<String>(),
+      (options.config['examples'] as String).split(','),
     );

@@ -38,7 +38,7 @@ class ComponentInfoExtraction extends MetadataVisitor {
   }
 
   _visitDirective(Annotation node, List args) {
-    ClassDeclaration parent = node.parent;
+    NamedCompilationUnitMember parent = node.parent;
     var info = new DirectiveInfo()
       ..path = path
       ..type = node.name.name

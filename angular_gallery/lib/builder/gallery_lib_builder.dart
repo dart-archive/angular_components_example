@@ -91,13 +91,15 @@ class GalleryLibBuilder extends Builder {
           new AssetId(package, 'lib/gallery_section_summary.json');
       if (!await buildStep.canRead(gallerySectionSummaryId)) continue;
 
-      final summaries =
-          JSON.decode(await buildStep.readAsString(gallerySectionSummaryId));
+      final summaryContents =
+          await buildStep.readAsString(gallerySectionSummaryId);
+      final summaries = (jsonDecode(summaryContents) as Iterable)
+          .map((m) => (m as Map).cast<String, dynamic>());
       examples.addAll(summaries.map((summary) => new Example(
           summary['displayName'],
           summary['dartImport'],
           summary['componentClass'],
-          summary['docs'])));
+          summary['docs']?.cast<String>())));
     }
 
     examples

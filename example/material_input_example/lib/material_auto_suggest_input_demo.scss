@@ -42,3 +42,27 @@
 h2 {
   margin-top: 0;
 }
+
+[header],
+[footer] {
+  display: flex;
+  align-items: center;
+  height: $mat-grid * 4;
+  padding: $mat-grid;
+
+  &.end-justified {
+    justify-content: flex-end;
+  }
+
+  material-button {
+    color: $mat-blue;
+  }
+}
+
+[header] {
+  border-bottom: 1px solid $mat-border-light;
+}
+
+[footer] {
+  border-top: 1px solid $mat-border-light;
+}

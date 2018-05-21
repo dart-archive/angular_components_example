@@ -63,7 +63,7 @@ class ComponentApiBuilder extends Builder {
   Future<List<Map<String, dynamic>>> _findDocsMap(
       BuildStep buildStep, List<String> docs) async {
     final importScanner = new ImportScanner(buildStep);
-    final results = [];
+    final results = <Map<String, dynamic>>[];
 
     for (var doc in docs) {
       // First look for the assset directly
@@ -127,7 +127,7 @@ class ComponentApiBuilder extends Builder {
     }
 
     final docs = configExtraction.docs == null
-        ? []
+        ? <String>[]
         : await _findDocsMap(assetReader, configExtraction.docs);
 
     final relatedUrls = [];

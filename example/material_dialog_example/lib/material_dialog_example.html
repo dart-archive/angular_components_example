@@ -299,3 +299,76 @@
     </material-button>
   </material-dialog>
 </modal>
+
+<!-- Dialog that fullscreens on small viewports -->
+<material-button (trigger)="showFullscreenDialog = true"
+                 [disabled]="showFullscreenDialog"
+                 raised>
+  Open dialog that fullscreens on small viewports
+</material-button>
+
+<modal [(visible)]="showFullscreenDialog">
+  <material-dialog
+      headered
+      class="fullscreen-dialog"
+      [class.fullscreen-mode]="isInFullscreenMode"
+      [listenForFullscreenChanges]="true"
+      (fullscreenMode)="isInFullscreenMode = $event">
+    <div header>
+      <material-button
+          *ngIf="isInFullscreenMode"
+          icon
+          autoFocus
+          (trigger)="showFullscreenDialog = false">
+        <material-icon icon="close"></material-icon>
+      </material-button>
+
+      <h1>Fullscreen Dialog</h1>
+    </div>
+
+    <p *ngIf="isInFullscreenMode">
+      This dialog is currently fullscreened. Enlarge the viewport to get out of
+      fullscreen mode.
+    </p>
+    <p *ngIf="!isInFullscreenMode">
+      This dialog will be fullscreened if the viewport is small enough.
+    </p>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum lacus est, eu
+      sagittis ligula fermentum vel. Maecenas facilisis leo dolor, quis rhoncus sem imperdiet vel.
+      Vestibulum vitae tristique orci. Ut lobortis varius convallis. Ut nec egestas diam. Nunc in
+      tincidunt erat. Vivamus porttitor molestie ligula, vitae dictum elit ornare quis. Donec
+      imperdiet venenatis justo ac viverra am. Nunc in tincidunt erat. Vivamus porttitor molestie
+      ligula, vitae dictum elit ornare quis. Donec imperdiet venenatis justo ac viverr am. Nunc in
+      tincidunt erat. Vivamus porttitor molestie ligula, vitae dictum elit ornare quis. Donec
+      imperdiet venenatis justo ac viverr am. Nunc in tincidunt erat. Vivamus porttitor molestie
+      ligula, vitae dictum elit ornare quis. Donec imperdiet venenatis justo ac viverr am. Nunc in
+      tincidunt erat. Vivamus porttitor molestie ligula, vitae dictum elit ornare quis. Donec
+      imperdiet venenatis justo ac viverr.
+    </p>
+
+    <p>
+      Aenean scelerisque posuere augue, vitae ornare felis ultricies nec. Integer tincidunt libero
+      quis diam congue, ac congue augue posuere. Quisque vel dui a libero finibus imperdiet. Donec
+      ac sapien eget ante volutpat hendrerit. Nunc vel aliquam sapien. Sed dolor libero, posuere a
+      ex eget, fermentum aliquet augue. Phasellus lobortis vitae lorem at egestas. Morbi et ante
+      ultrices ligula dignissim tincidunt non a sem. Morbi tempor posuere sapien sit amet sodales.
+      Praesent ac felis hendrerit, luctus augue et, tristique neque. Nulla scelerisque, urna non
+      iaculis auctor, nisi orci vehicula tellus, sed rhoncus purus eros rhoncus erat. Mauris in
+      mollis nisl. Mauris pretium erat id feugiat mollis. Nam at molestie nisi. Mauris pretium
+      pulvinar neque, sit amet sagittis felis hendrerit suscipit.
+    </p>
+
+    <div footer>
+      <material-button
+          *ngIf="!isInFullscreenMode"
+          autoFocus
+          raised
+          (trigger)="showFullscreenDialog = false">
+        Close
+      </material-button>
+    </div>
+  </material-dialog>
+</modal>
+
