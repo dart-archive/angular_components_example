@@ -70,7 +70,7 @@ packages:
       path: "../app_layout_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   archive:
     dependency: transitive
     description:
@@ -343,147 +343,147 @@ packages:
       path: "../material_button_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_checkbox_example:
     dependency: "direct main"
     description:
       path: "../material_checkbox_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_chips_example:
     dependency: "direct main"
     description:
       path: "../material_chips_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_datepicker_example:
     dependency: "direct main"
     description:
       path: "../material_datepicker_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_dialog_example:
     dependency: "direct main"
     description:
       path: "../material_dialog_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_expansionpanel_example:
     dependency: "direct main"
     description:
       path: "../material_expansionpanel_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_icon_example:
     dependency: "direct main"
     description:
       path: "../material_icon_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_input_example:
     dependency: "direct main"
     description:
       path: "../material_input_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_list_example:
     dependency: "direct main"
     description:
       path: "../material_list_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_menu_example:
     dependency: "direct main"
     description:
       path: "../material_menu_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_popup_example:
     dependency: "direct main"
     description:
       path: "../material_popup_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_progress_example:
     dependency: "direct main"
     description:
       path: "../material_progress_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_radio_example:
     dependency: "direct main"
     description:
       path: "../material_radio_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_select_example:
     dependency: "direct main"
     description:
       path: "../material_select_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_slider_example:
     dependency: "direct main"
     description:
       path: "../material_slider_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_spinner_example:
     dependency: "direct main"
     description:
       path: "../material_spinner_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_tab_example:
     dependency: "direct main"
     description:
       path: "../material_tab_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_toggle_example:
     dependency: "direct main"
     description:
       path: "../material_toggle_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_tooltip_example:
     dependency: "direct main"
     description:
       path: "../material_tooltip_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_tree_example:
     dependency: "direct main"
     description:
       path: "../material_tree_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   material_yes_no_buttons_example:
     dependency: "direct main"
     description:
       path: "../material_yes_no_buttons_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   meta:
     dependency: transitive
     description:
@@ -511,7 +511,7 @@ packages:
       name: observable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.22.1+1"
+    version: "0.22.1+2"
   package_config:
     dependency: transitive
     description:
@@ -553,7 +553,7 @@ packages:
       name: pool
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.4"
+    version: "1.3.5"
   protobuf:
     dependency: transitive
     description:
@@ -574,7 +574,7 @@ packages:
       name: quiver
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.28.2"
+    version: "0.29.0+1"
   quiver_hashcode:
     dependency: transitive
     description:
@@ -602,7 +602,7 @@ packages:
       path: "../scorecard_example"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   scratch_space:
     dependency: transitive
     description:
