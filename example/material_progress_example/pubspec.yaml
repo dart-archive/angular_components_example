@@ -1,7 +1,4 @@
 name: material_progress_example
-version: 0.0.1-dev
-description:
-homepage:
 author: Dart Team <misc@dartlang.org>
 environment:
   sdk: '>=2.0.0-dev.46.0 <2.0.0'

@@ -7,7 +7,7 @@ packages:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.31.1"
+    version: "0.32.0"
   angular:
     dependency: "direct main"
     description:
@@ -49,14 +49,14 @@ packages:
       path: "../../angular_gallery"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   angular_gallery_section:
     dependency: transitive
     description:
       path: "../../angular_gallery_section"
       relative: true
     source: path
-    version: "0.0.1-dev"
+    version: "0.0.0"
   angular_router:
     dependency: transitive
     description:
@@ -224,7 +224,7 @@ packages:
       name: dart_style
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.9+1"
+    version: "1.0.14"
   fixnum:
     dependency: transitive
     description:
@@ -238,7 +238,7 @@ packages:
       name: front_end
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.0-alpha.9"
+    version: "0.1.0"
   glob:
     dependency: transitive
     description:
@@ -295,13 +295,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.2+1"
-  isolate:
-    dependency: transitive
-    description:
-      name: isolate
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0"
   js:
     dependency: transitive
     description:
@@ -322,7 +315,7 @@ packages:
       name: kernel
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.0-alpha.9"
+    version: "0.3.0"
   logging:
     dependency: transitive
     description:
@@ -709,4 +702,4 @@ packages:
     source: hosted
     version: "2.1.13"
 sdks:
-  dart: ">=2.0.0-dev.54 <=2.0.0-dev.55.0"
+  dart: ">=2.0.0-dev.54.0 <=2.0.0-dev.55.0"
