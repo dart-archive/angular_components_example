@@ -2,6 +2,11 @@
 .dart_tool
 .packages
 .pub/
+pubspec.lock
+
+# Include the lock file for the root application
+!example/angular_components_example/pubspec.lock
+
 build/
 
 screenshot.png
