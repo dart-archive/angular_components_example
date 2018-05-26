@@ -145,7 +145,7 @@ class MaterialDropdownSelectDemoComponent {
 
   /// Single Selection Model
   final SelectionModel<Language> singleSelectModel =
-      new SelectionModel.withList(selectedValues: [_languagesList[1]]);
+      new SelectionModel.single(selected: _languagesList[1]);
 
   /// Label for the button for single selection.
   String get singleSelectLanguageLabel =>
@@ -155,9 +155,9 @@ class MaterialDropdownSelectDemoComponent {
 
   /// Multi Selection Model
   final SelectionModel<Language> multiSelectModel =
-      new SelectionModel<Language>.withList(allowMulti: true);
+      new SelectionModel<Language>.multi();
 
-  final SelectionModel<int> widthSelection = new SelectionModel<int>.withList();
+  final SelectionModel<int> widthSelection = new SelectionModel<int>.multi();
   final SelectionOptions<int> widthOptions =
       new SelectionOptions<int>.fromList([0, 1, 2, 3, 4, 5]);
   String get widthButtonText => widthSelection.selectedValues.isNotEmpty
@@ -165,7 +165,7 @@ class MaterialDropdownSelectDemoComponent {
       : '0';
 
   final SelectionModel<String> popupPositionSelection =
-      new SelectionModel<String>.withList();
+      new SelectionModel<String>.multi();
   final StringSelectionOptions popupPositionOptions =
       new StringSelectionOptions<String>(['Auto', 'Above', 'Below']);
   String get popupPositionButtonText =>
@@ -174,7 +174,7 @@ class MaterialDropdownSelectDemoComponent {
           : 'Auto';
 
   final SelectionModel<String> slideSelection =
-      new SelectionModel<String>.withList();
+      new SelectionModel<String>.multi();
   final StringSelectionOptions slideOptions =
       new StringSelectionOptions<String>(['Default', 'x', 'y']);
   String get slideButtonText => slideSelection.selectedValues.isNotEmpty
