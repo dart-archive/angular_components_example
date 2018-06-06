@@ -86,12 +86,11 @@ List<String> splitPathOnPackage(String p) {
   return parts;
 }
 
-/// Converts an Asset "location" (an AssetId package joined with an AssetId
-/// path) into a path.
+/// Convert assetId string representation to a path and replaces "." in the
+/// package name with slashes.
 ///
-/// Examples:
-///
-///     assetLocation('a.b/lib/c.dart');  // => 'a/b/lib/c.dart'
-///     assetLocation('a.b/lib/src/c.dart');  // => 'a/b/lib/src/c.dart'
-String assetLocationToPath(String loc) => loc.replaceFirstMapped(
-    new RegExp(r'(.*)(/lib/.*)'), (m) => '${m[1].replaceAll('.', '/')}${m[2]}');
+/// Example: "package.name|lib/path/to/asset.txt" to
+/// 'package/name/lib/path/to/asset.txt'.
+String assetToPath(String asset) => asset.replaceFirstMapped(
+    new RegExp(r'(.*)\|(lib.*)'),
+    (m) => '${m[1].replaceAll('.', '/')}/${m[2]}');

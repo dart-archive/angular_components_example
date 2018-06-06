@@ -7,6 +7,7 @@ targets:
             "lib/*.dart",
             "lib/annotation/**",
             "lib/builder/**",
+            "lib/src/**",
             "lib/visitors/**",
             ]
       angular_components|scss_builder:
@@ -16,9 +17,13 @@ builders:
   angular_gallery_section:
     target: ':angular_gallery_section'
     import: 'package:angular_gallery_section/builder.dart'
-    builder_factories: ['componentApiBuilder', 'gallerySectionBuilder']
+    builder_factories: [
+      'galleryInfoBuilder',
+      'componentApiBuilder',
+      'gallerySectionBuilder'
+    ]
     build_extensions: {
-      ".dart": [".api.dart"],
+      ".dart": [".gallery_info.json", ".api.dart"],
       "$lib$": ["gallery_section.dart", "gallery_section_summary.json"]}
     auto_apply: dependents
     runs_before: ["angular|angular", "angular_components|scss_builder"]

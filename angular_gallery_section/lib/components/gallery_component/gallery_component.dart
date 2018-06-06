@@ -52,7 +52,8 @@ class GalleryComponent {
 
   String getBuganizerLink(Doc doc) {
     var params = <String>[];
-    if (doc.path.startsWith('ads.acx2')) {
+    if (doc.path.startsWith('ads/acx2') ||
+        doc.path.startsWith('third_party/dart_src/acx')) {
       params.add('component=105665');
       params.add('template=38109');
     }

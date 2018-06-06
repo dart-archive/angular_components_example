@@ -35,7 +35,7 @@ class GallerySectionBuilder extends Builder {
       for (final info in infoList) {
         for (final demo in info.demos) {
           mergedDemos[demo.name] = demo.selector;
-          mergedImports.add(demo.path);
+          mergedImports.add(demo.import);
         }
       }
     }

@@ -1,11 +1,11 @@
 name: material_input_example
 author: Dart Team <misc@dartlang.org>
 environment:
-  sdk: '>=2.0.0-dev.55.0 <2.0.0'
+  sdk: '>=2.0.0-dev.56.0 <2.0.0'
 dependencies:
-  angular: 5.0.0-alpha+13
-  angular_components: 0.9.0-alpha+13
-  angular_forms: 2.0.0-alpha+5
+  angular: 5.0.0-alpha+14
+  angular_components: 0.9.0-alpha+14
+  angular_forms: 2.0.0-alpha+6
   angular_gallery_section:
     path: ../../angular_gallery_section
   intl: '>=0.14.0 <0.16.0'

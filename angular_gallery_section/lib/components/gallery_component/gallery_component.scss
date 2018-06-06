@@ -90,3 +90,7 @@ a {
   vertical-align: top;
   border: 1px solid $mat-grey-400;
 }
+
+.comment ::ng-deep {
+  line-height: $mat-font-leading-body-1;
+}
