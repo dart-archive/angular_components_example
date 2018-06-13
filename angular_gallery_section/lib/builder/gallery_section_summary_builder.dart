@@ -7,7 +7,8 @@ import 'dart:convert';
 
 import 'package:build/build.dart';
 import 'package:glob/glob.dart';
-import 'package:angular_gallery_section/config_extraction.dart';
+
+import 'gallery_info_builder.dart' show ResolvedConfig;
 
 /// A builder for generating a summary of the API page for an Angular component.
 ///
@@ -22,21 +23,25 @@ class GallerySectionSummaryBuilder extends Builder {
     final summaries = new List<Map<String, dynamic>>();
 
     // Extract details from @GallerySectionConfig annotations.
-    await for (var assetId in buildStep.findAssets(new Glob('**/*.dart'))) {
-      final configExtraction = await resolveGalleryConfig(buildStep, assetId);
-      if (configExtraction == null) continue;
+    await for (var assetId
+        in buildStep.findAssets(new Glob('**/*.gallery_info.json'))) {
+      final infoList =
+          (jsonDecode(await buildStep.readAsString(assetId)) as List)
+              .map((info) => new ResolvedConfig.fromJson(info));
 
-      summaries.add({
-        'displayName': configExtraction.displayName,
-        'dartImport': _toApiTemplatePath(assetId.uri.toString()),
-        'componentClass': '${configExtraction.componentClass}Api',
-        'docs': configExtraction.docs
-      });
+      if (infoList.isEmpty) continue;
+
+      summaries.addAll(infoList.map((info) => {
+            'displayName': info.displayName,
+            'dartImport': _toApiTemplatePath(assetId.uri.toString()),
+            'componentClass': '${info.classSafeName}Api',
+            'docs': info.docs.map((doc) => doc.name).toList(),
+          }));
     }
 
     final newAssetId =
         new AssetId(inputId.package, 'lib/gallery_section_summary.json');
-    buildStep.writeAsString(newAssetId, JSON.encode(summaries));
+    buildStep.writeAsString(newAssetId, jsonEncode(summaries));
   }
 
   @override
@@ -45,5 +50,6 @@ class GallerySectionSummaryBuilder extends Builder {
       };
 
   String _toApiTemplatePath(String path) =>
-      "${path.substring(0, path.lastIndexOf('.dart'))}.api.template.dart";
+      '${path.substring(0, path.lastIndexOf('.gallery_info.json'))}'
+      '.api.template.dart';
 }

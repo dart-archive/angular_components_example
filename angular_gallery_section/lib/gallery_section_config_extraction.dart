@@ -7,6 +7,8 @@ import 'dart:async';
 import 'package:analyzer/analyzer.dart';
 import 'package:build/build.dart';
 
+import 'src/common_extractors.dart';
+
 /// Extracts the information from @GallerySectionConfig annotations.
 ///
 /// The asset identified by [assetId] will be read using [assetReader].
@@ -38,7 +40,7 @@ class _GallerySectionConfigVisitor extends SimpleAstVisitor<ConfigInfo> {
   visitClassDeclaration(ClassDeclaration node) {
     for (final metadata in node.metadata) {
       if (metadata.name.name == 'GallerySectionConfig') {
-        config = new ConfigInfo()..annotatedClassName = node.name.name;
+        config = new ConfigInfo();
         metadata.accept(this);
       }
     }
@@ -49,9 +51,6 @@ class _GallerySectionConfigVisitor extends SimpleAstVisitor<ConfigInfo> {
   visitAnnotation(Annotation node) {
     final args = node?.arguments?.arguments;
     if (args == null) return null;
-
-    final ClassDeclaration parent = node.parent;
-    config.annotatedClassName = parent.name.name;
     args.accept(this);
   }
 
@@ -60,60 +59,28 @@ class _GallerySectionConfigVisitor extends SimpleAstVisitor<ConfigInfo> {
     final name = node.name.label.name;
     final expression = node.expression;
     if (name == 'displayName') {
-      config.displayName = expression.accept(new _StringExtractor());
+      config.displayName = expression.accept(new StringExtractor());
     } else if (name == 'docs') {
-      config.docs = expression.accept(new _ListStringExtractor());
+      config.docs = expression.accept(new ListStringExtractor());
     } else if (name == 'demos') {
-      config.demoClassNames = expression.accept(new _ListStringExtractor());
+      config.demoClassNames = expression.accept(new ListStringExtractor());
     } else if (name == 'benchmarks') {
-      config.benchmarks = expression.accept(new _ListStringExtractor());
+      config.benchmarks = expression.accept(new ListStringExtractor());
     } else if (name == 'benchMarkPrefix') {
-      config.benchmarkPrefix = expression.accept(new _StringExtractor());
+      config.benchmarkPrefix = expression.accept(new StringExtractor());
     } else if (name == 'owners') {
-      config.owners = expression.accept(new _ListStringExtractor());
+      config.owners = expression.accept(new ListStringExtractor());
     } else if (name == 'uxOwners') {
-      config.uxOwners = expression.accept(new _ListStringExtractor());
+      config.uxOwners = expression.accept(new ListStringExtractor());
     } else if (name == 'relatedUrls') {
-      config.relatedUrls = expression.accept(new _MapStringExtractor());
+      config.relatedUrls = expression.accept(new MapStringExtractor());
     }
   }
-}
-
-/// [AstVisitor] to extract a [SimpleStringLiteral]s or [SimpleIdentifier]s.
-///
-/// For use by a [_GallerySectionConfigVisitor].
-class _StringExtractor extends SimpleAstVisitor<String> {
-  @override
-  visitSimpleStringLiteral(SimpleStringLiteral node) => node.value;
-
-  @override
-  visitSimpleIdentifier(SimpleIdentifier node) => node.name;
-}
-
-/// [AstVisitor] to extract a [ListLiteral].
-///
-/// For use by a [_GallerySectionConfigVisitor].
-class _ListStringExtractor extends SimpleAstVisitor<Iterable<String>> {
-  @override
-  visitListLiteral(ListLiteral node) =>
-      node.elements.map((element) => element.accept(new _StringExtractor()));
-}
-
-/// [AstVisitor] to extract a [MapLiteral] and [MapLiteralEntry].
-///
-/// For use by a [_GallerySectionConfigVisitor].
-class _MapStringExtractor extends SimpleAstVisitor<Map<String, String>> {
-  @override
-  visitMapLiteral(MapLiteral node) =>
-      new Map.fromEntries(node.entries.map((entry) => new MapEntry(
-          entry.key.accept(new _StringExtractor()),
-          entry.value.accept(new _StringExtractor()))));
 }
 
 /// Represents the values used to construct an @GallerySectionConfig annotation
 /// extracted as Strings.
 class ConfigInfo {
-  String annotatedClassName;
   String displayName;
   Iterable<String> docs;
   Iterable<String> demoClassNames;

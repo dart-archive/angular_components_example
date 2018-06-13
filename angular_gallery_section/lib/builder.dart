@@ -17,7 +17,7 @@ Builder galleryInfoBuilder(BuilderOptions options) =>
 /// Builder used to generate the API page for the gallery from a
 /// @GallerySectionConfig-annotated class.
 Builder componentApiBuilder(BuilderOptions options) =>
-    new ComponentApiBuilder(options.config['staticImageServer']);
+    new ComponentApiBuilder();
 
 /// Builder used to generate the page for a stand alone example app and a
 /// summary used in building the gallery from a @GallerySectionConfig-annotated

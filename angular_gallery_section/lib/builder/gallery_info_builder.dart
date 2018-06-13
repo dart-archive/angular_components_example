@@ -9,9 +9,11 @@ import 'dart:convert';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
 import 'package:path/path.dart';
-import 'package:angular_gallery_section/component_info_extraction.dart';
 import 'package:angular_gallery_section/g3doc_markdown.dart';
+import 'package:angular_gallery_section/gallery_docs_extraction.dart';
 import 'package:angular_gallery_section/gallery_section_config_extraction.dart';
+import 'package:angular_gallery_section/visitors/path_utils.dart' as path_utils;
+import 'package:angular_components/utils/strings/string_utils.dart' as string;
 
 /// A builder for generating a json summary of each occurance of a
 /// @GallerySectionConfig annotation.
@@ -122,7 +124,7 @@ class GalleryInfoBuilder extends Builder {
 
     return new _DocInfo()
       ..name = basenameWithoutExtension(assetId.path)
-      ..path = '${assetId.package}/${assetId.path}'
+      ..path = path_utils.assetToPath(assetId.toString())
       ..comment = htmlContent;
   }
 
@@ -134,10 +136,8 @@ class GalleryInfoBuilder extends Builder {
   Future<_DocInfo> _resolveDocFromClass(String identifier,
       LibraryElement library, AssetReader assetReader) async {
     final libraryId = new AssetId.resolve(library.source.uri.toString());
-    final extractedDoc = extractInfo(await assetReader.readAsString(libraryId),
-            path: '${libraryId.path}/${libraryId.package}')
-        .directives
-        .firstWhere((d) => d.component == identifier, orElse: () => null);
+    final extractedDoc =
+        await extractDocumentation(identifier, libraryId, assetReader);
 
     if (extractedDoc == null) {
       log.warning('Failed to extract documentation from: $identifier.');
@@ -148,10 +148,10 @@ class GalleryInfoBuilder extends Builder {
     // library.getType(docClassName).allSupertypes;
 
     return new _DocInfo()
-      ..name = extractedDoc.component
+      ..name = extractedDoc.name
       ..selector = extractedDoc.selector
-      ..path = libraryId.uri.toString()
-      ..comment = extractedDoc.comment;
+      ..path = path_utils.assetToPath(libraryId.toString())
+      ..comment = g3docMarkdownToHtml(extractedDoc.comment);
   }
 
   /// Replace web server in `<img>` tags with the [_staticImageServer].
@@ -185,21 +185,18 @@ class GalleryInfoBuilder extends Builder {
   Future<_DemoInfo> _resolveDemo(String demoClassName, LibraryElement library,
       AssetReader assetReader) async {
     final libraryId = new AssetId.resolve(library.source.uri.toString());
-    final extractedDemo = extractInfo(await assetReader.readAsString(libraryId),
-            path: '${libraryId.path}/${libraryId.package}')
-        .directives
-        .firstWhere((d) => d.component == demoClassName, orElse: () => null);
+    final extractedDemo =
+        await extractDocumentation(demoClassName, libraryId, assetReader);
 
     if (extractedDemo == null) {
       log.warning('Failed to extract demo information from: $demoClassName.');
       return null;
     }
-
     return new _DemoInfo()
       ..type = extractedDemo.type
-      ..name = extractedDemo.component
+      ..name = extractedDemo.name
       ..selector = extractedDemo.selector
-      ..path = libraryId.uri.toString();
+      ..asset = libraryId.toString();
   }
 
   /// Search imports for the file that defines [identifier] as a class or top
@@ -239,6 +236,8 @@ class GalleryInfoBuilder extends Builder {
   }
 }
 
+final _invalidCharacters = new RegExp(r'[^a-zA-Z0-9 ]');
+
 /// Represents the values used to construct an @GallerySectionConfig annotation
 /// resolved from raw Strings to the values used by the gallery generators.
 class ResolvedConfig {
@@ -252,6 +251,27 @@ class ResolvedConfig {
   Map<String, String> relatedUrls;
 
   ResolvedConfig();
+
+  /// A name for a Dart class that can be used if making a Component from
+  /// this GalleryConfigSection.
+  ///
+  /// Assumes that the name displayed in the gallery is unique.
+  String get classSafeName => '${string.camelCase(_cleanName(displayName))}';
+
+  /// A name for a Component selector that can be used if making a Component
+  /// from this GalleryConfigSection.
+  String get selectorSafeName => '${string.hyphenate(_cleanName(displayName))}';
+
+  /// Replace all characters that are not letters, numbers or spaces with an
+  /// underscore.
+  ///
+  /// Compresses contiguous whitespace down to a single space after stripping
+  /// out unwanted characters.
+  String _cleanName(input) {
+    var stripped = input.replaceAll(_invalidCharacters, '_');
+    // Compress contiguous whitespace down to a single space in final result.
+    return stripped.replaceAll(new RegExp(r' {2,}'), ' ');
+  }
 
   /// Construct a new [ResolvedConfig] from a decoded json map.
   ResolvedConfig.fromJson(Map<String, dynamic> jsonMap) {
@@ -270,8 +290,8 @@ class ResolvedConfig {
   /// A json encodeable representation of this [ResolvedConfig].
   Map<String, dynamic> toJson() => {
         'displayName': displayName,
-        'docs': docs,
-        'demos': demos,
+        'docs': docs?.toList(),
+        'demos': demos?.toList(),
         'benchmarks': benchmarks?.toList(),
         'benchmarkPrefix': benchmarkPrefix,
         'owners': owners?.toList(),
@@ -314,16 +334,19 @@ class _DemoInfo {
   String type;
   String name;
   String selector;
-  String path;
+  String asset;
 
   _DemoInfo();
+
+  String get import => 'package:${asset.replaceFirst('|lib/', '/')}';
+  String get path => path_utils.assetToPath(asset);
 
   /// Construct a new [_DocInfo] from a decoded json map.
   _DemoInfo.fromJson(Map<String, dynamic> jsonMap) {
     type = jsonMap['type'] as String;
     name = jsonMap['name'] as String;
     selector = jsonMap['selector'] as String;
-    path = jsonMap['path'] as String;
+    asset = jsonMap['asset'] as String;
   }
 
   /// A json encodeable representation of this [_DemoInfo].
@@ -331,6 +354,6 @@ class _DemoInfo {
         'type': type,
         'name': name,
         'selector': selector,
-        'path': path,
+        'asset': asset,
       };
 }
