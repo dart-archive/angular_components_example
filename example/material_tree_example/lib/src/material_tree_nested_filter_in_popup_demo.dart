@@ -31,7 +31,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
 )
 class MaterialTreeDropdownNestedFilterInPopupDemoComponent {
   final SelectionOptions filterableNestedOptions = data.filterableNestedOptions;
-  final SelectionModel singleSelection = new SelectionModel.withList();
+  final SelectionModel singleSelection = new SelectionModel.single();
 
   @ViewChild(MaterialTreeDropdownComponent)
   MaterialTreeDropdownComponent materialTreeDropdownComponent;

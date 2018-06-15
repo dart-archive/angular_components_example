@@ -28,13 +28,18 @@ class GalleryInfo {
   /// Titles and urls of related documents.
   final Map<String, String> relatedUrls;
 
+  /// True if automatically generated documentation for inputs and outputs
+  /// should be displayed.
+  final bool showGeneratedDocs;
+
   const GalleryInfo(
-      {this.docs: const [],
-      this.demos: const [],
-      this.benchmarks: const [],
-      this.owners: const [],
-      this.uxOwners: const [],
-      this.relatedUrls: const {}});
+      {this.docs = const [],
+      this.demos = const [],
+      this.benchmarks = const [],
+      this.owners = const [],
+      this.uxOwners = const [],
+      this.relatedUrls = const {},
+      this.showGeneratedDocs = false});
 }
 
 class Doc {
@@ -42,7 +47,10 @@ class Doc {
   final String selector;
   final String path;
   final String comment;
-  const Doc(this.name, this.selector, this.path, this.comment);
+  final List<Property> inputs;
+  final List<Property> outputs;
+  const Doc(this.name, this.selector, this.path, this.comment, this.inputs,
+      this.outputs);
 }
 
 class Demo {
@@ -59,4 +67,18 @@ class Benchmark {
   final List<String> metricValueKeys;
   const Benchmark(
       this.suite, this.test, this.benchmarkKey, this.metricValueKeys);
+}
+
+class Property {
+  final String annotation;
+  final String name;
+  final String bindingAlias;
+  final String type;
+  final String comment;
+  final String classPath;
+  final bool deprecated;
+  final String deprecatedMessage;
+
+  const Property(this.annotation, this.name, this.bindingAlias, this.type,
+      this.comment, this.classPath, this.deprecated, this.deprecatedMessage);
 }

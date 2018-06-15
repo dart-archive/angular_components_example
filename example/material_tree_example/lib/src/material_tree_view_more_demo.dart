@@ -22,7 +22,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
       // See material_tree_view_more_demo.dart
       final SelectionOptions nestedOptions = data.nestedOptionsVariation;
 
-      final SelectionModel singleSelection = new SelectionModel.withList();
+      final SelectionModel singleSelection = new SelectionModel.single();
     </pre>
     <pre>
       &lt;material-tree
@@ -54,7 +54,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
 )
 class MaterialTreeViewMoreDemoComponent {
   final SelectionOptions nestedOptions = data.nestedOptionsVariation;
-  final SelectionModel singleSelection = new SelectionModel.withList();
+  final SelectionModel singleSelection = new SelectionModel.single();
 
   @ViewChild(MaterialTreeComponent)
   MaterialTreeComponent materialTree;

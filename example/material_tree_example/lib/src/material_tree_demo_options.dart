@@ -112,7 +112,7 @@ class _NestedFilterableSelectionOptions<T extends String>
   }
 
   @override
-  DisposableFuture<bool> filter(Object filterQuery, {int limit: -1}) {
+  DisposableFuture<bool> filter(Object filterQuery, {int limit = -1}) {
     var filteredResults = <OptionGroup<T>>[];
     for (var optionGroup in _unfilteredOptionGroups) {
       var resultOptionGroup = _filterGroup(filterQuery, optionGroup);

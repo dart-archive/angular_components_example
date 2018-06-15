@@ -67,7 +67,7 @@ class MaterialChipsDemoComponent {
 
   SelectionModel<HasUIDisplayName> selection = _createSelectionModel();
   static SelectionModel<HasUIDisplayName> _createSelectionModel() =>
-      new SelectionModel.withList(allowMulti: true, selectedValues: [
+      new SelectionModel.multi(selectedValues: [
         new Chip('pepperoni'),
         new Chip('pineapple'),
         new Chip('peppers'),

@@ -5,11 +5,23 @@
 -->
 <section>
   <h2>Basic</h2>
-  <material-slider [(value)]="value"></material-slider>
+  <material-toggle
+      [(checked)]="disabled"
+      label="Tap to {{disabled ? 'enable' : 'disable'}}">
+  </material-toggle><br/>
+  <material-slider [(value)]="value"
+                   [disabled]="disabled"></material-slider>
   <p>Value: {{value}}</p>
 </section>
 
 <section>
   <h2>Custom Colors</h2>
-  <material-slider class="custom-colors" [(value)]="value2"></material-slider>
+  <material-toggle
+      [(checked)]="disabled2"
+      label="Tap to {{disabled2 ? 'enable' : 'disable'}}">
+  </material-toggle><br/>
+  <material-slider class="custom-colors"
+                   [(value)]="value2"
+                   [disabled]="disabled2"></material-slider>
+  <p>Value: {{value2}}</p>
 </section>

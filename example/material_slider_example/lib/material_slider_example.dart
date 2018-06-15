@@ -4,6 +4,7 @@
 
 import 'package:angular/angular.dart';
 import 'package:angular_components/material_slider/material_slider.dart';
+import 'package:angular_components/material_toggle/material_toggle.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(displayName: 'Material Slider', docs: const [
@@ -20,6 +21,7 @@ class MaterialSliderGalleryConfig {}
   providers: const [],
   directives: const [
     MaterialSliderComponent,
+    MaterialToggleComponent,
   ],
   templateUrl: 'material_slider_example.html',
   styleUrls: const ['material_slider_example.scss.css'],
@@ -27,4 +29,6 @@ class MaterialSliderGalleryConfig {}
 class MaterialSliderExample {
   int value = 60;
   int value2 = 60;
+  bool disabled = false;
+  bool disabled2 = false;
 }

@@ -29,7 +29,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
 )
 class MaterialTreeDropdownSingleDemoComponent {
   final SelectionOptions nestedOptions = data.nestedOptions;
-  final SelectionModel singleSelection = new SelectionModel.withList();
+  final SelectionModel singleSelection = new SelectionModel.single();
 
   @ViewChild(MaterialTreeDropdownComponent)
   MaterialTreeDropdownComponent materialTreeDropdownComponent;

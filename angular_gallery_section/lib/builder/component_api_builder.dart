@@ -7,8 +7,7 @@ import 'dart:convert';
 
 import 'package:build/build.dart';
 import 'package:mustache/mustache.dart' show Template;
-
-import 'gallery_info_builder.dart' show ResolvedConfig;
+import 'package:angular_gallery_section/resolved_config.dart';
 
 /// A builder for generating an API page for an Angular component.
 ///
@@ -74,6 +73,7 @@ class ComponentApiBuilder extends Builder {
         'relatedUrls': config.relatedUrls?.entries
                 ?.map((entry) => {'key': entry.key, 'value': entry.value}) ??
             [],
+        'showGeneratedDocs': config.showGeneratedDocs,
       });
     }
     context['demoImports'] = dedupedImports

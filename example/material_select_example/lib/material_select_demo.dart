@@ -23,10 +23,10 @@ import 'package:angular_components/model/ui/display_name.dart';
 )
 class MaterialSelectDemoComponent {
   final SelectionModel<String> defaultLanguageSelection =
-      new SelectionModel.withList();
+      new SelectionModel.single();
 
   final SelectionModel<Language> targetLanguageSelection =
-      new SelectionModel.withList(allowMulti: true);
+      new SelectionModel.multi();
 
   String proto;
   static const languagesList = const [

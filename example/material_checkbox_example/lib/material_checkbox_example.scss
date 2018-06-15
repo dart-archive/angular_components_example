@@ -6,7 +6,7 @@
 @import 'package:angular_components/material_checkbox/mixins';
 
 :host {
-  font-family: Roboto,"Helvetica Neue",Arial,Helvetica,sans-serif;
+  @include material-checkbox-color($mat-pink-500, $modifier: '.custom-theme');
 }
 
 .limited-width {
@@ -17,21 +17,13 @@
   background: $mat-grey-200;
 }
 
-
 .help-icon {
   margin: 0 $mat-grid-type;
 }
 
-
-material-checkbox {
-  &.top {
-    align-items: flex-start;
-  }
+material-checkbox.top {
+  align-items: flex-start;
 }
-
-@include material-checkbox-theme(
-    $selector: '.custom-theme',
-    $primary-color: $mat-teal-500);
 
 .material-checkbox-no-left-margin {
   @include checkbox-no-left-margin;

@@ -9,9 +9,7 @@
       References:&nbsp;
     </template>
     <span *ngFor="let name of model.relatedUrls.keys; let last = last">
-      <a class="related-url"
-          [href]="model.relatedUrls[name]"
-          target="_blank">
+      <a class="related-url" [href]="model.relatedUrls[name]" target="_blank">
         {{name}}
       </a>
       <template [ngIf]="!last">,&nbsp;</template>
@@ -21,25 +19,21 @@
     <span class="owners" *ngIf="model.owners.isNotEmpty">
       Owners:&nbsp;
       <span *ngFor="let ldap of model.owners; let last = last">
-        <a class="owner"
-            [href]="getTeamsLink(ldap)"
-            target="_blank">
-        {{ldap}}@
-      </a>
-      <template [ngIf]="!last">,&nbsp;</template>
+        <a class="owner" [href]="getTeamsLink(ldap)" target="_blank">
+          {{ldap}}@
+        </a>
+        <template [ngIf]="!last">,&nbsp;</template>
       </span>
     </span>
     <span class="owners" *ngIf="model.uxOwners.isNotEmpty">
       UX:&nbsp;
-     <span *ngFor="let ldap of model.uxOwners; let last = last">
-        <a class="ux-owner"
-            [href]="getTeamsLink(ldap)"
-            target="_blank">
-        {{ldap}}@
-      </a>
-      <template [ngIf]="!last">,&nbsp;</template>
+      <span *ngFor="let ldap of model.uxOwners; let last = last">
+        <a class="ux-owner" [href]="getTeamsLink(ldap)" target="_blank">
+          {{ldap}}@
+        </a>
+        <template [ngIf]="!last">,&nbsp;</template>
       </span>
-     </span>
+    </span>
   </span>
 </div>
 
@@ -83,6 +77,48 @@
       <code>&lt;{{doc.selector}}&gt;</code>
     </p>
     <div [safeInnerHtml]="getSafeHtml(doc.comment)"></div>
+    <div *ngIf="model.showGeneratedDocs">
+      <div *ngIf="doc.inputs.isNotEmpty">
+        <h4>Inputs:</h4>
+        <div class="property-list">
+          <div *ngFor="let input of doc.inputs">
+            <span class="property-name">
+              {{input.nameInTemplate.isNotEmpty ? input.nameInTemplate : input.name}}
+            </span>
+            <span class="property-type">{{input.type}}</span>
+            <p>
+              <span class="property-deprecated" *ngIf="input.deprecated">Deprecated</span>
+              {{input.deprecatedMessage}}
+            </p>
+            <p *ngIf="input.comment.isEmpty">
+              Missing a Dart Doc comment. Please update:
+              <a [href]="getCodeSearchLink(input.classPath)" target="_blank">
+                {{input.classPath}}
+              </a>
+            </p>
+            <div [safeInnerHtml]="getSafeHtml(input.comment)"></div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="doc.outputs.isNotEmpty">
+        <h4>Outputs:</h4>
+        <div class="property-list">
+          <div *ngFor="let output of doc.outputs">
+            <span class="property-name">
+              {{output.nameInTemplate.isNotEmpty ? output.nameInTemplate : output.name}}
+            </span>
+            <span class="property-type">{{output.type}}</span>
+            <p *ngIf="output.comment.isEmpty">
+              Missing a Dart Doc comment. Please update:
+              <a [href]="getCodeSearchLink(output.classPath)" target="_blank">
+                {{output.classPath}}
+              </a>
+            </p>
+            <div [safeInnerHtml]="getSafeHtml(output.comment)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

@@ -7,8 +7,7 @@ import 'dart:convert';
 
 import 'package:build/build.dart';
 import 'package:glob/glob.dart';
-
-import 'gallery_info_builder.dart' show ResolvedConfig;
+import 'package:angular_gallery_section/resolved_config.dart';
 
 /// A builder for generating a summary of the API page for an Angular component.
 ///

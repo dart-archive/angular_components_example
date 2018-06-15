@@ -21,7 +21,7 @@ import 'package:angular_components/model/ui/has_renderer.dart';
         // See material_tree_nested_multi_demo.dart
         final SelectionOptions nestedOptions = data.expandStateOptions;
 
-        final SelectionModel multiSelection = new SelectionModel.withList(allowMulti: true);
+        final SelectionModel multiSelection = new SelectionModel.multi();
         final ItemRenderer&lt;data.CategoryTargetNode&gt; nameRenderer = (node) =&gt; node.name;
         String itemRenderer(item) =&gt; nameRenderer(item);
       </pre>
@@ -54,8 +54,7 @@ import 'package:angular_components/model/ui/has_renderer.dart';
 class MaterialTreeNestedExpandDemoComponent {
   final SelectionOptions<data.CategoryNode> nestedOptions =
       data.expandStateOptions();
-  final multiSelection =
-      new SelectionModel<data.CategoryNode>.withList(allowMulti: true);
+  final multiSelection = new SelectionModel<data.CategoryNode>.multi();
   final ItemRenderer<data.CategoryNode> nameRenderer = (node) => node.name;
 
   String itemRenderer(item) => nameRenderer(item);

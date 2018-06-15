@@ -197,18 +197,39 @@
     This panel uses the Dense theme mixin.
   </material-expansionpanel>
 
-<material-expansionpanel
-    [alwaysHideExpandIcon]="true"
-    [hideExpandedHeader]="true"
-    name="Ordinary panel">
-  <div action class="action">
-    <material-button>
-      Additional Action
-    </material-button>
-  </div>
-  This is an ordinary panel with additional header content. Additional header content
-  does not trigger collapse.
-</material-expansionpanel>
+  <material-expansionpanel
+      [alwaysHideExpandIcon]="true"
+      [hideExpandedHeader]="true"
+      name="Panel with header actions on the left">
+    <div action class="action">
+      <material-button>
+        Edit
+      </material-button>
+      <material-button>
+        Duplicate
+      </material-button>
+    </div>
+    This is a panel with additional actions on the left part of the header.
+    Clicking header actions doesn't expand the panel.
+  </material-expansionpanel>
+
+  <material-expansionpanel
+      class="bottom-header-action"
+      [alwaysHideExpandIcon]="true"
+      [hideExpandedHeader]="true"
+      name="Panel with header actions on the bottom">
+    <div action class="action">
+      <material-button>
+        Edit
+      </material-button>
+      <material-button>
+        Duplicate
+      </material-button>
+    </div>
+    This is a panel with additional actions on the bottom part of the header.
+    Clicking header actions doesn't expand the panel.
+  </material-expansionpanel>
+
 </section>
 
 <modal [visible]="showConfirmation">

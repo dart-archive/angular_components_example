@@ -40,6 +40,10 @@ class GallerySectionConfig {
   /// Titles and urls of related documents.
   final Map<String, String> relatedUrls;
 
+  /// True if automatically generated documentation for inputs and outputs
+  /// should be displayed.
+  final bool showGeneratedDocs;
+
   const GallerySectionConfig(
       {this.displayName,
       this.docs,
@@ -48,5 +52,6 @@ class GallerySectionConfig {
       this.benchmarkPrefix,
       this.owners,
       this.uxOwners,
-      this.relatedUrls});
+      this.relatedUrls,
+      this.showGeneratedDocs});
 }
