@@ -13,6 +13,12 @@ class StringExtractor extends SimpleAstVisitor<String> {
   visitSimpleIdentifier(SimpleIdentifier node) => node.name;
 }
 
+/// [AstVisitor] to extract a [BooleanLiteral].
+class BoolExtractor extends SimpleAstVisitor<bool> {
+  @override
+  visitBooleanLiteral(BooleanLiteral node) => node.value;
+}
+
 /// [AstVisitor] to extract a [ListLiteral].
 class ListStringExtractor extends SimpleAstVisitor<Iterable<String>> {
   @override

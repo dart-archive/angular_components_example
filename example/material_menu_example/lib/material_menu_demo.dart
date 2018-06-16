@@ -63,7 +63,7 @@ class MaterialMenuDemoComponent implements OnDestroy {
       this.menuModelWithAffixes);
 
   factory MaterialMenuDemoComponent() {
-    var colorSelection = new SelectionModel<String>.withList();
+    var colorSelection = new SelectionModel<String>.single();
     var makeColorMenuItem = (String color, {MenuModel<MenuItem> subMenu}) =>
         new ColorMenuItem(color, colorSelection, subMenu: subMenu);
     var menuModel = new MenuModel<ColorMenuItem>([
@@ -110,12 +110,10 @@ class MaterialMenuDemoComponent implements OnDestroy {
 
     final disposer = new Disposer.oneShot();
 
-    final metalSelection =
-        new SelectionModel<String>.withList(selectedValues: ['O1']);
-    final typeSelection = new SelectionModel<String>.withList(allowMulti: true);
-    final planeSelection =
-        new SelectionModel<String>.withList(allowMulti: true);
-    final toolSelection = new SelectionModel<String>.withList(allowMulti: true);
+    final metalSelection = new SelectionModel<String>.single(selected: 'O1');
+    final typeSelection = new SelectionModel<String>.multi();
+    final planeSelection = new SelectionModel<String>.multi();
+    final toolSelection = new SelectionModel<String>.multi();
 
     final chiselItem = new SelectableMenuItem<String>(
         value: 'Chisels',

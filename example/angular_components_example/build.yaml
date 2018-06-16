@@ -25,3 +25,4 @@ targets:
           - --trust-type-annotations
           - --trust-primitives
           - --dump-info
+          - --preview-dart-2

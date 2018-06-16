@@ -6,6 +6,8 @@ import 'package:markdown/markdown.dart';
 
 /// A wrapper for [markdownToHtml] that includes g3doc's shortlinks syntaxes.
 String g3docMarkdownToHtml(String markdown) {
+  if (markdown.isEmpty) return markdown;
+
   // Taken directly from http://cs/symbol:kAfterHostName.
   String _afterHostName = r'[\w!#-&(-;=?@^\|-~]*[\w!#$%&(*+/=@^_`|~-]';
 

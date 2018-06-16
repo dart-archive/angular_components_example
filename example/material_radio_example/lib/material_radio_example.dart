@@ -44,7 +44,7 @@ class MaterialRadioExample {
     new Option("cheap", false, false),
     new Option("good", false, false)
   ];
-  final SelectionModel ex1SelectionModel = new SelectionModel.withList();
+  final SelectionModel ex1SelectionModel = new SelectionModel.single();
   String get ex1SelectedValue => ex1SelectionModel.selectedValues.isEmpty
       ? 'unknown'
       : ex1SelectionModel.selectedValues.first;

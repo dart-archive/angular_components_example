@@ -73,8 +73,11 @@ a {
   cursor: pointer;
 }
 
-// Styling for tables in the documetation. Applied to dartdoc comments and
-// suplimental markdown docs.
+// The following rules target tags don't appear in the template but they are
+// inserted dynamically. They are applied to Dart documentation comments and
+// supplemental markdown docs.
+
+// Styling for tables in the documentation.
 .comment ::ng-deep table {
   border-collapse: collapse;
   margin: ($mat-grid * 2) 0;
@@ -93,4 +96,29 @@ a {
 
 .comment ::ng-deep {
   line-height: $mat-font-leading-body-1;
+}
+
+// Styling for input and output property lists.
+.comment .property-list {
+  padding: 0 $mat-grid;
+
+  .property-deprecated {
+    color: $mat-red-900;
+    font-weight: bold;
+  }
+
+  .property-name {
+    font-family: monospace;
+    font-weight: bold;
+  }
+
+  .property-type {
+    font-family: monospace;
+    font-style: italic;
+    padding-left: $mat-grid;
+  }
+
+  div ::ng-deep p {
+    margin: ($mat-grid / 2) $mat-grid;
+  }
 }

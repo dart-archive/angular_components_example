@@ -74,6 +74,8 @@ class _GallerySectionConfigVisitor extends SimpleAstVisitor<ConfigInfo> {
       config.uxOwners = expression.accept(new ListStringExtractor());
     } else if (name == 'relatedUrls') {
       config.relatedUrls = expression.accept(new MapStringExtractor());
+    } else if (name == 'showGeneratedDocs') {
+      config.showGeneratedDocs = expression.accept(new BoolExtractor());
     }
   }
 }
@@ -89,4 +91,5 @@ class ConfigInfo {
   Iterable<String> owners;
   Iterable<String> uxOwners;
   Map<String, String> relatedUrls;
+  bool showGeneratedDocs = false;
 }

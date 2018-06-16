@@ -36,7 +36,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
             ]);
 
         final SelectionModel multiSelection =
-            new SelectionModel.withList(allowMulti: true);
+            new SelectionModel.multi();
       </pre>
       <pre>
         &lt;material-tree
@@ -62,7 +62,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
   preserveWhitespace: true,
 )
 class MaterialTreeFlatMultiDemoComponent {
-  final multiSelection = new SelectionModel.withList(allowMulti: true);
+  final multiSelection = new SelectionModel.multi();
   final ChangeDetectorRef _changeDetector;
 
   MaterialTreeFlatMultiDemoComponent(this._changeDetector);

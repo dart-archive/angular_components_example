@@ -35,7 +35,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
                 'The Adventures of Ichabod and Mr. Toad'
             ]);
 
-        final SelectionModel singleSelection = new SelectionModel.withList();
+        final SelectionModel singleSelection = new SelectionModel.single();
       </pre>
       <pre>
         &lt;material-tree
@@ -62,5 +62,5 @@ import 'package:angular_components/model/selection/selection_options.dart';
 )
 class MaterialTreeFlatSelectableDemoComponent {
   final SelectionOptions simpleFlatOptions = data.simpleFlatOptions;
-  final SelectionModel singleSelection = new SelectionModel.withList();
+  final SelectionModel singleSelection = new SelectionModel.single();
 }

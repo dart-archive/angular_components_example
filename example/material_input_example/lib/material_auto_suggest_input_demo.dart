@@ -93,8 +93,8 @@ class MaterialAutoSuggestInputDemoComponent {
     RelativePosition.AdjacentBottomRight,
   ];
 
-  final singleModel = new SelectionModel<List>.withList(allowMulti: false);
-  final multiModel = new SelectionModel<List>.withList(allowMulti: true);
+  final singleModel = new SelectionModel<List>.single();
+  final multiModel = new SelectionModel<List>.multi();
 
   final suggestionOptions =
       new ExampleSelectionOptions<List<int>>.withOptionGroups(_optionGroups);
@@ -104,7 +104,7 @@ class MaterialAutoSuggestInputDemoComponent {
 
   final emptySuggestionOptions = new StringSelectionOptions(const <String>[]);
 
-  final popupPositionSelection = new SelectionModel<String>.withList();
+  final popupPositionSelection = new SelectionModel<String>.single();
   final popupPositionOptions =
       new StringSelectionOptions<String>(['Auto', 'Above', 'Below']);
 

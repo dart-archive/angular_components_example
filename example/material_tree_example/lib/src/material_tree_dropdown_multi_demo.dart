@@ -30,8 +30,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
 )
 class MaterialTreeDropdownMultiDemoComponent {
   final SelectionOptions nestedOptions = data.nestedOptions;
-  final SelectionModel multiSelection =
-      new SelectionModel.withList(allowMulti: true);
+  final SelectionModel multiSelection = new SelectionModel.multi();
 
   @ViewChild(MaterialTreeDropdownComponent)
   MaterialTreeDropdownComponent materialTreeDropdownComponent;

@@ -26,13 +26,12 @@ import 'package:angular_components/model/selection/selection_model.dart';
   styleUrls: const ['material_list_demo.scss.css'],
 )
 class MaterialListDemoComponent {
-  SelectionModel<String> colorSelection = new SelectionModel.withList();
+  SelectionModel<String> colorSelection = new SelectionModel.single();
   String get selectedColor => colorSelection.selectedValues.isEmpty
       ? 'red'
       : colorSelection.selectedValues.first;
 
-  SelectionModel<dynamic> itemSelection =
-      new SelectionModel.withList(allowMulti: true);
+  SelectionModel<dynamic> itemSelection = new SelectionModel.multi();
 
   void toggleItem(key) {
     if (itemSelection.isSelected(key)) {

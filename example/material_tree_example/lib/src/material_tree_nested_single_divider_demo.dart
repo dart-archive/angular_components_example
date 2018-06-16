@@ -28,7 +28,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
         // See material_tree_nested_single_demo.dart
         final SelectionOptions nestedOptions = data.nestedOptions;
 
-        final SelectionModel singleSelection = new SelectionModel.withList();
+        final SelectionModel singleSelection = new SelectionModel.single();
       </pre>
       <pre>
         &lt;material-tree [ngClass]="selected"
@@ -59,7 +59,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
 )
 class MaterialTreeNestedSingleDividerDemoComponent {
   final SelectionOptions nestedOptions = data.nestedOptions;
-  final SelectionModel singleSelection = new SelectionModel.withList();
+  final SelectionModel singleSelection = new SelectionModel.single();
   final List<Option> dividerOptions = [
     new Option('', "Hidden"),
     new Option('tree-border-expanded', "Expanded nodes"),

@@ -65,3 +65,7 @@
 .left-align-action-buttons {
   @include expansionpanel-left-align-action-buttons;
 }
+
+.bottom-header-action {
+  @include expansionpanel-bottom-header-action;
+}

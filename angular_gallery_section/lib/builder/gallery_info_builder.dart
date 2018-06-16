@@ -7,13 +7,14 @@ import 'dart:collection';
 import 'dart:convert';
 
 import 'package:analyzer/dart/element/element.dart';
+import 'package:analyzer/dart/element/type.dart';
 import 'package:build/build.dart';
 import 'package:path/path.dart';
 import 'package:angular_gallery_section/g3doc_markdown.dart';
 import 'package:angular_gallery_section/gallery_docs_extraction.dart';
 import 'package:angular_gallery_section/gallery_section_config_extraction.dart';
+import 'package:angular_gallery_section/resolved_config.dart';
 import 'package:angular_gallery_section/visitors/path_utils.dart' as path_utils;
-import 'package:angular_components/utils/strings/string_utils.dart' as string;
 
 /// A builder for generating a json summary of each occurance of a
 /// @GallerySectionConfig annotation.
@@ -61,7 +62,8 @@ class GalleryInfoBuilder extends Builder {
           ..benchmarkPrefix = config.benchmarkPrefix
           ..owners = config.owners
           ..uxOwners = config.uxOwners
-          ..relatedUrls = config.relatedUrls;
+          ..relatedUrls = config.relatedUrls
+          ..showGeneratedDocs = config.showGeneratedDocs;
         await Future.wait([
           Future.wait(_resolveDocs(config.docs, rootLibrary, assetReader)).then(
               (docs) =>
@@ -80,17 +82,17 @@ class GalleryInfoBuilder extends Builder {
   ///
   /// Searches imports for documentation starting at [rootLibrary], reading
   /// source files with [assetReader].
-  Iterable<Future<_DocInfo>> _resolveDocs(Iterable<String> docs,
+  Iterable<Future<DocInfo>> _resolveDocs(Iterable<String> docs,
       LibraryElement rootLibrary, AssetReader assetReader) {
-    if (docs == null) return new Iterable.empty();
+    if (docs == null) return const Iterable.empty();
 
     return docs.map((doc) async {
       if (doc.startsWith('package:')) {
         // This is a Markdown asset, grab it directly.
         return _readMarkdownAsset(doc, assetReader);
       } else {
-        // Assume it is a class that needs to be found.
-        final docLibrary = _searchForClass(doc, rootLibrary);
+        // Assume it is a class or function that needs to be found.
+        final docLibrary = _searchFor(doc, rootLibrary);
 
         if (docLibrary == null) {
           log.warning('Could not find @Directive or @Component annotation '
@@ -104,7 +106,7 @@ class GalleryInfoBuilder extends Builder {
   }
 
   /// Read the [markdownAsset] with [assetReader] and render as HTML.
-  Future<_DocInfo> _readMarkdownAsset(
+  Future<DocInfo> _readMarkdownAsset(
       String markdownAsset, AssetReader assetReader) async {
     final assetId = new AssetId.resolve(markdownAsset);
     if (extension(assetId.path) != '.md') {
@@ -122,7 +124,7 @@ class GalleryInfoBuilder extends Builder {
     // Convert markdown to html and insert static server for images.
     final htmlContent = _replaceImgTags(g3docMarkdownToHtml(content));
 
-    return new _DocInfo()
+    return new DocInfo()
       ..name = basenameWithoutExtension(assetId.path)
       ..path = path_utils.assetToPath(assetId.toString())
       ..comment = htmlContent;
@@ -133,26 +135,103 @@ class GalleryInfoBuilder extends Builder {
   ///
   /// Searches imports starting at [library], reading source files with
   /// [assetReader].
-  Future<_DocInfo> _resolveDocFromClass(String identifier,
+  Future<DocInfo> _resolveDocFromClass(String identifier,
       LibraryElement library, AssetReader assetReader) async {
     final libraryId = new AssetId.resolve(library.source.uri.toString());
-    final extractedDoc =
-        await extractDocumentation(identifier, libraryId, assetReader);
+    final docClass = library.getType(identifier);
+    DocInfo docs;
 
-    if (extractedDoc == null) {
+    // If this a functional directive, just extract the docs and we are done.
+    if (docClass == null) {
+      docs = await extractDocumentation(identifier, libraryId, assetReader);
+      if (docs == null) {
+        log.warning('Failed to extract documentation from: $identifier.');
+      }
+      return docs;
+    }
+
+    // Otherwise there is additional documenation for a class. Collect all
+    // inherited @Input and @Output documentation.
+    final mergedInputs = <String, PropertyInfo>{};
+    final mergedOutputs = <String, PropertyInfo>{};
+
+    for (final classElement in _classHierarcy(docClass)) {
+      // Must extract doumentation from AST becauses the
+      // classElement.documentationComment, classElement.metadata, etc are not
+      // populated in the resolved element model available here.
+      var libraryId =
+          new AssetId.resolve(classElement.library.source.uri.toString());
+      docs =
+          await extractDocumentation(classElement.name, libraryId, assetReader);
+
+      if (docs == null) {
+        // The super class must be defined in the library as a part file.
+        for (var part in classElement.library.parts) {
+          if (part.getType(classElement.name) != null) {
+            libraryId = new AssetId.resolve(part.source.uri.toString());
+            docs = await extractDocumentation(
+                classElement.name, libraryId, assetReader);
+          }
+        }
+      }
+
+      // Merge the properties into the collections so far.
+      // This is the last chance to find the resolved type while we have access
+      // to the defining LibraryElement.
+      docs.inputs.forEach((input) => mergedInputs[input.name] = input
+        ..type = _propertyType(input.name, classElement));
+
+      docs.outputs.forEach((output) => mergedOutputs[output.name] = output
+        ..type = _propertyType(output.name, classElement));
+    }
+
+    if (docs == null) {
       log.warning('Failed to extract documentation from: $identifier.');
       return null;
     }
 
-    // TODO(google) Add the @Input and @Output documentation from:
-    // library.getType(docClassName).allSupertypes;
+    // Sort the inputs and outputs by name to make the display simple later.
+    final inputs = mergedInputs.values.toList();
+    inputs.sort((a, b) => Comparable.compare(a.name, b.name));
+    final outputs = mergedOutputs.values.toList();
+    outputs.sort((a, b) => Comparable.compare(a.name, b.name));
 
-    return new _DocInfo()
-      ..name = extractedDoc.name
-      ..selector = extractedDoc.selector
-      ..path = path_utils.assetToPath(libraryId.toString())
-      ..comment = g3docMarkdownToHtml(extractedDoc.comment);
+    // Assign the merged and sorted properties to the leaf class docs.
+    docs.inputs = inputs;
+    docs.outputs = outputs;
+
+    return docs;
   }
+
+  /// Returns a class hierarchy that ends at [leafClass] and ommiting [Object].
+  Iterable<ClassElement> _classHierarcy(ClassElement leafClass) {
+    final interfaces = leafClass.allSupertypes;
+
+    // Object contains no interesting documentation and complicates searching.
+    interfaces.removeWhere((interface) => interface.isObject);
+
+    final classes = _asClassElements(interfaces, leafClass.library);
+
+    // Add the leaf class at the begining of the hierarcy.
+    classes.insert(0, leafClass);
+
+    // Determine property inheritence with the reversed supertypes, the same way
+    // Angular does.
+    return classes.reversed;
+  }
+
+  /// Returns [interfaces] as the [ClassElement]s that they represent as
+  /// reachable from [library].
+  List<ClassElement> _asClassElements(
+          Iterable<InterfaceType> interfaces, LibraryElement library) =>
+      interfaces
+          .map((interface) =>
+              _searchFor(interface.name, library).getType(interface.name))
+          .toList();
+
+  /// Returns the type of the property [name] in [classElment].
+  String _propertyType(String name, ClassElement classElement) =>
+      classElement.getField(name).type.toString();
 
   /// Replace web server in `<img>` tags with the [_staticImageServer].
   String _replaceImgTags(String content) => content.replaceAllMapped(
@@ -163,11 +242,11 @@ class GalleryInfoBuilder extends Builder {
   ///
   /// Will search imports starting at [rootLibrary] for the demo classes. Reads
   /// files with [assetReader] during the search.
-  Iterable<Future<_DemoInfo>> _resolveDemos(Iterable<String> demoClassNames,
+  Iterable<Future<DemoInfo>> _resolveDemos(Iterable<String> demoClassNames,
       LibraryElement rootLibrary, AssetReader assetReader) {
-    if (demoClassNames == null) return new Iterable.empty();
+    if (demoClassNames == null) return const Iterable.empty();
     return demoClassNames.map((demoClassName) async {
-      final demoLibrary = _searchForClass(demoClassName, rootLibrary);
+      final demoLibrary = _searchFor(demoClassName, rootLibrary);
 
       if (demoLibrary == null) {
         log.warning('Could not find Demo class: $demoClassName.');
@@ -182,7 +261,7 @@ class GalleryInfoBuilder extends Builder {
   ///
   /// Searches imports starting at [library], reading source files with
   /// [assetReader].
-  Future<_DemoInfo> _resolveDemo(String demoClassName, LibraryElement library,
+  Future<DemoInfo> _resolveDemo(String demoClassName, LibraryElement library,
       AssetReader assetReader) async {
     final libraryId = new AssetId.resolve(library.source.uri.toString());
     final extractedDemo =
@@ -192,8 +271,8 @@ class GalleryInfoBuilder extends Builder {
       log.warning('Failed to extract demo information from: $demoClassName.');
       return null;
     }
-    return new _DemoInfo()
-      ..type = extractedDemo.type
+    return new DemoInfo()
+      ..type = extractedDemo.name
       ..name = extractedDemo.name
       ..selector = extractedDemo.selector
       ..asset = libraryId.toString();
@@ -204,8 +283,7 @@ class GalleryInfoBuilder extends Builder {
   ///
   /// Searches imports with a breadth-first search, as that should find
   /// [identifier] faster than a depth-first search.
-  LibraryElement _searchForClass(
-      String identifier, LibraryElement rootLibrary) {
+  LibraryElement _searchFor(String identifier, LibraryElement rootLibrary) {
     final visited = new Set<LibraryElement>();
     final toVisit = new Queue<LibraryElement>();
 
@@ -234,126 +312,4 @@ class GalleryInfoBuilder extends Builder {
     // Never found [className] in any of [rootLibrary]'s imports.
     return null;
   }
-}
-
-final _invalidCharacters = new RegExp(r'[^a-zA-Z0-9 ]');
-
-/// Represents the values used to construct an @GallerySectionConfig annotation
-/// resolved from raw Strings to the values used by the gallery generators.
-class ResolvedConfig {
-  String displayName;
-  Iterable<_DocInfo> docs;
-  Iterable<_DemoInfo> demos;
-  Iterable<String> benchmarks;
-  String benchmarkPrefix;
-  Iterable<String> owners;
-  Iterable<String> uxOwners;
-  Map<String, String> relatedUrls;
-
-  ResolvedConfig();
-
-  /// A name for a Dart class that can be used if making a Component from
-  /// this GalleryConfigSection.
-  ///
-  /// Assumes that the name displayed in the gallery is unique.
-  String get classSafeName => '${string.camelCase(_cleanName(displayName))}';
-
-  /// A name for a Component selector that can be used if making a Component
-  /// from this GalleryConfigSection.
-  String get selectorSafeName => '${string.hyphenate(_cleanName(displayName))}';
-
-  /// Replace all characters that are not letters, numbers or spaces with an
-  /// underscore.
-  ///
-  /// Compresses contiguous whitespace down to a single space after stripping
-  /// out unwanted characters.
-  String _cleanName(input) {
-    var stripped = input.replaceAll(_invalidCharacters, '_');
-    // Compress contiguous whitespace down to a single space in final result.
-    return stripped.replaceAll(new RegExp(r' {2,}'), ' ');
-  }
-
-  /// Construct a new [ResolvedConfig] from a decoded json map.
-  ResolvedConfig.fromJson(Map<String, dynamic> jsonMap) {
-    displayName = jsonMap['displayName'] as String;
-    docs = (jsonMap['docs'] as Iterable)
-        ?.map((element) => new _DocInfo.fromJson(element));
-    demos = (jsonMap['demos'] as Iterable)
-        ?.map((element) => new _DemoInfo.fromJson(element));
-    benchmarks = (jsonMap['benchmarks'] as Iterable)?.cast<String>();
-    benchmarkPrefix = jsonMap['benchmarkPrefix'] as String;
-    owners = (jsonMap['owners'] as Iterable)?.cast<String>();
-    uxOwners = (jsonMap['uxOwners'] as Iterable)?.cast<String>();
-    relatedUrls = (jsonMap['relatedUrls'] as Map)?.cast<String, String>();
-  }
-
-  /// A json encodeable representation of this [ResolvedConfig].
-  Map<String, dynamic> toJson() => {
-        'displayName': displayName,
-        'docs': docs?.toList(),
-        'demos': demos?.toList(),
-        'benchmarks': benchmarks?.toList(),
-        'benchmarkPrefix': benchmarkPrefix,
-        'owners': owners?.toList(),
-        'uxOwners': uxOwners?.toList(),
-        'relatedUrls': relatedUrls,
-      };
-}
-
-/// Represents the docs listed in an @GallerySectionConfig annotation resolved
-/// to the values used by the gallery generators.
-class _DocInfo {
-  String name;
-  String selector;
-  String path;
-  String comment;
-  // TODO(google) @Input/@Output documentation will be added here.
-
-  _DocInfo();
-
-  /// Construct a new [_DocInfo] from a decoded json map.
-  _DocInfo.fromJson(Map<String, dynamic> jsonMap) {
-    name = jsonMap['name'] as String;
-    selector = jsonMap['selector'] as String;
-    path = jsonMap['path'] as String;
-    comment = jsonMap['comment'] as String;
-  }
-
-  /// A json encodeable representation of this [_DocInfo].
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'selector': selector,
-        'path': path,
-        'comment': comment,
-      };
-}
-
-/// Represents the demos listed in an @GallerySectionConfig annotation resolved
-/// to the values used by the gallery generators.
-class _DemoInfo {
-  String type;
-  String name;
-  String selector;
-  String asset;
-
-  _DemoInfo();
-
-  String get import => 'package:${asset.replaceFirst('|lib/', '/')}';
-  String get path => path_utils.assetToPath(asset);
-
-  /// Construct a new [_DocInfo] from a decoded json map.
-  _DemoInfo.fromJson(Map<String, dynamic> jsonMap) {
-    type = jsonMap['type'] as String;
-    name = jsonMap['name'] as String;
-    selector = jsonMap['selector'] as String;
-    asset = jsonMap['asset'] as String;
-  }
-
-  /// A json encodeable representation of this [_DemoInfo].
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'name': name,
-        'selector': selector,
-        'asset': asset,
-      };
 }

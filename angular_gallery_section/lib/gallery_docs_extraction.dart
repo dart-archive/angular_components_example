@@ -6,27 +6,34 @@ import 'dart:async';
 
 import 'package:analyzer/analyzer.dart';
 import 'package:build/build.dart';
+import 'package:angular_gallery_section/g3doc_markdown.dart';
+import 'package:angular_gallery_section/resolved_config.dart';
+import 'package:angular_gallery_section/visitors/path_utils.dart' as path_utils;
 
 import 'src/common_extractors.dart';
 
-/// Extracts a [DocumentationInfo] from [assetId] for the identifier [name].
+/// Extracts a [DocInfo] from [assetId] for the identifier [name].
 ///
 /// Will read [assetId] with [assetReader].
-Future<DocumentationInfo> extractDocumentation(
+Future<DocInfo> extractDocumentation(
         String name, AssetId assetId, AssetReader assetReader) async =>
     parseCompilationUnit(await assetReader.readAsString(assetId),
             parseFunctionBodies: false)
-        .accept(new GalleryDocumentaionExtraction(name));
+        .accept(new GalleryDocumentaionExtraction(
+            name, path_utils.assetToPath(assetId.toString())));
 
-/// A visitor that extracts a [DocumentationInfo] for an identifier [_name] and
+/// A visitor that extracts a [DocInfo] for an identifier [_name] and
 /// additional information from the Angular annotations @Component and
-/// @Directive (if present) for documentation purposes.
-class GalleryDocumentaionExtraction
-    extends SimpleAstVisitor<DocumentationInfo> {
+/// @Directive (if present) for documentation purposes. [_filePath] is
+/// passed through to the extractor for [ProperyInfo]s.
+class GalleryDocumentaionExtraction extends SimpleAstVisitor<DocInfo> {
+  static final inputAnnotation = 'Input';
+  static final outputAnnotation = 'Output';
   final String _name;
-  DocumentationInfo _info;
+  final String _filePath;
+  DocInfo _info;
 
-  GalleryDocumentaionExtraction(this._name);
+  GalleryDocumentaionExtraction(this._name, this._filePath);
 
   @override
   visitCompilationUnit(CompilationUnit node) {
@@ -37,8 +44,39 @@ class GalleryDocumentaionExtraction
   }
 
   @override
-  visitClassDeclaration(ClassDeclaration node) => _extractDocumentation(node);
-  // TODO(google) Collect extra class member docs here like @Input/@Output.
+  DocInfo visitClassDeclaration(ClassDeclaration node) {
+    if (_extractDocumentation(node) == null) return null;
+
+    var allProperties = <PropertyInfo>[];
+    var propertyVisitor = new _AllMemberDocsExtraction(_filePath);
+    for (Declaration member in node.members) {
+      // Must collect the annotations early becausae class fields don't have
+      // annotations attached to their actual node. The comments are attached to
+      // the field nodes so we have to continue visiting.
+      var propertyAnnotationNode = _angularPropertyAnnotation(member);
+      var deprecatedAnnotationNode = _deprecatedAnnotation(member);
+      if (propertyAnnotationNode == null) continue;
+
+      allProperties
+          .addAll(member.accept(propertyVisitor).map((property) => property
+            ..annotation = propertyAnnotationNode.name.name
+            ..deprecated = deprecatedAnnotationNode != null
+            ..deprecatedMessage = deprecatedAnnotationNode?.arguments?.arguments
+                // Visit the first arg or null if no args.
+                ?.firstWhere((_) => true, orElse: () => null)
+                ?.accept(new StringExtractor())
+            ..bindingAlias = propertyAnnotationNode.arguments?.arguments
+                // Visit the first arg or null if no args.
+                ?.firstWhere((_) => true, orElse: () => null)
+                ?.accept(new StringExtractor())));
+    }
+
+    _info.inputs = allProperties
+        .where((property) => property.annotation == inputAnnotation);
+    _info.outputs = allProperties
+        .where((property) => property.annotation == outputAnnotation);
+    return _info;
+  }
 
   @override
   visitFunctionDeclaration(FunctionDeclaration node) =>
@@ -49,7 +87,6 @@ class GalleryDocumentaionExtraction
     final args = node?.arguments?.arguments;
     if (args == null) return null;
 
-    _info.type = node.name.name;
     args.accept(this);
   }
 
@@ -63,12 +100,13 @@ class GalleryDocumentaionExtraction
   }
 
   /// Collect information needed for documentaiton from [node].
-  DocumentationInfo _extractDocumentation(NamedCompilationUnitMember node) {
+  DocInfo _extractDocumentation(NamedCompilationUnitMember node) {
     if (node.name.name != _name) return null;
 
-    _info = new DocumentationInfo()
+    _info = new DocInfo()
       ..name = node.name.name
-      ..comment = parseComment(node.documentationComment);
+      ..comment = g3docMarkdownToHtml(parseComment(node.documentationComment))
+      ..path = _filePath;
     node.metadata
         .firstWhere((annotation) => _isAngularDirective(annotation),
             orElse: () => null)
@@ -81,59 +119,123 @@ class GalleryDocumentaionExtraction
   bool _isAngularDirective(Annotation node) =>
       node.name.name == 'Directive' || node.name.name == 'Component';
 
-  static final RegExp _singleLineCommentStart = new RegExp(r'^///? ?(.*)');
-  static final RegExp _multiLineCommentStartEnd =
-      new RegExp(r'^/\*\*? ?([\s\S]*)\*/$', multiLine: true);
-  static final RegExp _multiLineCommentLineStart =
-      new RegExp(r'^[ \t]*\* ?(.*)');
+  /// If the annotation [node] contains information for the Angular annotations
+  /// @Input or @Output.
+  bool _isAngularProperty(Annotation node) =>
+      node.name.name == inputAnnotation || node.name.name == outputAnnotation;
 
-  /// Pulls the raw text out of a comment (i.e. removes the comment
-  /// characters).
-  String parseComment(Comment commentNode) {
-    if (commentNode == null) {
-      return '';
-    }
+  /// If the annotation [node] contains represents @deprecated or @Deprecated.
+  bool _isDeprecated(Annotation node) =>
+      node.name.name == 'deprecated' || node.name.name == 'Deprecated';
 
-    // Handle ///-style comments
-    if (commentNode.tokens
-        .every((t) => _singleLineCommentStart.hasMatch(t.lexeme))) {
-      return commentNode.tokens
-          .map((t) => _singleLineCommentStart.firstMatch(t.lexeme)[1])
-          .join('\n');
-    }
+  /// Returns the first Angular property (@Input or @Output) annotation found
+  /// on [node] or null if there are none.
+  Annotation _angularPropertyAnnotation(Declaration node) =>
+      node?.metadata?.firstWhere((annotation) => _isAngularProperty(annotation),
+          orElse: () => null);
 
-    // Handle /* */-style comments
-    String comment = commentNode.tokens.single.lexeme;
-    Match match = _multiLineCommentStartEnd.firstMatch(comment);
-    if (match != null) {
-      comment = match[1];
-      var sb = new StringBuffer();
-      List<String> lines = comment.split('\n');
-      for (int index = 0; index < lines.length; index++) {
-        String line = lines[index].trimRight();
-        if (index == 0) {
-          sb.write(line); // Add the first line unprocessed.
-          continue;
-        }
-        sb.write('\n');
-        match = _multiLineCommentLineStart.firstMatch(line);
-        if (match != null) {
-          sb.write(match[1]);
-        } else {
-          sb.write(line);
-        }
-      }
-      return sb.toString().trim();
-    }
-    throw new ArgumentError('Invalid comment $comment');
+  /// Returns the first deprecated annotation found on [node] or null if there
+  /// are none.
+  Annotation _deprecatedAnnotation(Declaration node) =>
+      node?.metadata?.firstWhere((annotation) => _isDeprecated(annotation),
+          orElse: () => null);
+}
+
+/// A visitor that extracts a [PropertyInfo] for every @Input and @Output
+/// property.
+///
+/// Only passes [_filePath] through the the indivudual extractor each
+/// [PropertyInfo].
+class _AllMemberDocsExtraction
+    extends SimpleAstVisitor<Iterable<PropertyInfo>> {
+  final _MemberDocExtraction _propertyVisitor;
+
+  _AllMemberDocsExtraction(_filePath)
+      : this._propertyVisitor = new _MemberDocExtraction(_filePath);
+
+  @override
+  visitConstructorDeclaration(ConstructorDeclaration node) =>
+      const Iterable.empty();
+
+  @override
+  visitMethodDeclaration(MethodDeclaration node) =>
+      [node.accept(_propertyVisitor)];
+
+  @override
+  visitFieldDeclaration(FieldDeclaration node) =>
+      node.fields.variables.map((field) => field.accept(_propertyVisitor));
+}
+
+/// A visitor that extracts comments and the name of a class field or method as
+/// a [PropertyInfo].
+///
+/// Only uses [_filePath] to store in the returned [PropertyInfo] to document
+/// the file it was extracted from.
+class _MemberDocExtraction extends SimpleAstVisitor<PropertyInfo> {
+  final String _filePath;
+
+  _MemberDocExtraction(this._filePath);
+
+  @override
+  visitMethodDeclaration(MethodDeclaration node) => extractProperty(node);
+
+  @override
+  visitVariableDeclaration(VariableDeclaration node) => extractProperty(node);
+
+  /// Extracts information for documenentation from a [MethodDeclaration] or
+  /// [VariableDeclaration].
+  PropertyInfo extractProperty(Declaration node) {
+    return new PropertyInfo()
+      ..name = (node as dynamic /* MethodDeclaration | VariableDeclaration */)
+          .name
+          .name
+      ..comment = g3docMarkdownToHtml(parseComment(node.documentationComment))
+      ..classPath = _filePath;
   }
 }
 
-/// Information used for documenation in the gallery.
-class DocumentationInfo {
-  /// The path in which this component was found.
-  String name;
-  String type;
-  String selector;
-  String comment;
+final RegExp _singleLineCommentStart = new RegExp(r'^///? ?(.*)');
+final RegExp _multiLineCommentStartEnd =
+    new RegExp(r'^/\*\*? ?([\s\S]*)\*/$', multiLine: true);
+final RegExp _multiLineCommentLineStart = new RegExp(r'^[ \t]*\* ?(.*)');
+
+/// Pulls the raw text out of a comment (i.e. removes the comment
+/// characters).
+String parseComment(Comment commentNode) {
+  if (commentNode == null) {
+    return '';
+  }
+
+  // Handle ///-style comments
+  if (commentNode.tokens
+      .every((t) => _singleLineCommentStart.hasMatch(t.lexeme))) {
+    return commentNode.tokens
+        .map((t) => _singleLineCommentStart.firstMatch(t.lexeme)[1])
+        .join('\n');
+  }
+
+  // Handle /* */-style comments
+  String comment = commentNode.tokens.single.lexeme;
+  Match match = _multiLineCommentStartEnd.firstMatch(comment);
+  if (match != null) {
+    comment = match[1];
+    var sb = new StringBuffer();
+    List<String> lines = comment.split('\n');
+    for (int index = 0; index < lines.length; index++) {
+      String line = lines[index].trimRight();
+      if (index == 0) {
+        sb.write(line); // Add the first line unprocessed.
+        continue;
+      }
+      sb.write('\n');
+      match = _multiLineCommentLineStart.firstMatch(line);
+      if (match != null) {
+        sb.write(match[1]);
+      } else {
+        sb.write(line);
+      }
+    }
+    return sb.toString().trim();
+  }
+  throw new ArgumentError('Invalid comment $comment');
 }

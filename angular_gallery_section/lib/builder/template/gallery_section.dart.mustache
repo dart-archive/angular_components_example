@@ -7,17 +7,17 @@ import '{{{dartImport}}}';
 {{/imports}}
 
 @Component(
-    selector: 'gallery-section',
-    providers: const [popupBindings],
-    template: """
+  selector: 'gallery-section',
+  providers: const [popupBindings],
+  template: """
 {{#demos}}
 <{{selector}}></{{selector}}>
 {{/demos}}
 """,
-    directives: const [
-    {{#demos}}
-      {{className}},
-    {{/demos}}
-    ],
-    visibility: Visibility.local)
+  directives: const [
+  {{#demos}}
+    {{className}},
+  {{/demos}}
+  ],
+)
 class GallerySection {}
