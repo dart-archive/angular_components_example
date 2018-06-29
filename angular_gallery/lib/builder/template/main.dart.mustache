@@ -6,7 +6,7 @@ import 'package:logging/logging.dart';
 import 'package:angular_components/laminate/popup/module.dart';
 import 'package:angular_components/laminate/overlay/module.dart';
 import 'package:angular_components/material_datepicker/module.dart';
-import '{{{ galleryImportUri }}}';
+import '{{{ galleryImportUri }}}' as app;
 
 import 'main.template.dart' as ng;
 
@@ -16,18 +16,19 @@ void main() {
   Logger.root.onRecord.listen((x) => print("${x.level}: ${x.message}"));
 
   // Start angular.
-  final module = <dynamic>[
-    popupBindings,
-    datepickerBindings,
-    routerProviders,
-    const Provider(appBaseHref, useValue: '/'),
-    provide(LocationStrategy, useClass: HashLocationStrategy),
-    const Provider(overlayContainerParent, useFactory: materialContentElement),
-  ];
-  bootstrapStatic(GalleryComponent, module, ng.initReflector);
+  runApp(app.GalleryComponentNgFactory, createInjector: galleryInjector);
 }
 
 @Injectable()
 HtmlElement materialContentElement(Document document) {
   return document.querySelector('material-content');
 }
+
+@GenerateInjector([
+  routerProvidersHash,
+  popupBindings,
+  datepickerBindings,
+  const Provider(overlayContainerParent, useFactory: materialContentElement),
+])
+
+final InjectorFactory galleryInjector = ng.galleryInjector$Injector;

@@ -32,7 +32,7 @@ class GalleryWebBuilder extends Builder {
   Future _generateMainDart(BuildStep buildStep) async {
     final mustacheContext = {
       'galleryImportUri':
-          'package:${buildStep.inputId.package}/gallery/gallery.dart'
+          'package:${buildStep.inputId.package}/gallery/gallery.template.dart'
     };
     final newAssetId = new AssetId(buildStep.inputId.package, 'web/main.dart');
     await writeAsset(buildStep, 'lib/builder/template/main.dart.mustache',

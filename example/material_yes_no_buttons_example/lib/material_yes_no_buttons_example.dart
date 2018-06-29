@@ -9,16 +9,19 @@ import 'package:angular/angular.dart';
 import 'package:angular_components/material_yes_no_buttons/material_yes_no_buttons.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
-@GallerySectionConfig(displayName: 'Material Yes No Buttons', docs: const [
-  KeyUpBoundaryDirective,
-  EscapeCancelsDirective,
-  MaterialSaveCancelButtonsDirective,
-  MaterialYesNoButtonsComponent,
-], demos: const [
-  MaterialYesNoButtonsExample
-], benchmarks: const [
-  'material_yes_no_buttons_init'
-])
+@GallerySectionConfig(
+  displayName: 'Material Yes No Buttons',
+  docs: const [
+    MaterialYesNoButtonsComponent,
+    MaterialSaveCancelButtonsDirective,
+    MaterialSubmitCancelButtonsDirective,
+    KeyUpBoundaryDirective,
+    EscapeCancelsDirective,
+  ],
+  demos: const [MaterialYesNoButtonsExample],
+  benchmarks: const ['material_yes_no_buttons_init'],
+  showGeneratedDocs: true,
+)
 class MaterialYesNoButtonsGalleryConfig {}
 
 @Component(

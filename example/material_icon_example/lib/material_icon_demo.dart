@@ -9,15 +9,17 @@ import 'package:angular_components/material_input/material_input.dart';
 import 'package:angular_components/model/ui/icon.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
-@GallerySectionConfig(displayName: 'Material Icon', docs: const [
-  MaterialIconComponent
-], demos: const [
-  MaterialIconDemoComponent
-], benchmarks: const [
-  'material_icon_init',
-  'material_icon_100_init',
-  'material_icon_100_binding_init',
-])
+@GallerySectionConfig(
+  displayName: 'Material Icon',
+  docs: const [MaterialIconComponent],
+  demos: const [MaterialIconDemoComponent],
+  benchmarks: const [
+    'material_icon_init',
+    'material_icon_100_init',
+    'material_icon_100_binding_init',
+  ],
+  showGeneratedDocs: true,
+)
 class GlyphGalleryConfig {}
 
 @Component(

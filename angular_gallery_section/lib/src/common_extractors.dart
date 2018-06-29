@@ -3,11 +3,24 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:analyzer/analyzer.dart';
+import 'package:build/build.dart';
 
-/// [AstVisitor] to extract a [SimpleStringLiteral]s or [SimpleIdentifier]s.
+/// [AstVisitor] to extract a [SimpleStringLiteral]s, [AdjacentStrings] or
+/// [SimpleIdentifier]s.
 class StringExtractor extends SimpleAstVisitor<String> {
   @override
   visitSimpleStringLiteral(SimpleStringLiteral node) => node.value;
+
+  @override
+  visitAdjacentStrings(AdjacentStrings node) =>
+      node.strings.map((literal) => literal.accept(this)).join('');
+
+  @override
+  visitStringInterpolation(StringInterpolation node) {
+    log.severe('The example gallery generator does support String '
+        'interpolation in annotations.');
+    return null;
+  }
 
   @override
   visitSimpleIdentifier(SimpleIdentifier node) => node.name;

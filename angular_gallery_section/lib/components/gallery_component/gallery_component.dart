@@ -44,7 +44,7 @@ class GalleryComponent {
 
   String getDocId(Doc doc) => '${doc.name}Doc';
 
-  String getDemoId(Demo demo) => '${demo.type}Demo';
+  String getDemoId(Demo demo) => '${demo.name}Demo';
 
   void scroll(String locator) => querySelector(locator).scrollIntoView();
 

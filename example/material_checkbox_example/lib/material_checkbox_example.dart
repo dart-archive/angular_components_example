@@ -11,13 +11,15 @@ import 'package:angular_components/material_input/material_input.dart';
 import 'package:angular_components/material_toggle/material_toggle.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
-@GallerySectionConfig(displayName: 'Material Checkbox', docs: const [
-  MaterialCheckboxComponent
-], demos: const [
-  MaterialCheckboxExample
-], benchmarks: const [
-  'material_checkbox_init',
-])
+@GallerySectionConfig(
+  displayName: 'Material Checkbox',
+  docs: const [MaterialCheckboxComponent],
+  demos: const [MaterialCheckboxExample],
+  benchmarks: const [
+    'material_checkbox_init',
+  ],
+  showGeneratedDocs: true,
+)
 class MaterialCheckboxGalleryConfig {}
 
 @Component(

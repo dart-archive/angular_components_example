@@ -14,14 +14,15 @@ import 'package:angular_components/utils/angular/scroll_host/angular_2.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Stepper',
-  docs: const [MaterialStepperComponent],
+  docs: const [MaterialStepperComponent, StepDirective],
   demos: const [StepperDemoComponent],
+  showGeneratedDocs: true,
 )
 class MaterialStepperGalleryConfig {}
 
 @Component(
   selector: 'stepper-demo',
-  providers: const [scrollHostModule],
+  providers: const [scrollHostProviders],
   directives: const [
     MaterialStepperComponent,
     StepDirective,

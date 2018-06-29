@@ -157,7 +157,7 @@ class DemoInfo {
   DemoInfo();
 
   /// The import to use to load this demo.
-  String get import => 'package:${asset.replaceFirst('|lib/', '/')}';
+  String get import => path_utils.assetToImport(asset);
 
   /// The path to the file where this demo is defined.
   String get path => path_utils.assetToPath(asset);

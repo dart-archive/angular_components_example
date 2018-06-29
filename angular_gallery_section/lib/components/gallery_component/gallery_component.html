@@ -83,14 +83,14 @@
         <div class="property-list">
           <div *ngFor="let input of doc.inputs">
             <span class="property-name">
-              {{input.nameInTemplate.isNotEmpty ? input.nameInTemplate : input.name}}
+              {{input.bindingAlias.isNotEmpty ? input.bindingAlias : input.name}}
             </span>
             <span class="property-type">{{input.type}}</span>
             <p>
               <span class="property-deprecated" *ngIf="input.deprecated">Deprecated</span>
               {{input.deprecatedMessage}}
             </p>
-            <p *ngIf="input.comment.isEmpty">
+            <p *ngIf="input.comment.isEmpty && !input.deprecated">
               Missing a Dart Doc comment. Please update:
               <a [href]="getCodeSearchLink(input.classPath)" target="_blank">
                 {{input.classPath}}
@@ -105,10 +105,14 @@
         <div class="property-list">
           <div *ngFor="let output of doc.outputs">
             <span class="property-name">
-              {{output.nameInTemplate.isNotEmpty ? output.nameInTemplate : output.name}}
+              {{output.bindingAlias.isNotEmpty ? output.bindingAlias : output.name}}
             </span>
             <span class="property-type">{{output.type}}</span>
-            <p *ngIf="output.comment.isEmpty">
+            <p>
+              <span class="property-deprecated" *ngIf="output.deprecated">Deprecated</span>
+              {{output.deprecatedMessage}}
+            </p>
+            <p *ngIf="output.comment.isEmpty && !output.deprecated">
               Missing a Dart Doc comment. Please update:
               <a [href]="getCodeSearchLink(output.classPath)" target="_blank">
                 {{output.classPath}}
@@ -127,7 +131,7 @@
     {{demo.name}}
     <a [href]="getCodeSearchLink(demo.path)" target="_blank">Source Code</a>
   </h2>
-  <dynamic-component [componentType]="demo.type"></dynamic-component>
+  <dynamic-component [componentFactory]="demo.demoFactory"></dynamic-component>
 </section>
 
 <section *ngIf="model.benchmarks.isNotEmpty" class="latency-chart">
