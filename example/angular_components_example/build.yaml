@@ -22,7 +22,6 @@ targets:
           dart2js_args:
           - --fast-startup
           - --minify
-          - --trust-type-annotations
           - --trust-primitives
           - --dump-info
           - --preview-dart-2
