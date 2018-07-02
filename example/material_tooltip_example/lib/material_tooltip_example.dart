@@ -5,6 +5,7 @@
 import 'package:angular/angular.dart';
 import 'package:angular_components/content/deferred_content.dart';
 import 'package:angular_components/focus/keyboard_only_focus_indicator.dart';
+import 'package:angular_components/laminate/enums/alignment.dart';
 import 'package:angular_components/laminate/popup/module.dart';
 import 'package:angular_components/material_button/material_button.dart';
 import 'package:angular_components/material_icon/material_icon.dart';
@@ -16,16 +17,19 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 import 'package:angular_gallery_section/components/content/delayed_content.dart';
 import 'package:angular_components/theme/dark_theme.dart';
 
-@GallerySectionConfig(displayName: 'Material Tooltip', docs: const [
-  MaterialTooltipDirective,
-  MaterialPaperTooltipComponent,
-  MaterialTooltipTargetDirective,
-  ClickableTooltipTargetDirective,
-  MaterialInkTooltipComponent,
-  MaterialIconTooltipComponent
-], demos: const [
-  MaterialTooltipExampleComponent
-])
+@GallerySectionConfig(
+  displayName: 'Material Tooltip',
+  docs: const [
+    MaterialTooltipDirective,
+    MaterialPaperTooltipComponent,
+    MaterialTooltipTargetDirective,
+    ClickableTooltipTargetDirective,
+    MaterialInkTooltipComponent,
+    MaterialIconTooltipComponent
+  ],
+  demos: const [MaterialTooltipExampleComponent],
+  showGeneratedDocs: true,
+)
 class MaterialTooltipExamples {}
 
 @Component(
@@ -57,6 +61,8 @@ class MaterialTooltipExamples {}
   preserveWhitespace: true,
 )
 class MaterialTooltipExampleComponent {
+  final preferredTooltipPositions = const [RelativePosition.OffsetBottomRight];
+
   /// The following messages would come from `Intl.message`.
   String get tooltipMsg => 'A message that appears in a tooltip.';
   String get longString => 'Number of opportunities linked to this objective '

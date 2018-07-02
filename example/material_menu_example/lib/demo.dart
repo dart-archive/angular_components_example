@@ -9,14 +9,20 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 import 'material_fab_menu_demo.dart';
 import 'material_menu_demo.dart';
 
-@GallerySectionConfig(displayName: 'Material Menu', docs: const [
-  MaterialMenuComponent,
-  MaterialFabMenuComponent,
-], demos: const [
-  MaterialMenuDemoComponent,
-  MaterialFabMenuDemoComponent,
-], benchmarks: const [
-  'material_menu_simple_init',
-  'material_menu_nested_init',
-])
+@GallerySectionConfig(
+  displayName: 'Material Menu',
+  docs: const [
+    MaterialMenuComponent,
+    MaterialFabMenuComponent,
+  ],
+  demos: const [
+    MaterialMenuDemoComponent,
+    MaterialFabMenuDemoComponent,
+  ],
+  benchmarks: const [
+    'material_menu_simple_init',
+    'material_menu_nested_init',
+  ],
+  showGeneratedDocs: true,
+)
 class MaterialMenuExamples {}

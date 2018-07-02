@@ -10,15 +10,19 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 import 'package:angular_components/scorecard/scoreboard.dart';
 import 'package:angular_components/scorecard/scorecard.dart';
 
-@GallerySectionConfig(displayName: 'Scorecard', docs: const [
-  ScorecardComponent,
-  ScoreboardComponent,
-], demos: const [
-  ScorecardDemoComponent
-], benchmarks: const [
-  'scorecard_init',
-  'scoreboard_init',
-])
+@GallerySectionConfig(
+  displayName: 'Scorecard',
+  docs: const [
+    ScorecardComponent,
+    ScoreboardComponent,
+  ],
+  demos: const [ScorecardDemoComponent],
+  benchmarks: const [
+    'scorecard_init',
+    'scoreboard_init',
+  ],
+  showGeneratedDocs: true,
+)
 class ScorecardGalleryConfig {}
 
 @Component(

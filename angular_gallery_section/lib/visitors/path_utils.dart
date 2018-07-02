@@ -90,7 +90,15 @@ List<String> splitPathOnPackage(String p) {
 /// package name with slashes.
 ///
 /// Example: "package.name|lib/path/to/asset.txt" to
-/// 'package/name/lib/path/to/asset.txt'.
+/// "package/name/lib/path/to/asset.txt".
 String assetToPath(String asset) => asset.replaceFirstMapped(
     new RegExp(r'(.*)\|(lib.*)'),
     (m) => '${m[1].replaceAll('.', '/')}/${m[2]}');
+
+/// Convert assetId string representation to a package string usable in a dart
+/// import.
+///
+/// Example: "package.name|lib/path/to/asset.txt" to
+/// "package:package.name/path/to/asset.txt".
+String assetToImport(String asset) =>
+    'package:${asset.replaceFirst('|lib/', '/')}';

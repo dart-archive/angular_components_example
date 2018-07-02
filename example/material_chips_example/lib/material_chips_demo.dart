@@ -14,14 +14,16 @@ import 'package:angular_components/model/ui/display_name.dart';
 import 'package:angular_components/model/ui/has_renderer.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
-@GallerySectionConfig(displayName: 'Material Chips', docs: const [
-  MaterialChipsComponent,
-  MaterialChipComponent,
-], demos: const [
-  MaterialChipsDemoComponent
-], benchmarks: const [
-  'material_chips_init'
-])
+@GallerySectionConfig(
+  displayName: 'Material Chips',
+  docs: const [
+    MaterialChipsComponent,
+    MaterialChipComponent,
+  ],
+  demos: const [MaterialChipsDemoComponent],
+  benchmarks: const ['material_chips_init'],
+  showGeneratedDocs: true,
+)
 class MaterialChipsExamples {}
 
 @Component(

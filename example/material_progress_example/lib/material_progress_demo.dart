@@ -7,10 +7,12 @@ import 'package:angular_components/material_progress/material_progress.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
-    displayName: 'Material Progress',
-    docs: const [MaterialProgressComponent],
-    demos: const [MaterialProgressDemoComponent],
-    benchmarks: const ['material_progress_init'])
+  displayName: 'Material Progress',
+  docs: const [MaterialProgressComponent],
+  demos: const [MaterialProgressDemoComponent],
+  benchmarks: const ['material_progress_init'],
+  showGeneratedDocs: true,
+)
 class MaterialProgressExamples {}
 
 @Component(

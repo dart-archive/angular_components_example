@@ -7,13 +7,19 @@ import 'package:angular_components/material_slider/material_slider.dart';
 import 'package:angular_components/material_toggle/material_toggle.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
-@GallerySectionConfig(displayName: 'Material Slider', docs: const [
-  MaterialSliderComponent,
-], demos: const [
-  MaterialSliderExample,
-], benchmarks: const [
-  'material_slider_100_init',
-])
+@GallerySectionConfig(
+  displayName: 'Material Slider',
+  docs: const [
+    MaterialSliderComponent,
+  ],
+  demos: const [
+    MaterialSliderExample,
+  ],
+  benchmarks: const [
+    'material_slider_100_init',
+  ],
+  showGeneratedDocs: true,
+)
 class MaterialSliderGalleryConfig {}
 
 @Component(

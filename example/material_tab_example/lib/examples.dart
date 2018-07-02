@@ -10,18 +10,24 @@ import 'material_tab_strip_example.dart';
 import 'material_tab_strip_mixin_example.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
-@GallerySectionConfig(displayName: 'Material Tab', docs: const [
-  FixedMaterialTabStripComponent,
-  MaterialTabPanelComponent,
-  MaterialTabComponent
-], demos: const [
-  MaterialTabStripExample,
-  MaterialTabPanelExample,
-  MaterialTabStripMixinExample,
-], benchmarks: const [
-  'material_tab_strip_init',
-  'material_tab_panel_init',
-  'material_tab_panel_ngfor_init',
-  'material_tab_panel_init_with_content',
-])
+@GallerySectionConfig(
+  displayName: 'Material Tab',
+  docs: const [
+    FixedMaterialTabStripComponent,
+    MaterialTabPanelComponent,
+    MaterialTabComponent
+  ],
+  demos: const [
+    MaterialTabStripExample,
+    MaterialTabPanelExample,
+    MaterialTabStripMixinExample,
+  ],
+  benchmarks: const [
+    'material_tab_strip_init',
+    'material_tab_panel_init',
+    'material_tab_panel_ngfor_init',
+    'material_tab_panel_init_with_content',
+  ],
+  showGeneratedDocs: true,
+)
 class MaterialTabExamples {}

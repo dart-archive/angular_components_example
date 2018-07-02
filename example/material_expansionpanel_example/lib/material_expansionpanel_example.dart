@@ -20,16 +20,20 @@ import 'package:angular_components/material_yes_no_buttons/material_yes_no_butto
 import 'package:angular_components/model/action/async_action.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
-@GallerySectionConfig(displayName: 'Material ExpansionPanel', docs: const [
-  MaterialExpansionPanel,
-  MaterialExpansionPanelSet,
-  MaterialExpansionPanelAutoDismiss,
-], demos: const [
-  MaterialExpansionDemo
-], benchmarks: const [
-  'material_expansionpanel_init',
-  'material_expansionpanel_set_init',
-])
+@GallerySectionConfig(
+  displayName: 'Material ExpansionPanel',
+  docs: const [
+    MaterialExpansionPanel,
+    MaterialExpansionPanelSet,
+    MaterialExpansionPanelAutoDismiss,
+  ],
+  demos: const [MaterialExpansionDemo],
+  benchmarks: const [
+    'material_expansionpanel_init',
+    'material_expansionpanel_set_init',
+  ],
+  showGeneratedDocs: true,
+)
 class MaterialExpansionPanelGalleryConfig {}
 
 @Component(

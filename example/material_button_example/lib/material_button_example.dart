@@ -10,14 +10,18 @@ import 'package:angular_components/material_icon/material_icon.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 import 'package:angular_components/theme/dark_theme.dart';
 
-@GallerySectionConfig(displayName: 'Material Button', docs: const [
-  MaterialButtonComponent,
-  MaterialFabComponent,
-], demos: const [
-  MaterialButtonExample
-], benchmarks: const [
-  'material_button_100_init',
-])
+@GallerySectionConfig(
+  displayName: 'Material Button',
+  docs: const [
+    MaterialButtonComponent,
+    MaterialFabComponent,
+  ],
+  demos: const [MaterialButtonExample],
+  benchmarks: const [
+    'material_button_100_init',
+  ],
+  showGeneratedDocs: true,
+)
 class MaterialButtonGalleryConfig {}
 
 @Component(

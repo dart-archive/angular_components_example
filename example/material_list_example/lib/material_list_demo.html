@@ -6,7 +6,7 @@
 <span class="colorchanger" [style.color]="selectedColor">Use the list to change color</span>
 
 <section>
-  <h2>Basic Demo</h2>
+  <h2>Basic Demo with Groups</h2>
   <material-list>
     <div group>
       <material-list-item (trigger)="selectColor('red')">
@@ -27,7 +27,7 @@
 
 
 <section>
-  <h2>Different list sizes</h2>
+  <h2>Different list sizes and a label</h2>
   <p><em>with borders to demonstrate container size</em></p>
   <p>Sizes: x-small, small, medium, large, x-large</p>
   <div *ngFor="let size of sizes">

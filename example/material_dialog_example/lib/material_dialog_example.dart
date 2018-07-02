@@ -17,7 +17,8 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
     displayName: 'Material Dialog',
     docs: const [MaterialDialogComponent],
     demos: const [MaterialDialogExample],
-    benchmarks: const ['material_dialog_init'])
+    benchmarks: const ['material_dialog_init'],
+    showGeneratedDocs: true)
 class MaterialDialogGalleryConfig {}
 
 @Component(

@@ -10,13 +10,15 @@ import 'package:angular_components/material_radio/material_radio_group.dart';
 import 'package:angular_components/model/selection/selection_model.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
-@GallerySectionConfig(displayName: 'Material Radio', docs: const [
-  MaterialRadioComponent
-], demos: const [
-  MaterialRadioExample
-], benchmarks: const [
-  'material_radio_100_init',
-])
+@GallerySectionConfig(
+  displayName: 'Material Radio',
+  docs: const [MaterialRadioComponent, MaterialRadioGroupComponent],
+  demos: const [MaterialRadioExample],
+  benchmarks: const [
+    'material_radio_100_init',
+  ],
+  showGeneratedDocs: true,
+)
 @Component(
   selector: 'material-radio-example',
   directives: const [

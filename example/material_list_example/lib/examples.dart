@@ -8,13 +8,13 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 import 'material_list_demo.dart';
 
-@GallerySectionConfig(displayName: 'Material List', docs: const [
-  MaterialListComponent,
-  MaterialListItemComponent,
-], demos: const [
-  MaterialListDemoComponent,
-], benchmarks: const [
-  'material_list_item_init',
-  'material_list_init'
-])
+@GallerySectionConfig(
+  displayName: 'Material List',
+  docs: const [
+    MaterialListComponent,
+    MaterialListItemComponent,
+  ],
+  benchmarks: const ['material_list_item_init', 'material_list_init'],
+  showGeneratedDocs: true,
+)
 class MaterialListExamples {}

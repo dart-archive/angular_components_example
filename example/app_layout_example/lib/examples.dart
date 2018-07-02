@@ -4,23 +4,32 @@
 
 import 'package:angular_components/app_layout/material_persistent_drawer.dart';
 import 'package:angular_components/app_layout/material_temporary_drawer.dart';
+import 'package:angular_components/app_layout/material_stackable_drawer.dart';
+import 'stacking_drawer_example.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 import 'app_layout_example.dart';
 import 'mobile_app_layout_example.dart';
 
-@GallerySectionConfig(displayName: 'App Layout', docs: const [
-  'package:angular_components/app_layout/README.md',
-  MaterialPersistentDrawerDirective,
-  MaterialTemporaryDrawerComponent,
-], demos: const [
-  MaterialDrawerExample,
-  MaterialDrawerMobileExample,
-], relatedUrls: const {
-  'Material Spec (Drawer)':
-      'https://material.io/guidelines/patterns/navigation-drawer.html'
-      '#navigation-drawer-behavior',
-  'Material Spec (App Bar)':
-      'https://material.io/guidelines/layout/structure.html#structure-app-bar',
-})
+@GallerySectionConfig(
+  displayName: 'App Layout',
+  docs: const [
+    'package:angular_components/app_layout/README.md',
+    MaterialPersistentDrawerDirective,
+    MaterialTemporaryDrawerComponent,
+    MaterialStackableDrawerComponent,
+  ],
+  demos: const [
+    MaterialDrawerExample,
+    MaterialDrawerMobileExample,
+    MaterialStackingDrawerExample,
+  ],
+  relatedUrls: const {
+    'Material Spec (Drawer)':
+        'https://material.io/design/components/navigation-drawer.html',
+    'Material Spec (App Bar)':
+        'https://material.io/design/components/app-bars-top.html',
+  },
+  showGeneratedDocs: true,
+)
 class MaterialDrawerExamples {}
