@@ -211,14 +211,12 @@
   <h2>Using Forms API</h2>
   <p>
     This form has multiple Forms API Validators applied to it. One prevents the text 'abc' from
-    being in the string, the other prevents 'def' from being in the text. There is also the default
-    validator that shows the native validity and custom error message.
+    being in the string, the other prevents 'def' from being in the text.
   </p>
   <material-input [ngFormControl]="form"
                   textValidator="abc"
                   floatingLabel
-                  label="Using form API"
-                  type="email">
+                  label="Using form API">
   </material-input>
   <material-button raised (trigger)="resetForm()">Reset text input</material-button>
   <p>Text input is : {{form.value}}</p>

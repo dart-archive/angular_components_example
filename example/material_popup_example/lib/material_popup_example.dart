@@ -18,15 +18,17 @@ import 'package:angular_components/model/selection/selection_options.dart';
 import 'package:angular_components/model/ui/has_renderer.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
-@GallerySectionConfig(displayName: 'Material Popup', docs: const [
-  MaterialPopupComponent
-], demos: const [
-  MaterialPopupExample
-], benchmarks: const [
-  'material_popup_init',
-  'material_popup_content_init',
-  'material_popup_deferred_content_init',
-])
+@GallerySectionConfig(
+  displayName: 'Material Popup',
+  docs: const [MaterialPopupComponent],
+  demos: const [MaterialPopupExample],
+  benchmarks: const [
+    'material_popup_init',
+    'material_popup_content_init',
+    'material_popup_deferred_content_init',
+  ],
+  showGeneratedDocs: true,
+)
 class MaterialPopupDemoComponent {}
 
 @Component(

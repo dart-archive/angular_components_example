@@ -33,36 +33,25 @@ String g3docMarkdownToHtml(String markdown) {
     // TODO(google): launch/, ariane/ links.
     // TODO(google): google3/, depot/, java/com/google, javatests/com/google,
     //                 j/c/g, jt/c/g links.
-    new DartDocLinkSyntax(),
   ];
 
   return markdownToHtml(markdown,
       extensionSet: ExtensionSet.gitHubFlavored,
-      inlineSyntaxes: inlineSyntaxes);
+      inlineSyntaxes: inlineSyntaxes,
+      linkResolver: dartDocLinkResolver);
 }
 
 // A substitution string for simple substitution.
 const String _sub = '__SUB__';
 
-/// An inline Markdown syntax extension for Dartdoc links.
+/// A Markdown link resolver to render Dartdoc links.
 ///
 /// Replaces Dartdoc linked types, properties, etc that appear in square
 /// brackets with a code element.
 /// Example: [Foo] -> <code>Foo</code>
 /// TODO(google) Revisit this after dartdoc issue is resolved.
-class DartDocLinkSyntax extends InlineSyntax {
-  DartDocLinkSyntax() : super(r'(.*?)\[(.*?)\]');
-
-  @override
-  bool onMatch(InlineParser parser, Match match) {
-    var leftText = match[1];
-    var dartDocLinkText = match[2];
-    parser.addNode(new Text(leftText));
-    parser.addNode(new Element.text('code', dartDocLinkText));
-
-    return true;
-  }
-}
+Node dartDocLinkResolver(String text, [_]) =>
+    text.isEmpty ? null : new Element.text('code', text);
 
 /// An inline Markdown syntax extension for g3doc-style shortlinks.
 ///

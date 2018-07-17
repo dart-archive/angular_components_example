@@ -96,6 +96,8 @@ class GalleryDocumentaionExtraction extends SimpleAstVisitor<DocInfo> {
     final expression = node.expression;
     if (name == 'selector') {
       _info.selector = expression.accept(new StringExtractor());
+    } else if (name == 'exportAs') {
+      _info.exportAs = expression.accept(new StringExtractor());
     }
   }
 

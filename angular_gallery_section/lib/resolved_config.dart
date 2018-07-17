@@ -77,6 +77,7 @@ class ResolvedConfig {
 class DocInfo {
   String name;
   String selector;
+  String exportAs;
   String path;
   String comment;
   Iterable<PropertyInfo> inputs;
@@ -88,6 +89,7 @@ class DocInfo {
   DocInfo.fromJson(Map<String, dynamic> jsonMap) {
     name = jsonMap['name'] as String;
     selector = jsonMap['selector'] as String;
+    exportAs = jsonMap['exportAs'] as String;
     path = jsonMap['path'] as String;
     comment = jsonMap['comment'] as String;
     inputs = (jsonMap['inputs'] as Iterable)
@@ -100,6 +102,7 @@ class DocInfo {
   Map<String, dynamic> toJson() => {
         'name': name,
         'selector': selector,
+        'exportAs': exportAs,
         'path': path,
         'comment': comment,
         'inputs': inputs?.map((p) => p.toJson())?.toList(),

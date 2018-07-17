@@ -164,5 +164,16 @@
       [(ngModel)]="selectionValues">
   </material-dropdown-select>
 </section>
+<section>
+  <h3>Dropdown button</h3>
+  <dropdown-button [disabled]="true"
+                   [buttonText]="'Disabled'">
+  </dropdown-button>
+  <p>I don&#39;t have a dropdown myself. I&#39;m just a button with that style.</p>
+  <dropdown-button [disabled]="false"
+                   [buttonText]="'Implement a dropdown'"
+                   (trigger)="alert('Implement a dropdown')">
+  </dropdown-button>
+</section>
 <!-- space for dropdowns -->
 <div style="height:200px"></div>

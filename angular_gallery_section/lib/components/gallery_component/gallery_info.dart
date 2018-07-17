@@ -47,12 +47,13 @@ class GalleryInfo {
 class Doc {
   final String name;
   final String selector;
+  final String exportAs;
   final String path;
   final String comment;
   final List<Property> inputs;
   final List<Property> outputs;
-  const Doc(this.name, this.selector, this.path, this.comment, this.inputs,
-      this.outputs);
+  const Doc(this.name, this.selector, this.exportAs, this.path, this.comment,
+      this.inputs, this.outputs);
 }
 
 class Demo {

@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:html';
 
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
@@ -11,6 +12,7 @@ import 'package:angular_components/laminate/popup/module.dart';
 import 'package:angular_components/material_checkbox/material_checkbox.dart';
 import 'package:angular_components/material_icon/material_icon.dart';
 import 'package:angular_components/material_input/material_input.dart';
+import 'package:angular_components/material_select/dropdown_button.dart';
 import 'package:angular_components/material_select/material_dropdown_select.dart';
 import 'package:angular_components/material_select/material_dropdown_select_accessor.dart';
 import 'package:angular_components/material_select/material_select_searchbox.dart';
@@ -24,13 +26,17 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 import 'material_dropdown_select_demo.template.dart' as demo;
 
-@GallerySectionConfig(displayName: 'Material Dropdown Select', docs: const [
-  MaterialDropdownSelectComponent
-], demos: const [
-  MaterialDropdownSelectDemoComponent,
-], benchmarks: const [
-  'material_dropdown_select_init',
-])
+@GallerySectionConfig(
+  displayName: 'Material Dropdown Select',
+  docs: const [MaterialDropdownSelectComponent],
+  demos: const [
+    MaterialDropdownSelectDemoComponent,
+  ],
+  benchmarks: const [
+    'material_dropdown_select_init',
+  ],
+  showGeneratedDocs: true,
+)
 @Component(
   selector: 'material-dropdown-select-demo',
   // popupBindings should ideally be in a top level or root component.
@@ -44,7 +50,8 @@ import 'material_dropdown_select_demo.template.dart' as demo;
     DropdownSelectValueAccessor,
     MultiDropdownSelectValueAccessor,
     NgModel,
-    NgIf
+    NgIf,
+    DropdownButtonComponent,
   ],
   templateUrl: 'material_dropdown_select_demo.html',
   styleUrls: const ['material_dropdown_select_demo.scss.css'],
@@ -258,6 +265,8 @@ class MaterialDropdownSelectDemoComponent {
   }
 
   String selectionOption;
+
+  void alert(String message) => window.alert(message);
 }
 
 class Language implements HasUIDisplayName {

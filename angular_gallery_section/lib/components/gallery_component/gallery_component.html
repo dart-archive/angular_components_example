@@ -3,127 +3,127 @@
  for details. All rights reserved. Use of this source code is governed by a
  BSD-style license that can be found in the LICENSE file.
 -->
-<div class="metadata">
-  <span>
-    <template [ngIf]="model.relatedUrls.isNotEmpty">
-      References:&nbsp;
-    </template>
-    <span *ngFor="let name of model.relatedUrls.keys; let last = last">
+<section class="metadata">
+  <div class="references" *ngIf="model.relatedUrls.isNotEmpty">
+    <span>References:</span>
+    <ng-container *ngFor="let name of model.relatedUrls.keys; let last = last">
       <a class="related-url" [href]="model.relatedUrls[name]" target="_blank">
         {{name}}
       </a>
-      <template [ngIf]="!last">,&nbsp;</template>
-    </span>
-  </span>
-  <span>
-    <span class="owners" *ngIf="model.owners.isNotEmpty">
-      Owners:&nbsp;
-      <span *ngFor="let ldap of model.owners; let last = last">
-        <a class="owner" [href]="getTeamsLink(ldap)" target="_blank">
-          {{ldap}}@
-        </a>
-        <template [ngIf]="!last">,&nbsp;</template>
-      </span>
-    </span>
-    <span class="owners" *ngIf="model.uxOwners.isNotEmpty">
-      UX:&nbsp;
-      <span *ngFor="let ldap of model.uxOwners; let last = last">
-        <a class="ux-owner" [href]="getTeamsLink(ldap)" target="_blank">
-          {{ldap}}@
-        </a>
-        <template [ngIf]="!last">,&nbsp;</template>
-      </span>
-    </span>
-  </span>
-</div>
+      <span *ngIf="!last">&#8226;&nbsp;</span>
+    </ng-container>
+  </div>
 
-<ul *ngIf="showToc" class="toc">
-  <template [ngIf]="model.docs.isNotEmpty">
-    <li>Dart Docs</li>
-    <li *ngFor="let doc of model.docs">
-      <a buttonDecorator (trigger)="scroll('#' + getDocId(doc))">
-        {{doc.name}}
+  <div *ngIf="model.owners.isNotEmpty">
+    <span>Owners:</span>
+    <ng-container *ngFor="let ldap of model.owners; let last = last">
+      <a class="owner" [href]="getTeamsLink(ldap)" target="_blank">
+        {{ldap}}@
       </a>
-    </li>
-  </template>
-  <template [ngIf]="model.demos.isNotEmpty">
-    <li>Demos</li>
-    <li *ngFor="let demo of model.demos">
-      <a buttonDecorator (trigger)="scroll('#' + getDemoId(demo))">
-        {{demo.name}}
+      <span *ngIf="!last">&#8226;&nbsp;</span>
+    </ng-container>
+  </div>
+
+  <div *ngIf="model.uxOwners.isNotEmpty">
+    <span>UX:</span>
+    <ng-container *ngFor="let ldap of model.uxOwners; let last = last">
+      <a class="ux-owner" [href]="getTeamsLink(ldap)" target="_blank">
+        {{ldap}}@
       </a>
-    </li>
-  </template>
-  <template [ngIf]="model.benchmarks.isNotEmpty">
-    <li>Latency</li>
-    <li>
-      <a buttonDecorator (trigger)="scroll('#latency')">
-        Latency Charts
-      </a>
-    </li>
-  </template>
-</ul>
+      <span *ngIf="!last">&#8226;&nbsp;</span>
+    </ng-container>
+  </div>
+</section>
+
+<section class="toc" *ngIf="showToc">
+  <ng-container *ngIf="model.docs.isNotEmpty">
+    <label>Dart Docs</label>
+    <a *ngFor="let doc of model.docs"
+       buttonDecorator
+       (trigger)="scroll('#' + getDocId(doc))">
+      {{doc.name}}
+    </a>
+  </ng-container>
+
+  <ng-container *ngIf="model.demos.isNotEmpty">
+    <label>Demos</label>
+    <a *ngFor="let demo of model.demos"
+       buttonDecorator
+       (trigger)="scroll('#' + getDemoId(demo))">
+      {{demo.name}}
+    </a>
+  </ng-container>
+
+  <ng-container *ngIf="model.benchmarks.isNotEmpty">
+    <label>Latency</label>
+    <a buttonDecorator (trigger)="scroll('#latency')">Latency Charts</a>
+  </ng-container>
+</section>
 
 <section *ngFor="let doc of model.docs" class="doc">
   <h2 [id]="getDocId(doc)">
     {{doc.name}}
-    <span>
-      <a [href]="getCodeSearchLink(doc.path)" target="_blank">Source Code</a>
-    </span>
+    <a [href]="getCodeSearchLink(doc.path)" target="_blank">Source Code</a>
   </h2>
-  <div class="comment">
-    <p *ngIf="doc.selector.isNotEmpty">
-      <strong>Selector:&nbsp;</strong>
-      <code>&lt;{{doc.selector}}&gt;</code>
-    </p>
-    <div [safeInnerHtml]="getSafeHtml(doc.comment)"></div>
-    <div *ngIf="model.showGeneratedDocs">
-      <div *ngIf="doc.inputs.isNotEmpty">
-        <h4>Inputs:</h4>
-        <div class="property-list">
-          <div *ngFor="let input of doc.inputs">
-            <span class="property-name">
-              {{input.bindingAlias.isNotEmpty ? input.bindingAlias : input.name}}
-            </span>
-            <span class="property-type">{{input.type}}</span>
-            <p>
-              <span class="property-deprecated" *ngIf="input.deprecated">Deprecated</span>
-              {{input.deprecatedMessage}}
-            </p>
-            <p *ngIf="input.comment.isEmpty && !input.deprecated">
-              Missing a Dart Doc comment. Please update:
-              <a [href]="getCodeSearchLink(input.classPath)" target="_blank">
-                {{input.classPath}}
-              </a>
-            </p>
-            <div [safeInnerHtml]="getSafeHtml(input.comment)"></div>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="doc.outputs.isNotEmpty">
-        <h4>Outputs:</h4>
-        <div class="property-list">
-          <div *ngFor="let output of doc.outputs">
-            <span class="property-name">
-              {{output.bindingAlias.isNotEmpty ? output.bindingAlias : output.name}}
-            </span>
-            <span class="property-type">{{output.type}}</span>
-            <p>
-              <span class="property-deprecated" *ngIf="output.deprecated">Deprecated</span>
-              {{output.deprecatedMessage}}
-            </p>
-            <p *ngIf="output.comment.isEmpty && !output.deprecated">
-              Missing a Dart Doc comment. Please update:
-              <a [href]="getCodeSearchLink(output.classPath)" target="_blank">
-                {{output.classPath}}
-              </a>
-            </p>
-            <div [safeInnerHtml]="getSafeHtml(output.comment)"></div>
-          </div>
-        </div>
-      </div>
+
+  <p *ngIf="doc.selector.isNotEmpty">
+    <strong>Selector:</strong>
+    <code>&lt;{{doc.selector}}&gt;</code>
+  </p>
+
+  <p *ngIf="doc.exportAs.isNotEmpty">
+    <strong>Exported as:</strong>
+    <code>{{doc.exportAs}}</code>
+  </p>
+
+  <div [safeInnerHtml]="getSafeHtml(doc.comment)"></div>
+
+  <ng-container *ngIf="model.showGeneratedDocs">
+    <div *ngIf="doc.inputs.isNotEmpty">
+      <strong>Inputs:</strong>
+      <ul class="property-list">
+        <li *ngFor="let input of doc.inputs">
+          <code class="property-name">
+            {{input.bindingAlias.isNotEmpty ? input.bindingAlias : input.name}}
+          </code>
+          <code class="property-type">{{input.type}}</code>
+
+          <p class="property-deprecated" *ngIf="input.deprecated">
+            {{input.deprecatedMessage}}
+          </p>
+          <p *ngIf="input.comment.isEmpty && !input.deprecated">
+            Missing a Dart Doc comment. Please update:
+            <a [href]="getCodeSearchLink(input.classPath)" target="_blank">
+              {{input.classPath}}
+            </a>
+          </p>
+          <div [safeInnerHtml]="getSafeHtml(input.comment)"></div>
+        </li>
+      </ul>
     </div>
-  </div>
+
+    <div *ngIf="doc.outputs.isNotEmpty">
+      <strong>Outputs:</strong>
+      <ul class="property-list">
+        <li *ngFor="let output of doc.outputs">
+          <code class="property-name">
+            {{output.bindingAlias.isNotEmpty ? output.bindingAlias : output.name}}
+          </code>
+          <code class="property-type">{{output.type}}</code>
+          <p class="property-deprecated" *ngIf="output.deprecated">
+            {{output.deprecatedMessage}}
+          </p>
+          <p *ngIf="output.comment.isEmpty && !output.deprecated">
+            Missing a Dart Doc comment. Please update:
+            <a [href]="getCodeSearchLink(output.classPath)" target="_blank">
+              {{output.classPath}}
+            </a>
+          </p>
+          <div [safeInnerHtml]="getSafeHtml(output.comment)"></div>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
 </section>
 
 <section *ngFor="let demo of model.demos" class="demo">
@@ -135,9 +135,7 @@
 </section>
 
 <section *ngIf="model.benchmarks.isNotEmpty" class="latency-chart">
-  <h2 id="latency">
-    Latency Charts
-  </h2>
+  <h2 id="latency">Latency Charts</h2>
   <latency-chart
       *ngFor="let benchmark of model.benchmarks"
       benchmarkKey="{{benchmark.benchmarkKey}}"
