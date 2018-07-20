@@ -64,9 +64,14 @@ List<OptionGroup<List<int>>> _optionGroups = <OptionGroup<List<int>>>[
 ];
 
 @GallerySectionConfig(
-    displayName: 'Material Auto Suggest Input',
-    docs: const [MaterialAutoSuggestInputComponent],
-    demos: const [MaterialAutoSuggestInputDemoComponent])
+  displayName: 'Material Auto Suggest Input',
+  docs: const [MaterialAutoSuggestInputComponent],
+  demos: const [MaterialAutoSuggestInputDemoComponent],
+  benchmarks: const [
+    'material_auto_suggest_input_100_init',
+  ],
+  showGeneratedDocs: true,
+)
 @Component(
   selector: 'material-auto-suggest-input-demo',
   directives: const [

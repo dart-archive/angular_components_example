@@ -112,7 +112,7 @@ class MaterialInputDemoComponent {
   }
 
   void resetForm() {
-    form.updateValue('initial text');
+    form.reset(value: 'initial text');
   }
 
   void selectAllManualInput() {

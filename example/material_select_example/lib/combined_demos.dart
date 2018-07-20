@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular_components/material_select/display_name.dart';
+import 'package:angular_components/material_select/dropdown_button.dart';
 import 'package:angular_components/material_select/material_dropdown_select.dart';
 import 'package:angular_components/material_select/material_select.dart';
 import 'package:angular_components/material_select/material_select_item.dart';
@@ -11,17 +12,24 @@ import 'material_dropdown_select_demo.dart'
 import 'material_select_demo.dart' show MaterialSelectDemoComponent;
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
-@GallerySectionConfig(displayName: 'Material Select', docs: const [
-  MaterialSelectComponent,
-  MaterialSelectItemComponent,
-  MaterialDropdownSelectComponent,
-  displayNameRendererDirective
-], demos: const [
-  MaterialSelectDemoComponent,
-  MaterialDropdownSelectDemoComponent
-], benchmarks: const [
-  'material_select_item_init',
-  'material_select_init',
-  'material_dropdown_select_init'
-])
+@GallerySectionConfig(
+  displayName: 'Material Select',
+  docs: const [
+    MaterialSelectComponent,
+    MaterialSelectItemComponent,
+    MaterialDropdownSelectComponent,
+    DropdownButtonComponent,
+    displayNameRendererDirective
+  ],
+  demos: const [
+    MaterialSelectDemoComponent,
+    MaterialDropdownSelectDemoComponent
+  ],
+  benchmarks: const [
+    'material_select_item_init',
+    'material_select_init',
+    'material_dropdown_select_init'
+  ],
+  showGeneratedDocs: true,
+)
 class MaterialSelectExamples {}

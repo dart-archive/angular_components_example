@@ -17,7 +17,7 @@ class {{component}}Api {
   GalleryInfo model = new GalleryInfo(
       docs: [
         {{#docs}}
-          new Doc('{{name}}', '{{selector}}', '{{path}}', r"""{{comment}}""", [
+          new Doc('{{name}}', '{{selector}}', '{{exportAs}}', '{{path}}', r"""{{comment}}""", [
             {{#inputs}}
               new Property(
                 '{{annotation}}',

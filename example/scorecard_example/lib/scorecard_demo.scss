@@ -51,3 +51,12 @@
   margin: 3px 0;
   width: 100%;
 }
+
+.flex-scoreboard-container {
+  border: 1px solid $mat-red-100;
+  width: 300px;
+
+  @include acx-scorecard-flex-display(
+      $flex-direction: column,
+      $scorecard-flex: 1);
+}

@@ -168,21 +168,21 @@
 <div class="customize">
   <acx-scoreboard>
     <acx-scorecard
-            label="Estimated earnings"
-            value="$158.22"
-            description="+$24.20 (15%)"
-            changeType="POSITIVE">
+        label="Estimated earnings"
+        value="$158.22"
+        description="+$24.20 (15%)"
+        changeType="POSITIVE">
     </acx-scorecard>
     <acx-scorecard
-            label="Ad RPM"
-            value="$0.58"
-            description="-$0.02 (3%)"
-            changeType="NEGATIVE">
+        label="Ad RPM"
+        value="$0.58"
+        description="-$0.02 (3%)"
+        changeType="NEGATIVE">
     </acx-scorecard>
     <acx-scorecard
-            label="Keywords"
-            value="412"
-            description="Suggestions to add">
+        label="Keywords"
+        value="412"
+        description="Suggestions to add">
     </acx-scorecard>
   </acx-scoreboard>
 </div>
@@ -325,8 +325,8 @@
 </acx-scoreboard>
 <p>
   Using the <em>acx-scorecard-description-min-height</em> mixin to add a min height to description
-  to ensure injected content is aligned if description is optional (Description has to be '', not
-  null to ensure it shows up correctly):
+  to ensure injected content is aligned if description is optional (Description has to be an empty
+  String, not null to ensure it shows up correctly):
 </p>
 <acx-scoreboard class="vertically-align-scorecard-top">
   <acx-scorecard label="Scorecard with description"
@@ -352,6 +352,21 @@
     </div>
   </acx-scorecard>
 </acx-scoreboard>
+<p>
+  Using the <em>acx-scorecard-flex-display</em> mixin to change the display to flex.
+</p>
+<div class="flex-scoreboard-container">
+  <acx-scoreboard>
+    <acx-scorecard label="Scorecard with flex display"
+                   value="$158.22"
+                   description="+$24.20 (15%)">
+    </acx-scorecard>
+    <acx-scorecard label="Scorecard with flex display"
+                   value="$264.23"
+                   description="-$39.63 (15%)">
+    </acx-scorecard>
+  </acx-scoreboard>
+</div>
 <p>
   Using the ng-content directive to inject other components into the scorecard.
 </p>
