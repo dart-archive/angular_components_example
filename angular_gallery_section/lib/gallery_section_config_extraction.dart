@@ -16,7 +16,7 @@ Future<Iterable<ConfigInfo>> extractGallerySectionConfigs(
         AssetId assetId, AssetReader assetReader) async =>
     parseCompilationUnit(await assetReader.readAsString(assetId),
             parseFunctionBodies: false)
-        .accept(new GallerySectionConfigExtraction());
+        .accept(GallerySectionConfigExtraction());
 
 /// [AstVisitor] to extract multiple @GallerySectionConfig annotations, and
 /// the parameters they are constructed with.
@@ -24,8 +24,7 @@ class GallerySectionConfigExtraction
     extends SimpleAstVisitor<Iterable<ConfigInfo>> {
   @override
   visitCompilationUnit(CompilationUnit node) => node.declarations
-      .map((delcaration) =>
-          delcaration.accept(new _GallerySectionConfigVisitor()))
+      .map((delcaration) => delcaration.accept(_GallerySectionConfigVisitor()))
       .where((config) => config != null);
 }
 
@@ -40,7 +39,7 @@ class _GallerySectionConfigVisitor extends SimpleAstVisitor<ConfigInfo> {
   visitClassDeclaration(ClassDeclaration node) {
     for (final metadata in node.metadata) {
       if (metadata.name.name == 'GallerySectionConfig') {
-        config = new ConfigInfo();
+        config = ConfigInfo();
         metadata.accept(this);
       }
     }
@@ -59,23 +58,23 @@ class _GallerySectionConfigVisitor extends SimpleAstVisitor<ConfigInfo> {
     final name = node.name.label.name;
     final expression = node.expression;
     if (name == 'displayName') {
-      config.displayName = expression.accept(new StringExtractor());
+      config.displayName = expression.accept(StringExtractor());
     } else if (name == 'docs') {
-      config.docs = expression.accept(new ListStringExtractor());
+      config.docs = expression.accept(ListStringExtractor());
     } else if (name == 'demos') {
-      config.demoClassNames = expression.accept(new ListStringExtractor());
+      config.demoClassNames = expression.accept(ListStringExtractor());
     } else if (name == 'benchmarks') {
-      config.benchmarks = expression.accept(new ListStringExtractor());
+      config.benchmarks = expression.accept(ListStringExtractor());
     } else if (name == 'benchMarkPrefix') {
-      config.benchmarkPrefix = expression.accept(new StringExtractor());
+      config.benchmarkPrefix = expression.accept(StringExtractor());
     } else if (name == 'owners') {
-      config.owners = expression.accept(new ListStringExtractor());
+      config.owners = expression.accept(ListStringExtractor());
     } else if (name == 'uxOwners') {
-      config.uxOwners = expression.accept(new ListStringExtractor());
+      config.uxOwners = expression.accept(ListStringExtractor());
     } else if (name == 'relatedUrls') {
-      config.relatedUrls = expression.accept(new MapStringExtractor());
+      config.relatedUrls = expression.accept(MapStringExtractor());
     } else if (name == 'showGeneratedDocs') {
-      config.showGeneratedDocs = expression.accept(new BoolExtractor());
+      config.showGeneratedDocs = expression.accept(BoolExtractor());
     }
   }
 }
@@ -91,5 +90,5 @@ class ConfigInfo {
   Iterable<String> owners;
   Iterable<String> uxOwners;
   Map<String, String> relatedUrls;
-  bool showGeneratedDocs = false;
+  bool showGeneratedDocs = true;
 }

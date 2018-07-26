@@ -9,11 +9,11 @@ import 'package:angular_components/model/ui/has_renderer.dart';
 /// An example component renderer that adds an android icon.
 @Component(
   selector: 'component-renderer-example',
-  directives: const [MaterialIconComponent],
+  directives: [MaterialIconComponent],
   template: r'''
         <material-icon icon="android" size="small"></material-icon> {{value}}
     ''',
-  styles: const [':host {display: inline-block;}'],
+  styles: [':host {display: inline-block;}'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class ComponentRendererExample implements RendersValue<String> {

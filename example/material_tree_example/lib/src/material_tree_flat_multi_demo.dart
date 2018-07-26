@@ -13,7 +13,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
 /// Options are selected and managed by [multiSelection].
 @Component(
   selector: 'material-tree-flat-multi-demo',
-  directives: const [MaterialTreeComponent],
+  directives: [MaterialTreeComponent],
   template: r'''
       <h1>Flat (no hierarchy) with multi selection</h1>
       <pre>
@@ -57,12 +57,12 @@ import 'package:angular_components/model/selection/selection_options.dart';
         </material-tree>
       </div>
     ''',
-  styleUrls: const ['material_shadow.scss.css'],
+  styleUrls: ['material_shadow.scss.css'],
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
 )
 class MaterialTreeFlatMultiDemoComponent {
-  final multiSelection = new SelectionModel.multi();
+  final multiSelection = SelectionModel.multi();
   final ChangeDetectorRef _changeDetector;
 
   MaterialTreeFlatMultiDemoComponent(this._changeDetector);

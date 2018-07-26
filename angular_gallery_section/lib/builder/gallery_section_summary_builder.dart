@@ -19,14 +19,14 @@ class GallerySectionSummaryBuilder extends Builder {
   @override
   Future build(BuildStep buildStep) async {
     final inputId = buildStep.inputId;
-    final summaries = new List<Map<String, dynamic>>();
+    final summaries = List<Map<String, dynamic>>();
 
     // Extract details from @GallerySectionConfig annotations.
     await for (var assetId
-        in buildStep.findAssets(new Glob('**/*.gallery_info.json'))) {
+        in buildStep.findAssets(Glob('**/*.gallery_info.json'))) {
       final infoList =
           (jsonDecode(await buildStep.readAsString(assetId)) as List)
-              .map((info) => new ResolvedConfig.fromJson(info));
+              .map((info) => ResolvedConfig.fromJson(info));
 
       if (infoList.isEmpty) continue;
 
@@ -39,7 +39,7 @@ class GallerySectionSummaryBuilder extends Builder {
     }
 
     final newAssetId =
-        new AssetId(inputId.package, 'lib/gallery_section_summary.json');
+        AssetId(inputId.package, 'lib/gallery_section_summary.json');
     buildStep.writeAsString(newAssetId, jsonEncode(summaries));
   }
 

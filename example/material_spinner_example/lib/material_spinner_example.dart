@@ -8,17 +8,17 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Spinner',
-  docs: const [MaterialSpinnerComponent],
-  demos: const [MaterialSpinnerExample],
-  benchmarks: const ['material_spinner_init'],
+  docs: [MaterialSpinnerComponent],
+  demos: [MaterialSpinnerExample],
+  benchmarks: ['material_spinner_init'],
   showGeneratedDocs: true,
 )
 class MaterialSpinnerGalleryConfig {}
 
 @Component(
   selector: 'material-spinner-example',
-  directives: const [MaterialSpinnerComponent],
+  directives: [MaterialSpinnerComponent],
   templateUrl: 'material_spinner_example.html',
-  styleUrls: const ['material_spinner_example.scss.css'],
+  styleUrls: ['material_spinner_example.scss.css'],
 )
 class MaterialSpinnerExample {}

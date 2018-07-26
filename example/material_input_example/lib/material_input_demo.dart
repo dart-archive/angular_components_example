@@ -29,9 +29,7 @@ typedef String ValidityCheck(String inputText);
 /// This will prevent "abc" from being in the text controlled by 'form'.
 @Directive(
   selector: '[textValidator]',
-  providers: const [
-    const Provider(NG_VALIDATORS, useExisting: TextValidator, multi: true)
-  ],
+  providers: [Provider(NG_VALIDATORS, useExisting: TextValidator, multi: true)],
 )
 class TextValidator {
   @Input('textValidator')
@@ -55,15 +53,15 @@ String demoValidator(String inputText) {
 
 int countIgnoringAdCustomizers(String inputText) {
   String withoutAdCutomizers = inputText.replaceAll(
-      new RegExp(r'({=[^}]*}*)|({=[^}]*$)', caseSensitive: false), '');
+      RegExp(r'({=[^}]*}*)|({=[^}]*$)', caseSensitive: false), '');
   return withoutAdCutomizers.length;
 }
 
 @Component(
   selector: 'material-input-demo',
   templateUrl: 'material_input_demo.html',
-  styleUrls: const ['material_input_demo.scss.css'],
-  directives: const [
+  styleUrls: ['material_input_demo.scss.css'],
+  directives: [
     formDirectives,
     AutoFocusDirective,
     MaterialButtonComponent,
@@ -95,12 +93,12 @@ class MaterialInputDemoComponent {
   MaterialMultilineInputComponent autoSelectInput;
 
   MaterialInputDemoComponent() {
-    form = new Control(
+    form = Control(
         'initial text',
         // add a secondary validator that prevents 'def' (to
         // illustrate that validators can come from multiple
         // sources, and all will be used)
-        (new TextValidator()..text = 'def'));
+        (TextValidator()..text = 'def'));
   }
 
   void logEvent(String type) {

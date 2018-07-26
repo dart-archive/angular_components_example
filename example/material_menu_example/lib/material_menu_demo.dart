@@ -20,17 +20,14 @@ import 'package:angular_components/utils/disposer/disposer.dart';
 
 @Component(
   selector: 'material-menu-demo',
-  providers: const [
-    popupBindings,
-    const Provider(ZIndexer, useClass: ZIndexer)
-  ],
-  directives: const [
+  providers: [popupBindings, Provider(ZIndexer, useClass: ZIndexer)],
+  directives: [
     DropdownMenuComponent,
     MaterialIconComponent,
     MaterialMenuComponent,
   ],
   templateUrl: 'material_menu_demo.html',
-  styleUrls: const ['material_menu_demo.scss.css'],
+  styleUrls: ['material_menu_demo.scss.css'],
 )
 class MaterialMenuDemoComponent implements OnDestroy {
   /// Stores the selected color, in an observable manner.
@@ -63,11 +60,11 @@ class MaterialMenuDemoComponent implements OnDestroy {
       this.menuModelWithAffixes);
 
   factory MaterialMenuDemoComponent() {
-    var colorSelection = new SelectionModel<String>.single();
+    var colorSelection = SelectionModel<String>.single();
     var makeColorMenuItem = (String color, {MenuModel<MenuItem> subMenu}) =>
-        new ColorMenuItem(color, colorSelection, subMenu: subMenu);
-    var menuModel = new MenuModel<ColorMenuItem>([
-      new MenuItemGroup<ColorMenuItem>([
+        ColorMenuItem(color, colorSelection, subMenu: subMenu);
+    var menuModel = MenuModel<ColorMenuItem>([
+      MenuItemGroup<ColorMenuItem>([
         makeColorMenuItem('red'),
         makeColorMenuItem('green'),
         makeColorMenuItem('yellow'),
@@ -76,16 +73,16 @@ class MaterialMenuDemoComponent implements OnDestroy {
     ]);
 
     var menuModelWithIcon =
-        new MenuModel<MenuItem>(menuModel.itemGroups, icon: new Icon('menu'));
-    var nestedMenuModel = new MenuModel<MenuItem>([
-      new MenuItemGroup<MenuItem>([
-        new MenuItem('Basic Colors', subMenu: menuModel),
-        new MenuItem<ColorMenuItem>('Lights',
-            subMenu: new MenuModel<ColorMenuItem>([
-              new MenuItemGroup<ColorMenuItem>([
+        MenuModel<MenuItem>(menuModel.itemGroups, icon: Icon('menu'));
+    var nestedMenuModel = MenuModel<MenuItem>([
+      MenuItemGroup<MenuItem>([
+        MenuItem('Basic Colors', subMenu: menuModel),
+        MenuItem<ColorMenuItem>('Lights',
+            subMenu: MenuModel<ColorMenuItem>([
+              MenuItemGroup<ColorMenuItem>([
                 makeColorMenuItem('Blue',
-                    subMenu: new MenuModel<ColorMenuItem>([
-                      new MenuItemGroup<ColorMenuItem>([
+                    subMenu: MenuModel<ColorMenuItem>([
+                      MenuItemGroup<ColorMenuItem>([
                         makeColorMenuItem('lightsteelblue'),
                         makeColorMenuItem('lightblue'),
                         makeColorMenuItem('lightskyblue'),
@@ -96,9 +93,9 @@ class MaterialMenuDemoComponent implements OnDestroy {
                 makeColorMenuItem('lightyellow'),
               ])
             ])),
-        new MenuItem('Darks',
-            subMenu: new MenuModel<ColorMenuItem>([
-              new MenuItemGroup<ColorMenuItem>([
+        MenuItem('Darks',
+            subMenu: MenuModel<ColorMenuItem>([
+              MenuItemGroup<ColorMenuItem>([
                 makeColorMenuItem('darkblue'),
                 makeColorMenuItem('darkmagenta'),
                 makeColorMenuItem('darkkhaki'),
@@ -108,47 +105,47 @@ class MaterialMenuDemoComponent implements OnDestroy {
       ])
     ]);
 
-    final disposer = new Disposer.oneShot();
+    final disposer = Disposer.oneShot();
 
-    final metalSelection = new SelectionModel<String>.single(selected: 'O1');
-    final typeSelection = new SelectionModel<String>.multi();
-    final planeSelection = new SelectionModel<String>.multi();
-    final toolSelection = new SelectionModel<String>.multi();
+    final metalSelection = SelectionModel<String>.single(selected: 'O1');
+    final typeSelection = SelectionModel<String>.multi();
+    final planeSelection = SelectionModel<String>.multi();
+    final toolSelection = SelectionModel<String>.multi();
 
-    final chiselItem = new SelectableMenuItem<String>(
+    final chiselItem = SelectableMenuItem<String>(
         value: 'Chisels',
-        subMenu: new MenuModel<MenuItem>([
-          new MenuItemGroupWithSelection<String>(items: [
-            new SelectableMenuItem<String>(value: 'PMV-11'),
-            new SelectableMenuItem<String>(value: 'A2'),
-            new SelectableMenuItem<String>(value: 'O1'),
+        subMenu: MenuModel<MenuItem>([
+          MenuItemGroupWithSelection<String>(items: [
+            SelectableMenuItem<String>(value: 'PMV-11'),
+            SelectableMenuItem<String>(value: 'A2'),
+            SelectableMenuItem<String>(value: 'O1'),
           ], selectionModel: metalSelection, label: 'Steel'),
-          new MenuItemGroupWithSelection<String>(items: [
-            new SelectableMenuItem<String>(value: 'Mortise'),
-            new SelectableMenuItem<String>(value: 'Bench'),
-            new SelectableMenuItem<String>(value: 'Paring'),
+          MenuItemGroupWithSelection<String>(items: [
+            SelectableMenuItem<String>(value: 'Mortise'),
+            SelectableMenuItem<String>(value: 'Bench'),
+            SelectableMenuItem<String>(value: 'Paring'),
           ], selectionModel: typeSelection, label: 'Function'),
-          new MenuItemGroup<MenuItem>([
-            new MenuItem('Help',
-                itemSuffixes: new ObservableList.from([
-                  new IconAffix(
-                      icon: new Icon('help_outline'),
+          MenuItemGroup<MenuItem>([
+            MenuItem('Help',
+                itemSuffixes: ObservableList.from([
+                  IconAffix(
+                      icon: Icon('help_outline'),
                       visibility: IconVisibility.hover)
                 ]),
                 action: () => window.alert('halp!')),
           ]),
         ]));
 
-    final planeItem = new SelectableMenuItem<String>(
+    final planeItem = SelectableMenuItem<String>(
         value: 'Planes',
-        subMenu: new MenuModel<MenuItem>([
-          new MenuItemGroupWithSelection<String>(items: [
-            new SelectableMenuItem<String>(
+        subMenu: MenuModel<MenuItem>([
+          MenuItemGroupWithSelection<String>(items: [
+            SelectableMenuItem<String>(
                 value: 'Bench', selectableState: SelectableOption.Disabled),
-            new SelectableMenuItem<String>(value: 'Smoothing'),
-            new SelectableMenuItem<String>(value: 'Chisel'),
-            new SelectableMenuItem<String>(value: 'Block'),
-            new SelectableMenuItem<String>(
+            SelectableMenuItem<String>(value: 'Smoothing'),
+            SelectableMenuItem<String>(value: 'Chisel'),
+            SelectableMenuItem<String>(value: 'Block'),
+            SelectableMenuItem<String>(
                 value: 'Shoulder', selectableState: SelectableOption.Disabled),
           ], selectionModel: planeSelection),
         ]));
@@ -169,76 +166,76 @@ class MaterialMenuDemoComponent implements OnDestroy {
       }
     }));
 
-    var selectableMenuModel = new MenuModel<MenuItem>([
-      new MenuItemGroupWithSelection<String>(items: [
+    var selectableMenuModel = MenuModel<MenuItem>([
+      MenuItemGroupWithSelection<String>(items: [
         chiselItem,
         planeItem,
-        new SelectableMenuItem<String>(
+        SelectableMenuItem<String>(
             value: 'Hidden item', selectableState: SelectableOption.Hidden),
-        new SelectableMenuItem<String>(
+        SelectableMenuItem<String>(
             value: 'Sandpaper',
             selectableState: SelectableOption.Disabled,
-            subMenu: new MenuModel<MenuItem>([
-              new MenuItemGroup<MenuItem>([
-                new SelectableMenuItem<String>(value: '320'),
-                new SelectableMenuItem<String>(value: '150'),
+            subMenu: MenuModel<MenuItem>([
+              MenuItemGroup<MenuItem>([
+                SelectableMenuItem<String>(value: '320'),
+                SelectableMenuItem<String>(value: '150'),
               ]),
             ])),
       ], selectionModel: toolSelection, label: 'Tools'),
-      new MenuItemGroup<MenuItem>([
-        new MenuItem('Buy',
-            subMenu: new MenuModel<MenuItem>([
-              new MenuItemGroup<MenuItem>([
-                new MenuItem('Almost new',
+      MenuItemGroup<MenuItem>([
+        MenuItem('Buy',
+            subMenu: MenuModel<MenuItem>([
+              MenuItemGroup<MenuItem>([
+                MenuItem('Almost new',
                     enabled: false, action: () => window.alert('almost new!')),
-                new MenuItem('Used', action: () => window.alert('used!')),
-                new MenuItem('New', action: () => window.alert('new!')),
+                MenuItem('Used', action: () => window.alert('used!')),
+                MenuItem('New', action: () => window.alert('new!')),
               ])
             ])),
-        new MenuItem('Advertise',
-            subMenu: new MenuModel<MenuItem>([
-              new MenuItemGroup<MenuItem>([
-                new MenuItem('Google',
+        MenuItem('Advertise',
+            subMenu: MenuModel<MenuItem>([
+              MenuItemGroup<MenuItem>([
+                MenuItem('Google',
                     enabled: false, action: () => window.alert('google!')),
-                new MenuItem('Facebook',
+                MenuItem('Facebook',
                     enabled: false, action: () => window.alert('facebook!')),
-                new MenuItem('Craigslist',
+                MenuItem('Craigslist',
                     enabled: false, action: () => window.alert('craigslist!')),
               ])
             ])),
-        new MenuItem('Sell'),
+        MenuItem('Sell'),
       ], 'Unselectable group'),
     ]);
 
-    final menuModelWithAffixes = new MenuModel<MenuItem>([
-      new MenuItemGroup<MenuItem>([
-        new MenuItem('With no suffixes', action: () => window.alert('1')),
-        new MenuItem('With an icon suffix',
+    final menuModelWithAffixes = MenuModel<MenuItem>([
+      MenuItemGroup<MenuItem>([
+        MenuItem('With no suffixes', action: () => window.alert('1')),
+        MenuItem('With an icon suffix',
             action: () => window.alert('2'),
-            itemSuffixes: new ObservableList.from([
-              new IconAffix(
-                  icon: new IconWithAction(
+            itemSuffixes: ObservableList.from([
+              IconAffix(
+                  icon: IconWithAction(
                       'delete', () => window.alert('action'), 'ariaLabel', null,
                       shouldCloseMenuOnTrigger: true))
             ])),
-        new MenuItem('With text suffix',
+        MenuItem('With text suffix',
             action: () => window.alert('3'),
             itemSuffixes:
-                new ObservableList.from([new CaptionAffix(text: 'Ctrl + V')])),
-        new MenuItem('With multiple suffixes',
+                ObservableList.from([CaptionAffix(text: 'Ctrl + V')])),
+        MenuItem('With multiple suffixes',
             action: () => window.alert('4'),
-            itemSuffixes: new ObservableList.from([
-              new IconAffix(
-                  icon: new IconWithAction('delete',
-                      () => window.alert('action 1'), 'ariaLabel', null)),
-              new IconAffix(icon: new Icon('accessible')),
-              new CaptionAffix(text: 'some text'),
-              new IconAffix(icon: new Icon('autorenew')),
+            itemSuffixes: ObservableList.from([
+              IconAffix(
+                  icon: IconWithAction('delete', () => window.alert('action 1'),
+                      'ariaLabel', null)),
+              IconAffix(icon: Icon('accessible')),
+              CaptionAffix(text: 'some text'),
+              IconAffix(icon: Icon('autorenew')),
             ])),
       ]),
     ]);
 
-    return new MaterialMenuDemoComponent._(
+    return MaterialMenuDemoComponent._(
         disposer,
         colorSelection,
         menuModel,

@@ -19,7 +19,7 @@ Future<DocInfo> extractDocumentation(
         String name, AssetId assetId, AssetReader assetReader) async =>
     parseCompilationUnit(await assetReader.readAsString(assetId),
             parseFunctionBodies: false)
-        .accept(new GalleryDocumentaionExtraction(
+        .accept(GalleryDocumentaionExtraction(
             name, path_utils.assetToPath(assetId.toString())));
 
 /// A visitor that extracts a [DocInfo] for an identifier [_name] and
@@ -48,7 +48,7 @@ class GalleryDocumentaionExtraction extends SimpleAstVisitor<DocInfo> {
     if (_extractDocumentation(node) == null) return null;
 
     var allProperties = <PropertyInfo>[];
-    var propertyVisitor = new _AllMemberDocsExtraction(_filePath);
+    var propertyVisitor = _AllMemberDocsExtraction(_filePath);
     for (Declaration member in node.members) {
       // Must collect the annotations early becausae class fields don't have
       // annotations attached to their actual node. The comments are attached to
@@ -64,11 +64,11 @@ class GalleryDocumentaionExtraction extends SimpleAstVisitor<DocInfo> {
             ..deprecatedMessage = deprecatedAnnotationNode?.arguments?.arguments
                 // Visit the first arg or null if no args.
                 ?.firstWhere((_) => true, orElse: () => null)
-                ?.accept(new StringExtractor())
+                ?.accept(StringExtractor())
             ..bindingAlias = propertyAnnotationNode.arguments?.arguments
                 // Visit the first arg or null if no args.
                 ?.firstWhere((_) => true, orElse: () => null)
-                ?.accept(new StringExtractor())));
+                ?.accept(StringExtractor())));
     }
 
     _info.inputs = allProperties
@@ -95,9 +95,9 @@ class GalleryDocumentaionExtraction extends SimpleAstVisitor<DocInfo> {
     final name = node.name.label.name;
     final expression = node.expression;
     if (name == 'selector') {
-      _info.selector = expression.accept(new StringExtractor());
+      _info.selector = expression.accept(StringExtractor());
     } else if (name == 'exportAs') {
-      _info.exportAs = expression.accept(new StringExtractor());
+      _info.exportAs = expression.accept(StringExtractor());
     }
   }
 
@@ -105,7 +105,7 @@ class GalleryDocumentaionExtraction extends SimpleAstVisitor<DocInfo> {
   DocInfo _extractDocumentation(NamedCompilationUnitMember node) {
     if (node.name.name != _name) return null;
 
-    _info = new DocInfo()
+    _info = DocInfo()
       ..name = node.name.name
       ..comment = g3docMarkdownToHtml(parseComment(node.documentationComment))
       ..path = _filePath;
@@ -153,7 +153,7 @@ class _AllMemberDocsExtraction
   final _MemberDocExtraction _propertyVisitor;
 
   _AllMemberDocsExtraction(_filePath)
-      : this._propertyVisitor = new _MemberDocExtraction(_filePath);
+      : this._propertyVisitor = _MemberDocExtraction(_filePath);
 
   @override
   visitConstructorDeclaration(ConstructorDeclaration node) =>
@@ -187,7 +187,7 @@ class _MemberDocExtraction extends SimpleAstVisitor<PropertyInfo> {
   /// Extracts information for documenentation from a [MethodDeclaration] or
   /// [VariableDeclaration].
   PropertyInfo extractProperty(Declaration node) {
-    return new PropertyInfo()
+    return PropertyInfo()
       ..name = (node as dynamic /* MethodDeclaration | VariableDeclaration */)
           .name
           .name
@@ -196,10 +196,10 @@ class _MemberDocExtraction extends SimpleAstVisitor<PropertyInfo> {
   }
 }
 
-final RegExp _singleLineCommentStart = new RegExp(r'^///? ?(.*)');
+final RegExp _singleLineCommentStart = RegExp(r'^///? ?(.*)');
 final RegExp _multiLineCommentStartEnd =
-    new RegExp(r'^/\*\*? ?([\s\S]*)\*/$', multiLine: true);
-final RegExp _multiLineCommentLineStart = new RegExp(r'^[ \t]*\* ?(.*)');
+    RegExp(r'^/\*\*? ?([\s\S]*)\*/$', multiLine: true);
+final RegExp _multiLineCommentLineStart = RegExp(r'^[ \t]*\* ?(.*)');
 
 /// Pulls the raw text out of a comment (i.e. removes the comment
 /// characters).
@@ -221,7 +221,7 @@ String parseComment(Comment commentNode) {
   Match match = _multiLineCommentStartEnd.firstMatch(comment);
   if (match != null) {
     comment = match[1];
-    var sb = new StringBuffer();
+    var sb = StringBuffer();
     List<String> lines = comment.split('\n');
     for (int index = 0; index < lines.length; index++) {
       String line = lines[index].trimRight();
@@ -239,5 +239,5 @@ String parseComment(Comment commentNode) {
     }
     return sb.toString().trim();
   }
-  throw new ArgumentError('Invalid comment $comment');
+  throw ArgumentError('Invalid comment $comment');
 }

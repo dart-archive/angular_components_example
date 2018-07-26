@@ -13,7 +13,7 @@ import 'package:angular_components/model/ui/has_renderer.dart';
 /// All options are formatted by [sampleItemRenderer].
 @Component(
   selector: 'material-tree-nested-item-rendering-demo',
-  directives: const [MaterialTreeComponent],
+  directives: [MaterialTreeComponent],
   template: r'''
       <h1>Nested with item renderer</h1>
       <pre>
@@ -37,7 +37,7 @@ import 'package:angular_components/model/ui/has_renderer.dart';
         </material-tree>
       </div>
     ''',
-  styleUrls: const ['material_shadow.scss.css'],
+  styleUrls: ['material_shadow.scss.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialTreeNestedItemRenderingComponent {

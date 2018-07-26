@@ -28,11 +28,11 @@ import 'material_dropdown_select_demo.template.dart' as demo;
 
 @GallerySectionConfig(
   displayName: 'Material Dropdown Select',
-  docs: const [MaterialDropdownSelectComponent],
-  demos: const [
+  docs: [MaterialDropdownSelectComponent],
+  demos: [
     MaterialDropdownSelectDemoComponent,
   ],
-  benchmarks: const [
+  benchmarks: [
     'material_dropdown_select_init',
   ],
   showGeneratedDocs: true,
@@ -42,7 +42,7 @@ import 'material_dropdown_select_demo.template.dart' as demo;
   // popupBindings should ideally be in a top level or root component.
   // In demos, this is the top level/root component.
   providers: popupBindings,
-  directives: const [
+  directives: [
     materialInputDirectives,
     MaterialCheckboxComponent,
     MaterialDropdownSelectComponent,
@@ -54,62 +54,62 @@ import 'material_dropdown_select_demo.template.dart' as demo;
     DropdownButtonComponent,
   ],
   templateUrl: 'material_dropdown_select_demo.html',
-  styleUrls: const ['material_dropdown_select_demo.scss.css'],
+  styleUrls: ['material_dropdown_select_demo.scss.css'],
   preserveWhitespace: true,
 )
 class MaterialDropdownSelectDemoComponent {
-  static const List<Language> _languagesList = const <Language>[
-    const Language('en-US', 'US English'),
-    const Language('en-UK', 'UK English'),
-    const Language('fr-CA', 'Canadian English'),
-    const Language('af', 'Afrikaans'),
-    const Language('sq', 'Albanian'),
-    const Language('ar', 'Arabic'),
-    const Language('hy', 'Armenian'),
-    const Language('az', 'Azerbaijani'),
-    const Language('eu', 'Basque'),
-    const Language('be', 'Belarusian'),
-    const Language('bn', 'Bengali'),
-    const Language('bs', 'Bosnian'),
-    const Language('bg', 'Bulgarian'),
-    const Language('ca', 'Catalan'),
-    const Language('ceb', 'Cebuano'),
-    const Language('zh-CN', 'Chichewa'),
-    const Language('zh-TW', 'Chinese'),
-    const Language('ny', 'Chinese (Simplified)'),
-    const Language('zh', 'Chinese (Traditional)'),
-    const Language('hr', 'Croatian'),
-    const Language('cs', 'Czech'),
-    const Language('da', 'Danish'),
-    const Language('nl', 'Dutch'),
-    const Language('en', 'English'),
-    const Language('eo', 'Esperanto'),
-    const Language('et', 'Estonian'),
-    const Language('tl', 'Filipino'),
-    const Language('fi', 'Finnish'),
-    const Language('fr', 'French'),
-    const Language('gl', 'Galician'),
-    const Language('ka', 'Georgian'),
-    const Language('de', 'German')
+  static const List<Language> _languagesList = <Language>[
+    Language('en-US', 'US English'),
+    Language('en-UK', 'UK English'),
+    Language('fr-CA', 'Canadian English'),
+    Language('af', 'Afrikaans'),
+    Language('sq', 'Albanian'),
+    Language('ar', 'Arabic'),
+    Language('hy', 'Armenian'),
+    Language('az', 'Azerbaijani'),
+    Language('eu', 'Basque'),
+    Language('be', 'Belarusian'),
+    Language('bn', 'Bengali'),
+    Language('bs', 'Bosnian'),
+    Language('bg', 'Bulgarian'),
+    Language('ca', 'Catalan'),
+    Language('ceb', 'Cebuano'),
+    Language('zh-CN', 'Chichewa'),
+    Language('zh-TW', 'Chinese'),
+    Language('ny', 'Chinese (Simplified)'),
+    Language('zh', 'Chinese (Traditional)'),
+    Language('hr', 'Croatian'),
+    Language('cs', 'Czech'),
+    Language('da', 'Danish'),
+    Language('nl', 'Dutch'),
+    Language('en', 'English'),
+    Language('eo', 'Esperanto'),
+    Language('et', 'Estonian'),
+    Language('tl', 'Filipino'),
+    Language('fi', 'Finnish'),
+    Language('fr', 'French'),
+    Language('gl', 'Galician'),
+    Language('ka', 'Georgian'),
+    Language('de', 'German')
   ];
 
   static List<OptionGroup<Language>> _languagesGroups = <OptionGroup<Language>>[
-    new OptionGroup<Language>.withLabel(const <Language>[
-      const Language('en-US', 'US English'),
-      const Language('fr-CA', 'Canadian English'),
+    OptionGroup<Language>.withLabel(const <Language>[
+      Language('en-US', 'US English'),
+      Language('fr-CA', 'Canadian English'),
     ], 'North America'),
-    new OptionGroup<Language>.withLabel(const <Language>[
-      const Language('ny', 'Chinese (Simplified)'),
-      const Language('zh', 'Chinese (Traditional)')
+    OptionGroup<Language>.withLabel(const <Language>[
+      Language('ny', 'Chinese (Simplified)'),
+      Language('zh', 'Chinese (Traditional)')
     ], 'Asia'),
-    new OptionGroup<Language>.withLabel(const <Language>[
-      const Language('en-UK', 'UK English'),
-      const Language('de', 'German')
+    OptionGroup<Language>.withLabel(const <Language>[
+      Language('en-UK', 'UK English'),
+      Language('de', 'German')
     ], 'Europe'),
-    new OptionGroup<Language>.withLabel(
+    OptionGroup<Language>.withLabel(
         const <Language>[], 'Antarctica', 'No languages'),
     // This group will not be rendered.
-    new OptionGroup<Language>.withLabel(const <Language>[], 'Pangaea')
+    OptionGroup<Language>.withLabel(const <Language>[], 'Pangaea')
   ];
 
   static List<RelativePosition> _popupPositionsAboveInput = const [
@@ -142,17 +142,17 @@ class MaterialDropdownSelectDemoComponent {
 
   /// Languages to choose from.
   ExampleSelectionOptions<Language> languageListOptions =
-      new ExampleSelectionOptions<Language>(_languagesList);
+      ExampleSelectionOptions<Language>(_languagesList);
 
   ExampleSelectionOptions<Language> languageGroupedOptions =
-      new ExampleSelectionOptions<Language>.withOptionGroups(_languagesGroups);
+      ExampleSelectionOptions<Language>.withOptionGroups(_languagesGroups);
 
   StringSelectionOptions<Language> get languageOptions =>
       useOptionGroup ? languageGroupedOptions : languageListOptions;
 
   /// Single Selection Model
   final SelectionModel<Language> singleSelectModel =
-      new SelectionModel.single(selected: _languagesList[1]);
+      SelectionModel.single(selected: _languagesList[1]);
 
   /// Label for the button for single selection.
   String get singleSelectLanguageLabel =>
@@ -162,28 +162,27 @@ class MaterialDropdownSelectDemoComponent {
 
   /// Multi Selection Model
   final SelectionModel<Language> multiSelectModel =
-      new SelectionModel<Language>.multi();
+      SelectionModel<Language>.multi();
 
-  final SelectionModel<int> widthSelection = new SelectionModel<int>.multi();
+  final SelectionModel<int> widthSelection = SelectionModel<int>.multi();
   final SelectionOptions<int> widthOptions =
-      new SelectionOptions<int>.fromList([0, 1, 2, 3, 4, 5]);
+      SelectionOptions<int>.fromList([0, 1, 2, 3, 4, 5]);
   String get widthButtonText => widthSelection.selectedValues.isNotEmpty
       ? widthSelection.selectedValues.first.toString()
       : '0';
 
   final SelectionModel<String> popupPositionSelection =
-      new SelectionModel<String>.multi();
+      SelectionModel<String>.multi();
   final StringSelectionOptions popupPositionOptions =
-      new StringSelectionOptions<String>(['Auto', 'Above', 'Below']);
+      StringSelectionOptions<String>(['Auto', 'Above', 'Below']);
   String get popupPositionButtonText =>
       popupPositionSelection.selectedValues.isNotEmpty
           ? popupPositionSelection.selectedValues.first
           : 'Auto';
 
-  final SelectionModel<String> slideSelection =
-      new SelectionModel<String>.multi();
+  final SelectionModel<String> slideSelection = SelectionModel<String>.multi();
   final StringSelectionOptions slideOptions =
-      new StringSelectionOptions<String>(['Default', 'x', 'y']);
+      StringSelectionOptions<String>(['Default', 'x', 'y']);
   String get slideButtonText => slideSelection.selectedValues.isNotEmpty
       ? slideSelection.selectedValues.first
       : 'Default';
@@ -234,8 +233,7 @@ class MaterialDropdownSelectDemoComponent {
     } else if (selectedValues.length == 1) {
       return itemRenderer(selectedValues.first);
     } else {
-      return "${itemRenderer(selectedValues.first)} + ${selectedValues
-      .length - 1} more";
+      return "${itemRenderer(selectedValues.first)} + ${selectedValues.length - 1} more";
     }
   }
 
@@ -285,8 +283,8 @@ class Language implements HasUIDisplayName {
   template: r'''
         <material-icon icon="language" baseline></material-icon>{{displayName}}
     ''',
-  styles: const ['material-icon { margin-right: 8px; }'],
-  directives: const [MaterialIconComponent],
+  styles: ['material-icon { margin-right: 8px; }'],
+  directives: [MaterialIconComponent],
 )
 class ExampleRendererComponent implements RendersValue<Language> {
   String displayName = '';
@@ -302,11 +300,11 @@ class ExampleRendererComponent implements RendersValue<Language> {
   template: r'''
         <material-icon icon="language" baseline></material-icon>{{displayName}}
     ''',
-  styles: const [
+  styles: [
     ':host { margin-left: 16px}'
         'material-icon { margin-right: 8px}',
   ],
-  directives: const [MaterialIconComponent],
+  directives: [MaterialIconComponent],
 )
 class ExampleLabelRendererComponent implements RendersValue<OptionGroup> {
   String displayName = '';

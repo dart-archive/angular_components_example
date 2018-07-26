@@ -12,12 +12,12 @@ import 'package:angular_components/theme/dark_theme.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Button',
-  docs: const [
+  docs: [
     MaterialButtonComponent,
     MaterialFabComponent,
   ],
-  demos: const [MaterialButtonExample],
-  benchmarks: const [
+  demos: [MaterialButtonExample],
+  benchmarks: [
     'material_button_100_init',
   ],
   showGeneratedDocs: true,
@@ -26,7 +26,7 @@ class MaterialButtonGalleryConfig {}
 
 @Component(
   selector: 'material-button-example',
-  directives: const [
+  directives: [
     ButtonsExampleComponent,
     DarkThemeDirective,
     MaterialButtonComponent,
@@ -34,7 +34,7 @@ class MaterialButtonGalleryConfig {}
     MaterialIconComponent,
   ],
   templateUrl: 'material_button_example.html',
-  styleUrls: const ['material_button_example.scss.css'],
+  styleUrls: ['material_button_example.scss.css'],
   preserveWhitespace: true,
 )
 class MaterialButtonExample {

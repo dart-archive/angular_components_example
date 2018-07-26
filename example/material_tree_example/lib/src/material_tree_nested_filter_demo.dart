@@ -10,7 +10,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
 
 @Component(
   selector: 'material-tree-nested-filterable-demo',
-  directives: const [MaterialTreeDropdownComponent],
+  directives: [MaterialTreeDropdownComponent],
   template: r'''
       <h1>Dropdown with filtering (nested)</h1>
       <div class="shadow" elevation="1" style="width: 400px; margin: 24px;">
@@ -25,12 +25,12 @@ import 'package:angular_components/model/selection/selection_options.dart';
         </material-tree-dropdown>
       </div>
     ''',
-  styleUrls: const ['material_shadow.scss.css'],
+  styleUrls: ['material_shadow.scss.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialTreeDropdownNestedFilterableDemoComponent {
   final SelectionOptions filterableNestedOptions = data.filterableNestedOptions;
-  final SelectionModel singleSelection = new SelectionModel.single();
+  final SelectionModel singleSelection = SelectionModel.single();
 
   @ViewChild(MaterialTreeDropdownComponent)
   MaterialTreeDropdownComponent materialTreeDropdownComponent;

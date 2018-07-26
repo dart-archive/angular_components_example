@@ -15,16 +15,16 @@ import 'package:angular_gallery_section/components/gallery_component/gallery_inf
 /// the different demos examples and the benchmark latency.
 @Component(
   selector: 'gallery-component',
-  directives: const [
+  directives: [
     ButtonDirective,
     DynamicComponent,
     NgFor,
     NgIf,
     SafeInnerHtmlDirective,
   ],
-  providers: const [popupBindings],
+  providers: [popupBindings],
   templateUrl: 'gallery_component.html',
-  styleUrls: const ['gallery_component.scss.css'],
+  styleUrls: ['gallery_component.scss.css'],
 )
 class GalleryComponent {
   /// The base model for the gallery that gathers all of the details needed by

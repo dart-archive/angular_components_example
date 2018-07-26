@@ -9,11 +9,11 @@ import 'package:angular_components/utils/browser/window/module.dart';
 
 @Component(
   selector: 'material-date-time-picker-demo',
-  providers: const [windowBindings, datepickerBindings],
-  directives: const [MaterialDateTimePickerComponent],
+  providers: [windowBindings, datepickerBindings],
+  directives: [MaterialDateTimePickerComponent],
   templateUrl: 'material_date_time_picker_demo.html',
 )
 class MaterialDateTimePickerDemoComponent {
-  DateTime dateTime = new DateTime.now();
+  DateTime dateTime = DateTime.now();
   DateTime optionalTime;
 }

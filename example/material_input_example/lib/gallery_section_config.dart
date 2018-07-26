@@ -16,21 +16,21 @@ import 'material_percent_input_demo.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Input',
-  docs: const [
+  docs: [
     MaterialInputComponent,
     MaterialMultilineInputComponent,
     MaterialAutoSuggestInputComponent,
     MaterialNumberValueAccessor,
     MaterialPercentInputDirective,
   ],
-  demos: const [
+  demos: [
     MaterialInputDemoComponent,
     MaterialAutoSuggestInputDemoComponent,
     MaterialPercentInputDemoComponent,
     MaterialInputMixinDemoComponent,
     MaterialInputNumberValueAccessorDemoComponent,
   ],
-  benchmarks: const [
+  benchmarks: [
     'material_auto_suggest_input_init',
     'material_auto_suggest_input_100_init',
     'material_input_init',

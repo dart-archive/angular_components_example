@@ -9,8 +9,8 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 /// The gallery component that combines all the individual demos.
 @GallerySectionConfig(
   displayName: 'Material Tree',
-  docs: const [MaterialTreeComponent, MaterialTreeDropdownComponent],
-  demos: const [
+  docs: [MaterialTreeComponent, MaterialTreeDropdownComponent],
+  demos: [
     MaterialTreeFlatReadonlyDemoComponent,
     MaterialTreeFlatSelectableDemoComponent,
     MaterialTreeFlatMultiDemoComponent,
@@ -28,7 +28,7 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
     MaterialTreeNestedSingleDividerDemoComponent,
     MaterialTreeViewMoreDemoComponent,
   ],
-  benchmarks: const [
+  benchmarks: [
     'material_tree_100_init',
   ],
   showGeneratedDocs: true,

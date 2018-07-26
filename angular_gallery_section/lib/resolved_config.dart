@@ -5,7 +5,7 @@
 import 'package:angular_gallery_section/visitors/path_utils.dart' as path_utils;
 import 'package:angular_components/utils/strings/string_utils.dart' as string;
 
-final _invalidCharacters = new RegExp(r'[^a-zA-Z0-9 ]');
+final _invalidCharacters = RegExp(r'[^a-zA-Z0-9 ]');
 
 /// Represents the values used to construct an @GallerySectionConfig annotation
 /// resolved from raw Strings to the values used by the gallery generators.
@@ -40,16 +40,16 @@ class ResolvedConfig {
   String _cleanName(input) {
     var stripped = input.replaceAll(_invalidCharacters, '_');
     // Compress contiguous whitespace down to a single space in final result.
-    return stripped.replaceAll(new RegExp(r' {2,}'), ' ');
+    return stripped.replaceAll(RegExp(r' {2,}'), ' ');
   }
 
   /// Constructs a new [ResolvedConfig] from a decoded json map.
   ResolvedConfig.fromJson(Map<String, dynamic> jsonMap) {
     displayName = jsonMap['displayName'] as String;
     docs = (jsonMap['docs'] as Iterable)
-        ?.map((element) => new DocInfo.fromJson(element));
+        ?.map((element) => DocInfo.fromJson(element));
     demos = (jsonMap['demos'] as Iterable)
-        ?.map((element) => new DemoInfo.fromJson(element));
+        ?.map((element) => DemoInfo.fromJson(element));
     benchmarks = (jsonMap['benchmarks'] as Iterable)?.cast<String>();
     benchmarkPrefix = jsonMap['benchmarkPrefix'] as String;
     owners = (jsonMap['owners'] as Iterable)?.cast<String>();
@@ -93,9 +93,9 @@ class DocInfo {
     path = jsonMap['path'] as String;
     comment = jsonMap['comment'] as String;
     inputs = (jsonMap['inputs'] as Iterable)
-        ?.map((element) => new PropertyInfo.fromJson(element));
+        ?.map((element) => PropertyInfo.fromJson(element));
     outputs = (jsonMap['outputs'] as Iterable)
-        ?.map((element) => new PropertyInfo.fromJson(element));
+        ?.map((element) => PropertyInfo.fromJson(element));
   }
 
   /// Returns a json encodeable representation of this [DocInfo].

@@ -12,16 +12,16 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Radio',
-  docs: const [MaterialRadioComponent, MaterialRadioGroupComponent],
-  demos: const [MaterialRadioExample],
-  benchmarks: const [
+  docs: [MaterialRadioComponent, MaterialRadioGroupComponent],
+  demos: [MaterialRadioExample],
+  benchmarks: [
     'material_radio_100_init',
   ],
   showGeneratedDocs: true,
 )
 @Component(
   selector: 'material-radio-example',
-  directives: const [
+  directives: [
     NgFor,
     NgFormControl,
     NgModel,
@@ -30,7 +30,7 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
     MaterialRadioGroupComponent,
   ],
   templateUrl: 'material_radio_example.html',
-  styleUrls: const ['material_radio_example.scss.css'],
+  styleUrls: ['material_radio_example.scss.css'],
 )
 class MaterialRadioExample {
   /// Example without a group
@@ -42,21 +42,21 @@ class MaterialRadioExample {
 
   /// Example 1 using group
   List<Option> ex1Options = [
-    new Option("fast", false, false),
-    new Option("cheap", false, false),
-    new Option("good", false, false)
+    Option("fast", false, false),
+    Option("cheap", false, false),
+    Option("good", false, false)
   ];
-  final SelectionModel ex1SelectionModel = new SelectionModel.single();
+  final SelectionModel ex1SelectionModel = SelectionModel.single();
   String get ex1SelectedValue => ex1SelectionModel.selectedValues.isEmpty
       ? 'unknown'
       : ex1SelectionModel.selectedValues.first;
 
   /// Example 2 using group
   List<Option> ex2Options = [
-    new Option("poor", false, false),
-    new Option("fair", true, false), // pre-selected
-    new Option("good", false, true), // disabled
-    new Option("awesome", false, false)
+    Option("poor", false, false),
+    Option("fair", true, false), // pre-selected
+    Option("good", false, true), // disabled
+    Option("awesome", false, false)
   ];
   Option selected;
   String get ex2SelectedValue => selected.label;

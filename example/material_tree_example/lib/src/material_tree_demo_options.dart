@@ -27,15 +27,15 @@ final _commonOptionList = [
 
 /// An example data set of non-hierarchical data.
 final SelectionOptions simpleFlatOptions =
-    new SelectionOptions.fromList(_commonOptionList);
+    SelectionOptions.fromList(_commonOptionList);
 
 /// An example data set of non-hierarchical data that is [Filterable].
 final SelectionOptions filterableFlatOptions =
-    new StringSelectionOptions(_commonOptionList);
+    StringSelectionOptions(_commonOptionList);
 
 final _commonParentChildrenMap = {
   'Animated Feature Films': [
-    new OptionGroup([
+    OptionGroup([
       'Cinderalla',
       'Alice In Wonderland',
       'Peter Pan',
@@ -43,37 +43,37 @@ final _commonParentChildrenMap = {
     ])
   ],
   'Live-Action Films': [
-    new OptionGroup(
+    OptionGroup(
         ['Treasure Island', 'The Littlest Outlaw', 'Old Yeller', 'Star Wars'])
   ],
   'Documentary Films': [
-    new OptionGroup(['Frank and Ollie', 'Sacred Planet'])
+    OptionGroup(['Frank and Ollie', 'Sacred Planet'])
   ],
   'Star Wars': [
-    new OptionGroup(['By George Lucas'])
+    OptionGroup(['By George Lucas'])
   ],
   'By George Lucas': [
-    new OptionGroup(['A New Hope', 'Empire Strikes Back', 'Return of the Jedi'])
+    OptionGroup(['A New Hope', 'Empire Strikes Back', 'Return of the Jedi'])
   ]
 };
 
 /// An example data set of hierarchical data.
-final SelectionOptions nestedOptions = new _NestedSelectionOptions([
-  new OptionGroup(
+final SelectionOptions nestedOptions = _NestedSelectionOptions([
+  OptionGroup(
       ['Animated Feature Films', 'Live-Action Films', 'Documentary Films'])
 ], _commonParentChildrenMap);
 
 /// A slight restructure of [nestedOptions] to separate "Animated Feature Films"
 /// with the other two option groups.
-final SelectionOptions nestedOptionsVariation = new _NestedSelectionOptions([
-  new OptionGroup(['Animated Feature Films']),
-  new OptionGroup(['Live-Action Films']),
-  new OptionGroup(['Documentary Films']),
+final SelectionOptions nestedOptionsVariation = _NestedSelectionOptions([
+  OptionGroup(['Animated Feature Films']),
+  OptionGroup(['Live-Action Films']),
+  OptionGroup(['Documentary Films']),
 ], _commonParentChildrenMap);
 
 final SelectionOptions filterableNestedOptions =
-    new _NestedFilterableSelectionOptions([
-  new OptionGroup(
+    _NestedFilterableSelectionOptions([
+  OptionGroup(
       ['Animated Feature Films', 'Live-Action Films', 'Documentary Films'])
 ], _commonParentChildrenMap);
 
@@ -90,8 +90,7 @@ class _NestedSelectionOptions<T> extends SelectionOptions<T>
 
   @override
   DisposableFuture<List<OptionGroup<T>>> childrenOf(T parent, [_]) {
-    return new DisposableFuture<List<OptionGroup<T>>>.fromValue(
-        _children[parent]);
+    return DisposableFuture<List<OptionGroup<T>>>.fromValue(_children[parent]);
   }
 }
 
@@ -121,7 +120,7 @@ class _NestedFilterableSelectionOptions<T extends String>
       }
     }
     super.optionGroups = filteredResults;
-    return new DisposableFuture.fromValue(true);
+    return DisposableFuture.fromValue(true);
   }
 
   OptionGroup<T> _filterGroup(String filterQuery, OptionGroup<T> group) {
@@ -131,7 +130,7 @@ class _NestedFilterableSelectionOptions<T extends String>
         options.add(option);
       }
     }
-    return options.isNotEmpty ? new OptionGroup(options) : null;
+    return options.isNotEmpty ? OptionGroup(options) : null;
   }
 
   @override
@@ -170,7 +169,7 @@ class NestedCategoryOptions extends SelectionOptions<CategoryNode>
   DisposableFuture<List<OptionGroup<CategoryNode>>> childrenOf(
           CategoryNode parent,
           [_]) =>
-      new DisposableFuture.fromValue([new OptionGroup(parent.children)]);
+      DisposableFuture.fromValue([OptionGroup(parent.children)]);
 
   @override
   bool hasChildren(CategoryNode item) => item.children.isNotEmpty;
@@ -178,10 +177,10 @@ class NestedCategoryOptions extends SelectionOptions<CategoryNode>
 
 var _ctn = (String name,
         [List<CategoryNode> subCategories = const <CategoryNode>[]]) =>
-    new CategoryNode(name, subCategories);
+    CategoryNode(name, subCategories);
 
-NestedCategoryOptions expandStateOptions() => new NestedCategoryOptions([
-      new OptionGroup([
+NestedCategoryOptions expandStateOptions() => NestedCategoryOptions([
+      OptionGroup([
         _ctn('Action/Adventure', [
           _ctn('Adventure', [
             _ctn('Survival'),

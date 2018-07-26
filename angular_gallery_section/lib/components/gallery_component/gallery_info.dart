@@ -41,7 +41,7 @@ class GalleryInfo {
       this.owners = const [],
       this.uxOwners = const [],
       this.relatedUrls = const {},
-      this.showGeneratedDocs = false});
+      this.showGeneratedDocs = true});
 }
 
 class Doc {

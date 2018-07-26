@@ -36,14 +36,14 @@ class BoolExtractor extends SimpleAstVisitor<bool> {
 class ListStringExtractor extends SimpleAstVisitor<Iterable<String>> {
   @override
   visitListLiteral(ListLiteral node) =>
-      node.elements.map((element) => element.accept(new StringExtractor()));
+      node.elements.map((element) => element.accept(StringExtractor()));
 }
 
 /// [AstVisitor] to extract a [MapLiteral] and [MapLiteralEntry].
 class MapStringExtractor extends SimpleAstVisitor<Map<String, String>> {
   @override
   visitMapLiteral(MapLiteral node) =>
-      new Map.fromEntries(node.entries.map((entry) => new MapEntry(
-          entry.key.accept(new StringExtractor()),
-          entry.value.accept(new StringExtractor()))));
+      Map.fromEntries(node.entries.map((entry) => MapEntry(
+          entry.key.accept(StringExtractor()),
+          entry.value.accept(StringExtractor()))));
 }

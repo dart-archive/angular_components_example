@@ -13,19 +13,18 @@ import 'package:angular_components/utils/browser/window/module.dart';
 
 @Component(
   selector: 'material-datepicker-demo',
-  providers: const [windowBindings, datepickerBindings],
-  directives: const [MaterialDatepickerComponent, DateRangeInputComponent],
+  providers: [windowBindings, datepickerBindings],
+  directives: [MaterialDatepickerComponent, DateRangeInputComponent],
   templateUrl: 'material_datepicker_demo.html',
 )
 class MaterialDatepickerDemoComponent {
-  Date date = new Date.today();
+  Date date = Date.today();
   Date optionalDate;
-  DateRange limitToRange =
-      new DateRange(new Date.today().add(years: -5), new Date.today());
+  DateRange limitToRange = DateRange(Date.today().add(years: -5), Date.today());
   List<SingleDayRange> predefinedDates;
 
   MaterialDatepickerDemoComponent() {
-    var clock = new Clock();
+    var clock = Clock();
     predefinedDates = <SingleDayRange>[
       today(clock),
       yesterday(clock),

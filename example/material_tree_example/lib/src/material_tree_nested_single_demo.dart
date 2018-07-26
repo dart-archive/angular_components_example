@@ -13,7 +13,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
 /// Options are selected and managed by [singleSelection].
 @Component(
   selector: 'material-tree-nested-single-demo',
-  directives: const [MaterialTreeComponent],
+  directives: [MaterialTreeComponent],
   template: r'''
       <h1>Nested with single selection</h1>
       <pre>
@@ -41,14 +41,14 @@ import 'package:angular_components/model/selection/selection_options.dart';
         </material-tree>
       </div>
     ''',
-  styleUrls: const ['material_shadow.scss.css'],
+  styleUrls: ['material_shadow.scss.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
 )
 class MaterialTreeNestedSingleDemoComponent {
   final SelectionOptions nestedOptions = data.nestedOptions;
-  final SelectionModel singleSelection = new SelectionModel.single();
+  final SelectionModel singleSelection = SelectionModel.single();
   final ChangeDetectorRef _changeDetector;
 
   MaterialTreeNestedSingleDemoComponent(this._changeDetector);

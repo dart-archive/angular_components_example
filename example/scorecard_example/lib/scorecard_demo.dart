@@ -12,12 +12,12 @@ import 'package:angular_components/scorecard/scorecard.dart';
 
 @GallerySectionConfig(
   displayName: 'Scorecard',
-  docs: const [
+  docs: [
     ScorecardComponent,
     ScoreboardComponent,
   ],
-  demos: const [ScorecardDemoComponent],
-  benchmarks: const [
+  demos: [ScorecardDemoComponent],
+  benchmarks: [
     'scorecard_init',
     'scoreboard_init',
   ],
@@ -27,15 +27,15 @@ class ScorecardGalleryConfig {}
 
 @Component(
   selector: 'scorecard-demo',
-  providers: const [rtlProvider],
-  directives: const [
+  providers: [rtlProvider],
+  directives: [
     formDirectives,
     materialNumberInputDirectives,
     NgFor,
     ScoreboardComponent,
     ScorecardComponent
   ],
-  styleUrls: const ['scorecard_demo.scss.css'],
+  styleUrls: ['scorecard_demo.scss.css'],
   templateUrl: 'scorecard_demo.html',
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
@@ -57,5 +57,5 @@ class ScorecardDemoComponent {
   }
 
   static List<int> _createRange(int value) =>
-      new List.generate(value, (index) => index + 1);
+      List.generate(value, (index) => index + 1);
 }

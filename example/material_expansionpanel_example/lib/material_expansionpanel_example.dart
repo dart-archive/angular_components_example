@@ -22,13 +22,13 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
   displayName: 'Material ExpansionPanel',
-  docs: const [
+  docs: [
     MaterialExpansionPanel,
     MaterialExpansionPanelSet,
     MaterialExpansionPanelAutoDismiss,
   ],
-  demos: const [MaterialExpansionDemo],
-  benchmarks: const [
+  demos: [MaterialExpansionDemo],
+  benchmarks: [
     'material_expansionpanel_init',
     'material_expansionpanel_set_init',
   ],
@@ -38,8 +38,8 @@ class MaterialExpansionPanelGalleryConfig {}
 
 @Component(
   selector: 'material-expansion-demo',
-  providers: const [overlayBindings],
-  directives: const [
+  providers: [overlayBindings],
+  directives: [
     AutoFocusDirective,
     MaterialIconComponent,
     MaterialButtonComponent,
@@ -53,7 +53,7 @@ class MaterialExpansionPanelGalleryConfig {}
     ModalComponent,
     NgModel,
   ],
-  styleUrls: const ['material_expansionpanel_example.scss.css'],
+  styleUrls: ['material_expansionpanel_example.scss.css'],
   templateUrl: 'material_expansionpanel_example.html',
   preserveWhitespace: true,
 )
@@ -66,7 +66,7 @@ class MaterialExpansionDemo {
 
   void showConfirmationDialog(AsyncAction event) {
     showConfirmation = true;
-    dialogFutureCompleter = new Completer();
+    dialogFutureCompleter = Completer();
     event.cancelIf(dialogFutureCompleter.future);
   }
 

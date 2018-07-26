@@ -24,7 +24,7 @@ class GalleryWebBuilder extends Builder {
 
   Future _generateIndexHtml(BuildStep buildStep) async {
     final mustacheContext = {'galleryTitle': _galleryTitle};
-    final newAssetId = new AssetId(buildStep.inputId.package, 'web/index.html');
+    final newAssetId = AssetId(buildStep.inputId.package, 'web/index.html');
     await writeAsset(buildStep, 'lib/builder/template/index.html.mustache',
         mustacheContext, newAssetId);
   }
@@ -34,13 +34,13 @@ class GalleryWebBuilder extends Builder {
       'galleryImportUri':
           'package:${buildStep.inputId.package}/gallery/gallery.template.dart'
     };
-    final newAssetId = new AssetId(buildStep.inputId.package, 'web/main.dart');
+    final newAssetId = AssetId(buildStep.inputId.package, 'web/main.dart');
     await writeAsset(buildStep, 'lib/builder/template/main.dart.mustache',
         mustacheContext, newAssetId);
   }
 
   Future _generateStyleScss(BuildStep buildStep) async {
-    final newAssetId = new AssetId(buildStep.inputId.package, 'web/style.scss');
+    final newAssetId = AssetId(buildStep.inputId.package, 'web/style.scss');
     await writeAsset(
         buildStep, 'lib/builder/template/style.scss.mustache', {}, newAssetId);
   }

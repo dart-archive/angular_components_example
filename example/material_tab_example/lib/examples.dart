@@ -12,17 +12,17 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Tab',
-  docs: const [
+  docs: [
     FixedMaterialTabStripComponent,
     MaterialTabPanelComponent,
     MaterialTabComponent
   ],
-  demos: const [
+  demos: [
     MaterialTabStripExample,
     MaterialTabPanelExample,
     MaterialTabStripMixinExample,
   ],
-  benchmarks: const [
+  benchmarks: [
     'material_tab_strip_init',
     'material_tab_panel_init',
     'material_tab_panel_ngfor_init',

@@ -4,13 +4,13 @@
 
 import 'package:path/path.dart' as path;
 
-final RegExp _pathPartsRegExp = new RegExp(r'(.*)/lib/(.*)');
+final RegExp _pathPartsRegExp = RegExp(r'(.*)/lib/(.*)');
 
-final RegExp _targetPartsRegExp = new RegExp(r'(.*):lib/(.*)');
+final RegExp _targetPartsRegExp = RegExp(r'(.*):lib/(.*)');
 
-final RegExp _genFilesDir = new RegExp(r'genfiles[/.]');
+final RegExp _genFilesDir = RegExp(r'genfiles[/.]');
 
-final RegExp _binDir = new RegExp(r'blaze-out/[^/]+/bin/');
+final RegExp _binDir = RegExp(r'blaze-out/[^/]+/bin/');
 
 final String _thirdPartyPrefix = 'third_party/dart/';
 
@@ -78,8 +78,7 @@ String targetToImportUri(String pathName) =>
 ///     splitPathOnPackage('a/b/lib/c.dart');  // => ['a.b', 'lib/c.dart']
 List<String> splitPathOnPackage(String p) {
   if (!p.contains('/lib/'))
-    throw new ArgumentError(
-        'Bad argument: "$p"; must contain a "lib/" directory.');
+    throw ArgumentError('Bad argument: "$p"; must contain a "lib/" directory.');
   var parts = p.split('/lib/');
   parts[0] = parts[0].replaceAll('/', '.');
   parts[1] = 'lib/${parts[1]}';
@@ -92,8 +91,7 @@ List<String> splitPathOnPackage(String p) {
 /// Example: "package.name|lib/path/to/asset.txt" to
 /// "package/name/lib/path/to/asset.txt".
 String assetToPath(String asset) => asset.replaceFirstMapped(
-    new RegExp(r'(.*)\|(lib.*)'),
-    (m) => '${m[1].replaceAll('.', '/')}/${m[2]}');
+    RegExp(r'(.*)\|(lib.*)'), (m) => '${m[1].replaceAll('.', '/')}/${m[2]}');
 
 /// Convert assetId string representation to a package string usable in a dart
 /// import.

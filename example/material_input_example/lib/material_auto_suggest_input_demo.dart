@@ -49,32 +49,32 @@ ItemRenderer<dynamic /* List<int>*/ > _numberNameRenderer =
         list.map((n) => _numberNames[n - 1]).join(', ');
 
 List<OptionGroup<List<int>>> _optionGroups = <OptionGroup<List<int>>>[
-  new OptionGroup<List<int>>.withLabel(const <List<int>>[
-    const [1, 2, 3, 5],
-    const [7],
-    const [13],
-    const [17]
+  OptionGroup<List<int>>.withLabel(const <List<int>>[
+    [1, 2, 3, 5],
+    [7],
+    [13],
+    [17]
   ], "Primes less than 20"),
-  new OptionGroup<List<int>>.withLabel(const <List<int>>[
-    const [2, 4, 6],
-    const [8, 10],
-    const [12, 14],
-    const [16, 18]
+  OptionGroup<List<int>>.withLabel(const <List<int>>[
+    [2, 4, 6],
+    [8, 10],
+    [12, 14],
+    [16, 18]
   ], "Even less than 20")
 ];
 
 @GallerySectionConfig(
   displayName: 'Material Auto Suggest Input',
-  docs: const [MaterialAutoSuggestInputComponent],
-  demos: const [MaterialAutoSuggestInputDemoComponent],
-  benchmarks: const [
+  docs: [MaterialAutoSuggestInputComponent],
+  demos: [MaterialAutoSuggestInputDemoComponent],
+  benchmarks: [
     'material_auto_suggest_input_100_init',
   ],
   showGeneratedDocs: true,
 )
 @Component(
   selector: 'material-auto-suggest-input-demo',
-  directives: const [
+  directives: [
     formDirectives,
     MaterialAutoSuggestInputComponent,
     MaterialButtonComponent,
@@ -85,35 +85,35 @@ List<OptionGroup<List<int>>> _optionGroups = <OptionGroup<List<int>>>[
     NgIf,
   ],
   templateUrl: 'material_auto_suggest_input_demo.html',
-  styleUrls: const ['material_auto_suggest_input_demo.scss.css'],
+  styleUrls: ['material_auto_suggest_input_demo.scss.css'],
   preserveWhitespace: true,
 )
 class MaterialAutoSuggestInputDemoComponent {
-  static const _popupPositionsAboveInput = const [
+  static const _popupPositionsAboveInput = [
     RelativePosition.AdjacentTopLeft,
     RelativePosition.AdjacentTopRight,
   ];
-  static const _popupPositionsBelowInput = const [
+  static const _popupPositionsBelowInput = [
     RelativePosition.AdjacentBottomLeft,
     RelativePosition.AdjacentBottomRight,
   ];
 
-  final singleModel = new SelectionModel<List>.single();
-  final multiModel = new SelectionModel<List>.multi();
+  final singleModel = SelectionModel<List>.single();
+  final multiModel = SelectionModel<List>.multi();
 
   final suggestionOptions =
-      new ExampleSelectionOptions<List<int>>.withOptionGroups(_optionGroups);
+      ExampleSelectionOptions<List<int>>.withOptionGroups(_optionGroups);
   final suggestionOptionsWithItemRenderer =
-      new ExampleSelectionOptions<List<int>>.withOptionGroups(_optionGroups,
+      ExampleSelectionOptions<List<int>>.withOptionGroups(_optionGroups,
           toFilterableString: _numberNameRenderer);
 
-  final emptySuggestionOptions = new StringSelectionOptions(const <String>[]);
+  final emptySuggestionOptions = StringSelectionOptions(const <String>[]);
 
-  final popupPositionSelection = new SelectionModel<String>.single();
+  final popupPositionSelection = SelectionModel<String>.single();
   final popupPositionOptions =
-      new StringSelectionOptions<String>(['Auto', 'Above', 'Below']);
+      StringSelectionOptions<String>(['Auto', 'Above', 'Below']);
 
-  Control formControl = new Control('');
+  Control formControl = Control('');
   String inputText = '';
 
   bool filterSuggestions = true;
@@ -178,8 +178,8 @@ class MaterialAutoSuggestInputDemoComponent {
         <material-icon icon="experiment" baseline></material-icon>
         {{displayValue}}
     ''',
-  styles: const ['material-icon { margin-right: 8px; }'],
-  directives: const [MaterialIconComponent],
+  styles: ['material-icon { margin-right: 8px; }'],
+  directives: [MaterialIconComponent],
 )
 class ExampleRendererComponent implements RendersValue {
   String displayValue = '';
@@ -199,10 +199,10 @@ class ExampleRendererComponent implements RendersValue {
           {{displayValue}}
         </span>
     ''',
-  styles: const [
+  styles: [
     'span { color: #9e9e9e; font-size: 12px;} material-icon {margin: 0 8px;}'
   ],
-  directives: const [MaterialIconComponent],
+  directives: [MaterialIconComponent],
 )
 class ExampleLabelRendererComponent implements RendersValue {
   String displayValue = '';

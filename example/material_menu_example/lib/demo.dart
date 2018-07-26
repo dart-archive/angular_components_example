@@ -11,15 +11,15 @@ import 'material_menu_demo.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Menu',
-  docs: const [
+  docs: [
     MaterialMenuComponent,
     MaterialFabMenuComponent,
   ],
-  demos: const [
+  demos: [
     MaterialMenuDemoComponent,
     MaterialFabMenuDemoComponent,
   ],
-  benchmarks: const [
+  benchmarks: [
     'material_menu_simple_init',
     'material_menu_nested_init',
   ],

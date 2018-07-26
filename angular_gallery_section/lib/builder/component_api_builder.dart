@@ -29,16 +29,15 @@ class ComponentApiBuilder extends Builder {
   Future build(BuildStep buildStep) async {
     final inputId = buildStep.inputId;
     final infoList = (jsonDecode(await buildStep.readAsString(inputId)) as List)
-        .map((info) => new ResolvedConfig.fromJson(info));
+        .map((info) => ResolvedConfig.fromJson(info));
 
     final mustacheContext = await _mustacheContext(infoList);
-    final templateId = new AssetId('angular_gallery_section',
+    final templateId = AssetId('angular_gallery_section',
         'lib/builder/template/component.api.dart.mustache');
-    final mustacheTemplate = new Template(
-        await buildStep.readAsString(templateId),
+    final mustacheTemplate = Template(await buildStep.readAsString(templateId),
         htmlEscapeValues: false);
 
-    final newAssetId = new AssetId(inputId.package,
+    final newAssetId = AssetId(inputId.package,
         inputId.path.replaceFirst('.gallery_info.json', '.api.dart'));
     buildStep.writeAsString(
         newAssetId, mustacheTemplate.renderString(mustacheContext));
@@ -46,13 +45,13 @@ class ComponentApiBuilder extends Builder {
 
   @override
   Map<String, List<String>> get buildExtensions => const {
-        '.gallery_info.json': const ['.api.dart']
+        '.gallery_info.json': ['.api.dart']
       };
 
   /// Returns a context with the useful values from the [configs].
   Future<Map<String, dynamic>> _mustacheContext(
       Iterable<ResolvedConfig> configs) async {
-    final dedupedImports = new Set<String>();
+    final dedupedImports = Set<String>();
     final context = <String, dynamic>{'apiComponents': []};
     for (final config in configs) {
       // If multiple components are defined in a demo file, we would end up with

@@ -46,7 +46,7 @@ class GalleryInfoBuilder extends Builder {
 
   @override
   Map<String, List<String>> get buildExtensions => const {
-        '.dart': const ['.gallery_info.json'],
+        '.dart': ['.gallery_info.json'],
       };
 
   /// Resolve the docs and demos within all [configs].
@@ -56,7 +56,7 @@ class GalleryInfoBuilder extends Builder {
   Future<Iterable<ResolvedConfig>> _resolveConfigs(Iterable<ConfigInfo> configs,
           LibraryElement rootLibrary, AssetReader assetReader) async =>
       Future.wait(configs.map((config) async {
-        final resolved = new ResolvedConfig()
+        final resolved = ResolvedConfig()
           ..displayName = config.displayName
           ..benchmarks = config.benchmarks
           ..benchmarkPrefix = config.benchmarkPrefix
@@ -68,8 +68,7 @@ class GalleryInfoBuilder extends Builder {
           Future.wait(_resolveDocs(config.docs, rootLibrary, assetReader)).then(
               (docs) =>
                   resolved.docs = docs.where((doc) => doc != null).toList()),
-          Future
-              .wait(_resolveDemos(
+          Future.wait(_resolveDemos(
                   config.demoClassNames, rootLibrary, assetReader))
               .then((demos) => resolved.demos =
                   demos.where((demo) => demo != null).toList()),
@@ -108,7 +107,7 @@ class GalleryInfoBuilder extends Builder {
   /// Read the [markdownAsset] with [assetReader] and render as HTML.
   Future<DocInfo> _readMarkdownAsset(
       String markdownAsset, AssetReader assetReader) async {
-    final assetId = new AssetId.resolve(markdownAsset);
+    final assetId = AssetId.resolve(markdownAsset);
     if (extension(assetId.path) != '.md') {
       log.warning('Generator only supports .md files as supplementary docs. '
           'Can not insert $assetId into gallery.');
@@ -124,7 +123,7 @@ class GalleryInfoBuilder extends Builder {
     // Convert markdown to html and insert static server for images.
     final htmlContent = _replaceImgTags(g3docMarkdownToHtml(content));
 
-    return new DocInfo()
+    return DocInfo()
       ..name = basenameWithoutExtension(assetId.path)
       ..path = path_utils.assetToPath(assetId.toString())
       ..comment = htmlContent;
@@ -137,7 +136,7 @@ class GalleryInfoBuilder extends Builder {
   /// [assetReader].
   Future<DocInfo> _resolveDocFromClass(String identifier,
       LibraryElement library, AssetReader assetReader) async {
-    final libraryId = new AssetId.resolve(library.source.uri.toString());
+    final libraryId = AssetId.resolve(library.source.uri.toString());
     final docClass = library.getType(identifier);
     DocInfo docs;
 
@@ -160,7 +159,7 @@ class GalleryInfoBuilder extends Builder {
       // classElement.documentationComment, classElement.metadata, etc are not
       // populated in the resolved element model available here.
       var libraryId =
-          new AssetId.resolve(classElement.library.source.uri.toString());
+          AssetId.resolve(classElement.library.source.uri.toString());
       docs =
           await extractDocumentation(classElement.name, libraryId, assetReader);
 
@@ -168,7 +167,7 @@ class GalleryInfoBuilder extends Builder {
         // The super class must be defined in the library as a part file.
         for (var part in classElement.library.parts) {
           if (part.getType(classElement.name) != null) {
-            libraryId = new AssetId.resolve(part.source.uri.toString());
+            libraryId = AssetId.resolve(part.source.uri.toString());
             docs = await extractDocumentation(
                 classElement.name, libraryId, assetReader);
           }
@@ -235,7 +234,7 @@ class GalleryInfoBuilder extends Builder {
 
   /// Replace web server in `<img>` tags with the [_staticImageServer].
   String _replaceImgTags(String content) => content.replaceAllMapped(
-      new RegExp(r'<img alt="(.*)" src="(\S*g3doc\S+)" \/>'),
+      RegExp(r'<img alt="(.*)" src="(\S*g3doc\S+)" \/>'),
       (Match m) => '<img alt="${m[1]}" src="$_staticImageServer${m[2]}" />');
 
   /// Resolve all [demoClassNames] into [_DemoInfo]s.
@@ -263,7 +262,7 @@ class GalleryInfoBuilder extends Builder {
   /// [assetReader].
   Future<DemoInfo> _resolveDemo(String demoClassName, LibraryElement library,
       AssetReader assetReader) async {
-    final libraryId = new AssetId.resolve(library.source.uri.toString());
+    final libraryId = AssetId.resolve(library.source.uri.toString());
     final extractedDemo =
         await extractDocumentation(demoClassName, libraryId, assetReader);
 
@@ -271,7 +270,7 @@ class GalleryInfoBuilder extends Builder {
       log.warning('Failed to extract demo information from: $demoClassName.');
       return null;
     }
-    return new DemoInfo()
+    return DemoInfo()
       ..type = extractedDemo.name
       ..name = extractedDemo.name
       ..selector = extractedDemo.selector
@@ -284,8 +283,8 @@ class GalleryInfoBuilder extends Builder {
   /// Searches imports with a breadth-first search, as that should find
   /// [identifier] faster than a depth-first search.
   LibraryElement _searchFor(String identifier, LibraryElement rootLibrary) {
-    final visited = new Set<LibraryElement>();
-    final toVisit = new Queue<LibraryElement>();
+    final visited = Set<LibraryElement>();
+    final toVisit = Queue<LibraryElement>();
 
     toVisit.add(rootLibrary);
 

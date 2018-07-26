@@ -8,9 +8,9 @@ import 'package:angular_components/material_input/material_percent_directive.dar
 
 @Component(
   selector: 'material-percent-input-demo',
-  styles: const ['material-input[type=percent] { width: 120px; }'],
+  styles: ['material-input[type=percent] { width: 120px; }'],
   templateUrl: 'material_percent_input_demo.html',
-  directives: const [
+  directives: [
     formDirectives,
     materialNumberInputDirectives,
     MaterialPercentInputDirective,
@@ -27,5 +27,5 @@ class MaterialPercentInputDemoComponent {
     if (changes.length > 5) changes.removeAt(0);
   }
 
-  Control formControl = new Control(44);
+  Control formControl = Control(44);
 }

@@ -10,15 +10,15 @@ import 'package:angular_components/model/date/date.dart';
 
 @Component(
   selector: 'date-input-demo',
-  directives: const [DateInputDirective, materialInputDirectives],
-  providers: const [datepickerBindings],
+  directives: [DateInputDirective, materialInputDirectives],
+  providers: [datepickerBindings],
   templateUrl: 'date_input_demo.html',
 )
 class DateInputDemoComponent {
-  Date requiredDate = new Date.today();
+  Date requiredDate = Date.today();
   Date optionalDate;
 
-  Date get today => new Date.today();
+  Date get today => Date.today();
 
   String formatDate(Date date) => date == null ? '(null)' : date.toString();
 }

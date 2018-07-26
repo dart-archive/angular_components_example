@@ -22,7 +22,7 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Datepicker',
-  docs: const [
+  docs: [
     MaterialDateRangePickerComponent,
     MaterialDatepickerComponent,
     MaterialCalendarPickerComponent,
@@ -32,7 +32,7 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
     DateInputDirective,
     DateRangeInputComponent
   ],
-  demos: const [
+  demos: [
     MaterialDateRangePickerDemoComponent,
     MaterialDatepickerDemoComponent,
     MaterialCalendarPickerDemoComponent,
@@ -42,7 +42,7 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
     DateInputDemoComponent,
     DateRangeInputDemoComponent
   ],
-  benchmarks: const ['acxMaterialCalendarPickerNg2:createDestroy'],
+  benchmarks: ['acxMaterialCalendarPickerNg2:createDestroy'],
   showGeneratedDocs: true,
 )
 class CombinedDemoComponent {}

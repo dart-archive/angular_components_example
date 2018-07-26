@@ -13,9 +13,9 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Checkbox',
-  docs: const [MaterialCheckboxComponent],
-  demos: const [MaterialCheckboxExample],
-  benchmarks: const [
+  docs: [MaterialCheckboxComponent],
+  demos: [MaterialCheckboxExample],
+  benchmarks: [
     'material_checkbox_init',
   ],
   showGeneratedDocs: true,
@@ -24,7 +24,7 @@ class MaterialCheckboxGalleryConfig {}
 
 @Component(
   selector: 'material-checkbox-example',
-  directives: const [
+  directives: [
     MaterialButtonComponent,
     MaterialCheckboxComponent,
     MaterialIconComponent,
@@ -35,7 +35,7 @@ class MaterialCheckboxGalleryConfig {}
     NgFormControl
   ],
   templateUrl: 'material_checkbox_example.html',
-  styleUrls: const ['material_checkbox_example.scss.css'],
+  styleUrls: ['material_checkbox_example.scss.css'],
   preserveWhitespace: true,
 )
 class MaterialCheckboxExample {
@@ -45,16 +45,16 @@ class MaterialCheckboxExample {
 
   MaterialCheckboxExample() {
     todos = [
-      new Todo('learn angular', true),
-      new Todo('build an angular app', false),
-      new Todo('profit!', false),
+      Todo('learn angular', true),
+      Todo('build an angular app', false),
+      Todo('profit!', false),
     ];
   }
 
-  Control newTodo = new Control("");
+  Control newTodo = Control("");
 
   void addTodo() {
-    todos.add(new Todo(newTodo.value, false));
+    todos.add(Todo(newTodo.value, false));
     newTodo.updateValue("");
   }
 
@@ -66,7 +66,7 @@ class MaterialCheckboxExample {
   bool indeterminateState = false;
   bool indeterminateBehavior = false;
   String customLabel = "custom label";
-  Control newLabel = new Control("");
+  Control newLabel = Control("");
   String statusStr = "???";
 
   void setLabel() {

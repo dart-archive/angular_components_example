@@ -14,16 +14,16 @@ import 'package:angular_components/utils/angular/scroll_host/angular_2.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Stepper',
-  docs: const [MaterialStepperComponent, StepDirective],
-  demos: const [StepperDemoComponent],
+  docs: [MaterialStepperComponent, StepDirective],
+  demos: [StepperDemoComponent],
   showGeneratedDocs: true,
 )
 class MaterialStepperGalleryConfig {}
 
 @Component(
   selector: 'stepper-demo',
-  providers: const [scrollHostProviders],
-  directives: const [
+  providers: [scrollHostProviders],
+  directives: [
     MaterialStepperComponent,
     StepDirective,
     SummaryDirective,
@@ -31,7 +31,7 @@ class MaterialStepperGalleryConfig {}
     NgFor,
   ],
   templateUrl: 'material_stepper_demo.html',
-  styleUrls: const ['material_stepper_demo.scss.css'],
+  styleUrls: ['material_stepper_demo.scss.css'],
 )
 class StepperDemoComponent {
   bool showButton = false;
@@ -41,7 +41,7 @@ class StepperDemoComponent {
   }
 
   void validDelayedCheck(AsyncAction<bool> action) {
-    action.cancelIf(new Future.delayed(const Duration(seconds: 1), () {
+    action.cancelIf(Future.delayed(const Duration(seconds: 1), () {
       // Don't cancel
       return false;
     }));

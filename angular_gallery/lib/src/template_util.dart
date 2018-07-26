@@ -14,9 +14,8 @@ import 'package:mustache/mustache.dart';
 /// in package:ads.acx2.demo.
 Future writeAsset(BuildStep buildStep, String templatePath,
     Map<String, dynamic> mustacheContext, AssetId newAssetId) async {
-  final templateId = new AssetId('angular_gallery', templatePath);
-  final mustacheTemplate =
-      new Template(await buildStep.readAsString(templateId));
+  final templateId = AssetId('angular_gallery', templatePath);
+  final mustacheTemplate = Template(await buildStep.readAsString(templateId));
   buildStep.writeAsString(
       newAssetId, mustacheTemplate.renderString(mustacheContext));
 }

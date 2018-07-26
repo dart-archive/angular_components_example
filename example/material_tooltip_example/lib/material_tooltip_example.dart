@@ -19,7 +19,7 @@ import 'package:angular_components/theme/dark_theme.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Tooltip',
-  docs: const [
+  docs: [
     MaterialTooltipDirective,
     MaterialPaperTooltipComponent,
     MaterialTooltipTargetDirective,
@@ -27,18 +27,18 @@ import 'package:angular_components/theme/dark_theme.dart';
     MaterialInkTooltipComponent,
     MaterialIconTooltipComponent
   ],
-  demos: const [MaterialTooltipExampleComponent],
+  demos: [MaterialTooltipExampleComponent],
   showGeneratedDocs: true,
 )
 class MaterialTooltipExamples {}
 
 @Component(
   selector: 'material-tooltip-example',
-  providers: const [
+  providers: [
     popupBindings,
     tooltip.materialTooltipBindings,
   ],
-  directives: const [
+  directives: [
     ClickableTooltipTargetDirective,
     DarkThemeDirective,
     DeferredContentDirective,
@@ -56,7 +56,7 @@ class MaterialTooltipExamples {}
     MaterialTooltipSourceDirective
   ],
   templateUrl: 'material_tooltip_example.html',
-  styleUrls: const ['material_tooltip_example.scss.css'],
+  styleUrls: ['material_tooltip_example.scss.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespace: true,
 )

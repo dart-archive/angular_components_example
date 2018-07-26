@@ -12,16 +12,12 @@ import 'package:angular_components/utils/browser/window/module.dart';
 
 @Component(
   selector: 'material-tab-strip-example',
-  providers: const [
+  providers: [
     domServiceBinding,
     rtlProvider,
     windowBindings,
   ],
-  directives: const [
-    MaterialToggleComponent,
-    FixedMaterialTabStripComponent,
-    NgFor
-  ],
+  directives: [MaterialToggleComponent, FixedMaterialTabStripComponent, NgFor],
   templateUrl: 'material_tab_strip_example.html',
 )
 class MaterialTabStripExample {

@@ -12,33 +12,33 @@ import 'package:angular_components/model/ui/display_name.dart';
 
 @Component(
   selector: 'material-select-demo',
-  directives: const [
+  directives: [
     displayNameRendererDirective,
     MaterialSelectComponent,
     MaterialSelectItemComponent,
     NgFor,
   ],
   templateUrl: 'material_select_demo.html',
-  styleUrls: const ['material_select_demo.scss.css'],
+  styleUrls: ['material_select_demo.scss.css'],
 )
 class MaterialSelectDemoComponent {
   final SelectionModel<String> defaultLanguageSelection =
-      new SelectionModel.single();
+      SelectionModel.single();
 
   final SelectionModel<Language> targetLanguageSelection =
-      new SelectionModel.multi();
+      SelectionModel.multi();
 
   String proto;
-  static const languagesList = const [
-    const Language('en-US', 'US English'),
-    const Language('en-UK', 'UK English'),
-    const Language('fr-CA', 'Canadian French')
+  static const languagesList = [
+    Language('en-US', 'US English'),
+    Language('en-UK', 'UK English'),
+    Language('fr-CA', 'Canadian French')
   ];
 
   List<Language> get languages => languagesList;
 
   final SelectionOptions<Language> languageOptions =
-      new SelectionOptions.fromList(languagesList);
+      SelectionOptions.fromList(languagesList);
 }
 
 class Language implements HasUIDisplayName {

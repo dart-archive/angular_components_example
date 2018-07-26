@@ -12,7 +12,7 @@ import 'package:angular_components/material_toggle/material_toggle.dart';
 
 @Component(
   selector: 'mat-drawer-mobile-demo',
-  directives: const [
+  directives: [
     DeferredContentDirective,
     MaterialButtonComponent,
     MaterialIconComponent,
@@ -21,7 +21,7 @@ import 'package:angular_components/material_toggle/material_toggle.dart';
     MaterialToggleComponent,
   ],
   templateUrl: 'mobile_app_layout_example.html',
-  styleUrls: const [
+  styleUrls: [
     'app_layout_example.scss.css',
     'package:angular_components/app_layout/layout.scss.css',
   ],
