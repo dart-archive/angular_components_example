@@ -8,17 +8,17 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Toggle',
-  docs: const [MaterialToggleComponent],
-  demos: const [MaterialToggleExampleComponent],
-  benchmarks: const [
+  docs: [MaterialToggleComponent],
+  demos: [MaterialToggleExampleComponent],
+  benchmarks: [
     'material_toggle_100_init',
   ],
   showGeneratedDocs: true,
 )
 @Component(
   selector: 'material-toggle-example',
-  directives: const [MaterialToggleComponent, NgClass, NgFor],
-  styleUrls: const ['material_toggle_example.scss.css'],
+  directives: [MaterialToggleComponent, NgClass, NgFor],
+  styleUrls: ['material_toggle_example.scss.css'],
   templateUrl: 'material_toggle_example.html',
 )
 class MaterialToggleExampleComponent {

@@ -15,16 +15,16 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
     displayName: 'Material Dialog',
-    docs: const [MaterialDialogComponent],
-    demos: const [MaterialDialogExample],
-    benchmarks: const ['material_dialog_init'],
+    docs: [MaterialDialogComponent],
+    demos: [MaterialDialogExample],
+    benchmarks: ['material_dialog_init'],
     showGeneratedDocs: true)
 class MaterialDialogGalleryConfig {}
 
 @Component(
   selector: 'material-dialog-example',
-  providers: const [overlayBindings],
-  directives: const [
+  providers: [overlayBindings],
+  directives: [
     AutoDismissDirective,
     AutoFocusDirective,
     MaterialIconComponent,
@@ -36,7 +36,7 @@ class MaterialDialogGalleryConfig {}
     NgIf
   ],
   templateUrl: 'material_dialog_example.html',
-  styleUrls: const ['material_dialog_example.scss.css'],
+  styleUrls: ['material_dialog_example.scss.css'],
 )
 class MaterialDialogExample {
   bool showBasicDialog = false;

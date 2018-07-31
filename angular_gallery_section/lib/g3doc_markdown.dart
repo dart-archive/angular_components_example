@@ -14,21 +14,21 @@ String g3docMarkdownToHtml(String markdown) {
   // This list is based off of the g3doc autolinking source code:
   // http://cs/f:render_links.cc.
   var inlineSyntaxes = [
-    new G3docLinkSyntax(r'\b(?:b/|bug(?:\s+|/))(\d+)\b', 'http://b/$_sub'),
+    G3docLinkSyntax(r'\b(?:b/|bug(?:\s+|/))(\d+)\b', 'http://b/$_sub'),
     // TODO(google) hotlist links.
-    new G3docLinkSyntax(
+    G3docLinkSyntax(
         r'\b(?:changelist\s+|cr/|cl(?:\s+|/))(\d+)\b', 'http://cl/$_sub'),
     // TODO(google): o/ links.
-    new G3docLinkSyntax(
+    G3docLinkSyntax(
         '\\b(?:teams|who)/($_afterHostName)\\b', 'http://teams/$_sub'),
-    new G3docLinkSyntax('\\bg/($_afterHostName)\\b', 'http://g/$_sub'),
+    G3docLinkSyntax('\\bg/($_afterHostName)\\b', 'http://g/$_sub'),
     // TODO(google): plzr/ links.
     // TODO(google): g3doc/, mdb/ links.
-    new G3docLinkSyntax('\\bgo(?:to)?/($_afterHostName)\\b', 'http://go/$_sub'),
-    new G3docLinkSyntax('\\bcs/($_afterHostName)\\b', 'http://cs/$_sub'),
-    new WrappedG3docLinkSyntax(r'\b(TODO\()(b/(\d+))(\))', 'http://b/$_sub'),
-    new WrappedG3docLinkSyntax(r'\b(TODO\()((\d+))(\))', 'http://b/$_sub'),
-    new WrappedG3docLinkSyntax(
+    G3docLinkSyntax('\\bgo(?:to)?/($_afterHostName)\\b', 'http://go/$_sub'),
+    G3docLinkSyntax('\\bcs/($_afterHostName)\\b', 'http://cs/$_sub'),
+    WrappedG3docLinkSyntax(r'\b(TODO\()(b/(\d+))(\))', 'http://b/$_sub'),
+    WrappedG3docLinkSyntax(r'\b(TODO\()((\d+))(\))', 'http://b/$_sub'),
+    WrappedG3docLinkSyntax(
         '\\b(TODO\\()(($_afterHostName))(\\))', 'http://teams/$_sub'),
     // TODO(google): launch/, ariane/ links.
     // TODO(google): google3/, depot/, java/com/google, javatests/com/google,
@@ -51,7 +51,7 @@ const String _sub = '__SUB__';
 /// Example: [Foo] -> <code>Foo</code>
 /// TODO(google) Revisit this after dartdoc issue is resolved.
 Node dartDocLinkResolver(String text, [_]) =>
-    text.isEmpty ? null : new Element.text('code', text);
+    text.isEmpty ? null : Element.text('code', text);
 
 /// An inline Markdown syntax extension for g3doc-style shortlinks.
 ///
@@ -72,7 +72,7 @@ class G3docLinkSyntax extends InlineSyntax {
     var text = match[0];
     var id = match[1];
     var url = substitution.replaceFirst(_sub, id);
-    var anchor = new Element.text('a', text);
+    var anchor = Element.text('a', text);
     anchor.attributes['href'] = url;
     parser.addNode(anchor);
 
@@ -103,11 +103,11 @@ class WrappedG3docLinkSyntax extends InlineSyntax {
     var id = match[3];
     var rightText = match[4];
     var url = substitution.replaceFirst(_sub, id);
-    var anchor = new Element.text('a', linkText);
+    var anchor = Element.text('a', linkText);
     anchor.attributes['href'] = url;
-    parser.addNode(new Text(leftText));
+    parser.addNode(Text(leftText));
     parser.addNode(anchor);
-    parser.addNode(new Text(rightText));
+    parser.addNode(Text(rightText));
 
     return true;
   }

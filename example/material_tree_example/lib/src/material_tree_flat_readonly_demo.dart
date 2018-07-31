@@ -10,7 +10,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
 /// An example that renders a [MaterialTreeComponent] with flat options.
 @Component(
   selector: 'material-tree-flat-readonly-demo',
-  directives: const [MaterialTreeComponent],
+  directives: [MaterialTreeComponent],
   template: r'''
       <h1>Flat options (no hierarchy) in readonly mode (no selection model)</h1>
       <pre>
@@ -41,7 +41,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
         <material-tree [options]="simpleFlatOptions"></material-tree>
       </div>
     ''',
-  styleUrls: const ['material_shadow.scss.css'],
+  styleUrls: ['material_shadow.scss.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialTreeFlatReadonlyDemoComponent {

@@ -34,7 +34,7 @@
 
   <h3>Color</h3>
   <p>Set the color of the icon using the css color property.</p>
-  <material-icon [style.color]="iconColor" icon="pets"></material-icon>
+  <material-icon [style.color]="iconColor" icon="pets" ariaLabel="Pet Friendly"></material-icon>
   <div>
     <material-input #iconColorInput label="Enter a new color here"></material-input>
     <material-button raised (trigger)="iconColor = iconColorInput.inputText">Apply</material-button>

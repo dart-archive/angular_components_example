@@ -9,11 +9,11 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Card',
-  docs: const ['package:angular_components/material_card/README.md'],
-  demos: const [MaterialCardExample],
-  benchmarks: const [],
+  docs: ['package:angular_components/material_card/README.md'],
+  demos: [MaterialCardExample],
+  benchmarks: [],
   showGeneratedDocs: true,
-  relatedUrls: const {
+  relatedUrls: {
     'Material Spec': 'https://material.io/design/components/cards.html',
   },
 )
@@ -21,12 +21,12 @@ class MaterialButtonGalleryConfig {}
 
 @Component(
   selector: 'material-card-example',
-  directives: const [
+  directives: [
     MaterialButtonComponent,
     MaterialIconComponent,
   ],
   templateUrl: 'material_card_example.html',
-  styleUrls: const [
+  styleUrls: [
     // This is a wrapper around mdc-card styling to allow it to be imported
     // in dart.
     'package:angular_components/css/mdc_web/card/mdc-card.scss.css',

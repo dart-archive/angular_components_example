@@ -18,16 +18,16 @@ import 'package:angular_components/utils/browser/window/module.dart';
 List<DatepickerPreset> manyPresets(Clock clock) => [
       today(clock),
       yesterday(clock),
-      new SingleDayRange.daysAgo(clock, 2),
-      new SingleDayRange.daysAgo(clock, 3),
-      new SingleDayRange.daysAgo(clock, 4),
-      new SingleDayRange.daysAgo(clock, 5),
+      SingleDayRange.daysAgo(clock, 2),
+      SingleDayRange.daysAgo(clock, 3),
+      SingleDayRange.daysAgo(clock, 4),
+      SingleDayRange.daysAgo(clock, 5),
       thisWeek(clock),
       lastWeek(clock),
-      new WeekRange.weeksAgo(clock, 2),
-      new WeekRange.weeksAgo(clock, 3),
-      new WeekRange.weeksAgo(clock, 4),
-      new WeekRange.weeksAgo(clock, 5),
+      WeekRange.weeksAgo(clock, 2),
+      WeekRange.weeksAgo(clock, 3),
+      WeekRange.weeksAgo(clock, 4),
+      WeekRange.weeksAgo(clock, 5),
       last7Days(clock),
       last14Days(clock),
       thisMonth(clock),
@@ -36,18 +36,18 @@ List<DatepickerPreset> manyPresets(Clock clock) => [
       thisYear(clock),
       lastYear(clock),
       allTime,
-    ].map((range) => new DatepickerPreset.fromRange(range)).toList();
+    ].map((range) => DatepickerPreset.fromRange(range)).toList();
 
 @Component(
   selector: 'material-date-range-picker-demo',
-  providers: const [windowBindings, datepickerBindings],
-  directives: const [
+  providers: [windowBindings, datepickerBindings],
+  directives: [
     MaterialCheckboxComponent,
     MaterialDateRangePickerComponent,
     NgIf,
     DateRangeInputComponent
   ],
-  styleUrls: const ['material_date_range_picker_demo.scss.css'],
+  styleUrls: ['material_date_range_picker_demo.scss.css'],
   templateUrl: 'material_date_range_picker_demo.html',
 )
 class MaterialDateRangePickerDemoComponent {
@@ -65,17 +65,16 @@ class MaterialDateRangePickerDemoComponent {
       longPresetList ? _manyPresets : _defaultPresets;
 
   MaterialDateRangePickerDemoComponent() {
-    var clock = new Clock();
+    var clock = Clock();
     _defaultPresets = defaultPresets(clock);
     _manyPresets = manyPresets(clock);
 
-    range = new DatepickerComparison.noComparison(_defaultPresets
+    range = DatepickerComparison.noComparison(_defaultPresets
         .singleWhere((preset) => preset.range.title == 'This week')
         .range);
-    rangeSimplified = new DatepickerComparison.noComparison(_defaultPresets
+    rangeSimplified = DatepickerComparison.noComparison(_defaultPresets
         .singleWhere((preset) => preset.range.title == 'This week')
         .range);
   }
-  DateRange limitToRange =
-      new DateRange(new Date.today().add(years: -5), new Date.today());
+  DateRange limitToRange = DateRange(Date.today().add(years: -5), Date.today());
 }

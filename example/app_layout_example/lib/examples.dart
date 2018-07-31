@@ -13,18 +13,18 @@ import 'mobile_app_layout_example.dart';
 
 @GallerySectionConfig(
   displayName: 'App Layout',
-  docs: const [
+  docs: [
     'package:angular_components/app_layout/README.md',
     MaterialPersistentDrawerDirective,
     MaterialTemporaryDrawerComponent,
     MaterialStackableDrawerComponent,
   ],
-  demos: const [
+  demos: [
     MaterialDrawerExample,
     MaterialDrawerMobileExample,
     MaterialStackingDrawerExample,
   ],
-  relatedUrls: const {
+  relatedUrls: {
     'Material Spec (Drawer)':
         'https://material.io/design/components/navigation-drawer.html',
     'Material Spec (App Bar)':

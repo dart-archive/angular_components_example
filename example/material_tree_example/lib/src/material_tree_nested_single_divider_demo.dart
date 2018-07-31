@@ -15,7 +15,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
 /// Options are selected and managed by [singleSelection].
 @Component(
   selector: 'material-tree-nested-single-divider-demo',
-  directives: const [
+  directives: [
     MaterialTreeComponent,
     MaterialRadioComponent,
     MaterialRadioGroupComponent,
@@ -53,18 +53,18 @@ import 'package:angular_components/model/selection/selection_options.dart';
         </material-tree>
       </div>
     ''',
-  styleUrls: const ['material_shadow.scss.css', 'dividers.scss.css'],
+  styleUrls: ['material_shadow.scss.css', 'dividers.scss.css'],
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
 )
 class MaterialTreeNestedSingleDividerDemoComponent {
   final SelectionOptions nestedOptions = data.nestedOptions;
-  final SelectionModel singleSelection = new SelectionModel.single();
+  final SelectionModel singleSelection = SelectionModel.single();
   final List<Option> dividerOptions = [
-    new Option('', "Hidden"),
-    new Option('tree-border-expanded', "Expanded nodes"),
-    new Option('tree-border-parent', "Parent nodes"),
-    new Option('tree-border-all', "All rows"),
+    Option('', "Hidden"),
+    Option('tree-border-expanded', "Expanded nodes"),
+    Option('tree-border-parent', "Parent nodes"),
+    Option('tree-border-all', "All rows"),
   ];
   String selected = 'tree-border-expanded';
 

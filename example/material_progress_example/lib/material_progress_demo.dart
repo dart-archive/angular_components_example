@@ -8,9 +8,9 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Progress',
-  docs: const [MaterialProgressComponent],
-  demos: const [MaterialProgressDemoComponent],
-  benchmarks: const ['material_progress_init'],
+  docs: [MaterialProgressComponent],
+  demos: [MaterialProgressDemoComponent],
+  benchmarks: ['material_progress_init'],
   showGeneratedDocs: true,
 )
 class MaterialProgressExamples {}
@@ -18,7 +18,7 @@ class MaterialProgressExamples {}
 @Component(
   selector: 'material-progress-demo',
   templateUrl: 'material_progress_demo.html',
-  styleUrls: const ['material_progress_demo.scss.css'],
-  directives: const [MaterialProgressComponent],
+  styleUrls: ['material_progress_demo.scss.css'],
+  directives: [MaterialProgressComponent],
 )
 class MaterialProgressDemoComponent {}

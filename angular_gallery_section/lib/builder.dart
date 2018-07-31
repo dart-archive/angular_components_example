@@ -12,18 +12,16 @@ import 'package:angular_gallery_section/builder/gallery_section_summary_builder.
 /// @GallerySectionConfig to be read by the other builders that might not
 /// have access to a resolver.
 Builder galleryInfoBuilder(BuilderOptions options) =>
-    new GalleryInfoBuilder(options.config['staticImageServer']);
+    GalleryInfoBuilder(options.config['staticImageServer']);
 
 /// Builder used to generate the API page for the gallery from a
 /// @GallerySectionConfig-annotated class.
-Builder componentApiBuilder(BuilderOptions options) =>
-    new ComponentApiBuilder();
+Builder componentApiBuilder(BuilderOptions options) => ComponentApiBuilder();
 
 /// Builder used to generate the page for a stand alone example app and a
 /// summary used in building the gallery from a @GallerySectionConfig-annotated
 /// class.
-Builder gallerySectionBuilder(BuilderOptions options) =>
-    new MultiplexingBuilder([
-      new GallerySectionBuilder(),
-      new GallerySectionSummaryBuilder(),
+Builder gallerySectionBuilder(BuilderOptions options) => MultiplexingBuilder([
+      GallerySectionBuilder(),
+      GallerySectionSummaryBuilder(),
     ]);

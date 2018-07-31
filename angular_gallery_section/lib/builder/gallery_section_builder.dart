@@ -21,17 +21,17 @@ class GallerySectionBuilder extends Builder {
   Future build(BuildStep buildStep) async {
     final inputId = buildStep.inputId;
     final infoAssets =
-        await buildStep.findAssets(new Glob('**/*.gallery_info.json')).toList();
+        await buildStep.findAssets(Glob('**/*.gallery_info.json')).toList();
     if (infoAssets.isEmpty) return;
 
-    final mergedImports = new Set<String>();
+    final mergedImports = Set<String>();
     final mergedDemos = <String, String>{};
     final apis = [];
 
     for (final assetId in infoAssets) {
       final infoList =
           (jsonDecode(await buildStep.readAsString(assetId)) as List)
-              .map((info) => new ResolvedConfig.fromJson(info));
+              .map((info) => ResolvedConfig.fromJson(info));
 
       // There is an API page generated for every .gallery_info.json file.
       final api = <String, dynamic>{
@@ -63,13 +63,12 @@ class GallerySectionBuilder extends Builder {
       'apis': apis,
     };
 
-    final templateId = new AssetId('angular_gallery_section',
+    final templateId = AssetId('angular_gallery_section',
         'lib/builder/template/gallery_section.dart.mustache');
-    final mustacheTemplate = new Template(
-        await buildStep.readAsString(templateId),
+    final mustacheTemplate = Template(await buildStep.readAsString(templateId),
         htmlEscapeValues: false);
 
-    final newAssetId = new AssetId(inputId.package, 'lib/gallery_section.dart');
+    final newAssetId = AssetId(inputId.package, 'lib/gallery_section.dart');
     buildStep.writeAsString(
         newAssetId, mustacheTemplate.renderString(mustacheContext));
   }

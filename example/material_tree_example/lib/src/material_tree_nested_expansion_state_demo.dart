@@ -14,7 +14,7 @@ import 'package:angular_components/model/ui/has_renderer.dart';
 /// Options are selected and managed by [multiSelection].
 @Component(
   selector: 'material-tree-nested-expand-demo',
-  directives: const [MaterialTreeComponent],
+  directives: [MaterialTreeComponent],
   template: r'''
       <h1>Nested with multi selection preserving expansion state</h1>
       <pre>
@@ -46,7 +46,7 @@ import 'package:angular_components/model/ui/has_renderer.dart';
         </material-tree>
       </div>
     ''',
-  styleUrls: const ['material_shadow.scss.css'],
+  styleUrls: ['material_shadow.scss.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
@@ -54,7 +54,7 @@ import 'package:angular_components/model/ui/has_renderer.dart';
 class MaterialTreeNestedExpandDemoComponent {
   final SelectionOptions<data.CategoryNode> nestedOptions =
       data.expandStateOptions();
-  final multiSelection = new SelectionModel<data.CategoryNode>.multi();
+  final multiSelection = SelectionModel<data.CategoryNode>.multi();
   final ItemRenderer<data.CategoryNode> nameRenderer = (node) => node.name;
 
   String itemRenderer(item) => nameRenderer(item);

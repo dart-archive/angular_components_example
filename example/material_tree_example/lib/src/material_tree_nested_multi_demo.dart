@@ -13,7 +13,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
 /// Options are selected and managed by [multiSelection].
 @Component(
   selector: 'material-tree-nested-multi-demo',
-  directives: const [MaterialTreeComponent],
+  directives: [MaterialTreeComponent],
   template: r'''
       <h1>Nested with multi selection</h1>
       <pre>
@@ -41,13 +41,13 @@ import 'package:angular_components/model/selection/selection_options.dart';
         </material-tree>
       </div>
     ''',
-  styleUrls: const ['material_shadow.scss.css'],
+  styleUrls: ['material_shadow.scss.css'],
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
 )
 class MaterialTreeNestedMultiDemoComponent {
   final SelectionOptions nestedOptions = data.nestedOptions;
-  final SelectionModel multiSelection = new SelectionModel.multi();
+  final SelectionModel multiSelection = SelectionModel.multi();
 
   @ViewChild(MaterialTreeComponent)
   MaterialTreeComponent materialTree;

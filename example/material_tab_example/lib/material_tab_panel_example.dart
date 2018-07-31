@@ -12,8 +12,8 @@ import 'package:angular_gallery_section/components/content/named_content.dart';
 
 @Component(
   selector: 'material-tab-panel-example',
-  providers: const [rtlProvider],
-  directives: const [
+  providers: [rtlProvider],
+  directives: [
     DeferredContentDirective,
     DelayedContentComponent,
     MaterialTabPanelComponent,
@@ -21,6 +21,6 @@ import 'package:angular_gallery_section/components/content/named_content.dart';
     NamedContentComponent
   ],
   templateUrl: 'material_tab_panel_example.html',
-  styleUrls: const ['material_tab_panel_example.scss.css'],
+  styleUrls: ['material_tab_panel_example.scss.css'],
 )
 class MaterialTabPanelExample {}

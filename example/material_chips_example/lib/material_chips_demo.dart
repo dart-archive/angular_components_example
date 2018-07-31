@@ -16,12 +16,12 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Chips',
-  docs: const [
+  docs: [
     MaterialChipsComponent,
     MaterialChipComponent,
   ],
-  demos: const [MaterialChipsDemoComponent],
-  benchmarks: const ['material_chips_init'],
+  demos: [MaterialChipsDemoComponent],
+  benchmarks: ['material_chips_init'],
   showGeneratedDocs: true,
 )
 class MaterialChipsExamples {}
@@ -29,8 +29,8 @@ class MaterialChipsExamples {}
 @Component(
   selector: 'material-chips-demo',
   templateUrl: 'material_chips_demo.html',
-  styleUrls: const ['material_chips_demo.scss.css'],
-  directives: const [
+  styleUrls: ['material_chips_demo.scss.css'],
+  directives: [
     ButtonDirective,
     displayNameRendererDirective,
     MaterialIconComponent,
@@ -54,12 +54,12 @@ class MaterialChipsDemoComponent {
     resetMovies();
   }
 
-  static const _subjectChips = const [
-    const Chip('science'),
-    const Chip('math'),
-    const Chip('wizardry'),
-    const Chip('technology'),
-    const Chip('engineering')
+  static const _subjectChips = [
+    Chip('science'),
+    Chip('math'),
+    Chip('wizardry'),
+    Chip('technology'),
+    Chip('engineering')
   ];
 
   void resetChips() {
@@ -69,26 +69,26 @@ class MaterialChipsDemoComponent {
 
   SelectionModel<HasUIDisplayName> selection = _createSelectionModel();
   static SelectionModel<HasUIDisplayName> _createSelectionModel() =>
-      new SelectionModel.multi(selectedValues: [
-        new Chip('pepperoni'),
-        new Chip('pineapple'),
-        new Chip('peppers'),
-        new Chip('sausage'),
-        new Chip('BACON')
+      SelectionModel.multi(selectedValues: [
+        Chip('pepperoni'),
+        Chip('pineapple'),
+        Chip('peppers'),
+        Chip('sausage'),
+        Chip('BACON')
       ]);
 
   void resetSelection() {
     selection = _createSelectionModel();
   }
 
-  static const _starWarsEpisodes = const [
-    const StarWarsMovie('The Phantom Menace', 1),
-    const StarWarsMovie('Attack of the Clones', 2),
-    const StarWarsMovie('Revenge of the Sith', 3),
-    const StarWarsMovie('A New Hope', 4),
-    const StarWarsMovie('The Empire Strikes Back', 5),
-    const StarWarsMovie('Return of the Jedi', 6),
-    const StarWarsMovie('The Force Awakens', 7),
+  static const _starWarsEpisodes = [
+    StarWarsMovie('The Phantom Menace', 1),
+    StarWarsMovie('Attack of the Clones', 2),
+    StarWarsMovie('Revenge of the Sith', 3),
+    StarWarsMovie('A New Hope', 4),
+    StarWarsMovie('The Empire Strikes Back', 5),
+    StarWarsMovie('Return of the Jedi', 6),
+    StarWarsMovie('The Force Awakens', 7),
   ];
 
   void resetMovies() {
@@ -99,9 +99,9 @@ class MaterialChipsDemoComponent {
   // Cheap function to convert int (from 0 to 8) to a Roman numeral.
   static String arabicToRoman(int number) {
     if (number == 0) return '';
-    if (number >= 5) return 'V${arabicToRoman(number-5)}';
+    if (number >= 5) return 'V${arabicToRoman(number - 5)}';
     if (number == 4) return 'IV';
-    return 'I${arabicToRoman(number-1)}';
+    return 'I${arabicToRoman(number - 1)}';
   }
 
   // TODO(google) Change dynamic to StarWarsMovie once Angular can retain the

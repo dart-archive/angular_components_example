@@ -42,7 +42,7 @@ class GalleryLibBuilder extends Builder {
   Future _generateGalleryHtml(BuildStep buildStep) async {
     final mustacheContext = {'galleryTitle': _galleryTitle};
     final newAssetId =
-        new AssetId(buildStep.inputId.package, 'lib/gallery/gallery.html');
+        AssetId(buildStep.inputId.package, 'lib/gallery/gallery.html');
     await writeAsset(buildStep, 'lib/builder/template/gallery.html.mustache',
         mustacheContext, newAssetId);
   }
@@ -55,14 +55,14 @@ class GalleryLibBuilder extends Builder {
     };
 
     final newAssetId =
-        new AssetId(buildStep.inputId.package, 'lib/gallery/gallery.dart');
+        AssetId(buildStep.inputId.package, 'lib/gallery/gallery.dart');
     await writeAsset(buildStep, 'lib/builder/template/gallery.dart.mustache',
         mustacheContext, newAssetId);
   }
 
   Future _generateGalleryScss(BuildStep buildStep) async {
     final newAssetId =
-        new AssetId(buildStep.inputId.package, 'lib/gallery/gallery.scss');
+        AssetId(buildStep.inputId.package, 'lib/gallery/gallery.scss');
     await writeAsset(buildStep, 'lib/builder/template/gallery.scss.mustache',
         {}, newAssetId);
   }
@@ -73,7 +73,7 @@ class GalleryLibBuilder extends Builder {
       'examples': examples,
     };
 
-    final newAssetId = new AssetId(
+    final newAssetId = AssetId(
         buildStep.inputId.package, 'lib/gallery/gallery_route_library.dart');
     await writeAsset(
         buildStep,
@@ -84,18 +84,18 @@ class GalleryLibBuilder extends Builder {
 
   /// Reads gallery_section_summary.json files from all `_examplePackages`.
   Future<List<Example>> loadSummaries(BuildStep buildStep) async {
-    final examples = new List<Example>();
+    final examples = List<Example>();
 
     for (var package in _examplePackages) {
       final gallerySectionSummaryId =
-          new AssetId(package, 'lib/gallery_section_summary.json');
+          AssetId(package, 'lib/gallery_section_summary.json');
       if (!await buildStep.canRead(gallerySectionSummaryId)) continue;
 
       final summaryContents =
           await buildStep.readAsString(gallerySectionSummaryId);
       final summaries = (jsonDecode(summaryContents) as Iterable)
           .map((m) => (m as Map).cast<String, dynamic>());
-      examples.addAll(summaries.map((summary) => new Example(
+      examples.addAll(summaries.map((summary) => Example(
           summary['displayName'],
           summary['dartImport'],
           summary['componentClass'],
@@ -118,7 +118,7 @@ class Example {
       this.relatedComponents);
 
   String get name => strings
-      .underscore(displayName.replaceAll(new RegExp(r'[^a-zA-Z0-9 _-]'), ''));
+      .underscore(displayName.replaceAll(RegExp(r'[^a-zA-Z0-9 _-]'), ''));
 
   String get linkName => strings.capitalizeFirstLetter(name);
 

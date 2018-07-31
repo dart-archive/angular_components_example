@@ -7,14 +7,13 @@ import 'package:angular_gallery/builder/gallery_app_builder.dart';
 import 'package:angular_gallery/builder/gallery_lib_builder.dart';
 
 /// Builders used to generate files in the gallery app target.
-Builder galleryAppBuilder(BuilderOptions options) => new MultiplexingBuilder([
-      new GalleryWebBuilder(
-          options.config['galleryTitle'] ?? 'Example Gallery'),
-      new HomeDartBuilder(),
+Builder galleryAppBuilder(BuilderOptions options) => MultiplexingBuilder([
+      GalleryWebBuilder(options.config['galleryTitle'] ?? 'Example Gallery'),
+      HomeDartBuilder(),
     ]);
 
 /// Builder used to generate files in the gallery library target.
-Builder galleryLibBuilder(BuilderOptions options) => new GalleryLibBuilder(
+Builder galleryLibBuilder(BuilderOptions options) => GalleryLibBuilder(
       options.config['galleryTitle'] ?? 'Example Gallery',
       options.config['styleUrls'].cast<String>(),
       (options.config['examples'] as String).split(','),

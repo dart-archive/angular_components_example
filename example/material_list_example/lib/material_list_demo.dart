@@ -13,7 +13,7 @@ import 'package:angular_components/model/selection/selection_model.dart';
 
 @Component(
   selector: 'material-list-demo',
-  directives: const [
+  directives: [
     FocusItemDirective,
     FocusListDirective,
     MaterialIconComponent,
@@ -23,15 +23,15 @@ import 'package:angular_components/model/selection/selection_model.dart';
     NgFor
   ],
   templateUrl: 'material_list_demo.html',
-  styleUrls: const ['material_list_demo.scss.css'],
+  styleUrls: ['material_list_demo.scss.css'],
 )
 class MaterialListDemoComponent {
-  SelectionModel<String> colorSelection = new SelectionModel.single();
+  SelectionModel<String> colorSelection = SelectionModel.single();
   String get selectedColor => colorSelection.selectedValues.isEmpty
       ? 'red'
       : colorSelection.selectedValues.first;
 
-  SelectionModel<dynamic> itemSelection = new SelectionModel.multi();
+  SelectionModel<dynamic> itemSelection = SelectionModel.multi();
 
   void toggleItem(key) {
     if (itemSelection.isSelected(key)) {

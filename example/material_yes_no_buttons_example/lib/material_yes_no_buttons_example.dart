@@ -11,29 +11,29 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Yes No Buttons',
-  docs: const [
+  docs: [
     MaterialYesNoButtonsComponent,
     MaterialSaveCancelButtonsDirective,
     MaterialSubmitCancelButtonsDirective,
     KeyUpBoundaryDirective,
     EscapeCancelsDirective,
   ],
-  demos: const [MaterialYesNoButtonsExample],
-  benchmarks: const ['material_yes_no_buttons_init'],
+  demos: [MaterialYesNoButtonsExample],
+  benchmarks: ['material_yes_no_buttons_init'],
   showGeneratedDocs: true,
 )
 class MaterialYesNoButtonsGalleryConfig {}
 
 @Component(
   selector: 'material-yes-no-buttons-example',
-  directives: const [
+  directives: [
     KeyUpBoundaryDirective,
     EscapeCancelsDirective,
     MaterialSaveCancelButtonsDirective,
     MaterialYesNoButtonsComponent,
   ],
   templateUrl: 'material_yes_no_buttons_example.html',
-  styleUrls: const ['material_yes_no_buttons_example.scss.css'],
+  styleUrls: ['material_yes_no_buttons_example.scss.css'],
 )
 class MaterialYesNoButtonsExample {
   void alert(String msg) {
@@ -44,6 +44,6 @@ class MaterialYesNoButtonsExample {
 
   void startPendingTimer() {
     pending = true;
-    new Future.delayed(const Duration(seconds: 2), () => pending = false);
+    Future.delayed(const Duration(seconds: 2), () => pending = false);
   }
 }

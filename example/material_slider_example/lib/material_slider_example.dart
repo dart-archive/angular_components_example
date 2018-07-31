@@ -9,13 +9,13 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Slider',
-  docs: const [
+  docs: [
     MaterialSliderComponent,
   ],
-  demos: const [
+  demos: [
     MaterialSliderExample,
   ],
-  benchmarks: const [
+  benchmarks: [
     'material_slider_100_init',
   ],
   showGeneratedDocs: true,
@@ -24,13 +24,13 @@ class MaterialSliderGalleryConfig {}
 
 @Component(
   selector: 'material-slider-example',
-  providers: const [],
-  directives: const [
+  providers: [],
+  directives: [
     MaterialSliderComponent,
     MaterialToggleComponent,
   ],
   templateUrl: 'material_slider_example.html',
-  styleUrls: const ['material_slider_example.scss.css'],
+  styleUrls: ['material_slider_example.scss.css'],
 )
 class MaterialSliderExample {
   int value = 60;

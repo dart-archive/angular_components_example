@@ -22,8 +22,8 @@ import 'package:angular_components/material_progress/material_progress.dart';
 @Component(
   selector: 'delayed-content',
   templateUrl: 'delayed_content.html',
-  styleUrls: const ['delayed_content.scss.css'],
-  directives: const [MaterialProgressComponent, NgIf],
+  styleUrls: ['delayed_content.scss.css'],
+  directives: [MaterialProgressComponent, NgIf],
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
 )
@@ -37,7 +37,7 @@ class DelayedContentComponent implements OnInit {
   void ngOnInit() {
     if (delay != null) {
       resolved = false;
-      new Timer(new Duration(seconds: delay), _resolve);
+      Timer(Duration(seconds: delay), _resolve);
     } else {
       resolved = true;
     }

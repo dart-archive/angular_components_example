@@ -20,9 +20,9 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Popup',
-  docs: const [MaterialPopupComponent],
-  demos: const [MaterialPopupExample],
-  benchmarks: const [
+  docs: [MaterialPopupComponent],
+  demos: [MaterialPopupExample],
+  benchmarks: [
     'material_popup_init',
     'material_popup_content_init',
     'material_popup_deferred_content_init',
@@ -33,11 +33,8 @@ class MaterialPopupDemoComponent {}
 
 @Component(
   selector: 'material-popup-example',
-  providers: const [
-    popupBindings,
-    const Provider(ZIndexer, useClass: ZIndexer)
-  ],
-  directives: const [
+  providers: [popupBindings, Provider(ZIndexer, useClass: ZIndexer)],
+  directives: [
     DefaultPopupSizeProvider,
     DeferredContentDirective,
     DontUseRepositionLoopProvider,
@@ -48,20 +45,20 @@ class MaterialPopupDemoComponent {}
     PopupSourceDirective,
   ],
   templateUrl: 'material_popup_example.html',
-  styleUrls: const ['material_popup_example.scss.css'],
+  styleUrls: ['material_popup_example.scss.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialPopupExample {
   // Keep track of each popup's visibility separately.
-  final visible = new List.filled(11, false);
+  final visible = List.filled(11, false);
 
   SelectionModel<RelativePosition> position =
-      new RadioGroupSingleSelectionModel(RelativePosition.OffsetBottomRight);
+      RadioGroupSingleSelectionModel(RelativePosition.OffsetBottomRight);
 
   RelativePosition get popupPosition => position.selectedValues.first;
 
   final SelectionOptions<RelativePosition> positions =
-      new SelectionOptions.fromList(positionMap.keys.toList());
+      SelectionOptions.fromList(positionMap.keys.toList());
 
   ItemRenderer<RelativePosition> positionLabel =
       (RelativePosition position) => positionMap[position];
@@ -97,22 +94,20 @@ final positionMap = <RelativePosition, String>{
 
 @Injectable()
 PopupSizeProvider createPopupSizeProvider() {
-  return new PercentagePopupSizeProvider();
+  return PercentagePopupSizeProvider();
 }
 
 @Directive(
   selector: '[defaultPopupSizeProvider]',
-  providers: const [
-    const Provider(PopupSizeProvider, useFactory: createPopupSizeProvider)
-  ],
+  providers: [Provider(PopupSizeProvider, useFactory: createPopupSizeProvider)],
 )
 class DefaultPopupSizeProvider {}
 
 @Directive(
   selector: '[dontUseRepositionLoop]',
-  providers: const [
+  providers: [
     popupBindings,
-    const Provider(overlayRepositionLoop, useValue: false),
+    Provider(overlayRepositionLoop, useValue: false),
   ],
 )
 class DontUseRepositionLoopProvider {}

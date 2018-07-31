@@ -14,18 +14,15 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Select',
-  docs: const [
+  docs: [
     MaterialSelectComponent,
     MaterialSelectItemComponent,
     MaterialDropdownSelectComponent,
     DropdownButtonComponent,
     displayNameRendererDirective
   ],
-  demos: const [
-    MaterialSelectDemoComponent,
-    MaterialDropdownSelectDemoComponent
-  ],
-  benchmarks: const [
+  demos: [MaterialSelectDemoComponent, MaterialDropdownSelectDemoComponent],
+  benchmarks: [
     'material_select_item_init',
     'material_select_init',
     'material_dropdown_select_init'

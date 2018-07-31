@@ -11,9 +11,9 @@ import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(
   displayName: 'Material Icon',
-  docs: const [MaterialIconComponent],
-  demos: const [MaterialIconDemoComponent],
-  benchmarks: const [
+  docs: [MaterialIconComponent],
+  demos: [MaterialIconDemoComponent],
+  benchmarks: [
     'material_icon_init',
     'material_icon_100_init',
     'material_icon_100_binding_init',
@@ -24,14 +24,14 @@ class GlyphGalleryConfig {}
 
 @Component(
   selector: 'material-icon-demo',
-  directives: const [
+  directives: [
     MaterialButtonComponent,
     MaterialIconComponent,
     MaterialInputComponent
   ],
-  exports: const [done, doneAll, doneOutline],
+  exports: [done, doneAll, doneOutline],
   templateUrl: 'material_icon_demo.html',
-  styleUrls: const ['material_icon_demo.scss.css'],
+  styleUrls: ['material_icon_demo.scss.css'],
   preserveWhitespace: true,
 )
 class MaterialIconDemoComponent {
@@ -40,6 +40,6 @@ class MaterialIconDemoComponent {
   String iconName = 'alarm';
 }
 
-const done = const Icon('done');
-const doneAll = const Icon('done_all');
-const doneOutline = const Icon('done_outline');
+const done = Icon('done');
+const doneAll = Icon('done_all');
+const doneOutline = Icon('done_outline');

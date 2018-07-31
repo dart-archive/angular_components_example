@@ -10,7 +10,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
 
 @Component(
   selector: 'material-tree-dropdown-single-demo',
-  directives: const [MaterialTreeDropdownComponent],
+  directives: [MaterialTreeDropdownComponent],
   template: r'''
       <h1>Single selection dropdown</h1>
       <div class="shadow" style="width: 400px; margin: 24px;">
@@ -24,12 +24,12 @@ import 'package:angular_components/model/selection/selection_options.dart';
         </material-tree-dropdown>
       </div>
     ''',
-  styleUrls: const ['material_shadow.scss.css'],
+  styleUrls: ['material_shadow.scss.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialTreeDropdownSingleDemoComponent {
   final SelectionOptions nestedOptions = data.nestedOptions;
-  final SelectionModel singleSelection = new SelectionModel.single();
+  final SelectionModel singleSelection = SelectionModel.single();
 
   @ViewChild(MaterialTreeDropdownComponent)
   MaterialTreeDropdownComponent materialTreeDropdownComponent;

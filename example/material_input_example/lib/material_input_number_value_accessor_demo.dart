@@ -10,7 +10,7 @@ import 'package:angular_components/material_input/material_number_accessor.dart'
 
 @Component(
   selector: 'material-input-number-value-accessor-demo',
-  directives: const [
+  directives: [
     formDirectives,
     FourDecimalsNumberFormat,
     MaterialFabComponent,
@@ -25,7 +25,7 @@ class MaterialInputNumberValueAccessorDemoComponent {
   num decimalValue = 123.45678;
 
   MaterialInputNumberValueAccessorDemoComponent() {
-    form = new Control(321, (c) {
+    form = Control(321, (c) {
       if (c.value == null) return null; // Handled by number accessor
       return c.value > 1000 ? {'TooLargeKey': 'Too large'} : null;
     });
@@ -42,12 +42,12 @@ class MaterialInputNumberValueAccessorDemoComponent {
 
 @Directive(
   selector: '[fourDecimals]',
-  providers: const [
-    const FactoryProvider<NumberFormat>(
+  providers: [
+    FactoryProvider<NumberFormat>(
         NumberFormat, FourDecimalsNumberFormat.createNumberFormat)
   ],
 )
 class FourDecimalsNumberFormat {
   static NumberFormat createNumberFormat() =>
-      new NumberFormat.decimalPattern()..maximumFractionDigits = 4;
+      NumberFormat.decimalPattern()..maximumFractionDigits = 4;
 }

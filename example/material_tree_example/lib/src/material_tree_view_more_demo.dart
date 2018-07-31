@@ -12,7 +12,7 @@ import 'package:angular_components/model/selection/selection_options.dart';
 /// and a "View more" link.
 @Component(
   selector: 'material-tree-section-demo',
-  directives: const [
+  directives: [
     MaterialTreeComponent,
     ViewMoreDemoRenderingOptions,
   ],
@@ -48,13 +48,13 @@ import 'package:angular_components/model/selection/selection_options.dart';
         </material-tree>
       </div>
     </div>''',
-  styleUrls: const ['material_shadow.scss.css'],
+  styleUrls: ['material_shadow.scss.css'],
   // Preserve the <pre> format.
   preserveWhitespace: true,
 )
 class MaterialTreeViewMoreDemoComponent {
   final SelectionOptions nestedOptions = data.nestedOptionsVariation;
-  final SelectionModel singleSelection = new SelectionModel.single();
+  final SelectionModel singleSelection = SelectionModel.single();
 
   @ViewChild(MaterialTreeComponent)
   MaterialTreeComponent materialTree;
@@ -72,8 +72,8 @@ class ExpandFirstRootRenderingOptions extends MaterialTreeRenderingOptions {
 
 @Directive(
   selector: '[renderingOptions]',
-  providers: const [
-    const Provider(MaterialTreeRenderingOptions,
+  providers: [
+    Provider(MaterialTreeRenderingOptions,
         useClass: ExpandFirstRootRenderingOptions),
   ],
 )

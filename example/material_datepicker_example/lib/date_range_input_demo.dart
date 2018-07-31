@@ -17,11 +17,10 @@ It's two date-inputs glued together.
 <br>
 Selected range: {{range}}
 ''',
-  styles: const ['date-range-input { width: 400px; }'],
-  directives: const [DateRangeInputComponent],
-  providers: const [datepickerBindings],
+  styles: ['date-range-input { width: 400px; }'],
+  directives: [DateRangeInputComponent],
+  providers: [datepickerBindings],
 )
 class DateRangeInputDemoComponent {
-  DateRange range =
-      new DateRange(new Date.today().add(days: -7), new Date.today());
+  DateRange range = DateRange(Date.today().add(days: -7), Date.today());
 }

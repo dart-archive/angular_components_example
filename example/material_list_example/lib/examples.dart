@@ -10,11 +10,11 @@ import 'material_list_demo.dart';
 
 @GallerySectionConfig(
   displayName: 'Material List',
-  docs: const [
+  docs: [
     MaterialListComponent,
     MaterialListItemComponent,
   ],
-  benchmarks: const ['material_list_item_init', 'material_list_init'],
+  benchmarks: ['material_list_item_init', 'material_list_init'],
   showGeneratedDocs: true,
 )
 class MaterialListExamples {}

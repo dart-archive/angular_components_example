@@ -10,16 +10,16 @@ import 'package:angular_components/utils/browser/window/module.dart';
 
 @Component(
   selector: 'material-tab-strip-mixin-example',
-  providers: const [
+  providers: [
     windowBindings,
     domServiceBinding,
     rtlProvider,
   ],
-  directives: const [
+  directives: [
     FixedMaterialTabStripComponent,
   ],
   templateUrl: 'material_tab_strip_mixin_example.html',
-  styleUrls: const ['material_tab_strip_mixin_example.scss.css'],
+  styleUrls: ['material_tab_strip_mixin_example.scss.css'],
 )
 class MaterialTabStripMixinExample {
   final tabLabels = const <String>[
