@@ -20,7 +20,7 @@ import 'package:angular_components/utils/disposer/disposer.dart';
 
 @Component(
   selector: 'material-menu-demo',
-  providers: [popupBindings, Provider(ZIndexer, useClass: ZIndexer)],
+  providers: [popupBindings, ClassProvider(ZIndexer)],
   directives: [
     DropdownMenuComponent,
     MaterialIconComponent,

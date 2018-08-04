@@ -103,15 +103,15 @@ h2 {
   }
 }
 
+.doc ::ng-deep strong {
+  @include mat-font-body-2;
+  color: $mat-blue;
+}
+
 ::ng-deep p {
   // Makes it so the docs for inputs and outputs could be closer to the
   // input/output declaration.
   margin: $mat-grid-type 0 $mat-grid * 2;
-}
-
-::ng-deep strong {
-  @include mat-font-body-2;
-  color: $mat-blue;
 }
 
 ::ng-deep code,

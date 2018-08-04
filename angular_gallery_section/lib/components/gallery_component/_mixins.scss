@@ -9,7 +9,7 @@
   }
 
   ::ng-deep h2,
-  ::ng-deep strong,
+  .doc ::ng-deep strong,
   ::ng-deep .property-type {
     color: $primary-color;
   }
