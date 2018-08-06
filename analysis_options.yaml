@@ -1,5 +1,4 @@
 analyzer:
- strong-mode: true
  errors:
   # TODO(nshahan) Make these errors when there is a fix for
   # https://github.com/dart-lang/sdk/issues/29713
