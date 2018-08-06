@@ -27,5 +27,5 @@ targets:
           - --fast-startup
           - --minify
           - --trust-primitives
+          - --omit-implicit-checks
           - --dump-info
-          - --preview-dart-2
