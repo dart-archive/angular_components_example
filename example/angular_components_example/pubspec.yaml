@@ -1,11 +1,11 @@
 name: angular_components_example
 author: Dart Team <misc@dartlang.org>
 environment:
-  sdk: '>=2.0.0-dev.64.2 <3.0.0'
+  sdk: '>=2.0.0-dev.68 <3.0.0'
 
 dependencies:
-  angular: ^5.0.0-beta+2
-  angular_components: 0.9.0-beta+2
+  angular: ^5.0.0-beta+3
+  angular_components: 0.9.0-beta+3
   angular_gallery:
     path: ../../angular_gallery
   app_layout_example:
@@ -63,3 +63,9 @@ dependencies:
 dev_dependencies:
   build_runner: ^0.9.1
   build_web_compilers: ^0.4.0
+
+dependency_overrides:
+  angular_components:
+    git:
+      url: https://github.com/dart-lang/angular_components.git
+      ref: github-sync

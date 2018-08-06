@@ -33,7 +33,7 @@ class MaterialPopupDemoComponent {}
 
 @Component(
   selector: 'material-popup-example',
-  providers: [popupBindings, Provider(ZIndexer, useClass: ZIndexer)],
+  providers: [popupBindings, ClassProvider(ZIndexer)],
   directives: [
     DefaultPopupSizeProvider,
     DeferredContentDirective,
