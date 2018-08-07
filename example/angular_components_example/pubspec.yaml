@@ -4,8 +4,8 @@ environment:
   sdk: '>=2.0.0-dev.68 <3.0.0'
 
 dependencies:
-  angular: ^5.0.0-beta+3
-  angular_components: 0.9.0-beta+3
+  angular: ^5.0.0
+  angular_components: 0.9.0
   angular_gallery:
     path: ../../angular_gallery
   app_layout_example:

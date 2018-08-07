@@ -14,35 +14,35 @@ packages:
       name: angular
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.0-beta+3"
+    version: "5.0.0"
   angular_ast:
     dependency: transitive
     description:
       name: angular_ast
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.5"
+    version: "0.5.6"
   angular_compiler:
     dependency: transitive
     description:
       name: angular_compiler
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.0-alpha+19"
+    version: "0.4.0"
   angular_components:
     dependency: "direct main"
     description:
       name: angular_components
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.9.0-beta+3"
+    version: "0.9.0"
   angular_forms:
     dependency: transitive
     description:
       name: angular_forms
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0-beta+3"
+    version: "2.0.0"
   angular_gallery:
     dependency: "direct main"
     description:
@@ -63,7 +63,7 @@ packages:
       name: angular_router
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0-alpha+18"
+    version: "2.0.0-alpha+19"
   app_layout_example:
     dependency: "direct main"
     description:
@@ -723,4 +723,4 @@ packages:
     source: hosted
     version: "2.1.15"
 sdks:
-  dart: ">=2.0.0-dev.68.0 <2.1.0"
+  dart: ">=2.0.0-dev.69.5 <2.1.0"
