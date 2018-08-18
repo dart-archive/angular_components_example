@@ -14,6 +14,7 @@ import 'material_list_demo.dart';
     MaterialListComponent,
     MaterialListItemComponent,
   ],
+  demos: [MaterialListDemoComponent],
   benchmarks: ['material_list_item_init', 'material_list_init'],
   showGeneratedDocs: true,
 )
