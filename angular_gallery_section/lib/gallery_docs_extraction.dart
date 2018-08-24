@@ -41,6 +41,7 @@ class GalleryDocumentaionExtraction extends SimpleAstVisitor<DocInfo> {
       final info = declaration.accept(this);
       if (info != null) return info;
     }
+    return null;
   }
 
   @override
@@ -88,6 +89,7 @@ class GalleryDocumentaionExtraction extends SimpleAstVisitor<DocInfo> {
     if (args == null) return null;
 
     args.accept(this);
+    return null;
   }
 
   @override
@@ -99,6 +101,7 @@ class GalleryDocumentaionExtraction extends SimpleAstVisitor<DocInfo> {
     } else if (name == 'exportAs') {
       _info.exportAs = expression.accept(StringExtractor());
     }
+    return null;
   }
 
   /// Collect information needed for documentaiton from [node].

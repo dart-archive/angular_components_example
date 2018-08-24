@@ -51,6 +51,7 @@ class _GallerySectionConfigVisitor extends SimpleAstVisitor<ConfigInfo> {
     final args = node?.arguments?.arguments;
     if (args == null) return null;
     args.accept(this);
+    return null;
   }
 
   @override
@@ -65,7 +66,7 @@ class _GallerySectionConfigVisitor extends SimpleAstVisitor<ConfigInfo> {
       config.demoClassNames = expression.accept(ListStringExtractor());
     } else if (name == 'benchmarks') {
       config.benchmarks = expression.accept(ListStringExtractor());
-    } else if (name == 'benchMarkPrefix') {
+    } else if (name == 'benchmarkPrefix') {
       config.benchmarkPrefix = expression.accept(StringExtractor());
     } else if (name == 'owners') {
       config.owners = expression.accept(ListStringExtractor());
@@ -76,6 +77,7 @@ class _GallerySectionConfigVisitor extends SimpleAstVisitor<ConfigInfo> {
     } else if (name == 'showGeneratedDocs') {
       config.showGeneratedDocs = expression.accept(BoolExtractor());
     }
+    return null;
   }
 }
 

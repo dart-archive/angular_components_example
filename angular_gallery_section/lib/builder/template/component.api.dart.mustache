@@ -53,11 +53,7 @@ class {{component}}Api {
       ],
       benchmarks: [
         {{#benchmarks}}
-          new Benchmark(
-              '{{suite}}',
-              '{{test}}',
-              '{{benchmarkKey}}',
-              [{{#metricValueKeys}} '{{.}}', {{/metricValueKeys}}]),
+          '{{.}}',
         {{/benchmarks}}
       ],
       owners: [

@@ -22,6 +22,7 @@
         [itemRenderer]="itemRenderer"
         [factoryRenderer]="factoryRenderer"
         [popupPositions]="popupPositions"
+        [showPopup]="showPopup"
         [limit]="limit"
         [disabled]="disabled">
       <div header *ngIf="showHeaderAndFooter">Pick one</div>
@@ -50,6 +51,7 @@
         [itemRenderer]="itemRenderer"
         [factoryRenderer]="factoryRenderer"
         [popupPositions]="popupPositions"
+        [showPopup]="showPopup"
         [limit]="limit"
         [disabled]="disabled">
       <div header *ngIf="showHeaderAndFooter">Pick multiple</div>
@@ -87,6 +89,10 @@
     <br>
     <material-checkbox [(checked)]="showHeaderAndFooter">
       Show header and footer
+    </material-checkbox>
+    <br>
+    <material-checkbox [(checked)]="showPopup">
+      Show popup
     </material-checkbox>
     <br>
     <material-checkbox [(checked)]="showClearIcon">

@@ -8,13 +8,13 @@ import 'home.template.dart' as home;
 
 /// Route definitions and loaders for each "@GallerySectionConfig" component.
 final List<RouteDefinition> galleryRoutes = [
-  new RouteDefinition(
+  RouteDefinition(
     path: '/',
     component: home.HomeViewComponentNgFactory,
     useAsDefault: true,
   ),
 {{# examples }}
-  new RouteDefinition.defer(
+  RouteDefinition.defer(
     path: '{{ name }}',
     loader: () async {
       await {{ name }}.loadLibrary();

@@ -22,6 +22,7 @@ $mdc-card-image: 'http://material-components-web.appspot.com/images/16-9.jpg';
 // Provide material styling for the title.
 .demo-card__title {
   @include mat-font-title;
+  line-height: 1em; // legacy setting
   margin: 0;
 }
 

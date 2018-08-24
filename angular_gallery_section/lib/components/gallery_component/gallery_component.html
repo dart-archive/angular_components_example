@@ -136,9 +136,6 @@
 
 <section *ngIf="model.benchmarks.isNotEmpty" class="latency-chart">
   <h2 id="latency">Latency Charts</h2>
-  <latency-chart
-      *ngFor="let benchmark of model.benchmarks"
-      benchmarkKey="{{benchmark.benchmarkKey}}"
-      [metricValueKeys]="benchmark.metricValueKeys">
+  <latency-chart *ngFor="let url of model.benchmarks" linkUrl="{{url}}">
   </latency-chart>
 </section>

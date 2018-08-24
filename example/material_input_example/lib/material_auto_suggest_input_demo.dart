@@ -126,6 +126,7 @@ class MaterialAutoSuggestInputDemoComponent {
   bool useFactoryRenderer = false;
   bool disabled = false;
   bool showHeaderAndFooter = false;
+  bool showPopup = false;
   String label = 'Search...';
   String emptyPlaceholder = 'No matches';
   String leadingGlyph = 'search';

@@ -14,6 +14,9 @@
       Long preset list (demonstrates scrolling)
     </material-checkbox>
     <material-checkbox [(checked)]="showMessageBar">Show message bar</material-checkbox>
+    <material-checkbox [(checked)]="movingStartMaintainsLength">
+      Maintain range length when moving start date
+    </material-checkbox>
     <div class="limit-label">Limit to date range:</div>
     <date-range-input [(range)]="limitToRange"></date-range-input>
     <div class="selection-label">The current selection is: {{range}}</div>
@@ -25,6 +28,7 @@
        [presets]="presets"
        [supportsComparison]="supportsComparison"
        [showNextPrevButtons]="showNextPrevButtons"
+       [movingStartMaintainsLength]="movingStartMaintainsLength"
        [(range)]="range">
       <div *ngIf="showMessageBar" messageBar class="message-bar">
         Custom message

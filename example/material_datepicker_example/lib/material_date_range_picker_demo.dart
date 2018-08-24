@@ -24,15 +24,15 @@ List<DatepickerPreset> manyPresets(Clock clock) => [
       SingleDayRange.daysAgo(clock, 5),
       thisWeek(clock),
       lastWeek(clock),
-      WeekRange.weeksAgo(clock, 2),
-      WeekRange.weeksAgo(clock, 3),
-      WeekRange.weeksAgo(clock, 4),
-      WeekRange.weeksAgo(clock, 5),
       last7Days(clock),
       last14Days(clock),
       thisMonth(clock),
       lastMonth(clock),
+      thisBroadcastMonth(clock),
+      lastBroadcastMonth(clock),
       last30Days(clock),
+      thisQuarter(clock),
+      lastQuarter(clock),
       thisYear(clock),
       lastYear(clock),
       allTime,
@@ -55,6 +55,7 @@ class MaterialDateRangePickerDemoComponent {
   bool showNextPrevButtons = true;
   bool longPresetList = false;
   bool showMessageBar = false;
+  bool movingStartMaintainsLength = true;
   List<DatepickerPreset> _defaultPresets;
   List<DatepickerPreset> _manyPresets;
   DatepickerComparison range;
