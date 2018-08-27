@@ -23,9 +23,12 @@ class GallerySectionConfig {
   /// Specify demos in the order that they should be displayed.
   final List<Type> demos;
 
-  /// A list of latency test names to include in charts on the API page.
+  /// The embed URLs for benchmark charts to display in this section.
   ///
-  /// Specify the latency names in the order they should be displayed.
+  /// The charts are displayed in the order they are specified here.
+  ///
+  /// TODO(google) Cleanup temporary compatability while migrating.
+  /// Benchmarks can also be listed by name.
   final List<String> benchmarks;
 
   /// A string prefix for acx benchmarks, defaults to 'acx_benchmarks_guitar'.

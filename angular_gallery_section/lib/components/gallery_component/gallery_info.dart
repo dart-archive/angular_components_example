@@ -19,7 +19,7 @@ class GalleryInfo {
   /// A list of latency test names to include in charts on the API page.
   ///
   /// Specify the latency names in the order they should be displayed.
-  final List<Benchmark> benchmarks;
+  final List<String> benchmarks;
 
   /// A list of owners for the components in this section.
   final List<String> owners;
@@ -61,15 +61,6 @@ class Demo {
   final String name;
   final String path;
   const Demo(this.demoFactory, this.name, this.path);
-}
-
-class Benchmark {
-  final String suite;
-  final String test;
-  final String benchmarkKey;
-  final List<String> metricValueKeys;
-  const Benchmark(
-      this.suite, this.test, this.benchmarkKey, this.metricValueKeys);
 }
 
 class Property {

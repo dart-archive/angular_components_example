@@ -135,7 +135,7 @@ h2 {
   }
 }
 
-::ng-deep li:not(:last-of-type) {
+:not(.demo) ::ng-deep li:not(:last-of-type) {
   margin-bottom: $mat-grid * 2;
 }
 

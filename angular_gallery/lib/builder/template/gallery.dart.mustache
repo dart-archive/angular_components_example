@@ -22,7 +22,7 @@ import 'gallery_route_library.dart';
 /// Gallery component with routing and breadcrumbs for all examples.
 @Component(
     selector: 'root',
-    directives: const [
+    directives: [
       AutoFocusDirective,
       HighlightedValueComponent,
       MaterialButtonComponent,
@@ -36,18 +36,18 @@ import 'gallery_route_library.dart';
       NgModel,
       routerDirectives,
     ],
-    viewProviders: const [
-      const Provider(HighlightProvider, useExisting: GalleryComponent)
+    viewProviders: [
+      Provider(HighlightProvider, useExisting: GalleryComponent)
     ],
     templateUrl: 'gallery.html',
-    styleUrls: const [
+    styleUrls: [
       'package:angular_components/app_layout/layout.scss.css',
 {{#styleUrls}}
   '{{{.}}}',
 {{/styleUrls}}
 ])
 class GalleryComponent implements HighlightProvider {
-  final HighlightAssistant _highlightAssistant = new HighlightAssistant();
+  final HighlightAssistant _highlightAssistant = HighlightAssistant();
   final ItemRenderer _highlightRenderer =
       (item) => item is _Example ? item.displayName : item?.toString();
   final List<RouteDefinition> routes = galleryRoutes;
@@ -59,7 +59,7 @@ class GalleryComponent implements HighlightProvider {
         _breadcrumb = breadcrumbs[newRoute.path];
         querySelector('material-content').scrollTop = 0;
       });
-    exampleOptions = new StringSelectionOptions<_Example>(allExamples,
+    exampleOptions = StringSelectionOptions<_Example>(allExamples,
         toFilterableString: _toFilterableString);
   }
 
@@ -79,7 +79,7 @@ class GalleryComponent implements HighlightProvider {
       return _highlightAssistant.highlightOption(
           exampleOptions.currentQuery, item, _highlightRenderer);
     } else {
-      return [new HighlightedTextSegment(item?.toString(), false)];
+      return [HighlightedTextSegment(item?.toString(), false)];
     }
   }
 }
@@ -98,7 +98,7 @@ List<_Example> allExamples = const <_Example>[
     const _Example(
         '/{{{ name }}}',
         '{{ displayName }}',
-        const <String>[{{# relatedComponents }}'{{.}}',{{/ relatedComponents }}]
+        <String>[{{# relatedComponents }}'{{.}}',{{/ relatedComponents }}]
     ),
 {{/ examples }}
 ];
