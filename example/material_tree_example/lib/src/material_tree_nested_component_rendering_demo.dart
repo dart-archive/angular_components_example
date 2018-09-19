@@ -40,6 +40,8 @@ import 'package:angular_components/model/ui/has_factory.dart';
     ''',
   styleUrls: ['material_shadow.scss.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // TODO(google): Change preserveWhitespace to false to improve codesize.
+  preserveWhitespace: true,
 )
 class MaterialTreeNestedComponentRenderingComponent {
   final SelectionOptions nestedOptions = data.nestedOptions;
